@@ -126,76 +126,85 @@ const FloodGraph = () => {
   
   return (
     <div className="flood-graph-container" onClick={handleBackgroundClick}>
-      <div className={`scatter-chart-wrapper ${selectedEvent ? "shift-left" : ""}`}>
-        <h3 className="flood-graph-title">Mendenhall Glacial Lake Outburst Flood Events Over Time</h3>
-        <h4 className="flood-graph-subtitle"> Select Points To Explore The Data</h4>
-        <ResponsiveContainer width="100%" height={400}>
-          <ScatterChart margin={{ top: 20, right: 30, left: 10, bottom: 30 }}>
-            <CartesianGrid />
-            <XAxis
-              type="category"
-              dataKey="x"
-              name="Peak Water Level Date"
-              label={{
-                value: "Peak Water Level Date",
-                position: "bottom",
-                style: { fontWeight: "bold", fill: "black" },
+      {loading ? (
+        <div className="loading">Loading flood data...</div>
+      ) : (
+        <>
+          <div className={`scatter-chart-wrapper ${selectedEvent ? "shift-left" : ""}`}>
+            <h3 className="flood-graph-title">
+              Mendenhall Glacial Lake Outburst Flood Events Over Time
+            </h3>
+            <h4 className="flood-graph-subtitle">Select Points To Explore The Data</h4>
+            <ResponsiveContainer width="100%" height={400}>
+              <ScatterChart margin={{ top: 20, right: 30, left: 10, bottom: 30 }}>
+                <CartesianGrid />
+                <XAxis
+                  type="category"
+                  dataKey="x"
+                  name="Peak Water Level Date"
+                  label={{
+                    value: "Peak Water Level Date",
+                    position: "bottom",
+                    style: { fontWeight: "bold", fill: "black" },
+                  }}
+                />
+                <YAxis
+                  type="number"
+                  dataKey="y"
+                  name="Peak Water Level Stage (ft)"
+                  label={{
+                    value: "Peak Water Level Stage (ft)",
+                    angle: -90,
+                    position: "outsideLeft",
+                    dx: -25,
+                    style: { fontWeight: "bold", fill: "black" },
+                  }}
+                />
+                <Scatter
+                  name="Flood Events"
+                  data={scatterData}
+                  shape={renderCustomShape}
+                  onClick={(value) => handlePointClick(value)}
+                  onMouseEnter={handleMouseEnter}
+                  onMouseLeave={handleMouseLeave}
+                  cursor="pointer"
+                />
+              </ScatterChart>
+            </ResponsiveContainer>
+          </div>
+  
+          {selectedEvent && (
+            <div
+              className="event-info-card"
+              onClick={handleEventCardClick}
+              style={{
+                borderRight: `5px solid ${eventCardColor}`,
+                "--hover-color": `${eventCardColor}20`,
               }}
-            />
-            <YAxis
-              type="number"
-              dataKey="y"
-              name="Peak Water Level Stage (ft)"
-              label={{
-                value: "Peak Water Level Stage (ft)",
-                angle: -90,
-                position: "outsideLeft",
-                dx: -25,
-                style: { fontWeight: "bold", fill: "black" },
-              }}
-            />
-            <Scatter
-              name="Flood Events"
-              data={scatterData}
-              shape={renderCustomShape} // Use custom shape
-              onClick={(value) => handlePointClick(value)}
-              onMouseEnter={handleMouseEnter}
-              onMouseLeave={handleMouseLeave}
-              cursor="pointer"
-            />
-          </ScatterChart>
-        </ResponsiveContainer>
-      </div>
-
-      {selectedEvent && (
-        <div
-          className="event-info-card"
-          onClick={handleEventCardClick}
-          style={{
-            borderRight: `5px solid ${eventCardColor}`,
-            "--hover-color": `${eventCardColor}20`, // Light transparent hover effect
-          }}
-        >
-          <h3 className="event-title"> Flood Event Info</h3>
-          <p>
-            <strong>Release Start Date:</strong> {selectedEvent.releaseDate}
-          </p>
-          <p>
-            <strong>Starting Water Level:</strong> {selectedEvent.releaseStage}
-          </p>
-          <p>
-            <strong>Peak Water Level Date:</strong> {selectedEvent.crestDate}
-          </p>
-          <p>
-            <strong>Peak Water Level:</strong> {selectedEvent.crestStage}
-          </p>
-          <p>
-            <strong>NWS Impacts:</strong> {selectedEvent.impacts}
-          </p>
-        </div>
+            >
+              <h3 className="event-title">Flood Event Info</h3>
+              <p>
+                <strong>Release Start Date:</strong> {selectedEvent.releaseDate}
+              </p>
+              <p>
+                <strong>Starting Water Level:</strong> {selectedEvent.releaseStage} ft
+              </p>
+              <p>
+                <strong>Peak Water Level Date:</strong> {selectedEvent.crestDate}
+              </p>
+              <p>
+                <strong>Peak Water Level:</strong> {selectedEvent.crestStage} ft
+              </p>
+              <p>
+                <strong>NWS Impacts:</strong> {selectedEvent.impacts}
+              </p>
+            </div>
+          )}
+        </>
       )}
     </div>
   );
+  
 };
 
 export default FloodGraph;

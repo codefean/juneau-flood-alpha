@@ -354,19 +354,50 @@
   font-family: 'Open Sans', sans-serif;
 }
 
-/* Video Container (from Reference) */
 .video-container {
   display: flex;
-  flex-direction: row;
-  gap: 20px;
+  flex-wrap: wrap;
   justify-content: center;
-  padding-left: 20px; /* Add space on the left */
-  margin-bottom: 40px;
-  background: #f8f9fa; /* Light gray background for contrast */
-  border-radius: 8px;
+  gap: 20px;
   padding: 20px;
+  background: #f8f9fa;
+  border-radius: 8px;
+  margin-bottom: 40px;
 }
 
+/* Default video styling */
+.video {
+  flex: 1 1 45%; /* Default to equal width */
+  max-width: 500px; /* Limit max width */
+  text-align: center;
+}
+
+/* Make "Mendenhall Glacier" video larger */
+.video.video-mendenhall {
+  flex: 1 1 55%; /* Give it more space */
+  max-width: 658px; /* Allow it to be wider */
+}
+
+/* Ensure videos scale properly */
+.video video {
+  width: 100%;
+  height: auto;
+  max-height: 400px; /* Keeps both videos the same height */
+  border-radius: 5px;
+}
+
+/* Stack videos on smaller screens */
+@media (max-width: 768px) {
+  .video-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .video, .video.video-mendenhall {
+    flex: 1 1 100%; /* Make each video take full width */
+    max-width: 90%;
+  }
+}
 
 
 .video h3 {
@@ -376,24 +407,4 @@
   margin: 0 0 5px;
   font-weight: bold;
   font-family: 'Open Sans', sans-serif;
-}
-
-video {
-  width: 100%;
-  height: auto;
-  object-fit: contain;
-  border-radius: 5px;
-  max-height: 700px;
-}
-
-
-
-/* Mobile Adjustments */
-@media (max-width: 768px) {
-  .video-container {
-    flex-direction: column;
-    align-items: center;
-    gap: 30px;
-  }
-
 }

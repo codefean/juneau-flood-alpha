@@ -71,27 +71,6 @@ const images = [
   const timelapse2Url =
     "https://usgs-nims-images.s3.amazonaws.com/timelapse/AK_Glacial_Lake_near_Nugget_LOOKING_UPSTREAM_GLACIER_VIEW/AK_Glacial_Lake_near_Nugget_LOOKING_UPSTREAM_GLACIER_VIEW_720.mp4";
 
-  // Function to Render Info Tables
-  const renderTable = (info) => (
-    <table className="info-table">
-      <tbody>
-        {Object.entries(info).map(([key, value]) => (
-          <tr key={key}>
-            <th>{key.replace(/([A-Z])/g, " $1").replace(/^./, (str) => str.toUpperCase())}</th>
-            <td>
-              {key === "usgsLink" ? (
-                <a href={value} target="_blank" rel="noopener noreferrer" className="info-button">
-                  More Info
-                </a>
-              ) : (
-                value
-              )}
-            </td>
-          </tr>
-        ))}
-      </tbody>
-    </table>
-  );
 
   return (
     <div className="suicide-basin-container">
@@ -142,30 +121,26 @@ const images = [
         </div>
       </div>
 
-      {/* Live View Section */}
-      <h2 className="live-view-title">Live View: Suicide Basin</h2>
-      <p className="live-view-subheading">
-      </p>
+{/* Live View Section */}
+<h2 className="live-view-title">Live View: Suicide Basin</h2>
 
-      {/* Timelapse 1 */}
-      <div className="video-container">
-        <div className="video">
-          <h3>Suicide Basin Glacial Lake</h3>
-          <video controls>
-            <source src={timelapse1Url} type="video/mp4" />
-          </video>
-        </div>
-      </div>
+<div className="video-container">
+  <div className="video">
+    <h3>Suicide Basin Glacial Lake</h3>
+    <video controls>
+      <source src={timelapse1Url} type="video/mp4" />
+    </video>
+  </div>
 
-      {/* Timelapse 2 */}
-      <div className="video-container">
-        <div className="video">
-          <h3>Mendenhall Glacier - Below Suicide Basin</h3>
-          <video controls>
-            <source src={timelapse2Url} type="video/mp4" />
-          </video>
-        </div>
-      </div>
+  <div className="video video-mendenhall"> {/* Added class here */}
+    <h3>Mendenhall Glacier - Below Suicide Basin</h3>
+    <video controls>
+      <source src={timelapse2Url} type="video/mp4" />
+    </video>
+  </div>
+</div>
+
+
     </div>
   );
 };
