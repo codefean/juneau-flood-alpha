@@ -25,21 +25,19 @@ body {
 }
 
 /* Page Title */
-.flood-events-container h2 {
-  text-align: center;
-  margin-top: 0;
-  margin-bottom: -10px;
-  font-size: 2.5rem;
+.flood-events-title{
+  text-align: center !important;
+  margin: -14px 0 -10px;
+  font-size: 2.4rem;
   color: #154f89;
 }
 
 /* Subheading Below Page Title */
-.flood-subheading {
+.flood-events-subheading {
   text-align: center;
-  font-size: 1.8rem;
+  font-size: 1.3rem;
   color: #0e2b4a;
-  margin-top: 0;
-  margin-bottom: 5px;
+  margin: 0 0 5px;
   font-weight: bold;
   font-family: 'Open Sans', sans-serif;
 }
@@ -106,7 +104,7 @@ body {
     padding: 15px;
   }
 
-  .flood-events-container h2 {
+  .flood-events h2 {
     font-size: 2rem;
   }
 
@@ -123,7 +121,7 @@ body {
     padding: 10px;
   }
 
-  .flood-events-container h2 {
+  .flood-events h2 {
     font-size: 1.8rem;
   }
 

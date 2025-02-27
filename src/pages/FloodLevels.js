@@ -201,7 +201,7 @@ useEffect(() => {
           lng: -134.5038333,
           popupContent: `
             <a href="https://waterdata.usgs.gov/monitoring-location/1505248590/#dataTypeId=continuous-00020-0&period=P7D&showMedian=true" target="_blank">
-              <b>Mendenhall Glacial Pool</b>
+              <b>Suicide Basin Glacial Pool Water Gage</b>
             </a>
           `,
         },

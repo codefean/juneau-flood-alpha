@@ -81,7 +81,9 @@ const FloodEvents = () => {
 
   return (
     <div className="flood-events-container">
-      <h3 className="flood-subheading">Explore Historical Outburst Flood Data</h3>
+      <h2 className="flood-events-title">Historical Outburst Flood Data</h2>
+      <h2 className="flood-events-subheading">Learn About Past Glacial Outburst Flood Events</h2>
+
       <div className="flood-cards-container">
       {latestFloodEvent && (
         <div className="floodcard last-glof">

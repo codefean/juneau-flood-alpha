@@ -11,18 +11,70 @@ body {
 /* Flood Tracker Container */
 .flood-tracker {
   text-align: center;
-  padding: 20px;
   max-width: 100%;
 }
 
-/* Headings */
-.flood-tracker h1 {
-  color: #00509e;
-  font-size: 2.5rem;
-  margin-bottom: 0px;
-  margin-top: 0px;
+/* Flood Forecasting Title */
+.flood-forecasting-title {
+  text-align: center !important;
+  font-size: 2.6rem;
+  color: #154f89;
+  font-weight: bold;
+  margin-top: 5px;
+  margin-bottom: -20px;
 }
 
+/* Flood Forecasting Subheading */
+.flood-forecasting-subheading {
+  text-align: center;
+  font-size: 1.3rem;
+  color: #0e2b4a;
+  font-weight: bold;
+  font-family: 'Open Sans', sans-serif;
+  margin-top: 5px;
+  margin-bottom: -5px;
+}
+
+/* Mobile Adjustments */
+@media (max-width: 768px) {
+  .flood-forecasting-title {
+    font-size: 2rem; /* Reduce size for better mobile fit */
+    margin-top: 10px;
+    margin-bottom: -10px;
+    padding: 0 10px; /* Add slight padding to prevent text overflow */
+  }
+
+  .flood-forecasting-subheading {
+    font-size: 1.1rem; /* Adjusted font size */
+    margin-top: 10px;
+    margin-bottom: 0;
+    padding: 0 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .flood-forecasting-title {
+    font-size: 1.8rem; /* Further reduce size for small screens */
+    margin-top: 15px;
+    margin-bottom: -5px;
+  }
+
+  .flood-forecasting-subheading {
+    font-size: 1rem; /* Adjust to fit smaller screens */
+    margin-top: 8px;
+    margin-bottom: 0;
+  }
+}
+
+
+.image-caption {
+  text-align: center;
+  font-size: 15px;
+  color: #0e2b4a;
+  margin-top: 1px;
+  margin-bottom: 1px;
+  font-weight: bold;
+}
 .flood-tracker h2 {
   color: #0e2b4a;
   font-size: 1.5rem;
@@ -35,32 +87,6 @@ body {
   font-size: 1.5rem;
   margin-bottom: 20px;
   margin-top: -10px;
-}
-.title h3 {
-  text-align: center;
-  margin-top: 0;
-  margin-bottom: -10px;
-  font-size: 2rem;
-  color: #0e2b4a;
-}
-
-/* Subheading Below Page Title */
-.subheading h4 {
-  text-align: center;
-  font-size: 1.2rem;
-  color: #295b91;
-  margin-top: 0;
-  margin-bottom: 5px;
-  font-family: 'Open Sans', sans-serif;
-}
-
-.image-caption {
-  text-align: center;
-  font-size: 15px;
-  color: #0e2b4a;
-  margin-top: 1px;
-  margin-bottom: 1px;
-  font-weight: bold;
 }
 
 /* Main Content Layout */
@@ -163,7 +189,7 @@ body {
     color: #0e2b4a;
   }
 
-  .subheading h4 {
+  .subheading {
     text-align: center;
     font-size: 1rem;
     color: #295b91;
