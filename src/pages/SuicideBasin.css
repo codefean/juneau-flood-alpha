@@ -6,7 +6,6 @@
   padding: 20px;
   padding-left: max(10px, 2vw);
   padding-right: max(10px, 2vw);
-  max-width: 100vw;
   overflow-x: hidden;
   text-align: center;
 }
@@ -34,7 +33,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  max-width: 1200px;
+  max-width: 1350px;
+  max-height: 590px;
   margin: 20px auto;
   overflow: hidden;
 }
@@ -77,7 +77,7 @@
 .glof-slider {
   flex: 1;
   width: 100%;
-  max-width: 750px; /* Increased for larger images */
+  max-width: 1000px; /* Increased for larger images */
   text-align: center;
   position: relative;
 }
@@ -97,16 +97,6 @@
     justify-content: center; /* Ensures proper text positioning */
   }
 }
-
-/* Increased max-width for larger images */
-.glof-slider {
-  flex: 1;
-  width: 100%;
-  max-width: 900px; /* Increased from 600px */
-  text-align: center;
-  position: relative;
-}
-
 /* Larger images with improved aspect ratio */
 .glof-slider .slick-slide img {
   width: 100%;
@@ -299,7 +289,7 @@
 
 /* Suicide Basin Info Card */
 .suicide-basin-info-card {
-  max-width: 1175px; /* Matches image slider width */
+  max-width: 1310px; /* Matches image slider width */
   margin: 20px auto; /* Centers the card */
   padding: 15px 20px;
   text-align: left;
