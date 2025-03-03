@@ -1,5 +1,6 @@
 import React from 'react';
 import './Header.css';
+import FloodWarn from './FloodWarn';
 
 const Header = () => {
   return (
@@ -7,6 +8,7 @@ const Header = () => {
       <div>
         <h1>Juneau Glacial Flood Dashboard</h1>
       </div>
+      <FloodWarn />
     </header>
   );
 };

@@ -2,45 +2,19 @@
   background-color: #002c4d;
   color: white;
   padding: 10px 15px;
-  display: flex; /* Use Flexbox for layout */
-  align-items: center; /* Vertically align items */
-  justify-content: center; /* Center the entire content by default */
+  display: flex;
+  align-items: center;
+  justify-content: center; /* Keep title centered */
   font-family: 'Open Sans', Arial, sans-serif;
   position: relative;
-  flex-wrap: nowrap; /* Prevent wrapping */
+  flex-wrap: nowrap;
 }
 
-.header-logo {
-  height: 50px;
-  width: auto;
-  position: absolute; /* Take the logo out of the flow */
-  left: 15px; /* Place it at a fixed position */
-  top: 5px;
-  transition: opacity 0.3s ease; /* Smoothly transition opacity when hiding */
+/* Ensure title remains centered */
+.header-title {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-/* Title text styles */
-.header div {
-  flex: 1;
-  display: flex; /* Flexbox for centering */
-  justify-content: center; /* Center horizontally */
-  align-items: center; /* Center vertically */
-}
-
-.header h1 {
-  margin: 0;
-  font-size: clamp(16px, 4vw, 36px); /* Dynamically adjust size */
-  font-weight: bold;
-  line-height: 1.2; /* Ensure proper spacing */
-  white-space: normal; /* Allow wrapping for smaller screens */
-  overflow: hidden;
-  text-overflow: ellipsis; /* Backup overflow handling */
-  text-align: center; /* Ensure proper alignment */
-}
-
-/* Hide logo on smaller screens */
-@media (max-width: 768px) {
-  .header-logo {
-    display: none; /* Hide the logo entirely */
-  }
-}

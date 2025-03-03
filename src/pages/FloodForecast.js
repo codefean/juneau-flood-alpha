@@ -64,10 +64,12 @@ const FloodPrediction = () => {
 
   return (
     <div className="flood-tracker" onClick={closeInfoBox}>
+    {/* Flood Prediction Component Moved to the Top */}
+    {showFloodPred && <FloodPred onClose={() => setShowFloodPred(false)} />}
 
-      {/* Title & Subheading */}
-      <h1 className="flood-forecasting-title">Explore Flood Forecasting</h1>
-      <h3 className="flood-forecasting-subheading">How to Understand Water Level Data</h3>
+    {/* Title & Subheading */}
+    <h1 className="flood-forecasting-title">Explore Flood Forecasting</h1>
+    <h3 className="flood-forecasting-subheading">How to Understand Water Level Data</h3>
 
       {/* Image Section */}
       <div className="flood-content">
@@ -126,6 +128,7 @@ const FloodPrediction = () => {
           <li><strong>Changing Elevation:</strong> As the basin expands, peak water elevation levels vary yearly.</li>
           <li><strong>Time to Prepare:</strong> Floodwaters take 1-2 days to reach Mendenhall Lake once drainage begins.</li>
           <li><strong>Flood Season:</strong> From Summer to early Fall.</li>
+          <strong>(NOT FINISHED)</strong>
         </ul>
 
         <button className="more-data-button" onClick={() => window.open('https://www.weather.gov/ajk/suicideBasin')}>
@@ -170,14 +173,11 @@ const FloodPrediction = () => {
       {/* Additional Information */}
       <div className="detail-card black-text">
         <h2>About Flooding from Mendenhall Lake</h2>
-        <p>Mendenhall Lake is a glacially-fed lake at the terminus of Mendenhall Glacier...</p>
+        <p>Mendenhall Lake is a glacially-fed lake at the terminus of Mendenhall Glacier... (NOT FINISHED)</p>
         <button className="more-data-button" onClick={() => window.open('https://waterdata.usgs.gov/monitoring-location/15052500/')}>
           More Info
         </button>
       </div>
-
-      {/* Flood Prediction Component */}
-      {showFloodPred && <FloodPred onClose={() => setShowFloodPred(false)} />}
 
     </div>
   );
