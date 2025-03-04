@@ -246,60 +246,18 @@ body {
   transform: scale(1.05);
 }
 
-/* Mendenhall Lake Section */
-.lake-level-content {
-  width: 100%;
-  max-width: 1380px;
-  gap: 25px; /* Ensures consistent spacing */
-  padding: 10px; /* Adds overall padding */
-}
 
-/* Flood Stage Menu - Aligns to the Left */
-.flood-stage-menu-wrapper {
-  flex: 1;
-  display: flex;
-  align-items: stretch;
-  justify-content: flex-end;
-}
-
-/* Ensure FloodStageMenu expands properly */
-.flood-stage-menu-wrapper > div {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  margin-left: 0; /* Removed negative margin */
-  margin-top: 20px;
-}
-
-/* Adjust Lake Level Content to Match Flood Content */
 .lake-level-content {
   display: flex;
   justify-content: center;
-  align-items: stretch; /* Ensure full height consistency */
-  gap: 30px; /* Match flood-content */
   max-width: 1375px;
-  margin: 0 auto;
   flex-wrap: wrap; /* Allows wrapping for smaller screens */
 }
 
-/* Ensure Mendenhall Lake Image Aligns Properly */
-.mendenhall-lake-wrapper {
-  flex: 1;
-  display: flex;
-  justify-content: center; /* Center like flood-content */
-  align-items: center;
-  width: 100%;
-  max-width: 900px;
-  margin: 0 auto;
+.mendenhall-lake-image {
+  width: 100%;  /* Ensures full width within its container */
+  max-width: 1300px; /* Increase this for a larger image */
+  height: auto;  /* Maintains aspect ratio */
+  display: block;
+  margin: 0 auto; /* Centers the image */
 }
-
-/* Flood Stage Menu Alignment */
-.flood-stage-menu-wrapper {
-  flex: 1;
-  display: flex;
-  width: 100%;
-  max-width: 850px;
-  margin: 0 auto;
-}
-

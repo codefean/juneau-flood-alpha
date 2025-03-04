@@ -324,7 +324,7 @@
   color: #154f89;
   font-weight: bold;
   margin-bottom: -5px;
-  margin-top: 50px;
+  margin-top: 75px;
 }
 
 /* Adjust font size for mobile screens */
@@ -335,66 +335,49 @@
   }
 }
 
-.live-view-subheading {
-  text-align: center;
-  font-size: 1.3rem;
-  color: #0e2b4a;
-  margin: 0 0 5px;
-  font-weight: bold;
-  font-family: 'Open Sans', sans-serif;
-}
-
-.video-container {
+/* Live View Section */
+.live-view-container {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 20px;
-  padding: 20px;
-  background: #f8f9fa;
-  border-radius: 8px;
-  margin-bottom: 40px;
+  justify-content: center; /* Centers content horizontally */
+  align-items: center; /* Align items vertically */
+  gap: 20px; /* Adds spacing between images */
+  flex-wrap: wrap; /* Ensures images stack on smaller screens */
+  margin-top: -10px;
 }
 
-/* Default video styling */
-.video {
-  flex: 1 1 45%; /* Default to equal width */
-  max-width: 500px; /* Limit max width */
+.live-image {
+  flex: 1;
+  max-width: 45%; /* Ensures two images fit side by side */
   text-align: center;
 }
 
-/* Make "Mendenhall Glacier" video larger */
-.video.video-mendenhall {
-  flex: 1 1 55%; /* Give it more space */
-  max-width: 658px; /* Allow it to be wider */
-}
-
-/* Ensure videos scale properly */
-.video video {
+.live-image img {
   width: 100%;
   height: auto;
-  max-height: 400px; /* Keeps both videos the same height */
-  border-radius: 5px;
+  border-radius: 6px;
+  object-fit: cover;
+  max-height: 450px;
 }
 
-/* Stack videos on smaller screens */
-@media (max-width: 768px) {
-  .video-container {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .video, .video.video-mendenhall {
-    flex: 1 1 100%; /* Make each video take full width */
-    max-width: 90%;
-  }
-}
-
-
-.video h3 {
-  text-align: center;
-  font-size: 1.3rem;
-  color: #0e2b4a;
-  margin: 0 0 5px;
+/* Styling for Live View h3 Titles */
+.live-image h3 {
+  font-size: 1.1rem;
+  color: #000000;
   font-weight: bold;
-  font-family: 'Open Sans', sans-serif;
+  text-align: center;
+  margin-bottom: 5px;
+}
+
+
+
+/* Adjust layout for smaller screens */
+@media (max-width: 768px) {
+  .live-view-container {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .live-image {
+    max-width: 90%; /* Allow images to take up more width */
+  }
 }

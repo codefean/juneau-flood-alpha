@@ -2,7 +2,8 @@ import React, { useState, useEffect } from "react";
 import "./FloodForecast.css";
 import FloodPred from "./FloodPred";
 import Tooltip from "./Tooltip";
-import FloodStageMenu from "./StageInfo"; 
+import FloodStageBar from './FloodStageBar';
+
 
 const FloodPrediction = () => {
   const [imageUrl, setImageUrl] = useState("");
@@ -136,39 +137,34 @@ const FloodPrediction = () => {
         </button>
       </div>
 
-      {/* Mendenhall Lake Level Section */}
-      <div className="lake-level-content">
-        
-        {/* Mendenhall Lake Image */}
-        <div className="flood-stage-menu-wrapper">
-          {loading ? (
-            <p>Loading graph...</p>
-          ) : (
-            <div className="image-wrapper" onClick={(e) => e.stopPropagation()}>
-              <img
-                src={hydroGraphUrl}
-                alt="Mendenhall Lake water level hydrograph"
-                className="mendenhall-lake-image"
-                onError={(e) => (e.target.src = "/fallback-graph.jpg")}
-              />
-              <p className="image-caption">Latest NOAA Hydrograph for Mendenhall Lake</p>
-              <Tooltip
-                markers={markers.mendenhallLake}
-                handleMarkerClick={handleMarkerClick}
-                activeInfo={activeInfo}
-                imageId="mendenhallLake"
-              />
-            </div>
-          )}
-        </div>
-
-        {/* Flood Stage Menu */}
-        <div className="flood-stage-menu-wrapper">
-          <FloodStageMenu />
-          <p className="image-caption">Flood Stage Levels Correspond to Mendenhall Lake Water Levels</p>
-        </div>
-
-      </div>
+{/* Mendenhall Lake Level Section */}
+<div className="lake-level-content">
+  
+    
+    {/* NOAA Hydrograph */}
+    <div className="image-wrapper">
+      {loading ? (
+        <p>Loading graph...</p>
+      ) : (
+        <>
+          <img
+            src={hydroGraphUrl}
+            alt="Mendenhall Lake water level hydrograph"
+            className="mendenhall-lake-image"
+            onError={(e) => (e.target.src = "/fallback-graph.jpg")}
+          />
+          <p className="image-caption">Latest NOAA Hydrograph for Mendenhall Lake</p>
+          <Tooltip
+            markers={markers.mendenhallLake}
+            handleMarkerClick={handleMarkerClick}
+            activeInfo={activeInfo}
+            imageId="mendenhallLake"
+          />
+        </>
+      )}
+    </div>
+  </div>
+      <FloodStageBar />
 
       {/* Additional Information */}
       <div className="detail-card black-text">
