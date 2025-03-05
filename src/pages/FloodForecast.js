@@ -126,7 +126,7 @@ const FloodPrediction = () => {
       <p>
   <strong>Suicide Basin Monitoring:</strong> The US Geological Survey (USGS) utilizes time-lapse cameras to capture daily images, with an elevation scale bar to track water levels visually. Additionally, a laser range finder provides an independent and precise measurement of water elevation. However, floating icebergs can cause sudden fluctuations in readings, either raising or lowering recorded levels due to their varying heights.  
   <br /><br />
-  <strong>Mendenhall Lake Monitoring:</strong> Water levels in Mendenhall Lake are continuously measured by the USGS using streamflow data (cubic feet per second, CFS), which is then converted to elevation in feet (ft). This real-time data helps assess flood potential by estimating the expected lake level if an outburst flood from Suicide Basin were to occur.
+  <strong>Mendenhall Lake Monitoring:</strong> Water levels in Mendenhall Lake are continuously measured by the USGS at a point along the west shore of Mendenhall Lake. This real-time data helps assess flood potential by estimating the expected lake level if an outburst flood from Suicide Basin were to occur.
 </p>
 
       </div>
@@ -245,15 +245,18 @@ const FloodPrediction = () => {
     to track these changes in real time.
   </p>
   <p>
-    Water levels in Mendenhall Lake are measured using streamflow data (cubic feet per second, CFS), which is then converted 
-    to elevation in feet (ft). This real-time data helps assess flood potential by estimating the expected lake level if an 
-    outburst flood from Suicide Basin were to occur.
+  Water level in Mendenhall Lake is measured continuously (every 15 minutes) by the US Geological Survey. 
+  The NWS uses forecasts or precipitation, glacier melt, and water release from Suicide Basin to forecast 
+  the water level in Mendenhall Lake for 5 days from present (graph, above left). When the water level is forecasted to exceed the flood stage, a 
+  flood watch or warning is issued.
   </p>
   <p>
     During outburst floods, lake levels can rise rapidly, posing a significant flood risk. For example, in August 2024, 
     the water level surged by over 10ft in just two days. Such extreme fluctuations highlight the importance of continuous monitoring 
     and early warnings.
   </p>
+  <p>When the Mendenhall Lake water level exceeds 9 ft, flooding can occur in Mendenhall Valley. Flood stages for Mendenhall Lake range from minor
+     (9-10 ft) to major (14+ ft) and are color coded to highlight known impacts documented by the National Weather Service (above, right).</p>
   <button className="more-data-button" onClick={() => window.open("https://waterdata.usgs.gov/monitoring-location/15052500/")}>
     More Info
   </button>
