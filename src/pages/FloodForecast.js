@@ -69,11 +69,22 @@ const FloodPrediction = () => {
 
       {/* Title & Subheading */}
       <h1 className="flood-forecasting-title">Explore Flood Forecasting</h1>
-      <h3 className="flood-forecasting-subheading">How to Understand Water Level Data</h3>
+      <h3 className="flood-forecasting-subheading">Understanding Water Levels in Suicide Basin & Mendenhall Lake</h3>
+
+      {/* Suicide Basin Section */}
+      <div className="detail-card black-text large-text">
+      <p>
+  <strong>Suicide Basin Monitoring:</strong> The US Geological Survey (USGS) utilizes time-lapse cameras to capture daily images, with an elevation scale bar to track water levels visually. Additionally, a laser range finder provides an independent and precise measurement of water elevation. However, floating icebergs can cause sudden fluctuations in readings, either raising or lowering recorded levels due to their varying heights.  
+  <br /><br />
+  <strong>Mendenhall Lake Monitoring:</strong> Water levels in Mendenhall Lake are continuously measured by the USGS using streamflow data (cubic feet per second, CFS), which is then converted to elevation in feet (ft). This real-time data helps assess flood potential by estimating the expected lake level if an outburst flood from Suicide Basin were to occur.
+</p>
+
+      </div>
 
       {/* Image Section */}
-      <h2 className="section-title">Suicide Basin Hydrographs</h2>
+      
       <div className="flood-content">
+      <h2 className="section-title">Suicide Basin Water Level</h2>
         <div className="image-pair-container">
           
           {/* Suicide Basin Image */}
@@ -116,29 +127,40 @@ const FloodPrediction = () => {
         </div>
       </div>
 
-      {/* Forecasting Details */}
-      <div className="detail-card black-text">
-        <h2>Forecasting Glacial Lake Outburst Floods</h2>
+       {/* Forecasting GLOFs Section */}
+       <div className="detail-card black-text">
+        <h2>Forecasting Glacial Lake Outburst Floods (GLOFs)</h2>
         <p>
-          Suicide Basin is a glacial-dammed lake that annually drains, causing flooding in the Mendenhall Valley.
-          Monitoring the basin helps predict potential floods to mitigate risks to the surrounding community.
+          Suicide Basin is a glacier-dammed lake that has released floods, impacting Mendenhall Valley. 
+          Monitoring water levels helps predict flood timing and peak magnitude, allowing mitigation efforts.
         </p>
 
         <ul>
-          <li><strong>Flood Potential:</strong> The volume of lake water and the rate of release during a GLOF determine the severity of flooding.</li>
-          <li><strong>Changing Elevation:</strong> As the basin expands, peak water elevation levels vary yearly.</li>
-          <li><strong>Time to Prepare:</strong> Floodwaters take 1-2 days to reach Mendenhall Lake once drainage begins.</li>
-          <li><strong>Flood Season:</strong> From Summer to early Fall.</li>
+          <li>
+            <strong>Flood Potential:</strong> The volume of water and the release rate determine flooding severity.
+            3D terrain models from aerial drone surveys help estimate water volume.
+          </li>
+          <li>
+            <strong>Changing Water Elevations:</strong> The basin’s holding capacity changes as the Mendenhall Glacier
+            thins and expands outward due to iceberg calving.
+          </li>
+          <li>
+            <strong>Time to Prepare:</strong> Once drainage begins, floodwaters reach Mendenhall Lake in 1-2 days.
+          </li>
+          <li>
+            <strong>Flood Season:</strong> Outburst floods have occurred from June to October, peaking in July-August.
+          </li>
         </ul>
 
-        <button className="more-data-button" onClick={() => window.open('https://www.weather.gov/ajk/suicideBasin')}>
+        <button className="more-data-button" onClick={() => window.open("https://www.weather.gov/ajk/suicideBasin")}>
           More Info
         </button>
       </div>
 
       {/* Mendenhall Lake Level Section */}
-      <h2 className="section-title">Mendenhall Lake Hydrographs and Flood Stages</h2>
+      
       <div className="lake-level-content">
+      <h2 className="section-title">Mendenhall Lake Water Level & Flood Stage</h2>
         {/* Flex container for Hydrograph & Text */}
         <div className="lake-level-wrapper">
           
@@ -165,37 +187,65 @@ const FloodPrediction = () => {
             )}
           </div>
 
-          {/* About Flooding Text */}
           <div className="detail-card black-text flooding-info">
-            <h2>About Flooding from Mendenhall Lake</h2>
-            <p>Mendenhall Lake is a glacially-fed lake at the terminus of Mendenhall Glacier... (NOT FINISHED)</p>
-            <button className="more-data-button" onClick={() => window.open('https://waterdata.usgs.gov/monitoring-location/15052500/')}>
-              More Info
-            </button>
-          </div>
+  <h2>Mendenhall Lake Level and Flood Conditions</h2>
+  <p>
+    Mendenhall Lake is a glacially-fed lake at the terminus of Mendenhall Glacier. Water levels fluctuate due to seasonal 
+    melting, precipitation, and outburst floods. The USGS continuously monitors water levels along the lake’s west shore 
+    to track these changes in real time.
+  </p>
+  <p>
+    Water levels in Mendenhall Lake are measured using streamflow data (cubic feet per second, CFS), which is then converted 
+    to elevation in feet (ft). This real-time data helps assess flood potential by estimating the expected lake level if an 
+    outburst flood from Suicide Basin were to occur.
+  </p>
+  <p>
+    During outburst floods, lake levels can rise rapidly, posing a significant flood risk. For example, in August 2024, 
+    the water level surged by over 10 feet in just two days. Such extreme fluctuations highlight the importance of continuous monitoring 
+    and early warnings.
+  </p>
+  <br /><br />
+  <button className="more-data-button" onClick={() => window.open("https://waterdata.usgs.gov/monitoring-location/15052500/")}>
+    More Info
+  </button>
+</div>
         </div>
       </div>
-      <h2 className="section-title">Current Flood Stage</h2>
-
+      
+      <div className="flood-stage-container">
+  
       <FloodStageBar />
-      {/* New Info Card: Understanding Flood Stages */}
-      <div className="detail-card black-text">
-        <h2>Understanding Flood Stages</h2>
-        <p>
-          Flood stages indicate the severity of flooding based on water levels. The National Weather Service defines 
-          flood categories, ranging from minor to major, to help assess potential impacts and prepare accordingly.
-        </p>
+<h2 className="current-flood-stage-title">Current Flood Stage</h2>
+</div>
 
-        <ul>
-          <li><strong>Minor Flooding:</strong> Minimal or no property damage but possible public inconvenience.</li>
-          <li><strong>Moderate Flooding:</strong> Some inundation of structures and roads near the water body.</li>
-          <li><strong>Major Flooding:</strong> Extensive flooding with significant risk to property and safety.</li>
-        </ul>
 
-        <button className="more-data-button" onClick={() => window.open('https://water.weather.gov/ahps/')}>
-          More Info
-        </button>
-      </div>
+
+      
+{/* New Info Card: Understanding Flood Stages */}
+<div className="detail-card black-text">
+  <h2>Understanding Flood Stages</h2>
+  <p>
+    Flood stages indicate the severity of flooding based on lake or river levels. These stages help 
+    communities, emergency responders, and individuals assess potential risks and take necessary precautions. 
+    The National Weather Service defines four primary flood categories: Action Stage, Minor, Moderate, and Major Flooding. The current flood stage and water level is shown above.
+  </p>
+
+  <ul>
+    <li><strong>Action Stage (less than 9 ft):</strong> Water levels are elevated but remain below the minor flood threshold. This stage serves as an early warning to monitor conditions closely.</li>
+    <li><strong>Minor Flooding (9ft - 10ft):</strong> Low-lying areas may experience some water coverage, causing minor road flooding or inconvenience. Typically, property damage is minimal.</li>
+    <li><strong>Moderate Flooding (10ft - 14ft):</strong> Water begins inundating structures and roads near the river. Some evacuations might be necessary, and transportation disruptions are likely.</li>
+    <li><strong>Major Flooding (14ft+):</strong> Extensive flooding with a significant risk to homes, businesses, and infrastructure. Evacuations are often required, and severe damage may occur.</li>
+  </ul>
+
+  <p>
+    Monitoring flood stages allows for proactive flood management, enabling timely warnings and preparedness measures to protect lives and property.
+  </p>
+
+  <button className="more-data-button" onClick={() => window.open('https://water.weather.gov/ahps/')}>
+    More Info
+  </button>
+</div>
+
     </div> 
   );
 };

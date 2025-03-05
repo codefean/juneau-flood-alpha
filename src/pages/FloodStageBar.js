@@ -41,6 +41,19 @@ const FloodStageBar = () => {
     return () => clearInterval(interval);
   }, []);
 
+  // Close modal on window resize
+  useEffect(() => {
+    const handleResize = () => {
+      if (modalInfo) {
+        setModalInfo(null);
+        setDropdownPosition(null);
+      }
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, [modalInfo]);
+
   const stages = [
     { label: "Action Stage", range: [0, 9], color: "#e9f502", info: "Flooding 0ft - 9ft" },
     { label: "Minor Flood Stage", range: [9, 10], color: "#F4A100", info: "Flooding 9ft - 10ft" },
@@ -60,7 +73,6 @@ const FloodStageBar = () => {
       setDropdownPosition({
         top: rect.bottom + window.scrollY, 
         left: rect.left + rect.width / 2,
-        
       });
     }
   };
@@ -82,7 +94,6 @@ const FloodStageBar = () => {
             top: dropdownPosition.top, 
             left: dropdownPosition.left,
             border: `2.5px solid ${modalInfo.color}`, // Set border color dynamically
-            
           }}
           onClick={() => setModalInfo(null)} // Clicking dropdown also closes it
         >
@@ -107,19 +118,21 @@ const FloodBar = ({ waterLevel, openDropdown, stages }) => {
             style={{
               backgroundColor: stage.color,
               width: `${100 / stages.length}%`,
-              filter: isCurrentStage ? "none" : "grayscale(70%)",
+              filter: isCurrentStage ? "none" : "grayscale(75%)",
             }}
             onClick={(event) => openDropdown(event, stage)}
           >
-            <span className="stage-label">
+            <span 
+              className={`stage-label ${!isCurrentStage ? "normal-text" : "bold-text"}`}
+            >
               {stage.label} {isCurrentStage && <span className="current-water-level">{waterLevel} ft</span>}
             </span>
-            
           </div>
         );
       })}
     </div>
   );
 };
+
 
 export default FloodStageBar;

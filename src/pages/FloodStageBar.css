@@ -11,12 +11,11 @@
 .flood-stage-bar {
   display: flex;
   width: 100%;
-  height: 45px; /* Increased height for better visibility */
+  height: 30px; /* Increased height for better visibility */
   border-radius: 8px;
   overflow: hidden;
   margin-top: 10px;
   position: relative;
-  border: 1px solid #000000bf; /* Adds better section separation */
 }
 
 /* 🔹 Individual Flood Stage Sections */
@@ -32,13 +31,17 @@
   justify-content: center;
   position: relative;
   transition: transform 0.3s ease-in-out, background-color 0.3s ease-in-out;
-  font-size: clamp(0.9em, 1vw, 1.2em); /* Responsive font size */
-  border-right: 1px solid rgba(255, 255, 255, 0.5); /* Separates sections */
+  white-space: nowrap;
+  min-width: 10%;
+  font-size: clamp(12px, 1.8vw, 18px); /* Adjusts size dynamically */
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .flood-stage-section:last-child {
   border-right: none; /* Remove border for last section */
 }
+
 
 /* 🔹 Highlighted Flood Stage */
 .flood-stage-section.highlight {
@@ -147,3 +150,10 @@
   margin-bottom: -2px;
 }
 
+.bold-text {
+  font-weight: bold;
+}
+
+.normal-text {
+  font-weight: normal;
+}
