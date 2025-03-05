@@ -4,8 +4,8 @@ import "./StageInfo.css";
 const floodStages = [
   {
     stage: "Action Stage",
-    level: "<9 ft",
-    impacts: "Water levels are normal, below the minor flood stage threshold.",
+    level: "8-9 ft",
+    impacts: "Represents the need to take some type of mitigation action in preparation for possible significant flood event.",
     className: "action-stage",
   },
   {

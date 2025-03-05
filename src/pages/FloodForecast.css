@@ -194,28 +194,48 @@ body {
   }
 }
 
-/* Detail Card - Ensures it scales properly on all devices */
+/* Ensure Detail Cards Fit Content & Enable Scrolling */
 .detail-card {
   background: #ebecee;
   border-radius: 8px;
   padding: 16px 20px;
   margin: 10px auto;
   width: 100%;
-  max-width: 1340px; /* Adjusted for better responsiveness */
+  max-width: 1340px;
   text-align: left;
   margin-bottom: 40px;
+  max-height: 400px; /* Limits the height to avoid oversized cards */
+  overflow-y: auto; /* Enables scrolling for overflow content */
 }
 
-
-/* Small Mobile Screens - Remove Extra Left Space */
-@media (max-width: 480px) {
-  .detail-card {
-    max-width: 100%; /* Almost full width */
-    padding: 12px;
-    margin-left: -10px; /* Remove extra left spacing */
-    margin-right: 0; /* Ensure centering */
-  }
+/* Customize Scrollbar for Better UI */
+.detail-card::-webkit-scrollbar {
+  width: 6px;
 }
+
+.detail-card::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 4px;
+}
+
+.detail-card::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 4px;
+}
+
+.detail-card::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+/* Adjust for Flooding Info Section */
+.flooding-info {
+  flex: 1;
+  max-width: 665px;
+  margin-left: auto;
+  max-height: 550px; /* Adjust max height */
+  overflow-y: auto; /* Allow scrolling */
+}
+
 
 .suicide-basin-wrapper .image-caption {
   margin-top: -10px; /* Adjust this value as needed */
@@ -357,3 +377,8 @@ body {
 }
 
 
+.flood-stage-text {
+  font-weight: normal; /* Ensures text is not bold */
+  font-size: 1.2rem; /* Adjust size if needed */
+  color: #000000; /* Optional: Adjust text color */
+}

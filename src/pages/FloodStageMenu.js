@@ -18,10 +18,10 @@ const FloodStageMenu = ({ setFloodLevelFromMenu }) => {
         className={`accordion-section action-stage ${expanded === 'action' ? 'expanded' : ''}`}
         onClick={() => toggleAccordion('action', 9)} 
       >
-        <h4>Action Stage (less than 9ft)</h4>
+        <h4>Action Stage (8 - 9ft)</h4>
         {expanded === 'action' && (
           <div className="accordion-content">
-            <p>Water levels are normal, below the minor flood stage threshold.</p>
+            <p>Represents the need to take some type of mitigation action in preparation for possible significant flood event.</p>
           </div>
         )}
       </div>

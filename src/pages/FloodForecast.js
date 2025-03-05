@@ -2,14 +2,17 @@ import React, { useState, useEffect } from "react";
 import "./FloodForecast.css";
 import FloodPred from "./FloodPred";
 import Tooltip from "./Tooltip";
-import FloodStageBar from './FloodStageBar';
+import FloodStageBar from "./FloodStageBar";
 
 const FloodPrediction = () => {
   const [imageUrl, setImageUrl] = useState("");
   const [hydroGraphUrl, setHydroGraphUrl] = useState("");
   const [loading, setLoading] = useState(true);
+  const [waterLevel, setWaterLevel] = useState(null);
+  const [error, setError] = useState(null);
   const [activeInfo, setActiveInfo] = useState(null);
   const [showFloodPred, setShowFloodPred] = useState(true);
+
 
   useEffect(() => {
     const updateImages = () => {
@@ -26,6 +29,9 @@ const FloodPrediction = () => {
     const interval = setInterval(updateImages, 3600000);
     return () => clearInterval(interval);
   }, []);
+
+
+  
 
   const handleMarkerClick = (marker, event, imageId) => {
     const wrapperRect = event.target.closest(".image-wrapper").getBoundingClientRect();
@@ -61,6 +67,50 @@ const FloodPrediction = () => {
       { top: "70%", left: "90%", text: "Today's observation." },
     ],
   };
+
+    // Fetch real-time Mendenhall Lake water levels from USGS
+    const fetchWaterLevels = async () => {
+      const gageId = "15052500";
+      const apiUrl = `https://waterservices.usgs.gov/nwis/iv/?format=json&sites=${gageId}&parameterCd=00065&siteStatus=active`;
+  
+      try {
+        const response = await fetch(apiUrl);
+        if (!response.ok) throw new Error("Failed to fetch data");
+  
+        const data = await response.json();
+        const timeSeries = data?.value?.timeSeries?.[0]?.values?.[0]?.value?.[0]?.value;
+  
+        if (!timeSeries) {
+          throw new Error("No water level data available");
+        }
+  
+        const level = parseFloat(timeSeries);
+        if (isNaN(level)) throw new Error("Invalid water level data");
+  
+        setWaterLevel(level);
+        setError(null);
+      } catch (error) {
+        console.error("Error fetching water level:", error);
+        setError(error.message);
+      }
+    };
+  
+    useEffect(() => {
+      fetchWaterLevels();
+      const interval = setInterval(fetchWaterLevels, 60000); // Update every 60 seconds
+      return () => clearInterval(interval);
+    }, []);
+  
+    // Function to determine flood stage text based on water level
+    const getFloodStage = (level) => {
+      if (level === null) return "Loading...";
+      if (level < 8) return `Current Flood Stage: No Flood Risk at ${level.toFixed(1)}ft of water`;
+      if (level >= 8 && level < 9) return `Current Flood Stage: Action Stage at ${level.toFixed(1)}ft of water`;
+      if (level >= 9 && level < 11) return `Current Flood Stage: Minor Flood Stage at ${level.toFixed(1)}ft of water`;
+      if (level >= 11 && level < 14) return `Current Flood Stage: Moderate Flood Stage at ${level.toFixed(1)}ft of water`;
+      if (level >= 14) return `Current Flood Stage: Major Flood Stage at ${level.toFixed(1)} ft`;
+    };
+  
 
   return (
     <div className="flood-tracker" onClick={closeInfoBox}>
@@ -201,10 +251,9 @@ const FloodPrediction = () => {
   </p>
   <p>
     During outburst floods, lake levels can rise rapidly, posing a significant flood risk. For example, in August 2024, 
-    the water level surged by over 10 feet in just two days. Such extreme fluctuations highlight the importance of continuous monitoring 
+    the water level surged by over 10ft in just two days. Such extreme fluctuations highlight the importance of continuous monitoring 
     and early warnings.
   </p>
-  <br /><br />
   <button className="more-data-button" onClick={() => window.open("https://waterdata.usgs.gov/monitoring-location/15052500/")}>
     More Info
   </button>
@@ -214,9 +263,19 @@ const FloodPrediction = () => {
       
       <div className="flood-stage-container">
   
-      <FloodStageBar />
-<h2 className="current-flood-stage-title">Current Flood Stage</h2>
-</div>
+ {/* Dynamic Flood Stage Display */}
+ <div className="flood-stage-container">
+            <FloodStageBar />
+            <h2 className="current-flood-stage-title">
+  <strong>Current Flood Stage:</strong> <span className="flood-stage-text">
+    {error ? `Error: ${error}` : getFloodStage(waterLevel).replace("Current Flood Stage: ", "")}
+  </span>
+</h2>
+
+
+          </div>
+        </div>
+
 
 
 
@@ -231,7 +290,7 @@ const FloodPrediction = () => {
   </p>
 
   <ul>
-    <li><strong>Action Stage (less than 9 ft):</strong> Water levels are elevated but remain below the minor flood threshold. This stage serves as an early warning to monitor conditions closely.</li>
+    <li><strong>Action Stage (8 - 9ft):</strong> Water levels are elevated but remain below the minor flood threshold. This stage serves as an early warning to monitor conditions closely.</li>
     <li><strong>Minor Flooding (9ft - 10ft):</strong> Low-lying areas may experience some water coverage, causing minor road flooding or inconvenience. Typically, property damage is minimal.</li>
     <li><strong>Moderate Flooding (10ft - 14ft):</strong> Water begins inundating structures and roads near the river. Some evacuations might be necessary, and transportation disruptions are likely.</li>
     <li><strong>Major Flooding (14ft+):</strong> Extensive flooding with a significant risk to homes, businesses, and infrastructure. Evacuations are often required, and severe damage may occur.</li>
@@ -241,7 +300,7 @@ const FloodPrediction = () => {
     Monitoring flood stages allows for proactive flood management, enabling timely warnings and preparedness measures to protect lives and property.
   </p>
 
-  <button className="more-data-button" onClick={() => window.open('https://water.weather.gov/ahps/')}>
+  <button className="more-data-button" onClick={() => window.open('https://water.noaa.gov/gauges/MNDA2')}>
     More Info
   </button>
 </div>

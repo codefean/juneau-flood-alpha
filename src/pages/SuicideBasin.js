@@ -10,7 +10,14 @@ const SuicideBasin = () => {
 
 // AWS S3 Image URLs for GLOF slider
 const images = [
-    {
+  {
+    src: "https://basin-images.s3.us-east-2.amazonaws.com/GLOF_map.png",
+    title: "Reaching the Valley",
+    description:
+      "Once the water is released from Suicide Basin, it reaches Mendenhall Lake within one to two days. Depending on the rate of release and water levels in Suicide Basin, the floodwaters can extend beyond Mendenhall Lake and River, causing severe impacts to surrounding infrastructure."
+  },
+  
+  {
       src: "https://basin-images.s3.us-east-2.amazonaws.com/GLOF_orgin.png",
       title: "Formation of the Glacial Pool",
       description:
@@ -26,14 +33,9 @@ const images = [
       src: "https://www.weather.gov/images/ajk/suicideBasin/archive/2023/SuicideBasinLoop_Raw_2023_Compressed.gif",
       title: "Suicide Basin's Record Outburst Flood",
       description:
-        "This timelapse shows the basin filling and then releasing in 2024, highlighting changes in water levels over time due to ice melt and precipitation. This release event caused Mendenhall Lake to reach approximately 15.99 feet of water, resulting in extensive damage. The factors controlling the speed of water release from the basin are currently unknown."
+        "This timelapse shows the basin filling and then releasing in 2023, highlighting changes in water levels over time due to ice melt and precipitation. This release event caused Mendenhall Lake to reach approximately 14.97ft of water, resulting in extensive damage. The factors controlling the speed of water release from the basin are currently unknown."
     },
-    {
-      src: "https://basin-images.s3.us-east-2.amazonaws.com/GLOF_map.png",
-      title: "Reaching the Valley",
-      description:
-        "Once the water is released from Suicide Basin, it reaches Mendenhall Lake within one to two days. Depending on the rate of release and water levels in Suicide Basin, the floodwaters can extend beyond Mendenhall Lake and River, causing severe impacts to surrounding infrastructure."
-    },
+
   ];
   
 
@@ -120,24 +122,6 @@ const images = [
           <p>{images[currentSlide].description}</p>
         </div>
       </div>
-
-{/* Live View Section */}
-<h2 className="live-view-title">Live View: Suicide Basin</h2>
-<p className="suicide-basin-subheading">Recent Images from Suicide Basin and Mendenhall Glacier USGS Cameras</p>
-
-<div className="live-view-container">
-  
-  <div className="live-image">
-    <h3>Suicide Basin Glacial Lake</h3>
-    <img src={timelapse1Url} alt="Suicide Basin Live View" className="live-image-view" />
-  </div>
-
-  <div className="live-image live-image-mendenhall">
-    <h3>Mendenhall Glacier - Below Suicide Basin</h3>
-    <img src={timelapse2Url} alt="Mendenhall Glacier Live View" className="live-image-view" />
-  </div>
-
-</div>
 
 
 

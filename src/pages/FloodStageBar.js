@@ -41,7 +41,6 @@ const FloodStageBar = () => {
     return () => clearInterval(interval);
   }, []);
 
-  // Close modal on window resize
   useEffect(() => {
     const handleResize = () => {
       if (modalInfo) {
@@ -49,13 +48,13 @@ const FloodStageBar = () => {
         setDropdownPosition(null);
       }
     };
-
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, [modalInfo]);
 
   const stages = [
-    { label: "Action Stage", range: [0, 9], color: "#e9f502", info: "Flooding 0ft - 9ft" },
+    { label: "No Flood Stage", range: [0, 8], color: "#28a745", info: "Water level is below flood risk (0ft - 8ft)" },
+    { label: "Action Stage", range: [8, 9], color: "#e9f502", info: "Flooding risk starts (8ft - 9ft)" },
     { label: "Minor Flood Stage", range: [9, 10], color: "#F4A100", info: "Flooding 9ft - 10ft" },
     { label: "Moderate Flood Stage", range: [10, 14], color: "#E2371D", info: "Flooding 10ft - 14ft" },
     { label: "Major Flood Stage", range: [14, Infinity], color: "#9419A3", info: "Flooding 14ft+" },
@@ -63,11 +62,9 @@ const FloodStageBar = () => {
 
   const openDropdown = (event, stage) => {
     if (modalInfo && modalInfo.label === stage.label) {
-      // If the same stage is clicked again, close the dropdown
       setModalInfo(null);
       setDropdownPosition(null);
     } else {
-      // Otherwise, open the dropdown and set its position
       const rect = event.currentTarget.getBoundingClientRect();
       setModalInfo(stage);
       setDropdownPosition({
@@ -93,9 +90,9 @@ const FloodStageBar = () => {
           style={{ 
             top: dropdownPosition.top, 
             left: dropdownPosition.left,
-            border: `2.5px solid ${modalInfo.color}`, // Set border color dynamically
+            border: `2.5px solid ${modalInfo.color}`,
           }}
-          onClick={() => setModalInfo(null)} // Clicking dropdown also closes it
+          onClick={() => setModalInfo(null)}
         >
           <h3>{modalInfo.label}</h3>
           <p>{modalInfo.info}</p>
@@ -125,7 +122,7 @@ const FloodBar = ({ waterLevel, openDropdown, stages }) => {
             <span 
               className={`stage-label ${!isCurrentStage ? "normal-text" : "bold-text"}`}
             >
-              {stage.label} {isCurrentStage && <span className="current-water-level">{waterLevel} ft</span>}
+              {stage.label} {isCurrentStage && <span className="current-water-level"></span>}
             </span>
           </div>
         );
@@ -133,6 +130,5 @@ const FloodBar = ({ waterLevel, openDropdown, stages }) => {
     </div>
   );
 };
-
 
 export default FloodStageBar;
