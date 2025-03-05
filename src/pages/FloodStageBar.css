@@ -4,21 +4,25 @@
   max-width: 1375px;
   margin: 10px auto;
   padding: 5px;
+  margin-top: -10px;
 }
 
+/* 🔹 Flood Stage Bar */
 .flood-stage-bar {
   display: flex;
   width: 100%;
-  height: 40px; /* Increased for better visibility */
+  height: 45px; /* Increased height for better visibility */
   border-radius: 8px;
   overflow: hidden;
   margin-top: 10px;
   position: relative;
+  border: 1px solid #000000bf; /* Adds better section separation */
 }
 
+/* 🔹 Individual Flood Stage Sections */
 .flood-stage-section {
   flex: 1;
-  padding: 10px;
+  padding: 12px;
   text-align: center;
   font-weight: bold;
   color: black;
@@ -29,22 +33,29 @@
   position: relative;
   transition: transform 0.3s ease-in-out, background-color 0.3s ease-in-out;
   font-size: clamp(0.9em, 1vw, 1.2em); /* Responsive font size */
+  border-right: 1px solid rgba(255, 255, 255, 0.5); /* Separates sections */
 }
 
+.flood-stage-section:last-child {
+  border-right: none; /* Remove border for last section */
+}
+
+/* 🔹 Highlighted Flood Stage */
 .flood-stage-section.highlight {
   font-size: clamp(1.2em, 1.8vw, 1.5em);
+  transform: scale(1.05); /* Slight enlargement */
 }
 
 /* 🔹 Water Level Indicator */
 .water-level-indicator {
   position: absolute;
   left: 50%;
-  top: -30px;
+  top: -35px;
   transform: translateX(-50%);
   background: rgba(0, 0, 0, 0.85);
   color: white;
-  padding: 6px 14px;
-  border-radius: 5px;
+  padding: 7px 14px;
+  border-radius: 6px;
   font-size: 14px;
   font-weight: bold;
   white-space: nowrap;
@@ -55,10 +66,8 @@
 .flood-stage-section:hover {
   filter: brightness(1.2);
   cursor: pointer;
-  opacity: 0.9;
+  transform: scale(1.03);
 }
-
-
 
 /* 🔹 Mobile Optimization */
 @media (max-width: 768px) {
@@ -67,28 +76,74 @@
   }
 
   .flood-stage-section {
-    font-size: 0.9em;
+    font-size: 0.85em;
     padding: 10px;
   }
 
   .water-level-indicator {
     font-size: 12px;
-    top: -25px;
-    padding: 4px 8px;
+    top: -30px;
+    padding: 5px 10px;
   }
 }
 
-.tooltip {
+/* 🔹 Flood Stage Tooltip */
+.flood-stage-section {
+  position: relative;
+}
+
+.flood-stage-section::after {
+  content: attr(data-tooltip); /* Uses the title attribute as the content */
   position: absolute;
-  bottom: 100%;
+  bottom: 110%; /* Adjust the position above the element */
   left: 50%;
   transform: translateX(-50%);
-  background-color: rgba(0, 0, 0, 0.8);
+  background-color: rgba(0, 0, 0, 0.85);
   color: white;
-  padding: 5px 10px;
+  padding: 6px 12px;
   border-radius: 5px;
-  font-size: 0.8rem;
+  font-size: 12px;
   white-space: nowrap;
-  visibility: visible;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
   z-index: 10;
 }
+
+/* Show tooltip on hover */
+.flood-stage-section:hover::after {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(-5px);
+}
+
+.modal-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(255, 255, 255, 0.91);
+  padding: 15px 12px; /* Increase padding for better spacing */
+  border: 1px solid #ccc;
+  width: 220px; /* Slightly wider for readability */
+  text-align: center;
+  font-size: 15px; /* Slightly larger text */
+  margin-top: 8px; /* Adjust spacing from the flood bar */
+  z-index: 10;
+  line-height: .5; /* Improve text spacing */
+  letter-spacing: 0.5px; /* Adjust character spacing */
+  border-radius: 6px; /* Smooth corners */
+}
+
+/* Add space between title and text */
+.modal-dropdown h3 {
+  font-size: 16px; /* Slightly larger for emphasis */
+  font-weight: bold;
+  margin-top: -2px;
+}
+
+/* Add space between paragraphs */
+.modal-dropdown p {
+  margin-bottom: -2px;
+}
+

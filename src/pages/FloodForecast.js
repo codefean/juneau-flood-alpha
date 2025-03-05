@@ -4,7 +4,6 @@ import FloodPred from "./FloodPred";
 import Tooltip from "./Tooltip";
 import FloodStageBar from './FloodStageBar';
 
-
 const FloodPrediction = () => {
   const [imageUrl, setImageUrl] = useState("");
   const [hydroGraphUrl, setHydroGraphUrl] = useState("");
@@ -65,14 +64,15 @@ const FloodPrediction = () => {
 
   return (
     <div className="flood-tracker" onClick={closeInfoBox}>
-    {/* Flood Prediction Component Moved to the Top */}
-    {showFloodPred && <FloodPred onClose={() => setShowFloodPred(false)} />}
+      {/* Flood Prediction Component Moved to the Top */}
+      {showFloodPred && <FloodPred onClose={() => setShowFloodPred(false)} />}
 
-    {/* Title & Subheading */}
-    <h1 className="flood-forecasting-title">Explore Flood Forecasting</h1>
-    <h3 className="flood-forecasting-subheading">How to Understand Water Level Data</h3>
+      {/* Title & Subheading */}
+      <h1 className="flood-forecasting-title">Explore Flood Forecasting</h1>
+      <h3 className="flood-forecasting-subheading">How to Understand Water Level Data</h3>
 
       {/* Image Section */}
+      <h2 className="section-title">Suicide Basin Hydrographs</h2>
       <div className="flood-content">
         <div className="image-pair-container">
           
@@ -107,12 +107,12 @@ const FloodPrediction = () => {
                 src="https://water.noaa.gov/resources/hydrographs/jsba2_hg.png"
                 alt="NOAA Hydrograph"
                 className="flood-image additional-image"
+                style={{ width: "92%", maxWidth: "900px", height: "auto" }}
                 onError={(e) => (e.target.src = "/fallback-image.jpg")}
               />
               <p className="image-caption">Latest Water Elevation Chart for Suicide Basin Glacial Lake</p>
             </div>
           </div>
-
         </div>
       </div>
 
@@ -129,7 +129,6 @@ const FloodPrediction = () => {
           <li><strong>Changing Elevation:</strong> As the basin expands, peak water elevation levels vary yearly.</li>
           <li><strong>Time to Prepare:</strong> Floodwaters take 1-2 days to reach Mendenhall Lake once drainage begins.</li>
           <li><strong>Flood Season:</strong> From Summer to early Fall.</li>
-          <strong>(NOT FINISHED)</strong>
         </ul>
 
         <button className="more-data-button" onClick={() => window.open('https://www.weather.gov/ajk/suicideBasin')}>
@@ -137,45 +136,67 @@ const FloodPrediction = () => {
         </button>
       </div>
 
-{/* Mendenhall Lake Level Section */}
-<div className="lake-level-content">
-  
-    
-    {/* NOAA Hydrograph */}
-    <div className="image-wrapper">
-      {loading ? (
-        <p>Loading graph...</p>
-      ) : (
-        <>
-          <img
-            src={hydroGraphUrl}
-            alt="Mendenhall Lake water level hydrograph"
-            className="mendenhall-lake-image"
-            onError={(e) => (e.target.src = "/fallback-graph.jpg")}
-          />
-          <p className="image-caption">Latest NOAA Hydrograph for Mendenhall Lake</p>
-          <Tooltip
-            markers={markers.mendenhallLake}
-            handleMarkerClick={handleMarkerClick}
-            activeInfo={activeInfo}
-            imageId="mendenhallLake"
-          />
-        </>
-      )}
-    </div>
-  </div>
-      <FloodStageBar />
+      {/* Mendenhall Lake Level Section */}
+      <h2 className="section-title">Mendenhall Lake Hydrographs and Flood Stages</h2>
+      <div className="lake-level-content">
+        {/* Flex container for Hydrograph & Text */}
+        <div className="lake-level-wrapper">
+          
+          {/* NOAA Hydrograph */}
+          <div className="image-wrapper">
+            {loading ? (
+              <p>Loading graph...</p>
+            ) : (
+              <>
+                <img
+                  src={hydroGraphUrl}
+                  alt="Mendenhall Lake water level hydrograph"
+                  className="mendenhall-lake-image"
+                  onError={(e) => (e.target.src = "/fallback-graph.jpg")}
+                />
+                <p className="image-caption">Latest NOAA Hydrograph for Mendenhall Lake</p>
+                <Tooltip
+                  markers={markers.mendenhallLake}
+                  handleMarkerClick={handleMarkerClick}
+                  activeInfo={activeInfo}
+                  imageId="mendenhallLake"
+                />
+              </>
+            )}
+          </div>
 
-      {/* Additional Information */}
+          {/* About Flooding Text */}
+          <div className="detail-card black-text flooding-info">
+            <h2>About Flooding from Mendenhall Lake</h2>
+            <p>Mendenhall Lake is a glacially-fed lake at the terminus of Mendenhall Glacier... (NOT FINISHED)</p>
+            <button className="more-data-button" onClick={() => window.open('https://waterdata.usgs.gov/monitoring-location/15052500/')}>
+              More Info
+            </button>
+          </div>
+        </div>
+      </div>
+      <h2 className="section-title">Current Flood Stage</h2>
+
+      <FloodStageBar />
+      {/* New Info Card: Understanding Flood Stages */}
       <div className="detail-card black-text">
-        <h2>About Flooding from Mendenhall Lake</h2>
-        <p>Mendenhall Lake is a glacially-fed lake at the terminus of Mendenhall Glacier... (NOT FINISHED)</p>
-        <button className="more-data-button" onClick={() => window.open('https://waterdata.usgs.gov/monitoring-location/15052500/')}>
+        <h2>Understanding Flood Stages</h2>
+        <p>
+          Flood stages indicate the severity of flooding based on water levels. The National Weather Service defines 
+          flood categories, ranging from minor to major, to help assess potential impacts and prepare accordingly.
+        </p>
+
+        <ul>
+          <li><strong>Minor Flooding:</strong> Minimal or no property damage but possible public inconvenience.</li>
+          <li><strong>Moderate Flooding:</strong> Some inundation of structures and roads near the water body.</li>
+          <li><strong>Major Flooding:</strong> Extensive flooding with significant risk to property and safety.</li>
+        </ul>
+
+        <button className="more-data-button" onClick={() => window.open('https://water.weather.gov/ahps/')}>
           More Info
         </button>
       </div>
-
-    </div>
+    </div> 
   );
 };
 

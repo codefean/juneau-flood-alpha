@@ -22,6 +22,7 @@ body {
   font-weight: bold;
   margin-top: 5px;
   margin-bottom: -20px;
+  margin-top: 15px;
 }
 
 /* Flood Forecasting Subheading */
@@ -32,7 +33,6 @@ body {
   font-weight: bold;
   font-family: 'Open Sans', sans-serif;
   margin-top: 5px;
-  margin-bottom: -5px;
 }
 
 /* Mobile Adjustments */
@@ -94,9 +94,23 @@ body {
   display: flex;
   justify-content: center;
   align-items: stretch;
+  gap: 10px !important;
+  max-width: 1400px;
+  margin-top: 10px;
+
+}
+.flood-content {
+  display: flex;
+  justify-content: center; /* Centers content horizontally */
+  align-items: center; /* Aligns items vertically */
+  flex-wrap: wrap;
   gap: 30px;
   max-width: 1400px;
-  margin: 0 auto;
+  width: 100%;
+  margin: 0 auto; /* Ensures centering */
+  padding: 20px;
+  margin-top: -30px;
+  margin-bottom: -30px;
 }
 
 /* Image Pair Container */
@@ -124,9 +138,11 @@ body {
   max-width: 950px;
 }
 
-.additional-image-wrapper {
-  width: 94% !important;
-  max-width: 850px;
+
+.additional-image {
+  width: 80%;  /* Ensures it fills the container */
+  max-width: 900px;  /* Adjust for desired size */
+  height: auto;  /* Maintain aspect ratio */
 }
 
 /* Images fill their containers */
@@ -135,27 +151,6 @@ body {
   height: auto;
 }
 
-/* Ensure everything is centered on mobile */
-@media (max-width: 1024px) {
-  .image-pair-container {
-    flex-direction: column;
-    gap: 10px;
-    align-items: center; /* Center images */
-    text-align: center; /* Center content */
-  }
-
-  .image-container {
-    max-width: 100%;
-  }
-
-  .suicide-basin-wrapper, .additional-image-wrapper {
-    max-width: 100%;
-  }
-
-  .image-container, .additional-image-container {
-    max-width: 100%;
-  }
-}
 
 /* Mobile View */
 @media (max-width: 768px) {
@@ -206,6 +201,7 @@ body {
   width: 100%;
   max-width: 1340px; /* Adjusted for better responsiveness */
   text-align: left;
+  margin-bottom: 40px;
 }
 
 
@@ -249,15 +245,96 @@ body {
 
 .lake-level-content {
   display: flex;
-  justify-content: center;
-  max-width: 1375px;
-  flex-wrap: wrap; /* Allows wrapping for smaller screens */
+  justify-content: center;  /* Center the entire section */
+  align-items: center; /* Align vertically if needed */
+  width: 100%; /* Allow full width */
+  margin: 0 auto; /* Center it horizontally */
+  max-width: 1400px; /* Adjust as needed */
+}
+
+
+.image-wrapper {
+  width: 100%; /* Allow the image wrapper to expand */
+  max-width: 1200px; /* Match image max width */
+  text-align: center; /* Keep captions aligned */
 }
 
 .mendenhall-lake-image {
-  width: 100%;  /* Ensures full width within its container */
-  max-width: 1300px; /* Increase this for a larger image */
-  height: auto;  /* Maintains aspect ratio */
+  width: 100%; /* Make sure it takes full space of its container */
+  max-width: 1400px; /* Increase maximum size */
+  height: auto; /* Maintain aspect ratio */
   display: block;
-  margin: 0 auto; /* Centers the image */
+  margin: 0 auto; /* Center the image */
 }
+
+.lake-level-wrapper {
+  display: flex;
+  justify-content: space-between; /* Pushes elements apart */
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 40px; /* Increase gap for better spacing */
+}
+
+.flooding-info {
+  flex: 1;
+  max-width: 665px; /* Restrict width so it moves further right */
+  margin-left: auto; /* Push further right */
+  height: 550px;
+}
+
+
+/* 🔹 Container for the Hydrograph & FloodStageBar */
+.lake-level-container {
+  display: flex;
+  align-items: center; /* Aligns both elements */
+  justify-content: center; /* Centers content */
+  gap: 20px; /* Adds spacing between elements */
+  max-width: 1200px; /* Ensures layout doesn’t stretch too wide */
+  margin: 0 auto; /* Centers container */
+  padding: 10px;
+  margin-top: 50px;
+}
+
+/* 🔹 Hydrograph Styling */
+.hydrograph-container {
+  flex: 2; /* Gives more space to the hydrograph */
+  text-align: center;
+}
+
+.hydrograph-container img {
+  max-width: 100%; /* Ensures responsive scaling */
+  height: auto;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+/* 🔹 Flood Stage Bar (Right Side) */
+.floodstage-wrapper {
+  flex: 1; /* Makes the FloodStageBar smaller than the graph */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* 🔹 Mobile View: Stack Hydrograph & FloodStageBar */
+@media (max-width: 768px) {
+  .lake-level-container {
+    flex-direction: column; /* Stacks them vertically */
+    align-items: center;
+  }
+
+  .hydrograph-container,
+  .floodstage-wrapper {
+    width: 100%;
+  }
+}
+
+
+
+.section-title {
+  font-size: 1.8rem;
+  font-weight: bold;
+  text-align: left; /* Aligns text to the left */
+  padding-left: 90px; /* Adds some spacing from the left edge */
+}
+

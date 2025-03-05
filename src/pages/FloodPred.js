@@ -64,8 +64,7 @@ const FloodPred = ({ onClose }) => {
             className={`flood-pred-card alert ${isDismissible ? "clickable" : "non-dismissible"}`} 
             onClick={isDismissible ? handleDismiss : null}
           >
-            {/* Close Button (Only if dismissible) */}
-            {isDismissible && <button className="close-btn" onClick={handleDismiss}>✖</button>}
+           
             
             <h2>National Weather Service Flood Forecast</h2>
             <p>{nwsFloodForecast}</p>
