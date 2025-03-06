@@ -124,9 +124,9 @@ const FloodPrediction = () => {
       {/* Suicide Basin Section */}
       <div className="detail-card black-text large-text">
       <p>
-  <strong>Suicide Basin Monitoring:</strong> The US Geological Survey (USGS) utilizes time-lapse cameras to capture daily images, with an elevation scale bar to track water levels visually. Additionally, a laser range finder provides an independent and precise measurement of water elevation. However, floating icebergs can cause sudden fluctuations in readings, either raising or lowering recorded levels due to their varying heights.  
+  <strong>Suicide Basin Monitoring:</strong> The U.S. Geological Survey (USGS) utilizes time-lapse cameras to capture daily images of the basin, with an elevation scale bar to track water levels visually. Additionally, a laser range finder provides an independent and precise measurement of water elevation. However, floating icebergs can cause sudden fluctuations in laser readings, either raising or lowering recorded water levels in proportion to iceberg height.  
   <br /><br />
-  <strong>Mendenhall Lake Monitoring:</strong> Water levels in Mendenhall Lake are continuously measured by the USGS at a point along the west shore of Mendenhall Lake. This real-time data helps assess flood potential by estimating the expected lake level if an outburst flood from Suicide Basin were to occur.
+  <strong>Mendenhall Lake Monitoring:</strong> Water levels in Mendenhall Lake are continuously measured by the USGS at a point along the west shore of the lake. This real-time data is used by the USGS to calculate the volume of water in Mendenhall River and aids in monitoring and forecasting changes in the lake water level during outburst floods.
 </p>
 
       </div>
@@ -181,24 +181,22 @@ const FloodPrediction = () => {
        <div className="detail-card black-text">
         <h2>Forecasting Glacial Lake Outburst Floods (GLOFs)</h2>
         <p>
-          Suicide Basin is a glacier-dammed lake that has released floods, impacting Mendenhall Valley. 
-          Monitoring water levels helps predict flood timing and peak magnitude, allowing mitigation efforts.
+        Suicide Basin is a glacier-dammed lake that can release outburst floods and impact Mendenhall Valley. 
+        Monitoring water levels in Suicide Basin helps to predict flood timing and peak magnitude, allowing mitigation efforts.
         </p>
 
         <ul>
           <li>
-            <strong>Flood Potential:</strong> The volume of water and the release rate determine flooding severity.
-            3D terrain models from aerial drone surveys help estimate water volume.
+            <strong>Flood Potential:</strong> The volume of water and the release rate determine flooding severity. Three dimensional terrain models from aerial drone surveys of Suicide Basin allow the volume of water storage to be estimated.
           </li>
           <li>
-            <strong>Changing Water Elevations:</strong> The basin’s holding capacity changes as the Mendenhall Glacier
-            thins and expands outward due to iceberg calving.
+            <strong>Changing Water Elevations:</strong> The basin’s holding capacity changes as the Mendenhall Glacier thins and the basin expands outward into the glacier due to iceberg calving.
           </li>
           <li>
-            <strong>Time to Prepare:</strong> Once drainage begins, floodwaters reach Mendenhall Lake in 1-2 days.
+            <strong>Time to Prepare:</strong> Once drainage begins from Suicide Basin, floodwaters reach Mendenhall Lake in 1-2 days.
           </li>
           <li>
-            <strong>Flood Season:</strong> Outburst floods have occurred from June to October, peaking in July-August.
+            <strong>Flood Season:</strong> Outburst floods from Suicide Basin have occurred from June to October, with the largest floods occurring in July & August.
           </li>
         </ul>
 
@@ -240,20 +238,13 @@ const FloodPrediction = () => {
           <div className="detail-card black-text flooding-info">
   <h2>Mendenhall Lake Level & Flood Conditions</h2>
   <p>
-    Mendenhall Lake is a glacially-fed lake at the terminus of Mendenhall Glacier. Water levels fluctuate due to seasonal 
-    melting, precipitation, and outburst floods. The USGS monitors water levels along the lake’s west shore 
-    to track these changes in real time.
+  Mendenhall Lake is a glacially-fed lake at the terminus of Mendenhall Glacier. Water levels fluctuate due to seasonal melting, precipitation, and outburst floods. The USGS monitors water levels along the lake’s west shore to track these changes in real time.
   </p>
   <p>
-  The water level in Mendenhall Lake is measured every 15 minutes. 
-  The NWS uses precipitation forecasts, glacier melt, and water release from Suicide Basin to forecast 
-  the Mendenhall Lake water level for the next 5 days (graph, above left). When the water level is forecasted to exceed the flood stage, a 
-  flood watch or warning is issued.
+  The water level in Mendenhall Lake is measured every 15 minutes. The NWS uses forecasts of rainfall, glacier melt, and water release from Suicide Basin to forecast water levels in Mendenhall Lake (graph, left). When the lake water level is forecasted to exceed the flood stage, a flood watch or warning is issued.
   </p>
   <p>
-    During outburst floods, lake levels can rise rapidly, posing a significant flood risk. For example, in August 2024, 
-    the water level surged by over 10ft in just two days. Such extreme fluctuations highlight the importance of continuous monitoring 
-    and early warnings.
+  During outburst floods, lake levels can rise rapidly, posing a significant flood risk. For example, in August 2024, the water level in Mendenhall Lake surged by over 10ft in just two days. Such extreme fluctuations highlight the importance of continuous monitoring and early warnings.
   </p>
   <p>When the Mendenhall Lake water level exceeds 8 ft, flooding can occur in Mendenhall Valley. Flood stages for Mendenhall Lake range from minor
      (9-10 ft) to major (14+ ft) and are color coded to highlight known impacts documented by the NWS (below).</p>

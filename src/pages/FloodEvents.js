@@ -106,9 +106,7 @@ const FloodEvents = () => {
       {/* About This Page Card */}
       <div className="about-floods-card">
         <p>
-          This page provides historical data on glacial lake outburst flood events that raised water levels at Mendenhall Lake over 8ft.  
-          You can explore past flood events, visualize trends, and view important  
-          details such as peak water levels and release flow rates.
+        This page provides historical data on glacial lake outburst flood events that raised water levels at Mendenhall Lake to over 8ft (Action Stage). You can explore past flood events, visualize trends, and view important details such as peak water levels and flow rates in Mendenhall River.
         </p>
       </div>
 
