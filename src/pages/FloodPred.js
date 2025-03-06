@@ -3,10 +3,9 @@ import "./FloodPred.css";
 
 const FloodPred = ({ onClose }) => {  
   const [nwsFloodForecast, setNwsFloodForecast] = useState("Loading...");
-  const [nwsAlertUrl, setNwsAlertUrl] = useState(null);
   const [loading, setLoading] = useState(true);
   const [isVisible, setIsVisible] = useState(true);
-  const [isDismissible, setIsDismissible] = useState(false); // Controls dismiss ability
+  const [isDismissible, setIsDismissible] = useState(false); // Default to non-dismissible
 
   useEffect(() => {
     const fetchFloodData = async () => {
@@ -18,21 +17,15 @@ const FloodPred = ({ onClose }) => {
 
         if (nwsData.features.length > 0) {
           const alert = nwsData.features[0].properties;
-          const alertTitle = alert.headline || alert.event || "Flood Advisory Issued";
-          const alertUrl = alert.web || null; 
-
-          setNwsFloodForecast(alertTitle);
-          setNwsAlertUrl(alertUrl);
-          setIsDismissible(false); // Do not allow dismissal when there is an alert
+          setNwsFloodForecast(alert.headline || alert.event || "Advisory Issued");
+          setIsDismissible(false); // Prevent dismissal when there is an alert
         } else {
-          setNwsFloodForecast("No active flood alerts.");
-          setNwsAlertUrl(null);
-          setIsDismissible(true); // Allow dismissal when no alerts
+          setNwsFloodForecast("No Active Alerts.");
+          setIsDismissible(true); // Allow dismissal when no alert
         }
       } catch (error) {
         console.error("Error fetching flood data:", error);
         setNwsFloodForecast("Data unavailable. Check NWS website.");
-        setNwsAlertUrl("https://www.weather.gov/ajk/");
         setIsDismissible(true);
       } finally {
         setLoading(false);
@@ -44,13 +37,11 @@ const FloodPred = ({ onClose }) => {
     return () => clearInterval(interval);
   }, []);
 
-  // Handle click event for dismissing (only if no active alert)
   const handleDismiss = () => {
-    if (!isDismissible) return; // Prevent dismissal when active alert is present
-
-    setIsVisible(false); // Start fade-out animation
+    if (!isDismissible) return;
+    setIsVisible(false);
     setTimeout(() => {
-      onClose(); // Remove after animation
+      onClose();
     }, 300);
   };
 
@@ -64,19 +55,11 @@ const FloodPred = ({ onClose }) => {
             className={`flood-pred-card alert ${isDismissible ? "clickable" : "non-dismissible"}`} 
             onClick={isDismissible ? handleDismiss : null}
           >
-           
-            
             <h2>National Weather Service Flood Forecast</h2>
             <p>{nwsFloodForecast}</p>
 
-            {nwsAlertUrl && (
-              <a href={nwsAlertUrl} target="_blank" rel="noopener noreferrer">
-                <button className="more-info-btn">View Alert</button>
-              </a>
-            )}
-
             <div className="more-info-container">
-              <a href="https://water.noaa.gov/gauges/mnda2" target="_blank" rel="noopener noreferrer">
+              <a href="https://water.noaa.gov/gauges/mnda2" target="_blank" rel="noopener noreferrer" onClick={(e) => e.stopPropagation()}>
                 <button className="more-info-btn">NWS Flood Forecast</button>
               </a>
             </div>

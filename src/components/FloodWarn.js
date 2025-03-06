@@ -15,10 +15,10 @@ const FloodWarn = () => {
 
         if (data.features.length > 0) {
           const alert = data.features[0].properties;
-          setFloodStatus(alert.headline || alert.event || "Flood Advisory Issued");
+          setFloodStatus(alert.headline || alert.event || "Advisory Issued");
           setAlertUrl(alert.web || "https://www.weather.gov/ajk/");
         } else {
-          setFloodStatus("No Active Flood Alerts");
+          setFloodStatus("No Active Alerts");
           setAlertUrl("https://water.noaa.gov/gauges/MNDA2");
         }
       } catch (error) {
