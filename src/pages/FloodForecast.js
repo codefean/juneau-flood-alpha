@@ -238,16 +238,16 @@ const FloodPrediction = () => {
           </div>
 
           <div className="detail-card black-text flooding-info">
-  <h2>Mendenhall Lake Level and Flood Conditions</h2>
+  <h2>Mendenhall Lake Level & Flood Conditions</h2>
   <p>
     Mendenhall Lake is a glacially-fed lake at the terminus of Mendenhall Glacier. Water levels fluctuate due to seasonal 
-    melting, precipitation, and outburst floods. The USGS continuously monitors water levels along the lake’s west shore 
+    melting, precipitation, and outburst floods. The USGS monitors water levels along the lake’s west shore 
     to track these changes in real time.
   </p>
   <p>
-  Water level in Mendenhall Lake is measured continuously (every 15 minutes) by the US Geological Survey. 
-  The NWS uses forecasts or precipitation, glacier melt, and water release from Suicide Basin to forecast 
-  the water level in Mendenhall Lake for 5 days from present (graph, above left). When the water level is forecasted to exceed the flood stage, a 
+  The water level in Mendenhall Lake is measured every 15 minutes. 
+  The NWS uses precipitation forecasts, glacier melt, and water release from Suicide Basin to forecast 
+  the Mendenhall Lake water level for the next 5 days (graph, above left). When the water level is forecasted to exceed the flood stage, a 
   flood watch or warning is issued.
   </p>
   <p>
@@ -255,11 +255,9 @@ const FloodPrediction = () => {
     the water level surged by over 10ft in just two days. Such extreme fluctuations highlight the importance of continuous monitoring 
     and early warnings.
   </p>
-  <p>When the Mendenhall Lake water level exceeds 9 ft, flooding can occur in Mendenhall Valley. Flood stages for Mendenhall Lake range from minor
-     (9-10 ft) to major (14+ ft) and are color coded to highlight known impacts documented by the National Weather Service (above, right).</p>
-  <button className="more-data-button" onClick={() => window.open("https://waterdata.usgs.gov/monitoring-location/15052500/")}>
-    More Info
-  </button>
+  <p>When the Mendenhall Lake water level exceeds 8 ft, flooding can occur in Mendenhall Valley. Flood stages for Mendenhall Lake range from minor
+     (9-10 ft) to major (14+ ft) and are color coded to highlight known impacts documented by the NWS (below).</p>
+
 </div>
         </div>
       </div>
