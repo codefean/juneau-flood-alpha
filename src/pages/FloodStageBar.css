@@ -11,7 +11,7 @@
 .flood-stage-bar {
   display: flex;
   width: 100%;
-  height: 30px; /* Increased height for better visibility */
+  height: 30px; 
   overflow: hidden;
   margin-top: 10px;
   position: relative;
@@ -47,7 +47,6 @@
 .flood-stage-section.highlight {
   font-size: clamp(1.2em, 1.8vw, 1.5em);
   transform: scale(1.05); /* Slight enlargement */
-  border: 1.5px solid rgb(0, 0, 0) !important;
   }
   
 
@@ -69,9 +68,10 @@
 
 /* 🔹 Hover Effect */
 .flood-stage-section:hover {
-  filter: brightness(1.2);
+  filter: none !important;
   cursor: pointer;
   transform: scale(1.03);
+
 }
 
 /* 🔹 Mobile Optimization */
@@ -132,25 +132,22 @@
   border: 1px solid #ccc;
   width: 220px; /* Slightly wider for readability */
   text-align: center;
+  align-items: center;
   font-size: 15px; /* Slightly larger text */
+  justify-content: center;
   margin-top: 8px; /* Adjust spacing from the flood bar */
   z-index: 10;
   line-height: .5; /* Improve text spacing */
   letter-spacing: 0.5px; /* Adjust character spacing */
   border-radius: 6px; /* Smooth corners */
-}
-
-/* Add space between title and text */
-.modal-dropdown h3 {
-  font-size: 16px; /* Slightly larger for emphasis */
-  font-weight: bold;
-  margin-top: -2px;
+  display: flex; 
 }
 
 /* Add space between paragraphs */
 .modal-dropdown p {
-  margin-bottom: -2px;
+  margin-bottom: -4px;
   line-height: 1; /* Adjust line height */
+  margin-top: -4px;
 }
 
 .bold-text {

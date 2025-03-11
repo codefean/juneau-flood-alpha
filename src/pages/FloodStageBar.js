@@ -55,9 +55,9 @@ const FloodStageBar = () => {
   const stages = [
     { label: "No Flood Stage", range: [0, 8], color: "#28a745", info: "Water level is below flood risk (0ft - 8ft)" },
     { label: "Action Stage", range: [8, 9], color: "#e9f502", info: "Flooding risk starts (8ft - 9ft)" },
-    { label: "Minor Flood Stage", range: [9, 10], color: "#F4A100", info: "Flooding 9ft - 10ft" },
-    { label: "Moderate Flood Stage", range: [10, 14], color: "#E2371D", info: "Flooding 10ft - 14ft" },
-    { label: "Major Flood Stage", range: [14, Infinity], color: "#9419A3", info: "Flooding 14ft+" },
+    { label: "Minor Flood Stage", range: [9, 10], color: "#F4A100", info: "Potential flooding 9ft - 10ft" },
+    { label: "Moderate Flood Stage", range: [10, 14], color: "#E2371D", info: "Potential flooding 10ft - 14ft" },
+    { label: "Major Flood Stage", range: [14, Infinity], color: "#9419A3", info: "Potential flooding 14ft+" },
   ];
 
   const openDropdown = (event, stage) => {
@@ -94,8 +94,9 @@ const FloodStageBar = () => {
           }}
           onClick={() => setModalInfo(null)}
         >
-          <h3>{modalInfo.label}</h3>
-          <p>{modalInfo.info}</p>
+          <div className="modal-content">
+            <p>{modalInfo.info}</p>
+          </div>
         </div>
       )}
     </div>
@@ -103,6 +104,8 @@ const FloodStageBar = () => {
 };
 
 const FloodBar = ({ waterLevel, openDropdown, stages }) => {
+  const [hoveredStage, setHoveredStage] = useState(null);
+
   return (
     <div className="flood-stage-bar">
       {stages.map((stage) => {
@@ -115,9 +118,11 @@ const FloodBar = ({ waterLevel, openDropdown, stages }) => {
             style={{
               backgroundColor: stage.color,
               width: `${100 / stages.length}%`,
-              filter: isCurrentStage ? "none" : "grayscale(75%)",
+              filter: isCurrentStage || hoveredStage === stage.label ? "none" : "grayscale(80%)",
             }}
             onClick={(event) => openDropdown(event, stage)}
+            onMouseEnter={() => setHoveredStage(stage.label)}
+            onMouseLeave={() => setHoveredStage(null)}
           >
             <span 
               className={`stage-label ${!isCurrentStage ? "normal-text" : "bold-text"}`}
