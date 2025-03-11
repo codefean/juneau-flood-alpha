@@ -1,4 +1,13 @@
-/* General Styles */
+
+
+html, body {
+  width: 100vw;
+  overflow-x: hidden;
+  box-sizing: border-box;
+}
+
+
+
 body {
   margin: 0;
   padding: 0;
@@ -6,6 +15,7 @@ body {
   background-color: #ffffff;
   color: #000000;
   line-height: 1.6;
+  overflow-x: hidden;
 }
 
 
@@ -36,6 +46,36 @@ body {
   margin-top: 5px;
 }
 
+.image-pair-container, 
+.lake-level-container, 
+.suicide-basin-wrapper, 
+.additional-image-wrapper,
+.image-container, 
+.additional-image-container,
+.hydrograph-container,
+.floodstage-wrapper {
+  max-width: 100%;
+  width: 100%;
+}
+
+/* Restrict max-width for images */
+.flood-image, .mendenhall-lake-image, .additional-image {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Ensure Detail Cards Fit Content & Remove Extra Width */
+.detail-card {
+  max-width: 95%;
+  overflow-x: hidden; /* Ensure no sideways scrolling inside */
+}
+
+/* Ensure section titles don’t exceed width */
+.flood-tracker .section-title {
+  max-width: 100%;
+  white-space: normal; /* Allow text wrapping */
+}
+
 /* Mobile Adjustments */
 @media (max-width: 768px) {
   .flood-forecasting-title {
@@ -51,6 +91,31 @@ body {
     margin-bottom: 0;
     padding: 0 10px;
   }
+    
+  .section-title {
+   margin-top: 10px !important;
+   margin-bottom: 10px;
+  }
+  .suicide-basin-wrapper, 
+  .additional-image-wrapper, 
+  .image-container, 
+  .additional-image-container, 
+  .hydrograph-container {
+    width: 100% !important; /* Make sure it takes full width */
+    max-width: 100% !important; /* Prevent cutting off */
+    margin: 0 auto !important; /* Center the image */
+    padding-left: 0 !important; /* Remove unnecessary padding */
+    padding-right: 0 !important; /* Balance layout */
+    display: flex;
+    justify-content: center; /* Ensure image stays centered */
+    align-items: center;
+    }
+
+    .image-pair-container {
+      flex-direction: column;
+    }
+  
+
 }
 
 @media (max-width: 480px) {
@@ -156,17 +221,7 @@ body {
 
 /* Mobile View */
 @media (max-width: 768px) {
-  .image-pair-container {
-    flex-direction: column;
-  }
 
-  .suicide-basin-wrapper, .additional-image-wrapper {
-    max-width: 100%;
-  }
-
-  .image-container, .additional-image-container {
-    max-width: 100%;
-  }
 
   .flood-tracker h1, 
   .flood-tracker h2, 
@@ -176,10 +231,31 @@ body {
   }
 
   .detail-card {
-    max-width: 100%;
-    text-align: center;
-  }
+    max-width: 90%; /* Reduce width for better centering */
+    padding: 20px; /* Increase padding for better spacing */
+    margin: 20px auto; /* Centers the card */
+    text-align: center; /* Ensure text is centered */
+    }
 
+  .flooding-info {
+     max-width: 100%; /* Ensure full width on mobile */
+    margin-left: 0; /* Remove unnecessary left margin */
+    padding: 15px; /* Ensure content has proper padding */
+    text-align: center; /* Ensures the text is centered */
+    }
+  
+  .lake-level-wrapper {
+      flex-direction: column; /* Stack elements */
+      align-items: center; /* Center align */
+      gap: 20px; /* Space between elements */
+    }
+  
+  .mendenhall-lake-image {
+    width: 100%; /* Ensure image fits container */
+    max-width: 100%; /* Prevent overflow */
+    display: block; /* Remove inline spacing */
+    }
+  
   .title h3 {
     text-align: center;
     font-size: 1.5rem;
@@ -381,4 +457,30 @@ body {
   font-weight: normal; /* Ensures text is not bold */
   font-size: 1.2rem; /* Adjust size if needed */
   color: #000000; /* Optional: Adjust text color */
+}
+
+@media screen and (max-width: 768px) {
+  .flood-stage-bar {
+    display: none !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .detail-card {
+    max-width: 95%; /* Ensure it fits better on very small screens */
+    padding: 25px; /* Slightly more padding for readability */
+    margin: 15px auto; /* Maintain centering */
+  }
+}
+
+/* Ultra-small screens */
+@media (max-width: 480px) {
+  .detail-card {
+    max-width: 95%;
+    padding: 20px;
+  }
+
+  .flood-forecasting-title {
+    font-size: 1.6rem;
+  }
 }

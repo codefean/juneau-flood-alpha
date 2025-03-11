@@ -208,7 +208,7 @@ const FloodPrediction = () => {
       {/* Mendenhall Lake Level Section */}
       
       <div className="lake-level-content">
-      <h2 className="section-title">Mendenhall Lake Water Level & Flood Stage</h2>
+      <h2 className="section-title">Mendenhall Lake Water Level</h2>
         {/* Flex container for Hydrograph & Text */}
         <div className="lake-level-wrapper">
           
@@ -267,8 +267,6 @@ const FloodPrediction = () => {
 
           </div>
         </div>
-
-
 
 
       
