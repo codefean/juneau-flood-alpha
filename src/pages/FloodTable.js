@@ -31,7 +31,7 @@ const FloodTable = () => {
   const [expanded, setExpanded] = useState(false);
 
   const previewCount = 3;
-  const visibleCount = 10;
+  const visibleCount = 5;
 
   useEffect(() => {
     fetch(S3_CSV_URL)
@@ -42,10 +42,10 @@ const FloodTable = () => {
           skipEmptyLines: true,
           complete: (result) => {
             const rawData = result.data;
-
-            // Map column names and remove excluded columns
-            const processedData = rawData.map((row) => {
-              const newRow = {};
+  
+            // Process data and add index column
+            const processedData = rawData.map((row, index) => {
+              const newRow = { Index: index + 1 }; // Start from 1
               Object.keys(row).forEach((key) => {
                 if (!EXCLUDED_COLUMNS.includes(key)) {
                   const newKey = COLUMN_NAME_MAPPING[key] || key;
@@ -54,10 +54,10 @@ const FloodTable = () => {
               });
               return newRow;
             });
-
-            // Set headers based on mapped columns
-            const newHeaders = Object.keys(processedData[0] || {});
-
+  
+            // Set headers, placing "Index" first
+            const newHeaders = ["Index", ...Object.keys(processedData[0] || {}).filter(h => h !== "Index")];
+  
             setData(processedData);
             setSortedData(processedData);
             setHeaders(newHeaders);
@@ -70,6 +70,7 @@ const FloodTable = () => {
         setLoading(false);
       });
   }, []);
+  
 
   const handleSort = (column) => {
     const direction = sortConfig.key === column && sortConfig.direction === "asc" ? "desc" : "asc";
