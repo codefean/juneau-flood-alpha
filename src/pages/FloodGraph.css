@@ -156,6 +156,15 @@
   }
 }
 
+
+
+/* Mobile-Specific Styles */
+@media (max-width: 480px) {
+  .flood-legend {
+    display: none !important; /* Hide legend on mobile */
+  }
+}
+
 .flood-legend {
   display: flex;
   justify-content: center;
