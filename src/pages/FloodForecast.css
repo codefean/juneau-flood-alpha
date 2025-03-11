@@ -1,11 +1,8 @@
-
-
 html, body {
   width: 100vw;
   overflow-x: hidden;
   box-sizing: border-box;
 }
-
 
 
 body {
@@ -46,17 +43,7 @@ body {
   margin-top: 5px;
 }
 
-.image-pair-container, 
-.lake-level-container, 
-.suicide-basin-wrapper, 
-.additional-image-wrapper,
-.image-container, 
-.additional-image-container,
-.hydrograph-container,
-.floodstage-wrapper {
-  max-width: 100%;
-  width: 100%;
-}
+
 
 /* Restrict max-width for images */
 .flood-image, .mendenhall-lake-image, .additional-image {
@@ -161,7 +148,6 @@ body {
   display: flex;
   justify-content: center;
   align-items: stretch;
-  gap: 10px !important;
   max-width: 1400px;
   margin-top: 10px;
 
@@ -434,8 +420,17 @@ body {
   font-weight: bold;
   color:#0e2b4a !important; /* Change to your preferred color */
   width: 100%; /* Makes sure it spans the full width of its container */
-  margin-top: -10px;
-  margin-bottom: -15px;
+  margin-top: -5px;
+  margin-bottom: -45px;
+}
+
+.flood-tracker .section-title-lake {
+  font-size: 1.4rem !important;
+  font-weight: bold;
+  color:#0e2b4a !important;
+  width: 100%; 
+  margin-top: -10px !important;
+  margin-bottom: 10px;
 }
 
 .large-text {
