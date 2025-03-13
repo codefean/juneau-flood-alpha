@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import "./FloodStageBar.css";
 
 const FloodStageBar = () => {
@@ -7,6 +7,7 @@ const FloodStageBar = () => {
   const [error, setError] = useState(null);
   const [modalInfo, setModalInfo] = useState(null);
   const [dropdownPosition, setDropdownPosition] = useState(null);
+  const modalRef = useRef(null);
 
   const fetchWaterLevels = async () => {
     const gageId = "15052500";
@@ -18,7 +19,7 @@ const FloodStageBar = () => {
 
       const data = await response.json();
       const timeSeries = data?.value?.timeSeries?.[0]?.values?.[0]?.value?.[0]?.value;
-      
+
       if (!timeSeries) {
         throw new Error("No water level data available");
       }
@@ -41,17 +42,6 @@ const FloodStageBar = () => {
     return () => clearInterval(interval);
   }, []);
 
-  useEffect(() => {
-    const handleResize = () => {
-      if (modalInfo) {
-        setModalInfo(null);
-        setDropdownPosition(null);
-      }
-    };
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, [modalInfo]);
-
   const stages = [
     { label: "No Flood Stage", range: [0, 8], color: "#28a745", info: "Water level is below flood risk (0ft - 8ft)" },
     { label: "Action Stage", range: [8, 9], color: "#e9f502", info: "Flooding risk starts (8ft - 9ft)" },
@@ -60,18 +50,17 @@ const FloodStageBar = () => {
     { label: "Major Flood Stage", range: [14, Infinity], color: "#9419A3", info: "Flooding risk 14ft+" },
   ];
 
-  const openDropdown = (event, stage) => {
-    if (modalInfo && modalInfo.label === stage.label) {
-      setModalInfo(null);
-      setDropdownPosition(null);
-    } else {
-      const rect = event.currentTarget.getBoundingClientRect();
-      setModalInfo(stage);
-      setDropdownPosition({
-        top: rect.bottom + window.scrollY, 
-        left: rect.left + rect.width / 2,
-      });
-    }
+  const handleHover = (event, stage) => {
+    const rect = event.currentTarget.getBoundingClientRect();
+    setModalInfo(stage);
+    setDropdownPosition({
+      top: rect.bottom + window.scrollY,
+      left: rect.left + rect.width / 2,
+    });
+  };
+
+  const handleMouseLeave = () => {
+    setModalInfo(null);
   };
 
   return (
@@ -81,18 +70,19 @@ const FloodStageBar = () => {
       ) : error ? (
         <p className="error-message">Error: {error}</p>
       ) : (
-        <FloodBar waterLevel={waterLevel} openDropdown={openDropdown} stages={stages} />
+        <FloodBar waterLevel={waterLevel} handleHover={handleHover} handleMouseLeave={handleMouseLeave} stages={stages} />
       )}
 
       {modalInfo && dropdownPosition && (
-        <div 
-          className="modal-dropdown" 
-          style={{ 
-            top: dropdownPosition.top, 
+        <div
+          ref={modalRef}
+          className="modal-dropdown"
+          style={{
+            top: dropdownPosition.top,
             left: dropdownPosition.left,
             border: `2.5px solid ${modalInfo.color}`,
+            position: "absolute",
           }}
-          onClick={() => setModalInfo(null)}
         >
           <div className="modal-content">
             <p>{modalInfo.info}</p>
@@ -103,9 +93,7 @@ const FloodStageBar = () => {
   );
 };
 
-const FloodBar = ({ waterLevel, openDropdown, stages }) => {
-  const [hoveredStage, setHoveredStage] = useState(null);
-
+const FloodBar = ({ waterLevel, handleHover, handleMouseLeave, stages }) => {
   return (
     <div className="flood-stage-bar">
       {stages.map((stage) => {
@@ -118,15 +106,12 @@ const FloodBar = ({ waterLevel, openDropdown, stages }) => {
             style={{
               backgroundColor: stage.color,
               width: `${100 / stages.length}%`,
-              filter: isCurrentStage || hoveredStage === stage.label ? "none" : "grayscale(90%)",
+              filter: isCurrentStage ? "none" : "grayscale(90%)",
             }}
-            onClick={(event) => openDropdown(event, stage)}
-            onMouseEnter={() => setHoveredStage(stage.label)}
-            onMouseLeave={() => setHoveredStage(null)}
+            onMouseEnter={(event) => handleHover(event, stage)}
+            onMouseLeave={handleMouseLeave}
           >
-            <span 
-              className={`stage-label ${!isCurrentStage ? "normal-text" : "bold-text"}`}
-            >
+            <span className={`stage-label ${!isCurrentStage ? "normal-text" : "bold-text"}`}>
               {stage.label} {isCurrentStage && <span className="current-water-level"></span>}
             </span>
           </div>

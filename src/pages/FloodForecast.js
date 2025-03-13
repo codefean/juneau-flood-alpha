@@ -264,11 +264,9 @@ const FloodPrediction = () => {
   <strong>Current Flood Stage:</strong> <span className="flood-stage-text">
     {error ? `Error: ${error}` : getFloodStage(waterLevel).replace("Current Flood Stage: ", "")}
   </span>
-</h2>
-
-
-          </div>
-        </div>
+  </h2>
+  </div>
+  </div>
 
 
       
@@ -276,7 +274,7 @@ const FloodPrediction = () => {
 <div className="detail-card black-text">
   <h2>Understanding Flood Stages</h2>
   <p>
-    Flood stages indicate the severity of flooding based on lake or river levels. These stages help 
+    Flood stages indicate the severity of flooding based on lake water levels. These stages help 
     communities, emergency responders, and individuals assess potential risks and take necessary precautions. 
     The National Weather Service defines four primary flood categories: Action Stage, Minor, Moderate, and Major Flooding. The current flood stage and water level is shown above.
   </p>
