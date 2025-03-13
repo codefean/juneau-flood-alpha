@@ -149,11 +149,10 @@
 /* Title sits above buttons */
 .stepper-header {
   text-align: center;
-  font-size: 16px;
+  font-size: 17px;
   font-weight: bold;
   margin-bottom: 8px; /* Adds spacing between text and buttons */
   width: 100%;
-  color: #333;
 }
 
 /* Ensure buttons are on a separate row */
@@ -163,6 +162,7 @@
   justify-content: space-between;
   gap: 5px;
   width: 100%;
+  color: #ffffff;
 }
 
 .flood-stepper-wrapper {
@@ -174,7 +174,11 @@
 .flood-stepper-title {
   font-size: 18px;  /* Adjust size as needed */
   font-weight: bold;
-  color: white;
+  color: rgb(0, 0, 0);
   margin-bottom: 1px;
   text-align: center;
+}
+
+.water-text {
+  font-weight: normal; /* Removes bold */
 }

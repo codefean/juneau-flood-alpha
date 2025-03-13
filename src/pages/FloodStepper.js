@@ -81,7 +81,7 @@ const FloodStepper = ({ mapRef, selectedFloodLevel, isMenuHidden, hideOnDesktop 
           style={{ backgroundColor: customColors[floodLevel - 9] }}
           onClick={toggleFloodVisibility}
         >
-          {floodLevel} ft
+          {floodLevel} ft <span className="water-text">lake level</span>
         </div>
         <button
           className="stepper-button"

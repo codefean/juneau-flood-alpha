@@ -118,7 +118,7 @@ const FloodBar = ({ waterLevel, openDropdown, stages }) => {
             style={{
               backgroundColor: stage.color,
               width: `${100 / stages.length}%`,
-              filter: isCurrentStage || hoveredStage === stage.label ? "none" : "grayscale(80%)",
+              filter: isCurrentStage || hoveredStage === stage.label ? "none" : "grayscale(90%)",
             }}
             onClick={(event) => openDropdown(event, stage)}
             onMouseEnter={() => setHoveredStage(stage.label)}

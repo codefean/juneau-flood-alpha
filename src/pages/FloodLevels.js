@@ -303,6 +303,7 @@ useEffect(() => {
                 {isSearching ? 'Search' : 'Search'}
               </button>
             </div>
+            
             {errorMessage && <div style={{ color: 'red', marginTop: '10px' }}>{errorMessage}</div>}
           </div>
   
@@ -316,9 +317,6 @@ useEffect(() => {
           <div>
   {waterLevels.map((level) => (
     <div key={level.id} className="level-card">
-      <h3>
-        <strong>{level.name}</strong>
-      </h3>
       <p>
         <a 
           href="https://waterdata.usgs.gov/monitoring-location/15052500/#dataTypeId=continuous-00065--1654777834&period=P7D&showMedian=false" 
@@ -326,7 +324,7 @@ useEffect(() => {
           rel="noopener noreferrer"
           style={{color: 'black'}}
         >
-          Current Level:
+          Current Lake Level:
         </a> 
         {` ${level.value} ft`}
       </p>
@@ -337,7 +335,7 @@ useEffect(() => {
           rel="noopener noreferrer"
           style={{color: 'black' }}
         >
-          Forecasted Flood Potential:
+          Forecasted Lake Level:
         </a> 
         {` NA`}
       </p>

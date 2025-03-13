@@ -5,9 +5,10 @@
 }
 
 /* Responsive Styles */
-@media (max-width: 768px) {
+@media (max-width: 800px) {
   .navigation {
-    padding: 0px 15px; /* Thinner on mobile */
+    padding: 0px 10px; /* Thinner on mobile */
+    max-height: 55px;
   }
 }
 

@@ -21,7 +21,7 @@ const FloodStageMenu = ({ setFloodLevelFromMenu }) => {
         <h4>Action Stage (8 - 9ft)</h4>
         {expanded === 'action' && (
           <div className="accordion-content">
-            <p>Represents the need to take some type of mitigation action in preparation for possible significant flood event.</p>
+            <p>Water levels have reached flood potential. Residents should begin to take mitigation actions for flooding events based on their location.</p>
           </div>
         )}
       </div>

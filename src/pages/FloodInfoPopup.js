@@ -31,7 +31,7 @@ const FloodInfoPopup = () => {
         <div className="popup-info">
           <p><strong>Search Your Address:</strong> Check if your location is in a flood-prone zone at various flood levels.</p>
           <p><strong>Explore Flood Levels:</strong> Hover over the inundation maps to see estimated water depths (-/+).</p>
-          <p><strong>Forecasted Flood Stage:</strong> See the current <em>estimated</em> NWS flood stage during the flood season.</p>
+          <p><strong>Forecasted Lake Level:</strong> See the current <em>estimated</em> lake water level during the flood season.</p>
         </div>
 
         <p className="popup-disclaimer">

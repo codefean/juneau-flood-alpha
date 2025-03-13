@@ -124,9 +124,9 @@ const FloodPrediction = () => {
       {/* Suicide Basin Section */}
       <div className="detail-card black-text large-text">
       <p>
-  <strong>Suicide Basin Monitoring:</strong> The U.S. Geological Survey (USGS) utilizes time-lapse cameras to capture daily images of the basin, with an elevation scale bar to track water levels visually. Additionally, a laser range finder provides an independent and precise measurement of water elevation. However, floating icebergs can cause sudden fluctuations in laser readings, either raising or lowering recorded water levels in proportion to iceberg height.  
+  <strong>Suicide Basin Monitoring:</strong> The US Geological Survey (USGS) uses time-lapse cameras to take daily images with an elevation scale bar to track water levels visually. Additionally, the USGS tracks precise water elevation in the basin using a tool called a laser range finder. However, floating icebergs can cause sudden changes in readings, either raising or lowering recorded levels due to the icebergsʼ varying heights.
   <br /><br />
-  <strong>Mendenhall Lake Monitoring:</strong> Water levels in Mendenhall Lake are continuously measured by the USGS at a point along the west shore of the lake. This real-time data is used by the USGS to calculate the volume of water in Mendenhall River and aids in monitoring and forecasting changes in the lake water level during outburst floods.
+  <strong>Mendenhall Lake Monitoring:</strong> The USGS also monitors water levels at a point along the west shore of Mendenhall Lake. If an outburst flood from Suicide Basin occurred, lake water levels help researchers understand the severity of the flood around the lake and downstream. 
 </p>
 
       </div>
@@ -208,7 +208,7 @@ const FloodPrediction = () => {
       {/* Mendenhall Lake Level Section */}
       
       <div className="lake-level-content">
-      <h2 className="section-title-lake">Mendenhall Lake Water Level</h2>
+      <h2 className="section-title-lake">Mendenhall Lake Level</h2>
         {/* Flex container for Hydrograph & Text */}
         <div className="lake-level-wrapper">
           
@@ -220,7 +220,7 @@ const FloodPrediction = () => {
               <>
                 <img
                   src={hydroGraphUrl}
-                  alt="Mendenhall Lake water level hydrograph"
+                  alt="Mendenhall lake water level hydrograph"
                   className="mendenhall-lake-image"
                   onError={(e) => (e.target.src = "/fallback-graph.jpg")}
                 />
@@ -238,7 +238,9 @@ const FloodPrediction = () => {
           <div className="detail-card black-text flooding-info">
   <h2>Mendenhall Lake Level & Flood Conditions</h2>
   <p>
-  Mendenhall Lake is a glacially-fed lake at the terminus of Mendenhall Glacier. Water levels fluctuate due to seasonal melting, precipitation, and outburst floods. The USGS monitors water levels along the lake’s west shore to track these changes in real time.
+  Mendenhall Lake is a glacially-fed lake at the terminus of Mendenhall Glacier. Water levels fluctuate due to seasonal melting, precipitation, and outburst floods. <a href="https://waterdata.usgs.gov/monitoring-location/15052500/#dataTypeId=continuous-00065--1654777834&period=P7D&showMedian=false" target="_blank" rel="noopener noreferrer">
+        The USGS monitors water levels
+      </a> along the lake’s west shore to track these changes in real time.
   </p>
   <p>
   The water level in Mendenhall Lake is measured every 15 minutes. The NWS uses forecasts of rainfall, glacier melt, and water release from Suicide Basin to forecast water levels in Mendenhall Lake (graph, left). When the lake water level is forecasted to exceed the flood stage, a flood watch or warning is issued.

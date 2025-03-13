@@ -33,7 +33,7 @@ header h1 {
   position: relative;
   margin: 10px 0;
   padding: 10px;
-  background: rgba(255, 255, 255, 0.937);
+  background: rgba(255, 255, 255, 0.842);
   border-radius: 8px;
   width: 280px; /* Default width for large screens */
   height: auto;
@@ -44,11 +44,11 @@ header h1 {
   color: #000000;
   text-align: center;
   margin-left: 10px;
-  margin-top: -10px;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  margin-top: -5px;
+  transition: transform 0.2s ease;
 }
 
-.level-card h4 {
+.level-card p {
   font-size: 16px;
   font-weight: 600;
   margin-bottom: 5px;
@@ -56,11 +56,38 @@ header h1 {
   text-align: center;
 }
 
-.level-card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+.level-card h3 {
+  font-size: 20px; /* Adjust size */
+  font-weight: bold;
+  text-align: center;
+  color: #000000; /* Black text */
+  letter-spacing: 1px;
+  margin: 0;
 }
 
+.level-card:hover {
+  transform: translateY(-3px);
+}
+
+.lake-level-card {
+  background: rgba(255, 255, 255, 0.722); /* Transparent white */
+  padding: 10px 15px;
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: fit-content;
+  margin: 10px auto; /* Centered below search bar */
+}
+
+.lake-level-title {
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+  color: #000000; /* Black text */
+  letter-spacing: 1px;
+  margin: 0;
+}
 
 
 .search-container {
