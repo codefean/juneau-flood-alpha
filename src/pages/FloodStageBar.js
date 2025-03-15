@@ -106,7 +106,7 @@ const FloodBar = ({ waterLevel, handleHover, handleMouseLeave, stages }) => {
             style={{
               backgroundColor: stage.color,
               width: `${100 / stages.length}%`,
-              filter: isCurrentStage ? "none" : "grayscale(90%)",
+              filter: isCurrentStage ? "none" : "grayscale(100%)",
             }}
             onMouseEnter={(event) => handleHover(event, stage)}
             onMouseLeave={handleMouseLeave}
