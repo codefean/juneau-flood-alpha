@@ -16,13 +16,13 @@ const images = [
       src: "https://basin-images.s3.us-east-2.amazonaws.com/GLOF_orgin.png",
       title: "1. Formation of the Glacial Pool",
       description:
-        "Suicide Basin, a subglacial basin, accumulates water from glacial melt and precipitation. A natural ice dam, formed by the Mendenhall Glacier, temporarily holds back the water (shown in next slide). As the water volume increases, pressure builds on the ice dam, making it susceptible to failure."
+        "Suicide Basin accumulates water from glacial melt and precipitation. A natural ice dam, formed by the Mendenhall Glacier, temporarily holds back the water (shown in next slide). During summer, the water level in the basin can increase by more than 6 ft per day. Much of the lake is not visible but is hidden beneath floating icebergs."
     },
     {
       src: "https://basin-images.s3.us-east-2.amazonaws.com/GLOF_icewall.png",
       title: "2. Sudden Water Release: The Outburst Flood",
       description:
-        "Eventually the ice dam weakens and the stored water is suddenly released of the glacial lake towards Mendenhall Lake. Factors contributing to this release include ice in the lake melting, increased hydrostatic pressure, and basal lubrication, which destabilize the ice dam. The flood follows a predictable hydrograph pattern, peaking before water levels recede."
+        "As the water volume in Suicide Basin increases, buoyant pressure builds on the ice dam, eventually allowing water to escape underneath the glacier. As water flows beneath the Mendenhall Glacier, it creates friction which causes the drainage channels beneath the glacier to melt and grow wider. As a result, the rate at which water is released from the basin increases during drainage events."
     },
     {
       src: "https://www.weather.gov/images/ajk/suicideBasin/archive/2023/SuicideBasinLoop_Raw_2023_Compressed.gif",
@@ -34,7 +34,7 @@ const images = [
       src: "https://basin-images.s3.us-east-2.amazonaws.com/GLOF_map.png",
       title: "4. Reaching the Valley",
       description:
-        "Once the water is released from Suicide Basin, it reaches Mendenhall Lake within one to two days. Depending on the rate of release and water levels in Suicide Basin, the floodwaters can extend beyond Mendenhall Lake and River, causing severe impacts to surrounding infrastructure."
+        "Once meltwater is released from Suicide Basin, it reaches Mendenhall Lake within one to two days. The extent of flooding in Mendenhall Valley is determined by the volume of water stored in the basin and the rate at which flows under Mendenhall Glacier and into Mendenhall Lake, raising the lake level."
     },
 
   ];
@@ -97,10 +97,14 @@ const images = [
 <div className="suicide-basin-info-card">
   <h3 className="suicide-basin-info-title">What is Suicide Basin?</h3>
   <p>
-    Suicide Basin is a subglacial basin located alongside the Mendenhall Glacier in Juneau, Alaska. 
-    It plays a crucial role in the formation of recurring Glacial Lake Outburst Floods (GLOFs), where meltwater accumulates behind a temporary ice dam. When the ice dam weakens or fails, millions of cubic meters of water are released, leading to flooding downstream.
+  Suicide Basin is an over-deepened bedrock basin located approximately 5 km up the Mendenhall Glacier in Juneau, Alaska. It was formed by the retreat of the Suicide Glacier,
+  which left an open space alongside the Mendenhall Glacier (above). Suicide Basin plays a crucial role in the formation of recurring glacial lake outburst floods (GLOFs) because
+  Mendenhall Glacier acts as a dam that allows meltwater to accumulate in the basin. When water stored in the basin escapes beneath the ice dam, billions of gallons of water can
+  be released into Mendenhall Lake, leading to flooding downstream.
     <br /><br />
-    The storage capacity of Suicide Basin varies annually due to ongoing glacier dynamics, such as ice calving and melting. Scientists monitor these changes using drones, satellite imagery, and elevation models, but the exact mechanisms that control the rate of water release from Suicide Basin to Mendenhall Lake remain uncertain. Understanding these processes is essential for predicting and mitigating flood impacts in the surrounding communities.
+    The storage capacity of Suicide Basin varies annually due to ongoing changes in Mendenhall Glacier, such as ice calving and melting. Scientists monitor these changes using
+    drones, satellite imagery, and elevation models, but the exact mechanisms that control the rate of water release from Suicide Basin to Mendenhall Lake remain uncertain. Understanding
+    these processes is essential for predicting and mitigating flood impacts in the surrounding communities.
   </p>
 </div>
 
