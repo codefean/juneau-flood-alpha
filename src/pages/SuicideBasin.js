@@ -25,10 +25,10 @@ const images = [
         "As the water volume in Suicide Basin increases, buoyant pressure builds on the ice dam, eventually allowing water to escape underneath the glacier. As water flows beneath the Mendenhall Glacier, it creates friction which causes the drainage channels beneath the glacier to melt and grow wider. As a result, the rate at which water is released from the basin increases during drainage events."
     },
     {
-      src: "https://www.weather.gov/images/ajk/suicideBasin/archive/2023/SuicideBasinLoop_Raw_2023_Compressed.gif",
+      src: "https://www.climate.gov/sites/default/files/2024-08/SuicideBasinOutburst2024.gif",
       title: "3. Suicide Basin's Record Outburst Flood",
       description:
-        "This timelapse shows the basin filling and then releasing in 2023, highlighting changes in water levels over time due to ice melt and precipitation. This release event caused Mendenhall Lake to reach approximately 14.97ft of water, resulting in extensive damage. The factors controlling the speed of water release from the basin are currently unknown."
+        "This timelapse animation shows the water level in the basin from late April through mid-September, 2024. The largest glacier outburst flood on record at Mendenhall occurred on August 5-7, 2024. More than 15 billion gallons of water were released from Suicide Basin, and the water level in Mendenhall Lake reached a record level of 15.99 ft."
     },
     {
       src: "https://basin-images.s3.us-east-2.amazonaws.com/GLOF_map.png",
