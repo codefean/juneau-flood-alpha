@@ -192,7 +192,7 @@ useEffect(() => {
           popupContent: `
       
             <a href="https://waterdata.usgs.gov/monitoring-location/15052500/#dataTypeId=continuous-00065--1654777834&period=P7D&showMedian=false" target="_blank">
-              <b>Mendenhall Lake Water Gage</b>
+              <b>USGS Mendenhall Lake Level Gage</b>
             </a>
           `,
         },
@@ -201,7 +201,7 @@ useEffect(() => {
           lng: -134.5038333,
           popupContent: `
             <a href="https://waterdata.usgs.gov/monitoring-location/1505248590/#dataTypeId=continuous-00020-0&period=P7D&showMedian=true" target="_blank">
-              <b>Suicide Basin Glacial Pool Water Gage</b>
+              <b>USGS Suicide Basin Level Gage</b>
             </a>
           `,
         },
