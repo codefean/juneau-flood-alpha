@@ -1,6 +1,6 @@
 /* Global Styles */
 html, body {
-  width: 100vw;
+  max-width: 100%;
   overflow-x: hidden;
   box-sizing: border-box;
 }
@@ -175,6 +175,7 @@ body {
 .suicide-basin-wrapper {
   width: 100%;
   max-width: 950px;
+  display: flex;
 }
 
 .additional-image {
@@ -278,6 +279,7 @@ body {
 }
 
 /* Responsive Adjustments */
+/* Responsive Adjustments */
 @media (max-width: 1268px) {
   .flood-forecasting-title {
     font-size: 2rem;
@@ -329,6 +331,47 @@ body {
   .floodstage-wrapper {
     width: 100%;
   }
+
+  .suicide-basin-container {
+    flex-direction: column !important;
+    align-items: center; /* Center content */
+  }
+
+  .usgs-image,
+  .water-elevation-chart {
+    max-width: 100%; /* Allow full width */
+  }
+
+  /* Stacking Suicide Basin and Hydrograph Images */
+  .image-pair-container {
+    flex-direction: column;
+    align-items: center;
+    gap: 5px !important;
+  }
+
+  .image-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .suicide-basin-wrapper,
+  .additional-image-wrapper {
+    width: 100%;
+    max-width: 750px; /* Adjust max width for better scaling */
+  }
+
+  .flood-image,
+  .additional-image {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+  }
+
+  .image-caption {
+    text-align: center;
+    font-size: 14px;
+  }
 }
 
 @media (max-width: 480px) {
@@ -346,5 +389,10 @@ body {
   .detail-card {
     max-width: 95%;
     padding: 20px;
+  }
+
+  .suicide-basin-container {
+    flex-direction: column !important;
+    align-items: center; /* Center content */
   }
 }
