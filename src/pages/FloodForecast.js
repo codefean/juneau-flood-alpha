@@ -149,7 +149,7 @@ const FloodPrediction = () => {
                   className="flood-image suicide-basin-image"
                   onError={(e) => (e.target.src = "/fallback-image.jpg")}
                 />
-                <p className="image-caption">Latest Image of Suicide Basin</p>
+                <p className="image-caption">Latest USGS Image of Suicide Basin</p>
 
                 <Tooltip
                   markers={markers.suicideBasin}
