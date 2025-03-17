@@ -83,7 +83,7 @@
 }
 
 /* Center the Info Card on Smaller Screens */
-@media (max-width: 1024px) {
+@media (max-width: 1394px) {
   .glof-content {
     flex-direction: column;
     align-items: center; /* Centers the entire info card below the slider */
@@ -91,11 +91,10 @@
   }
 
   .glof-info-card {
-    max-width: 95vw !important; /* Prevents it from stretching too wide */
-    text-align: left; /* Keeps text left-aligned */
-    align-items: center; /* Centers the card */
-    justify-content: center; /* Ensures proper text positioning */
-    margin-left: 2px !important;
+    width: 95%; /* Allows it to expand to nearly full width */
+    max-width: 1050px !important; /* Ensures it doesn't stretch too far */
+    text-align: left; /* Keeps text left-aligned for readability */
+    padding: 20px; /* Improves spacing */
   }
 }
 /* Larger images with improved aspect ratio */
@@ -110,14 +109,11 @@
 
 
 .glof-info-card {
-  flex: 1; /* Allow it to expand */
-  display: flex;
   flex-direction: column; /* Ensures content stacks properly */
-  max-width: 300px;
   background: #f4f5f5;
   padding: 15px;
   border-radius: 6px;
-  min-height: auto;
+  max-height: 500px !important;
   margin-top: 10px;
   margin-bottom: 10px;
   margin-left: -10px;

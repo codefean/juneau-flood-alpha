@@ -97,7 +97,7 @@ const images = [
 <div className="suicide-basin-info-card">
   <h3 className="suicide-basin-info-title">What is Suicide Basin?</h3>
   <p>
-  Suicide Basin is an over-deepened bedrock basin located approximately 5 km up the Mendenhall Glacier in Juneau, Alaska. It was formed by the retreat of the Suicide Glacier,
+  Suicide Basin is an over-deepened bedrock basin located approximately 3km up the Mendenhall Glacier in Juneau, Alaska. It was formed by the retreat of the Suicide Glacier,
   which left an open space alongside the Mendenhall Glacier (above). Suicide Basin plays a crucial role in the formation of recurring glacial lake outburst floods (GLOFs) because
   Mendenhall Glacier acts as a dam that allows meltwater to accumulate in the basin. When water stored in the basin escapes beneath the ice dam, billions of gallons of water can
   be released into Mendenhall Lake, leading to flooding downstream.
