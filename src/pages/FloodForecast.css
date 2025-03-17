@@ -146,7 +146,7 @@ body {
 .flooding-info {
   flex: 1;
   max-width: 650px;
-  max-height: 600px;
+  max-height: 525px;
   overflow-y: auto;
   min-width: 350px;
   flex-direction: column;
