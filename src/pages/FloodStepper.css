@@ -20,13 +20,14 @@
   color: white;
   border: none;
   padding: 10px 15px; /* Slightly larger for touch devices */
-  font-size: 16px;
+  font-size: 26px;
   font-weight: bold;
   border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.3s ease, transform 0.2s ease;
-  flex: 1; /* Adjusts size proportionally */
-  max-width: 50px; /* Prevents button from getting too big */
+  max-width: 50px;
+  min-height: 58px;
+  flex : 1; /* Makes buttons take up equal space */
 }
 
 .stepper-button:disabled {
@@ -144,11 +145,7 @@
 }
 
 /* Ensure buttons and text remain properly sized */
-.stepper-button {
-  width: 50px;
-  height: 65px;
-  font-size: 25px;
-}
+
 
 
 .water-text {
