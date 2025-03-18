@@ -62,9 +62,9 @@ const FloodPrediction = () => {
       { top: "70%", left: "48.5%", text: "Movement of floating ice can impact water level measurements on the hydrograph." },
     ],
     mendenhallLake: [
-      { top: "19%", left: "52%", text: "Last recorded water level at Mendenhall Lake" },
-      { top: "22%", left: "48.5%", text: "Current flood stage if the GLOF occurred. 9ft is the lowest flood stage. For all flood stages click here." },
-      { top: "70%", left: "90%", text: "Today's observation." },
+      { top: "19%", left: "51%", text: "Last recorded water level at Mendenhall Lake" },
+      { top: "22%", left: "49%", text: "Current flood stage if the GLOF occurred. 9ft is the lowest flood stage. For all flood stages click here." },
+      { top: "70%", left: "88%", text: "Today's observation." },
     ],
   };
 
