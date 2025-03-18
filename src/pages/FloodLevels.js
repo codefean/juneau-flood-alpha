@@ -7,7 +7,7 @@ import FloodStepper from './FloodStepper';
 import FloodInfoPopup from "./FloodInfoPopup";
 
 
-// cd /Users/seanfagan/Desktop/juneau-flood-beta
+// cd /Users/seanfagan/Desktop/juneau-flood-alpha
 
 const S3_BASE_URL = "https://flood-data.s3.us-east-2.amazonaws.com";
 
