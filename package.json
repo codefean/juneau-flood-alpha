@@ -2,7 +2,7 @@
   "name": "juneau-flood-alpha",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://codefean.github.io/juneau-flood-alpha/",
+  "homepage": "https://www.juneauflood.com/",
   "dependencies": {
     "@testing-library/user-event": "^13.5.0",
     "file-saver": "^2.0.5",
