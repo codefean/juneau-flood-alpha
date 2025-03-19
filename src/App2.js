@@ -7,6 +7,7 @@ import FloodLevels from "./pages/FloodLevels";
 import FloodForecast from "./pages/FloodForecast";
 import FloodEvents from "./pages/FloodEvents";
 import SuicideBasin from "./pages/SuicideBasin";
+import Footer from "./components/Footer";
 
 // Custom hook for setting the document title
 const useDocumentTitle = (title) => {
@@ -50,6 +51,7 @@ const App2 = () => {
           <Route path="/flood-events" element={<FloodEventsPage />} />
           <Route path="/suicide-basin" element={<SuicideBasinPage />} />
         </Routes>
+        <Footer />
       </div>
     </Router>
   );

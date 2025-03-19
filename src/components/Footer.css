@@ -1,0 +1,21 @@
+.footer {
+  background-color: #0c5c95; /* Dark blue background */
+  color: white;
+  text-align: center;
+  padding: 20px;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.footer a {
+  color: white;
+  text-decoration: underline;
+}
+
+.footer a:hover {
+  text-decoration: none;
+}
+
+.footer p {
+  margin: 5px 0;
+}
