@@ -44,13 +44,15 @@ const App2 = () => {
       <div className="app-container">
         <Header />
         <Navigation />
-        <Routes>
-          <Route path="/" element={<Navigate to="/flood-levels" />} />
-          <Route path="/flood-levels" element={<FloodLevelsPage />} />
-          <Route path="/flood-forecast" element={<FloodPredictionPage />} />
-          <Route path="/flood-events" element={<FloodEventsPage />} />
-          <Route path="/suicide-basin" element={<SuicideBasinPage />} />
-        </Routes>
+        <div className="main-content">
+          <Routes>
+            <Route path="/" element={<Navigate to="/flood-levels" />} />
+            <Route path="/flood-levels" element={<FloodLevelsPage />} />
+            <Route path="/flood-forecast" element={<FloodPredictionPage />} />
+            <Route path="/flood-events" element={<FloodEventsPage />} />
+            <Route path="/suicide-basin" element={<SuicideBasinPage />} />
+          </Routes>
+        </div>
         <Footer />
       </div>
     </Router>
