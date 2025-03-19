@@ -395,3 +395,57 @@ body {
     align-items: center; /* Center content */
   }
 }
+
+
+@media (max-width: 768px) {
+  .info-marker {
+    display: none !important;
+  }
+}
+
+
+@media (max-width: 768px) {
+  .image-pair-container {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+    margin-left: -40px;
+  }
+
+  .image-container {
+    width: 100%;
+    max-width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .suicide-basin-wrapper,
+  .additional-image-wrapper {
+    width: 100%;
+    max-width: 750px; /* Adjust max width for better scaling */
+  }
+
+  .flood-image,
+  .additional-image {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+  }
+
+  .image-caption {
+    text-align: center;
+    font-size: 14px;
+  }
+
+  .flood-stage-container {
+    display: none !important;
+  }
+}
