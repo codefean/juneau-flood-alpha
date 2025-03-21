@@ -26,7 +26,7 @@
   left: 15px;
   display: none; /* Hide by default on small screens */
   align-items: center;
-  padding-top: 5px;     /* Add padding to top */
+  padding-top: 6px;     /* Add padding to top */
 
 }
 
@@ -34,7 +34,7 @@
 .header-image img {
   width: auto;
   height: auto;
-  max-height: 78px; /* Adjust for mobile */
+  max-height: 75px; /* Adjust for mobile */
   max-width: 100%;
 }
 
