@@ -1,20 +1,46 @@
+/* Header container */
 .header {
   background-color: #002c4d;
   color: white;
   padding: 10px 15px;
   display: flex;
   align-items: center;
-  justify-content: center; /* Keep title centered */
+  justify-content: center;
   font-family: 'Open Sans', Arial, sans-serif;
   position: relative;
   flex-wrap: nowrap;
 }
 
-/* Ensure title remains centered */
+/* Title stays centered */
 .header-title {
   flex-grow: 1;
   display: flex;
   justify-content: center;
   align-items: center;
+  text-align: center;
 }
 
+/* Logo styles */
+.header-image {
+  position: absolute;
+  left: 15px;
+  display: none; /* Hide by default on small screens */
+  align-items: center;
+  padding-top: 5px;     /* Add padding to top */
+  padding-bottom: 5px;
+}
+
+/* Default image scaling for mobile */
+.header-image img {
+  width: auto;
+  height: auto;
+  max-height: 79px; /* Adjust for mobile */
+  max-width: 100%;
+}
+
+/* Show and scale logo on larger screens */
+@media (min-width: 968px) {
+  .header-image {
+    display: flex;
+  }
+}
