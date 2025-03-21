@@ -26,7 +26,7 @@ const Navigation = () => {
           </NavLink>
         </li>
         <li>
-          <NavLink to="/flood-events" activeClassName="active-link"> {/* Updated Route */}
+          <NavLink to="/flood-events" activeClassName="active-link">
             Flood Events
           </NavLink>
         </li>
@@ -44,6 +44,14 @@ const Navigation = () => {
           >
             The Flood Story
           </a>
+        </li>
+        <li>
+          <NavLink
+            to="/contact"
+            className={({ isActive }) => (isActive ? "active-link" : "")}
+          >
+            Info
+          </NavLink>
         </li>
       </ul>
     </nav>
