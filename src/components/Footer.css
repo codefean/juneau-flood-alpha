@@ -51,6 +51,25 @@ html, body {
   flex: 1; /* Pushes footer down when there's not enough content */
 }
 
+.footer-logos {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap; /* Allows logos to wrap if needed */
+  gap: 15px; /* Space between logos */
+  margin-top: 10px;
+  max-width: 90%; /* Ensures logos don’t exceed the container width */
+}
+
+/* Default logo styling */
+.footer-logo {
+  height: 50px;
+  width: auto;
+  max-width: 150px; /* Prevents logos from being too large */
+  object-fit: contain; /* Keeps aspect ratio intact */
+}
+
+
 /* Responsive Footer Styling */
 @media screen and (max-width: 600px) {
   .footer {
@@ -62,5 +81,15 @@ html, body {
   .footer p {
     max-width: 100%; /* Ensures text doesn't overflow */
     word-break: break-word; /* Breaks long words correctly */
+  }
+
+  .footer-logos {
+    justify-content: space-evenly; /* Distribute logos evenly in rows */
+  }
+
+  .footer-logo {
+    height: 40px; /* Slightly smaller logos on mobile */
+    max-width: 45%; /* Allows two logos per row when space permits */
+    min-width: 100px; /* Prevents logos from shrinking too much */
   }
 }

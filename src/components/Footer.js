@@ -4,6 +4,14 @@ import "./Footer.css"; // Import Footer-specific styles
 const Footer = () => {
   return (
     <footer className="footer">
+       <div className="footer-logos">
+        <img src="/logos/akcasc.png" alt="AK CASC Logo" className="footer-logo" />
+        <img src="/logos/IARC.png" alt="IARC Logo" className="footer-logo" />
+        <img src="/logos/UAA.png" alt="UAA Logo" className="footer-logo" />
+        <img src="/logos/UAF.png" alt="UAF Logo" className="footer-logo" />
+        <img src="/logos/UAS.png" alt="UAS Logo" className="footer-logo" />
+        <img src="/logos/USGS.png" alt="USGS Logo" className="footer-logo" />
+      </div>
       <p>
         AK CASC is a partnership between the University of Alaska and the USGS, and is hosted at the UAF International Arctic Research Center.
       </p>
