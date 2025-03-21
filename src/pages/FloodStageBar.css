@@ -38,15 +38,11 @@
   text-overflow: ellipsis;
 }
 
-.flood-stage-section:last-child {
-  border-right: none; /* Remove border for last section */
-}
-
-
 /* 🔹 Highlighted Flood Stage */
 .flood-stage-section.highlight {
   font-size: clamp(1.2em, 1.8vw, 1.5em);
-  transform: scale(1.05); /* Slight enlargement */
+
+  transform-origin: center;
   }
   
 
@@ -71,24 +67,38 @@
   filter: none !important;
   cursor: pointer;
   transform: scale(1.03);
+  transform-origin: center;
 
 }
 
-/* 🔹 Mobile Optimization */
 @media (max-width: 768px) {
+  .flood-stage-container {
+    padding: 10px; /* Adds horizontal padding (left + right) */
+  }
+  
   .flood-stage-bar {
-    height: 50px; /* Adjusted for smaller screens */
+    flex-direction: column; /* Stack sections vertically */
+    height: auto; /* Let it grow based on content */
+    
   }
 
   .flood-stage-section {
-    font-size: 0.85em;
-    padding: 10px;
+    width: 90%;            /* Take up full width */
+    min-width: unset;       /* Cancel out desktop constraint */
+    border-bottom: 1px solid #ccc;
+    padding: 14px 0;        /* More touch-friendly padding */
+    max-width: unset;
+    align-items: center;
   }
 
-  .water-level-indicator {
-    font-size: 12px;
-    top: -30px;
-    padding: 5px 10px;
+  .flood-stage-section:last-child {
+    border-bottom: none;
+  }
+
+  .stage-label {
+    width: 100%;
+    text-align: center;
+    display: block;
   }
 }
 

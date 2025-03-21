@@ -337,8 +337,7 @@ body {
     align-items: center;
   }
 
-  .hydrograph-container,
-  .floodstage-wrapper {
+  .hydrograph-container{
     width: 100%;
   }
 
@@ -454,9 +453,5 @@ body {
   .image-caption {
     text-align: center;
     font-size: 14px;
-  }
-
-  .flood-stage-container {
-    display: none !important;
   }
 }
