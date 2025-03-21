@@ -20,7 +20,7 @@ const Contact = () => {
       </p>
 
       <p className="contact-text">
-        This project is funded for by the Climate Adaptation Sceince Center
+        This project is funded for by the Climate Adaptation Science Center
       </p>
     </div>
   );
