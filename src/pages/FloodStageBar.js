@@ -7,6 +7,7 @@ const FloodStageBar = () => {
   const [error, setError] = useState(null);
   const [modalInfo, setModalInfo] = useState(null);
   const [dropdownPosition, setDropdownPosition] = useState(null);
+  const [hoveredStage, setHoveredStage] = useState(null);
   const modalRef = useRef(null);
 
   const fetchWaterLevels = async () => {
@@ -57,10 +58,12 @@ const FloodStageBar = () => {
       top: rect.bottom + window.scrollY,
       left: rect.left + rect.width / 2,
     });
+    setHoveredStage(stage.label);
   };
 
   const handleMouseLeave = () => {
     setModalInfo(null);
+    setHoveredStage(null);
   };
 
   return (
@@ -70,7 +73,13 @@ const FloodStageBar = () => {
       ) : error ? (
         <p className="error-message">Error: {error}</p>
       ) : (
-        <FloodBar waterLevel={waterLevel} handleHover={handleHover} handleMouseLeave={handleMouseLeave} stages={stages} />
+        <FloodBar
+          waterLevel={waterLevel}
+          stages={stages}
+          handleHover={handleHover}
+          handleMouseLeave={handleMouseLeave}
+          hoveredStage={hoveredStage}
+        />
       )}
 
       {modalInfo && dropdownPosition && (
@@ -93,20 +102,22 @@ const FloodStageBar = () => {
   );
 };
 
-const FloodBar = ({ waterLevel, handleHover, handleMouseLeave, stages }) => {
+const FloodBar = ({ waterLevel, stages, handleHover, handleMouseLeave, hoveredStage }) => {
   return (
     <div className="flood-stage-bar">
       {stages.map((stage) => {
         const isCurrentStage = waterLevel >= stage.range[0] && waterLevel < stage.range[1];
+        const isHovered = hoveredStage === stage.label;
+
+        const backgroundColor = isCurrentStage || isHovered ? stage.color : "#e0e0e0";
 
         return (
           <div
             key={stage.label}
             className={`flood-stage-section ${isCurrentStage ? "highlight" : ""}`}
             style={{
-              backgroundColor: stage.color,
+              backgroundColor,
               width: `${100 / stages.length}%`,
-              filter: isCurrentStage ? "none" : "grayscale(100%)",
             }}
             onMouseEnter={(event) => handleHover(event, stage)}
             onMouseLeave={handleMouseLeave}
