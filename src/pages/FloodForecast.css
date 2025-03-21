@@ -271,11 +271,22 @@ body {
 
 .current-flood-stage-title {
   font-size: 1.2rem;
-  font-weight: bold;
+  font-weight: normal;
   text-align: center;
   margin-top: -1px !important;
   margin-bottom: -10px !important;
 }
+
+.flood-stage-text {
+  font-size: 1.4rem;
+  font-weight: bold;
+  text-align: center;
+  display: inline-block;
+  margin-left: 4px;
+  margin-top: -1px !important;
+  margin-bottom: -10px !important;
+}
+
 
 /* Responsive Adjustments */
 /* Responsive Adjustments */

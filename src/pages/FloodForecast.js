@@ -104,11 +104,11 @@ const FloodPrediction = () => {
     // Function to determine flood stage text based on water level
     const getFloodStage = (level) => {
       if (level === null) return "Loading...";
-      if (level < 8) return `Current Flood Stage: No Flood Risk at ${level.toFixed(1)}ft of water`;
-      if (level >= 8 && level < 9) return `Current Flood Stage: Action Stage at ${level.toFixed(1)}ft of water`;
-      if (level >= 9 && level < 11) return `Current Flood Stage: Minor Flood Stage at ${level.toFixed(1)}ft of water`;
-      if (level >= 11 && level < 14) return `Current Flood Stage: Moderate Flood Stage at ${level.toFixed(1)}ft of water`;
-      if (level >= 14) return `Current Flood Stage: Major Flood Stage at ${level.toFixed(1)} ft`;
+      if (level < 8) return `No Flood Risk at ${level.toFixed(1)}ft of water`;
+      if (level >= 8 && level < 9) return `Action Stage at ${level.toFixed(1)}ft of water`;
+      if (level >= 9 && level < 11) return `Minor Flood Stage at ${level.toFixed(1)}ft of water`;
+      if (level >= 11 && level < 14) return `Moderate Flood Stage at ${level.toFixed(1)}ft of water`;
+      if (level >= 14) return `Major Flood Stage at ${level.toFixed(1)} ft`;
     };
   
 
@@ -264,10 +264,12 @@ const FloodPrediction = () => {
  <div className="flood-stage-container">
             <FloodStageBar />
             <h2 className="current-flood-stage-title">
-  <strong>Current Flood Stage:</strong> <span className="flood-stage-text">
-    {error ? `Error: ${error}` : getFloodStage(waterLevel).replace("Current Flood Stage: ", "")}
+  Current Flood Stage:{" "}
+  <span className="flood-stage-text">
+    {error ? `Error: ${error}` : getFloodStage(waterLevel)}
   </span>
-  </h2>
+</h2>
+
   </div>
   </div>
 
