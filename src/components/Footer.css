@@ -3,11 +3,10 @@
   background-color: #002c4d; /* Dark blue background */
   color: white;
   text-align: center;
-  padding: 15px 20px; /* Increased padding for better spacing */
   font-size: 12px;
   line-height: 1.4;
   width: 100%;
-  margin-top: auto; /* Pushes footer down only when needed */
+  margin-top: auto; 
   position: relative;
   display: flex;
   flex-direction: column;
@@ -27,12 +26,10 @@
 }
 
 .footer p {
-  margin: 5px 0;
-  max-width: 90%; /* Prevents long text from stretching */
-  word-wrap: break-word; /* Ensures text does not overflow */
+  margin: 5px auto;
+  max-width: 90%;
   text-align: center;
 }
-
 /* Ensure the page layout allows the footer to stay at the bottom */
 html, body {
   height: 100%;
@@ -64,7 +61,6 @@ html, body {
 /* Default logo styling */
 .footer-logo {
   height: 50px;
-  width: auto;
   max-width: 150px; /* Prevents logos from being too large */
   object-fit: contain; /* Keeps aspect ratio intact */
 }
@@ -74,12 +70,11 @@ html, body {
 @media screen and (max-width: 600px) {
   .footer {
     font-size: 10px; /* Smaller text for better readability */
-    padding: 20px; /* More spacing to prevent text cutoff */
     flex-wrap: wrap;
   }
 
   .footer p {
-    max-width: 100%; /* Ensures text doesn't overflow */
+    max-width: 90%; /* Ensures text doesn't overflow */
     word-break: break-word; /* Breaks long words correctly */
   }
 
@@ -88,8 +83,7 @@ html, body {
   }
 
   .footer-logo {
-    height: 40px; /* Slightly smaller logos on mobile */
-    max-width: 45%; /* Allows two logos per row when space permits */
+    height: 45px; /* Slightly smaller logos on mobile */
     min-width: 100px; /* Prevents logos from shrinking too much */
   }
 }
