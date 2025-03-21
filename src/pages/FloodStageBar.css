@@ -79,6 +79,7 @@
   .flood-stage-bar {
     flex-direction: column; /* Stack sections vertically */
     height: auto; /* Let it grow based on content */
+    flex-direction: column-reverse;
     
   }
 
