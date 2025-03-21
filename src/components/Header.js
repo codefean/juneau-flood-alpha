@@ -6,7 +6,9 @@ const Header = () => {
   return (
     <header className="header">
       <div className="header-image">
+      <a href="https://akcasc.org/" target="_blank" rel="noopener noreferrer">
         <img src="/ACASC2.png" alt="Alaska Climate Adaptation Science Center Logo" />
+        </a>
       </div>
       <div className="header-title">
         <h1>Juneau Glacial Flood Dashboard</h1>

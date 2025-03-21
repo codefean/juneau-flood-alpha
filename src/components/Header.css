@@ -27,14 +27,14 @@
   display: none; /* Hide by default on small screens */
   align-items: center;
   padding-top: 5px;     /* Add padding to top */
-  padding-bottom: 5px;
+
 }
 
 /* Default image scaling for mobile */
 .header-image img {
   width: auto;
   height: auto;
-  max-height: 79px; /* Adjust for mobile */
+  max-height: 78px; /* Adjust for mobile */
   max-width: 100%;
 }
 
