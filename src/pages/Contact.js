@@ -19,9 +19,6 @@ const Contact = () => {
         </a>
       </p>
 
-      <p className="contact-text">
-        This project is funded for by the Climate Adaptation Science Center
-      </p>
     </div>
   );
 };
