@@ -11,7 +11,10 @@ const Header = () => {
         </a>
       </div>
       <div className="header-title">
-        <h1>Juneau Glacial Flood Dashboard</h1>
+      <h1 onClick={() => window.location.href = 'https://www.juneauflood.com/#/flood-levels'} style={{ cursor: 'pointer' }}>
+  Juneau Glacial Flood Dashboard
+</h1>
+
       </div>
       <FloodWarn />
     </header>
