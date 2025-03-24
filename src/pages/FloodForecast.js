@@ -149,7 +149,7 @@ const FloodPrediction = () => {
                   className="flood-image suicide-basin-image"
                   onError={(e) => (e.target.src = "/fallback-image.jpg")}
                 />
-                <p className="image-caption">Latest USGS Image of Suicide Basin</p>
+                <p className="image-caption">Latest USGS Image of Suicide Basin (Online Spring - Fall)</p>
 
                 <Tooltip
                   markers={markers.suicideBasin}
@@ -171,7 +171,7 @@ const FloodPrediction = () => {
                 style={{ width: "92%", maxWidth: "900px", height: "auto" }}
                 onError={(e) => (e.target.src = "/fallback-image.jpg")}
               />
-              <p className="image-caption">Latest Water Elevation Chart for Suicide Basin Glacial Lake</p>
+              <p className="image-caption">Latest Water Elevation Chart for Suicide Basin Glacial Lake (Online Spring - Fall)</p>
             </div>
           </div>
         </div>
