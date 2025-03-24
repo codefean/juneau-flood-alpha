@@ -124,7 +124,7 @@ const FloodPrediction = () => {
       {/* Suicide Basin Section */}
       <div className="detail-card black-text large-text">
       <p>
-  <strong>Suicide Basin Monitoring:</strong> The US Geological Survey (USGS) uses time-lapse cameras to take daily images with an elevation scale bar to track water levels visually. Additionally, the USGS tracks precise water elevation in the basin using a tool called a laser range finder. However, floating icebergs can cause sudden changes in readings, either raising or lowering recorded levels due to the icebergsʼ varying heights.
+  <strong>Suicide Basin Monitoring:</strong> The US Geological Survey (USGS) uses time-lapse cameras to take daily images with an elevation scale bar to track water levels visually. Additionally, the USGS tracks precise water elevation in the basin using a tool called a laser range finder. However, floating icebergs can cause sudden changes in readings, either raising or lowering recorded levels due to the icebergsʼ varying heights. USGS monitors of Suicide Basin are online between Spring - Fall.
   <br /><br />
   <strong>Mendenhall Lake Monitoring:</strong> The USGS also monitors water levels at a point along the west shore of Mendenhall Lake. If an outburst flood from Suicide Basin occurred, lake water levels help researchers understand the severity of the flood around the lake and downstream. 
 </p>
