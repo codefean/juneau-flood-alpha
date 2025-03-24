@@ -23,6 +23,9 @@ const Footer = () => {
         <a href="https://www.usgs.gov/" target="_blank" rel="noopener noreferrer">
           <img src="/logos/USGS.png" alt="USGS Logo" className="footer-logo" />
         </a>
+        <a href="https://www.weather.gov/" target="_blank" rel="noopener noreferrer">
+          <img src="/logos/NWS.png" alt="NWS Logo" className="footer-logo" />
+        </a>
       </div>
 
       <p>

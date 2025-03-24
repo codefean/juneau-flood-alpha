@@ -42,7 +42,7 @@ const Navigation = () => {
             rel="noopener noreferrer"
             className="external-link"
           >
-            The Flood Story
+            Flood Story
           </a>
         </li>
         <li>

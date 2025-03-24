@@ -5,7 +5,7 @@
 }
 
 /* Responsive Styles */
-@media (max-width: 800px) {
+@media (max-width: 865px) {
   .navigation {
     padding: 0px 10px; /* Thinner on mobile */
     max-height: 55px;
@@ -55,7 +55,7 @@
 
 
 /* Responsive Styles */
-@media (max-width: 768px) {
+@media (max-width: 830px) {
   .navigation .menu-toggle {
     display: block; /* Show the menu toggle on smaller screens */
   }

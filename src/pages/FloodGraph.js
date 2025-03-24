@@ -163,7 +163,7 @@ const FloodGraph = () => {
                   dataKey="x"
                   name="Peak Water Level Date"
                   label={{
-                    value: "Peak Water Level Date",
+                    value: "Peak Lake Water Level Date",
                     position: "bottom",
                     style: { fontWeight: "bold", fill: "black" },
                   }}
@@ -173,7 +173,7 @@ const FloodGraph = () => {
                   dataKey="y"
                   name="Peak Water Level Stage (ft)"
                   label={{
-                    value: "Peak Water Level Stage (ft)",
+                    value: "Peak Lake Water Level Stage (ft)",
                     angle: -90,
                     position: "outsideLeft",
                     dx: -25,
