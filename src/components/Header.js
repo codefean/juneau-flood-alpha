@@ -12,7 +12,7 @@ const Header = () => {
       </div>
       <div className="header-title">
       <h1 onClick={() => window.location.href = 'https://www.juneauflood.com/#/flood-levels'} style={{ cursor: 'pointer' }}>
-  Juneau Glacial Flood Dashboard
+  Juneau Glacial Flood Dashboard <span style={{ fontWeight: "normal" }}>BETA</span>
 </h1>
 
       </div>

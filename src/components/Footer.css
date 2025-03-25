@@ -60,7 +60,7 @@ html, body {
 
 /* Default logo styling */
 .footer-logo {
-  height: 50px;
+  max-height: 100px;
   max-width: 150px; /* Prevents logos from being too large */
   object-fit: contain; /* Keeps aspect ratio intact */
 }

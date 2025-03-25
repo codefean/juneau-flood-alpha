@@ -16,35 +16,45 @@ const Navigation = () => {
       </span>
       <ul className={isMenuOpen ? "open" : ""}>
         <li>
-          <NavLink to="/flood-levels" activeClassName="active-link">
+          <NavLink
+            to="/flood-levels"
+            className={({ isActive }) => (isActive ? "active-link" : "")}
+          >
             Flood Map
           </NavLink>
         </li>
         <li>
-          <NavLink to="/flood-forecast" activeClassName="active-link">
+          <NavLink
+            to="/flood-forecast"
+            className={({ isActive }) => (isActive ? "active-link" : "")}
+          >
             Flood Forecasting
           </NavLink>
         </li>
         <li>
-          <NavLink to="/flood-events" activeClassName="active-link">
+          <NavLink
+            to="/flood-events"
+            className={({ isActive }) => (isActive ? "active-link" : "")}
+          >
             Flood Events
           </NavLink>
         </li>
         <li>
-          <NavLink to="/suicide-basin" activeClassName="active-link">
+          <NavLink
+            to="/suicide-basin"
+            className={({ isActive }) => (isActive ? "active-link" : "")}
+          >
             Suicide Basin
           </NavLink>
         </li>
-        <li>
-          <a
-            href="https://www.arcgis.com/apps/Cascade/index.html?appid=ad88fd5ccd7848139315f42f49343bb5"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="external-link"
+        {/* <li>
+          <NavLink
+            to="/FAQ"
+            className={({ isActive }) => (isActive ? "active-link" : "")}
           >
-            Flood Story
-          </a>
-        </li>
+            FAQ
+          </NavLink>
+        </li> */}
         <li>
           <NavLink
             to="/contact"
@@ -59,3 +69,4 @@ const Navigation = () => {
 };
 
 export default Navigation;
+

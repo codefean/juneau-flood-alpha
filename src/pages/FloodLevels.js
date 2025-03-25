@@ -49,6 +49,7 @@ const FloodLevels = () => {
   const [waterLevels, setWaterLevels] = useState([]);
   const toggleMenu = () => {setMenuOpen((prev) => !prev);};
 
+
   // Fetch water levels from USGS API
   useEffect(() => {
     const fetchWaterLevels = async () => {

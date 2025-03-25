@@ -7,6 +7,7 @@ import FloodLevels from "./pages/FloodLevels";
 import FloodForecast from "./pages/FloodForecast";
 import FloodEvents from "./pages/FloodEvents";
 import SuicideBasin from "./pages/SuicideBasin";
+import FAQ from "./pages/FAQ";
 import ContactPage from "./pages/Contact";
 import Footer from "./components/Footer";
 
@@ -33,10 +34,14 @@ const FloodEventsPage = () => {
   return <FloodEvents />;
 };
 
-// ✅ Renamed to avoid conflict with the imported SuicideBasin component
 const SuicideBasinPage = () => {
   useDocumentTitle("Suicide Basin");
   return <SuicideBasin />;
+};
+
+const FAQPage = () => {
+  useDocumentTitle("FAQ");
+  return <FAQ />;
 };
 
 
@@ -53,6 +58,7 @@ const App2 = () => {
         <Route path="/flood-forecast" element={<FloodPredictionPage />} />
         <Route path="/flood-events" element={<FloodEventsPage />} />
         <Route path="/suicide-basin" element={<SuicideBasinPage />} />
+        <Route path="/FAQ" element={<FAQPage />} />
         <Route path="/contact" element={<ContactPage />} />
         </Routes>
         </div>
