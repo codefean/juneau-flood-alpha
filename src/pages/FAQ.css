@@ -27,25 +27,6 @@
   font-family: 'Open Sans', sans-serif;
 }
 
-/* FAQ Entry Block */
-.FAQ-entry {
-  margin-bottom: 30px;
-}
-
-/* Question */
-.FAQ-question-static {
-  font-weight: bold;
-  font-size: 1.2rem;
-  margin-bottom: 8px;
-  color: #000;
-}
-
-/* Answer */
-.FAQ-answer-static {
-  font-size: 1rem;
-  color: #333;
-  line-height: 1.6;
-}
 
 /* About FAQ Block */
 .about-FAQ-card {
@@ -60,18 +41,56 @@
   margin-top: 7px;
 }
 
-/* About FAQ Title Inside Card */
-.about-FAQ-card h3 {
-  font-size: 1.5rem;
-  color: #154f89;
-  margin-bottom: 10px;
-}
 
 /* About FAQ Text */
 .about-FAQ-card p {
   font-size: 1.1rem;
   color: #000000;
 }
+
+.FAQ-table-card {
+  background-color: #ffffff;
+  border-radius: 12px;
+  overflow: hidden;
+  text-align: left;
+}
+
+.FAQ-row {
+  padding: 1.2rem 1.5rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  position: relative;
+}
+
+.FAQ-row:hover {
+  background-color: #c8c3fb6c;
+}
+
+.FAQ-question {
+  font-weight: 700;
+}
+
+.FAQ-answer {
+  margin-top: 0.5rem;
+  max-height: 0;
+  overflow: hidden;
+  font-size: 1rem;
+  color: #000000;
+  transition: max-height 0.3s ease, opacity 0.3s ease;
+  opacity: 0;
+}
+
+.FAQ-row.open .FAQ-answer {
+  max-height: 500px;
+  opacity: 1;
+}
+
+.FAQ-divider {
+  height: 1px;
+  background-color: #e0e0e0;
+  margin-top: 1rem;
+}
+
 
 /* Responsive Typography */
 @media (max-width: 600px) {
