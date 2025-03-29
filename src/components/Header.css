@@ -8,17 +8,30 @@
   justify-content: center;
   font-family: 'Open Sans', Arial, sans-serif;
   position: relative;
-  flex-wrap: nowrap;
+  flex-wrap: wrap; /* Allow wrapping for mobile */
 }
 
-/* Title stays centered */
+/* Title stays centered and adapts to screen size */
 .header-title {
   flex-grow: 1;
   display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
+  padding: 0 10px;
 }
+
+/* Responsive text inside header */
+.header-title h1,
+.header-title h2,
+.header-title h3,
+.header-title p,
+.header-title div {
+  font-size: clamp(1rem, 5vw, 2rem); /* Scales between 1rem and 2rem */
+  margin: 0;
+  word-break: break-word;
+}
+
 
 /* Logo styles */
 .header-image {

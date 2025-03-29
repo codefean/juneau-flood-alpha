@@ -23,20 +23,20 @@ const Footer = () => {
         <a href="https://www.usgs.gov/" target="_blank" rel="noopener noreferrer">
           <img src="/logos/USGS.png" alt="USGS Logo" className="footer-logo" />
         </a>
-        <a href="https://www.weather.gov/" target="_blank" rel="noopener noreferrer">
+        <a href="https://www.weather.gov/juneau/" target="_blank" rel="noopener noreferrer">
           <img src="/logos/NWS.png" alt="NWS Logo" className="footer-logo" />
         </a>
         <a href="https://www.juneau.org/" target="_blank" rel="noopener noreferrer">
           <img src="/logos/juneau.png" alt="CBJ Logo" className="footer-logo" />
+        </a>
+        <a href="https://www.nsf.gov/" target="_blank" rel="noopener noreferrer">
+          <img src="/logos/NSF.png" alt="NSF Logo" className="footer-logo" />
         </a>
        
       </div>
 
       <p>
         AK CASC is a partnership between the University of Alaska and the USGS, and is hosted at the UAF International Arctic Research Center.
-      </p>
-      <p>
-        <strong>University Host Location:</strong> UAF Troth Yeddha' Campus, 2160 Koyukuk Drive • PO Box 757245, Fairbanks, AK 99775-7245
       </p>
       <p>
         The <a href="https://www.alaska.edu/alaska" target="_blank" rel="noopener noreferrer"><strong>University of Alaska</strong></a> is an Equal Opportunity/Equal Access Employer and Educational Institution.
