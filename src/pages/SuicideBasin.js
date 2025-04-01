@@ -8,6 +8,8 @@ const SuicideBasin = () => {
   const beforeImage = "https://basin-images.s3.us-east-2.amazonaws.com/1893_glacier.png";
   const afterImage = "https://basin-images.s3.us-east-2.amazonaws.com/2018_glacier.png";
 
+
+
 // AWS S3 Image URLs for GLOF slider
 const images = [
  
@@ -38,6 +40,9 @@ const images = [
     },
 
   ];
+
+
+  
   
 
   // Track current slide index
@@ -126,6 +131,30 @@ const images = [
           <h3>{images[currentSlide].title}</h3>
           <p>{images[currentSlide].description}</p>
         </div>
+
+        {/* Live View Section */}
+        <div className="centered-text-block">
+  <h2 className="glof-h2">Live View: Suicide Basin & Mendenhall Glacier</h2>
+  <p className="suicide-basin-subheading">Real-time USGS Images <span> - Updates from Spring to Fall</span></p>
+</div>
+
+        <div className="live-view-container">
+        <div className="live-image">
+          <img src={timelapse1Url} alt="Live view of glacial lake near Nugget Creek" />
+          <a href="https://waterdata.usgs.gov/monitoring-location/1505248590/#dataTypeId=continuous-00020-0&period=P7D&showMedian=true" target="_blank" rel="noopener noreferrer">
+          <h3>Suicide Basin</h3>
+          </a>
+        </div>
+
+        <div className="live-image">
+          <img src={timelapse2Url} alt="Live upstream view of Mendenhall Glacier" />
+          <a href="https://waterdata.usgs.gov/monitoring-location/1505248590/#dataTypeId=continuous-00020-0&period=P7D&showMedian=true" target="_blank" rel="noopener noreferrer">
+          <h3>Looking Up Mendenhall Glacier</h3>
+          </a>
+
+        </div>
+        </div>
+
       </div>
 
 

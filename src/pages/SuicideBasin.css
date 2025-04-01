@@ -1,7 +1,13 @@
+/* ===============================
+   Imports
+================================ */
 @import "~slick-carousel/slick/slick.css";
 @import "~slick-carousel/slick/slick-theme.css";
 
-/* Apply existing flood-events-container styles */
+
+/* ===============================
+   Layout: Suicide Basin Container
+================================ */
 .suicide-basin-container {
   padding: 20px;
   padding-left: max(10px, 2vw);
@@ -10,16 +16,34 @@
   text-align: center;
 }
 
-/* Title Styling */
-.suicide-basin h2 {
+
+/* ===============================
+   Headings & Subheadings
+================================ */
+.suicide-basin h2,
+.glof-h2,
+.live-view-title {
   text-align: center;
-  margin: -14px 0 -10px;
-  font-size: 2.4rem;
   color: #154f89;
+  font-weight: bold;
 }
 
-/* Subheading Styling */
-.suicide-basin-subheading {
+.suicide-basin h2 {
+  margin: -14px 0 -10px;
+  font-size: 2.4rem;
+}
+
+.glof-h2 {
+  font-size: 1.9rem;
+  margin-bottom: -5px;
+}
+
+.live-view-title {
+  font-size: 1.9rem;
+}
+
+.suicide-basin-subheading,
+.live-view-subtitle {
   text-align: center;
   font-size: 1.3rem;
   color: #0e2b4a;
@@ -28,7 +52,10 @@
   font-family: 'Open Sans', sans-serif;
 }
 
-/* Center the Image Comparison Slider */
+
+/* ===============================
+   Image Comparison Section
+================================ */
 .image-comparison-container {
   display: flex;
   justify-content: center;
@@ -39,7 +66,6 @@
   overflow: hidden;
 }
 
-/* Image Caption Styling */
 .basin-image-caption {
   text-align: center;
   font-size: 18px;
@@ -48,56 +74,50 @@
   margin-top: -5px;
 }
 
-.glof-h2 {
-  text-align: center;
-  font-size: 1.9rem; /* Increased size for better visibility */
-  color: #154f89;
+
+/* ===============================
+   Suicide Basin Info Card
+================================ */
+.suicide-basin-info-card {
+  max-width: 1310px;
+  margin: 20px auto -10px;
+  padding: 15px 20px;
+  text-align: left;
+  background: #f4f5f5;
+  border-radius: 8px;
+  font-size: 1.2rem;
+  color: #000000;
+  line-height: 1.2;
+}
+
+.suicide-basin-info-title {
+  font-size: 1.5rem;
   font-weight: bold;
-  margin-bottom: -5px;
+  color: #154f89;
+  margin-bottom: 10px;
 }
 
-/* Decrease font size on smaller screens */
-@media (max-width: 768px) {
-  .glof-h2 {
-    font-size: 1.5rem;
-  }
-}
 
-/* Default GLOF Section Layout */
+/* ===============================
+   GLOF Section
+================================ */
 .glof-content {
   display: flex;
   justify-content: center;
-  align-items: stretch; /* Ensures equal height for slider and card */
+  align-items: stretch;
   gap: 20px;
   flex-wrap: wrap;
   margin-top: 10px;
 }
 
-/* Ensure GLOF Slider Resizes Properly */
 .glof-slider {
   flex: 1;
   width: 100%;
-  max-width: 1000px; /* Increased for larger images */
+  max-width: 1000px;
   text-align: center;
   position: relative;
 }
 
-/* Center the Info Card on Smaller Screens */
-@media (max-width: 1394px) {
-  .glof-content {
-    flex-direction: column;
-    align-items: center; /* Centers the entire info card below the slider */
-    text-align: center;
-  }
-
-  .glof-info-card {
-    width: 95%; /* Allows it to expand to nearly full width */
-    max-width: 1050px !important; /* Ensures it doesn't stretch too far */
-    text-align: left; /* Keeps text left-aligned for readability */
-    padding: 20px; /* Improves spacing */
-  }
-}
-/* Larger images with improved aspect ratio */
 .glof-slider .slick-slide img {
   width: 100%;
   height: auto;
@@ -107,28 +127,27 @@
   border-radius: 8px;
 }
 
+.centered-text-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: -30px;
+  margin-top: 15px;
+}
 
 .glof-info-card {
-  flex-direction: column; /* Ensures content stacks properly */
+  flex-direction: column;
   background: #f4f5f5;
   padding: 15px;
   border-radius: 6px;
   max-height: 500px !important;
-  margin-top: 10px;
-  margin-bottom: 10px;
-  margin-left: -10px;
+  margin: 10px -10px;
   color: #000000;
+  max-width: 300px;
+  text-align: left;
 }
 
-/* Improve readability on larger screens */
-@media (min-width: 768px) {
-  .glof-info-card {
-    max-width: 300px; /* Fix width on larger screens */
-    text-align: left;
-  }
-}
-
-/* Info Card Heading */
 .glof-info-card h3 {
   font-size: 1.3rem;
   color: #154f89;
@@ -136,14 +155,15 @@
   text-align: center;
 }
 
-/* Info Card Text */
 .glof-info-card p {
-  font-size: 1.1rem; /* Slightly reduced for better fit */
-  color: #000000;
+  font-size: 1.1rem;
   line-height: 1.5;
 }
 
-/* ===== Positioning Arrows Inside the Image ===== */
+
+/* ===============================
+   Slider Arrows
+================================ */
 .slider-arrow {
   position: absolute;
   top: 50%;
@@ -161,18 +181,151 @@
   color: rgb(23, 117, 232);
 }
 
-/* Left Arrow */
 .prev {
   left: 10px;
 }
 
-/* Right Arrow */
 .next {
   right: 10px;
 }
 
-/* Adjust arrow size & position for smaller screens */
+
+/* ===============================
+   Live View Section
+================================ */
+.live-view-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-top: -10px;
+}
+
+.suicide-basin-subheading span {
+  font-weight: normal;
+  /* Optional: match rest of text style */
+  color: inherit;
+  font-size: inherit;
+}
+
+
+.live-image {
+  flex: 1;
+  max-width: 45%;
+  text-align: center;
+  margin-top: 45px;
+}
+
+.live-image img {
+  width: 100%;
+  height: auto;
+  border-radius: 6px;
+  object-fit: cover;
+  max-height: 450px;
+}
+
+.live-image h3 {
+  font-size: 1.1rem;
+  color: #000000;
+  font-weight: bold;
+  margin-bottom: 5px;
+  margin-top: -2px;
+}
+
+
+/* ===============================
+   Responsive Styles
+================================ */
+@media (max-width: 1394px) {
+  .glof-content {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .glof-info-card {
+    width: 95%;
+    max-width: 1050px !important;
+    padding: 20px;
+  }
+}
+
 @media (max-width: 768px) {
+  html {
+    font-size: 14px;
+  }
+
+  .suicide-basin-container {
+    padding: 15px;
+  }
+
+  .suicide-basin h2 {
+    font-size: 2rem;
+  }
+
+  .suicide-basin-subheading,
+  .live-view-subtitle {
+    font-size: 1.2rem;
+  }
+
+  .image-comparison-container {
+    flex-direction: column;
+    max-width: 100%;
+    margin: 15px auto;
+  }
+
+  .basin-image-caption {
+    font-size: 13px;
+  }
+
+  .glof-h2 {
+    font-size: 1.5rem;
+  }
+
+  .glof-content {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .glof-slider {
+    max-width: 95%;
+  }
+
+  .glof-info-card {
+    max-width: 90%;
+    text-align: center;
+    padding: 15px;
+  }
+
+  .glof-info-card h3 {
+    font-size: 1.4rem;
+  }
+
+  .glof-info-card p {
+    font-size: 1rem;
+  }
+
+  .suicide-basin-info-card {
+    max-width: 90%;
+    font-size: 1rem;
+    padding: 15px;
+  }
+
+  .live-view-title {
+    font-size: 1.9rem;
+    margin-top: 10px;
+  }
+
+  .live-view-container {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .live-image {
+    max-width: 90%;
+  }
+
   .slider-arrow {
     font-size: 2rem;
   }
@@ -187,68 +340,6 @@
 }
 
 @media (max-width: 480px) {
-  .slider-arrow {
-    font-size: 1.5rem;
-  }
-}
-
-/* ===== Responsive Adjustments ===== */
-@media (max-width: 768px) {
-  .suicide-basin-container {
-    padding: 15px;
-  }
-
-  .suicide-basin h2 {
-    font-size: 2rem;
-  }
-
-  .suicide-basin-subheading {
-    font-size: 1.2rem;
-  }
-
-  .image-comparison-container {
-    flex-direction: column;
-    max-width: 100%;
-    margin: 15px auto;
-  }
-
-  .basin-image-caption {
-    font-size: 13px;
-  }
-
-  /* Stack Image & Info Card */
-  .glof-content {
-    flex-direction: column;
-    gap: 15px;
-  }
-
-  .glof-slider {
-    max-width: 95%;
-  }
-
-  .glof-info-card {
-    max-width: 90%; /* Adjusted for smaller screens */
-    text-align: center;
-  }
-
-  .glof-info-card h3 {
-    font-size: 1.4rem;
-  }
-
-  .glof-info-card p {
-    font-size: 1rem;
-  }
-}
-
-@media (max-width: 480px) {
-  html {
-    font-size: 14px; /* Adjust base font size for better scaling */
-  }
-
-  .suicide-basin-container {
-    padding: 10px;
-  }
-
   .suicide-basin h2 {
     font-size: 1.9rem;
     margin-top: 5px;
@@ -258,21 +349,8 @@
     font-size: 1rem;
   }
 
-  .image-comparison-container {
-    margin: 10px auto;
-  }
-
   .basin-image-caption {
     font-size: 12px;
-  }
-
-  .glof-slider {
-    max-width: 100%;
-  }
-
-  .glof-info-card {
-    max-width: 90%;
-    padding: 15px;
   }
 
   .glof-info-card h3 {
@@ -282,99 +360,8 @@
   .glof-info-card p {
     font-size: 1rem;
   }
-}
 
-/* Suicide Basin Info Card */
-.suicide-basin-info-card {
-  max-width: 1310px; /* Matches image slider width */
-  margin: 20px auto; /* Centers the card */
-  padding: 15px 20px;
-  text-align: left;
-  background: #f4f5f5; /* Light gray background */
-  border-radius: 8px;
-  font-size: 1.2rem;
-  color: #000000;
-  line-height: 1.2;
-  margin-top: -10px;
-}
-
-.suicide-basin-info-title {
-  font-size: 1.5rem;
-  font-weight: bold;
-  color: #154f89; /* Match the theme */
-  margin-bottom: 10px; /* Add spacing below title */
-}
-
-/* Adjust for Smaller Screens */
-@media (max-width: 768px) {
-  .suicide-basin-info-card {
-    max-width: 90%; /* Make it slightly smaller on mobile */
-    font-size: 1rem;
-    padding: 15px;
-  }
-}
-
-/* Live View Section */
-.live-view-title {
-  text-align: center;
-  font-size: 1.9rem; /* Default size for larger screens */
-  color: #154f89;
-  font-weight: bold;
-  margin-bottom: -5px;
-  margin-top: 75px;
-}
-
-/* Adjust font size for mobile screens */
-@media (max-width: 768px) {
-  .live-view-title {
-    font-size: 1.9rem;
-    margin-top: 10px; /* Smaller size for better readability on mobile */
-  }
-}
-
-/* Live View Section */
-.live-view-container {
-  display: flex;
-  justify-content: center; /* Centers content horizontally */
-  align-items: center; /* Align items vertically */
-  gap: 20px; /* Adds spacing between images */
-  flex-wrap: wrap; /* Ensures images stack on smaller screens */
-  margin-top: -10px;
-}
-
-.live-image {
-  flex: 1;
-  max-width: 45%; /* Ensures two images fit side by side */
-  text-align: center;
-}
-
-.live-image img {
-  width: 100%;
-  height: auto;
-  border-radius: 6px;
-  object-fit: cover;
-  max-height: 450px;
-}
-
-/* Styling for Live View h3 Titles */
-.live-image h3 {
-  font-size: 1.1rem;
-  color: #000000;
-  font-weight: bold;
-  text-align: center;
-  margin-bottom: 5px;
-}
-
-
-
-/* Adjust layout for smaller screens */
-@media (max-width: 768px) {
-  .live-view-container {
-    flex-direction: column;
-    gap: 10px;
-  }
-
-  .live-image {
-    max-width: 90%; /* Allow images to take up more width */
+  .slider-arrow {
+    font-size: 1.5rem;
   }
 }

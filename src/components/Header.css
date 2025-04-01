@@ -47,7 +47,7 @@
 .header-image img {
   width: auto;
   height: auto;
-  max-height: 75px; /* Adjust for mobile */
+  max-height: 70px; /* Adjust for mobile */
   max-width: 100%;
 }
 

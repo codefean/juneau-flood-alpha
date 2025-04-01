@@ -13,6 +13,7 @@
     "react-compare-image": "^3.5.0",
     "react-dom": "^18.3.1",
     "react-icons": "^5.5.0",
+    "react-responsive-carousel": "^3.2.23",
     "react-router-dom": "^7.1.1",
     "react-scripts": "^5.0.1",
     "react-slick": "^0.30.3",
@@ -21,14 +22,13 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-  "start": "react-scripts start",
-  "build": "react-scripts build",
-  "test": "react-scripts test",
-  "eject": "react-scripts eject",
-  "predeploy": "npm run build && cp public/CNAME build/CNAME",
-  "deploy": "gh-pages -d build"
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build && cp public/CNAME build/CNAME",
+    "deploy": "gh-pages -d build"
   },
-
   "eslintConfig": {
     "extends": [
       "react-app",

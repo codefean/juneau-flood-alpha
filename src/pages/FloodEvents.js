@@ -3,6 +3,7 @@ import Papa from "papaparse";
 import FloodGraph from "./FloodGraph";
 import FloodTable from "./FloodTable";
 import "./FloodEvents.css";
+import FloodImages from "./FloodImages";
 
 const S3_CSV_URL = "https://flood-events.s3.us-east-2.amazonaws.com/FloodEvents.csv";
 
@@ -83,8 +84,7 @@ const FloodEvents = () => {
     <div className="flood-events-container">
       <h2 className="flood-events-title">Historical Outburst Flood Data</h2>
       <h2 className="flood-events-subheading">Learn About Past Glacial Outburst Flood Events</h2>
-
-
+  
       <div className="flood-cards-container">
         {latestFloodEvent && (
           <div className="floodcard last-glof">
@@ -93,7 +93,7 @@ const FloodEvents = () => {
             <p><strong>Duration:</strong> {latestFloodEvent["Release Start Date"]} -- {latestFloodEvent["Peak Water Level Date"]}</p>
           </div>
         )}
-
+  
         {largestFloodEvent && (
           <div className="floodcard largest-glof">
             <h2 className="flood-card">Largest Flood Event</h2>
@@ -102,20 +102,25 @@ const FloodEvents = () => {
           </div>
         )}
       </div>
-
+  
       {/* About This Page Card */}
       <div className="about-floods-card">
         <p>
-        This page provides historical data on glacial lake outburst flood events that raised water levels at Mendenhall Lake to over 8ft (Action Stage). You can explore past flood events, visualize trends, and view important details such as peak water levels and flow rates in Mendenhall River.
+          This page provides historical data on glacial lake outburst flood events that raised water levels at Mendenhall Lake to over 8ft (Action Stage). You can explore past flood events, visualize trends, and view important details such as peak water levels and flow rates in Mendenhall River.
         </p>
       </div>
-
+  
       <div className="visuals-container">
         <FloodGraph scatterData={scatterData} />
       </div>
+  
       <FloodTable headers={headers} data={data} loading={loading} />
+  
+      {/* ✅ Move FloodImages inside the main container */}
+      <FloodImages />
     </div>
   );
+  
 };
 
 export default FloodEvents;
