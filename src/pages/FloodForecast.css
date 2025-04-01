@@ -121,25 +121,7 @@ body {
   text-align: left;
   max-height: 400px;
   overflow-y: auto;
-}
-
-/* Detail Card Scrollbar */
-.detail-card::-webkit-scrollbar {
-  width: 6px;
-}
-
-.detail-card::-webkit-scrollbar-track {
-  background: #f1f1f1;
-  border-radius: 4px;
-}
-
-.detail-card::-webkit-scrollbar-thumb {
-  background: #888;
-  border-radius: 4px;
-}
-
-.detail-card::-webkit-scrollbar-thumb:hover {
-  background: #555;
+  font-size: 16.9px;
 }
 
 /* Flooding Info */

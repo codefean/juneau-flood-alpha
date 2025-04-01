@@ -6,10 +6,10 @@ const faqData = [
   {
     question: "What is a GLOF?",
     answer:
-      "A glacial lake outburst flood occurs when the ice dam containing a glacial lake fails, causing a sudden release of water.",
+      "Glacial lake outburst floods (GLOFs) happen when ice-dammed or moraine-dammed lakes suddenly release large volumes of water, often due to the failure of an ice dam. Ice dams are particularly prone to sudden collapse as water pressure builds and carves a path beneath or around the glacier, triggering rapid drainage and flooding downstream.",
   },
   {
-    question: "What causes the annual GLOFs in Suicide Basin?",
+    question: "Why are GLOFs occuring annually in Suicide Basin?",
     answer:
       "Common causes include ice or rock avalanches into the lake, rapid snowmelt, heavy rainfall, or internal weakening of the dam structure.",
   },
@@ -23,11 +23,11 @@ const faqData = [
       "Once the glacial dam bursts and water is released from Suicide Basin, it takes around 40 hours for the water to reach Mendenhall Valley.",
   },
   {
-    question: "XYZ",
-    answer: "123",
+    question: "How will climate change affect glacial lake outburst floods?",
+    answer: "Climate change is causing Alaska's glaciers to thin and recede, reducing the size and volume of ice-dammed lakes and leading to fewer or smaller GLOFs over time. However, new glacial lakes may form in different areas as glaciers retreat, and even small GLOFs can pose serious threats to nearby communities and ecosystems.",
   },
   {
-    question: "ABC",
+    question: "How is Suicide Basin monitored?",
     answer: "789",
   },
 ];
