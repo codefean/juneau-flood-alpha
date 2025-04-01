@@ -296,7 +296,7 @@ useEffect(() => {
                 name="searchAddress"
                 value={address}
                 onChange={(e) => setAddress(e.target.value)}
-                placeholder="Enter address..."
+                placeholder="Enter address (optional)"
                 className="search-bar"
                 autoComplete="on"
               />

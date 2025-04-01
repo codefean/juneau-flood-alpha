@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./FAQ.css";
-import ResourceLinksSection from "./ResourceLinksSection"; // Import reusable component
+import ResourceLinksSection from "./ResourceLinksSection";
 
 const faqData = [
   {
@@ -21,6 +21,14 @@ const faqData = [
     question: "How long does it take the water from Suicide Basin to Mendenhall Valley?",
     answer:
       "Once the glacial dam bursts and water is released from Suicide Basin, it takes around 40 hours for the water to reach Mendenhall Valley.",
+  },
+  {
+    question: "XYZ",
+    answer: "123",
+  },
+  {
+    question: "ABC",
+    answer: "789",
   },
 ];
 
@@ -47,41 +55,31 @@ const resourceLinks = [
 
 const educationLinks = [
   {
-    title: "What is a GLOF? (USGS)",
+    title: "What is a GLOF?",
     url: "https://www.usgs.gov/news/national-news-release/usgs-researchers-track-glacier-lake-outburst-floods",
     icon: "",
     color: "#1f77b4",
   },
   {
-    title: "Suicide Basin Research",
-    url: "https://blogs.agu.org/thefield/2023/07/31/suicide-basin-glacier-dynamics/",
+    title: "The Flood Story",
+    url: "https://www.arcgis.com/apps/Cascade/index.html?appid=ad88fd5ccd7848139315f42f49343bb5",
     icon: "",
     color: "#1f77b4",
   },
   {
     title: "Glacier Terminology",
-    url: "https://nsidc.org/learn/parts-cryosphere/glaciers/glacier-terminology",
+    url: "https://pubs.usgs.gov/of/2004/1216/",
     icon: "",
     color: "#1f77b4",
   },
 ];
 
-
-
 const FAQ = () => {
   const [openIndex, setOpenIndex] = useState(null);
-  const [mobileLinksOpen, setMobileLinksOpen] = useState(false);
 
   const toggleFAQ = (index) => {
     setOpenIndex(openIndex === index ? null : index);
-    setTimeout(() => {
-      const el = document.getElementById(`faq-answer-${index}`);
-      if (el && openIndex !== index) {
-        el.scrollIntoView({ behavior: "smooth", block: "start" });
-      }
-    }, 10);
   };
-  
 
   const handleKeyDown = (e, index) => {
     if (e.key === "Enter") {
@@ -91,89 +89,67 @@ const FAQ = () => {
 
   return (
     <div className="FAQ-wrapper">
-      {/* Desktop Sidebar */}
-      <div className="FAQ-fixed-sidebar desktop">
-        <ResourceLinksSection title="Safety Resources" links={resourceLinks} />
-        <div className="faq-margin-top">
-          <ResourceLinksSection
-            title="Educational Resources"
-            links={educationLinks}
-            className="FAQ-fixed-sidebar-education"
-          />
-        </div>
-      </div>
-
-      {/* Main FAQ Content */}
+      {/* Left side: Main content */}
       <div className="FAQ-container">
         <h2 className="FAQ-title">Frequently Asked Questions</h2>
         <h3 className="FAQ-subheading">Additional Information & Resources</h3>
 
         <div className="FAQ-main-content">
-          <div className="FAQ-left">
-            <div className="FAQ-left-inner">
-              <div className="about-FAQ-card">
-                <p>
-                  This page provides information regarding glacial lake outburst floods (GLOFs), ongoing
-                  research in Suicide Basin, and additional resources.
-                </p>
-              </div>
+          <div className="FAQ-left-inner">
+            <div className="about-FAQ-card">
+              <p>
+                This page provides information regarding glacial lake outburst floods (GLOFs), ongoing
+                research in Suicide Basin, and additional resources.
+              </p>
+            </div>
 
-              <div className="FAQ-table-card">
-                {faqData.map((faq, index) => (
-                  <div
-                    key={index}
-                    className={`FAQ-row ${openIndex === index ? "open" : ""}`}
-                    role="button"
-                    tabIndex={0}
-                    onClick={() => toggleFAQ(index)}
-                    onKeyDown={(e) => handleKeyDown(e, index)}
-                    aria-expanded={openIndex === index}
-                    aria-controls={`faq-answer-${index}`}
-                  >
-                    <div className="FAQ-question">
-                      {faq.question}
-                      <span className="FAQ-toggle-icon">
-                        {openIndex === index ? "−" : "+"}
-                      </span>
-                    </div>
-                    <div
-                      id={`faq-answer-${index}`}
-                      className="FAQ-answer"
-                      hidden={openIndex !== index}
-                    >
-                      {faq.answer}
-                    </div>
-                    {index !== faqData.length - 1 && <div className="FAQ-divider" />}
+            <div className="FAQ-table-card">
+              {faqData.map((faq, index) => (
+                <div
+                  key={index}
+                  className={`FAQ-row ${openIndex === index ? "open" : ""}`}
+                  role="button"
+                  tabIndex={0}
+                  onClick={() => toggleFAQ(index)}
+                  onKeyDown={(e) => handleKeyDown(e, index)}
+                  aria-expanded={openIndex === index}
+                  aria-controls={`faq-answer-${index}`}
+                >
+                  <div className="FAQ-question">
+                    {faq.question}
+                    <span className="FAQ-toggle-icon">
+                      {openIndex === index ? "−" : "+"}
+                    </span>
                   </div>
-                ))}
+                  <div
+                    id={`faq-answer-${index}`}
+                    className="FAQ-answer"
+                    hidden={openIndex !== index}
+                  >
+                    {faq.answer}
+                  </div>
+                  {index !== faqData.length - 1 && <div className="FAQ-divider" />}
+                </div>
+              ))}
+            </div>
+
+            {/* Mobile Resource Links */}
+            <div className="FAQ-resource-links-mobile">
+              <ResourceLinksSection title="Flood Safety Resources" links={resourceLinks} />
+              <div className="faq-margin-top">
+                <ResourceLinksSection title="Educational Resources" links={educationLinks} />
               </div>
             </div>
           </div>
         </div>
+      </div>
 
-        {/* Mobile Toggle Button */}
-        <button
-          className="FAQ-mobile-toggle"
-          onClick={() => setMobileLinksOpen(!mobileLinksOpen)}
-        >
-          {mobileLinksOpen ? "Close Resources" : "Open Additional Resources"}
-        </button>
-
-        {/* Mobile Resource Sections */}
-        {mobileLinksOpen && (
-          <>
-            <ResourceLinksSection
-              title="Safety Resources"
-              links={resourceLinks}
-              className="mobile"
-            />
-            <ResourceLinksSection
-              title="Educational Resources"
-              links={educationLinks}
-              className="mobile"
-            />
-          </>
-        )}
+      {/* Desktop Sidebar */}
+      <div className="FAQ-fixed-sidebar-resources">
+        <ResourceLinksSection title="Flood Safety Resources" links={resourceLinks} />
+      </div>
+      <div className="FAQ-fixed-sidebar-education">
+        <ResourceLinksSection title="Educational Resources" links={educationLinks} />
       </div>
     </div>
   );
