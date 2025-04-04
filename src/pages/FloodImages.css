@@ -8,20 +8,20 @@
 }
 
 .flood-image-title {
-  text-align: left;
+  text-align: center;
   font-size: 22px;
   font-weight: bold;
-  padding-left: 40px;
-  margin-left: 30px;
+
+
   margin-bottom: 1px;
   color: rgb(0, 0, 0);
 }
 
 .flood-image-subtitle {
-  text-align: left;
+  text-align: center;
   font-size: 16px;
-  padding-left: 40px;
-  margin-left: 30px;
+
+
   color: #154f89;
   margin-top: 1px;
   margin-bottom: 1px;
