@@ -128,6 +128,24 @@ const FloodLevels = () => {
     };
   });
 
+  const stages = [
+    { label: "No Flood Stage", range: [0, 8], color: "#28a745", info: "Water level is below flood risk (0ft - 8ft)" },
+    { label: "Action Stage", range: [8, 9], color: "#e9f502", info: "Flooding risk starts (8ft - 9ft)" },
+    { label: "Minor Flood Stage", range: [9, 10], color: "#F4A100", info: "Flooding risk 9ft - 10ft" },
+    { label: "Moderate Flood Stage", range: [10, 14], color: "#E2371D", info: "Flooding risk 10ft - 14ft" },
+    { label: "Major Flood Stage", range: [14, Infinity], color: "#9419A3", info: "Flooding risk 14ft+" },
+  ];
+
+  const getFloodStage = (level) => {
+    const numericLevel = parseFloat(level);
+    if (isNaN(numericLevel)) return null;
+  
+    return stages.find(
+      (stage) => numericLevel >= stage.range[0] && numericLevel < stage.range[1]
+    );
+  };
+  
+
   // Fetch water levels from USGS API
   useEffect(() => {
     const fetchWaterLevels = async () => {
@@ -351,31 +369,33 @@ floodLevels.forEach((flood) => {
 
   return (
     <div>
-      <FloodInfoPopup /> 
+      <FloodInfoPopup />
   
       <div id="map" ref={mapContainerRef} style={{ height: '90vh', width: '100vw' }} />
   
-      {/* Toggle Button */}
+      {/* Toggle Menu Button */}
       <button onClick={toggleMenu} className="menu-toggle-button">
         {menuOpen ? 'Hide Menu' : 'Show Menu'}
       </button>
   
-      <div className={`flood-stepper-container`}>
-      <FloodStepper
-  mapRef={mapRef}
-  selectedFloodLevel={selectedFloodLevel}
-  setSelectedFloodLevel={setSelectedFloodLevel} // ✅ New
-  isMenuHidden={!menuOpen}
-  hideOnDesktop={true}
-  hescoMode={hescoMode}
-/>
-
-
+      <div className="flood-stepper-container">
+        <FloodStepper
+          mapRef={mapRef}
+          selectedFloodLevel={selectedFloodLevel}
+          setSelectedFloodLevel={setSelectedFloodLevel}
+          isMenuHidden={!menuOpen}
+          hideOnDesktop={true}
+          hescoMode={hescoMode}
+        />
       </div>
   
       {/* Menu Container */}
       {menuOpen && (
-        <div id="controls" style={{ position: 'absolute', top: '160px', left: '15px', zIndex: 1 }}>
+        <div
+          id="controls"
+          style={{ position: 'absolute', top: '160px', left: '15px', zIndex: 1 }}
+        >
+          {/* Search Address */}
           <div style={{ marginTop: '10px' }}>
             <div className="search-container">
               <form
@@ -394,84 +414,108 @@ floodLevels.forEach((flood) => {
                 className="search-bar"
                 autoComplete="on"
               />
-              <button onClick={searchAddress} disabled={isSearching} className="search-button">
+              <button
+                onClick={searchAddress}
+                disabled={isSearching}
+                className="search-button"
+              >
                 {isSearching ? 'Search' : 'Search'}
               </button>
             </div>
-            
-            {errorMessage && <div style={{ color: 'red', marginTop: '10px' }}>{errorMessage}</div>}
-          </div>
-
-          
-
   
-          <div>
-                  <FloodStepper
-          mapRef={mapRef}
-          selectedFloodLevel={selectedFloodLevel}
-          setSelectedFloodLevel={setSelectedFloodLevel} // ✅ New
-          isMenuHidden={!menuOpen}
-          hideOnDesktop={false}
-          hescoMode={hescoMode}
-        />
-
+            {errorMessage && (
+              <div style={{ color: 'red', marginTop: '10px' }}>{errorMessage}</div>
+            )}
           </div>
-
-        
+  
+          {/* Flood Stepper (Desktop) */}
+          <FloodStepper
+            mapRef={mapRef}
+            selectedFloodLevel={selectedFloodLevel}
+            setSelectedFloodLevel={setSelectedFloodLevel}
+            isMenuHidden={!menuOpen}
+            hideOnDesktop={false}
+            hescoMode={hescoMode}
+          />
+  
+          {/* HESCO Toggle Button with Tooltip */}
           <button
+            title="HESCO maps will be available in May"
             onClick={toggleHescoMode}
             className={`hesco-toggle-button ${hescoMode ? 'hesco-on' : 'hesco-off'}`}
             disabled={loadingLayers}
           >
             {loadingLayers
-              ? "Loading HESCO Data…"
+              ? 'Loading HESCO Data…'
               : hescoMode
-              ? "HESCO Barriers ON"
-              : "HESCO Barriers OFF"}
+              ? 'HESCO Barriers ON'
+              : 'HESCO Barriers OFF'}
           </button>
-
-
-
+  
+          {/* Flood Stage Menu */}
           {menuOpen && <FloodStageMenu setFloodLevelFromMenu={setSelectedFloodLevel} />}
   
+          {/* Level Card Display */}
           <div style={{ marginTop: '20px' }}>
-          <div>
-  {waterLevels.map((level) => (
-    <div key={level.id} className="level-card">
-      <p>
-        <a 
-          href="https://waterdata.usgs.gov/monitoring-location/15052500/#dataTypeId=continuous-00065--1654777834&period=P7D&showMedian=false" 
-          target="_blank" 
-          rel="noopener noreferrer"
-          style={{color: 'black'}}
-        >
-          Current Lake Level:
-        </a> 
-        {` ${level.value} ft`}
-      </p>
-      <p>
-        <a 
-          href="https://water.noaa.gov/gauges/jsbA2" 
-          target="_blank" 
-          rel="noopener noreferrer"
-          style={{color: 'black' }}
-        >
-          Forecasted Lake Level:
-        </a> 
-        {` NA`}
-      </p>
-      <p style={{ fontSize: '0.85rem' }}>
-  {level.dateTime ? new Date(level.dateTime).toLocaleString() : 'N/A'}
-</p>
-    </div>
-  ))}
-</div>
-
+            <div>
+              {waterLevels.map((level) => {
+                const stages = [
+                  { label: 'No Flood Stage', range: [0, 8], color: '#28a745' },
+                  { label: 'Action Stage', range: [8, 9], color: '#e9f502' },
+                  { label: 'Minor Flood Stage', range: [9, 10], color: '#F4A100' },
+                  { label: 'Moderate Flood Stage', range: [10, 14], color: '#E2371D' },
+                  { label: 'Major Flood Stage', range: [14, Infinity], color: '#9419A3' },
+                ];
+  
+                const getFloodStage = (value) => {
+                  const numericLevel = parseFloat(value);
+                  if (isNaN(numericLevel)) return null;
+                  return stages.find(
+                    (stage) =>
+                      numericLevel >= stage.range[0] && numericLevel < stage.range[1]
+                  );
+                };
+  
+                const currentStage = getFloodStage(level.value);
+  
+                return (
+                  <div key={level.id} className="level-card">
+                    <p>
+                      <a
+                        href="https://waterdata.usgs.gov/monitoring-location/15052500/#dataTypeId=continuous-00065--1654777834&period=P7D&showMedian=false"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        style={{ color: 'black' }}
+                      >
+                         Current Lake Level:
+                      </a>{' '}
+                      <strong>{` ${level.value} ft`}</strong>
+                    </p>
+  
+                    <p>
+                      Flood Stage:<strong>{' '}</strong>
+                      <span style={{ color: currentStage?.color || 'black' }}>
+                      <strong>{currentStage?.label || 'Unknown'}</strong>
+                      </span>
+                    </p>
+  
+                  
+  
+                    <p style={{ fontSize: '0.85rem' }}>
+                      {level.dateTime
+                        ? new Date(level.dateTime).toLocaleString()
+                        : 'N/A'}
+                    </p>
+                  </div>
+                );
+              })}
+            </div>
           </div>
         </div>
       )}
     </div>
-  );  
+  );
+  
 };
 
 

@@ -37,6 +37,7 @@ const FloodStageBar = () => {
     }
   };
 
+
   useEffect(() => {
     fetchWaterLevels();
     const interval = setInterval(fetchWaterLevels, 5 * 60 * 1000);

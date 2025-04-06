@@ -246,6 +246,7 @@ header h1 {
 /* HESCO On = bright green */
 .hesco-on {
   background-color: #28a745 !important;
+  
 }
 
 .hesco-off:hover {
