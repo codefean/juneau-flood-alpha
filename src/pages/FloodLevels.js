@@ -6,49 +6,110 @@ import FloodStageMenu from './FloodStageMenu'; // Import the FloodStageMenu comp
 import FloodStepper from './FloodStepper';
 import FloodInfoPopup from "./FloodInfoPopup";
 
+//cd /Users/seanfagan/Desktop/juneau-flood-alpha
 
-// cd /Users/seanfagan/Desktop/juneau-flood-alpha
-
-const S3_BASE_URL = "https://flood-data.s3.us-east-2.amazonaws.com";
 
 const customColors = [
-  "#c3b91e", // Yellow-Green (9 ft)
-  "#e68a1e", // Orange (10 ft)
-  "#f4a700", // Bright Orange (11 ft)
-  "#23b7c8", // Cyan (12 ft)
-  "#0056d6", // Blue (13 ft)
-  "#d63b3b", // Red (14 ft)
-  "#9b3dbd", // Purple (15 ft)
-  "#d94a8c", // Pink (16 ft)
-  "#3cb043", // Green (17 ft)
-  "#2abf72", // Light Green (18 ft)
+  "#c3b91e", "#e68a1e", "#f4a700", "#23b7c8", "#0056d6",
+  "#d63b3b", "#9b3dbd", "#d94a8c", "#3cb043", "#2abf72"
 ];
-
-const floodLevels = Array.from({ length: 10 }, (_, i) => {
-  const floodLevel = 9 + i; // Start at 9 ft
-  const geojsonLevel = 65 + i; // Start at 65.geojson for 9 ft
-
-  return {
-    id: `flood${geojsonLevel}`,
-    name: `${floodLevel} ft`,
-    geojson: `${S3_BASE_URL}/${geojsonLevel}.geojson`, // Fetch from S3
-    color: customColors[i], // Apply colors correctly
-  };
-});
-
-
 
 const FloodLevels = () => {
   const mapContainerRef = useRef(null);
   const [selectedFloodLevel, setSelectedFloodLevel] = useState(9);
   const [menuOpen, setMenuOpen] = useState(true);
+  const [hescoMode, setHescoMode] = useState(false); // 
+  const [floodLayersLoaded, setFloodLayersLoaded] = useState(false); //
   const mapRef = useRef(null);
   const [address, setAddress] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
   const [isSearching, setIsSearching] = useState(false);
   const [waterLevels, setWaterLevels] = useState([]);
-  const toggleMenu = () => {setMenuOpen((prev) => !prev);};
 
+  const toggleMenu = () => {
+    setMenuOpen((prev) => !prev);
+  };
+
+const toggleHescoMode = () => {
+  const newMode = !hescoMode;
+  setHescoMode(newMode);
+  setFloodLayersLoaded(false);
+
+  const newBucket = newMode
+    ? "https://flood-data-hesco.s3.us-east-2.amazonaws.com"
+    : "https://flood-data.s3.us-east-2.amazonaws.com";
+
+  if (mapRef.current) {
+    // Always clear current flood layers
+    floodLevels.forEach((flood) => {
+      const layerId = `${flood.id}-fill`;
+      const sourceId = flood.id;
+
+      if (mapRef.current.getLayer(layerId)) {
+        mapRef.current.removeLayer(layerId);
+      }
+      if (mapRef.current.getSource(sourceId)) {
+        mapRef.current.removeSource(sourceId);
+      }
+
+      // Build GeoJSON URL from the other bucket
+      const geojsonLevel = flood.id.replace("flood", "");
+      const newGeojsonUrl = `${newBucket}/${geojsonLevel}.geojson`;
+
+      // Fetch and add new layer from the updated bucket
+      fetch(newGeojsonUrl)
+        .then((response) => {
+          if (!response.ok) throw new Error("GeoJSON not found");
+
+          return response.json();
+        })
+        .then((data) => {
+          mapRef.current.addSource(sourceId, {
+            type: "geojson",
+            data: data,
+          });
+
+          mapRef.current.addLayer({
+            id: layerId,
+            type: "fill",
+            source: sourceId,
+            layout: {},
+            paint: {
+              "fill-color": flood.color,
+              "fill-opacity": 0.5,
+            },
+          });
+
+          if (flood.id === `flood${65 + (selectedFloodLevel - 9)}`) {
+            mapRef.current.setLayoutProperty(layerId, 'visibility', 'visible');
+          } else {
+            mapRef.current.setLayoutProperty(layerId, 'visibility', 'none');
+          }
+        })
+        .catch((err) => {
+          console.warn(`Could not load ${newGeojsonUrl}:`, err.message);
+        });
+    });
+  }
+};
+
+  
+  
+
+  const currentBucket = hescoMode
+    ? "https://flood-data-hesco.s3.us-east-2.amazonaws.com"
+    : "https://flood-data.s3.us-east-2.amazonaws.com";
+
+  const floodLevels = Array.from({ length: 10 }, (_, i) => {
+    const floodLevel = 9 + i;
+    const geojsonLevel = 65 + i;
+    return {
+      id: `flood${geojsonLevel}`,
+      name: `${floodLevel} ft`,
+      geojson: `${currentBucket}/${geojsonLevel}.geojson`,
+      color: customColors[i],
+    };
+  });
 
   // Fetch water levels from USGS API
   useEffect(() => {
@@ -135,25 +196,33 @@ useEffect(() => {
 
     mapRef.current.on('load', () => {
       // Add flood levels as geojson layers
-      floodLevels.forEach((flood) => {
-        mapRef.current.addSource(flood.id, {
-          type: 'geojson',
-          data: flood.geojson,
-        });
+      // Inside the mapRef.current.on('load') function, remove previous layers
+floodLevels.forEach((flood) => {
+  // Check if the layer already exists
+  if (mapRef.current.getLayer(`${flood.id}-fill`)) {
+    mapRef.current.removeLayer(`${flood.id}-fill`);
+    mapRef.current.removeSource(flood.id); // Remove source as well
+  }
 
-        mapRef.current.addLayer({
-          id: `${flood.id}-fill`,
-          type: 'fill',
-          source: flood.id,
-          layout: {},
-          paint: {
-            'fill-color': flood.color,
-            'fill-opacity': 0.5,
-          },
-        });
+  mapRef.current.addSource(flood.id, {
+    type: 'geojson',
+    data: flood.geojson,
+  });
 
-        mapRef.current.setLayoutProperty(`${flood.id}-fill`, 'visibility', 'none');
-      });
+  mapRef.current.addLayer({
+    id: `${flood.id}-fill`,
+    type: 'fill',
+    source: flood.id,
+    layout: {},
+    paint: {
+      'fill-color': flood.color,
+      'fill-opacity': 0.5,
+    },
+  });
+
+  mapRef.current.setLayoutProperty(`${flood.id}-fill`, 'visibility', 'none');
+});
+
 
       // Add hover popup logic
       const hoverPopup = new mapboxgl.Popup({
@@ -265,7 +334,6 @@ useEffect(() => {
 
   return (
     <div>
-      {/* Desktop pop-up for instructions */}
       <FloodInfoPopup /> 
   
       <div id="map" ref={mapContainerRef} style={{ height: '90vh', width: '100vw' }} />
@@ -276,7 +344,16 @@ useEffect(() => {
       </button>
   
       <div className={`flood-stepper-container`}>
-        <FloodStepper mapRef={mapRef} selectedFloodLevel={selectedFloodLevel} hideOnDesktop={true} />
+      <FloodStepper
+  mapRef={mapRef}
+  selectedFloodLevel={selectedFloodLevel}
+  setSelectedFloodLevel={setSelectedFloodLevel} // ✅ New
+  isMenuHidden={!menuOpen}
+  hideOnDesktop={true}
+  hescoMode={hescoMode}
+/>
+
+
       </div>
   
       {/* Menu Container */}
@@ -307,11 +384,31 @@ useEffect(() => {
             
             {errorMessage && <div style={{ color: 'red', marginTop: '10px' }}>{errorMessage}</div>}
           </div>
+
+          
+
   
           <div>
-            <FloodStepper mapRef={mapRef} selectedFloodLevel={selectedFloodLevel} isMenuHidden={!menuOpen} />
+                  <FloodStepper
+          mapRef={mapRef}
+          selectedFloodLevel={selectedFloodLevel}
+          setSelectedFloodLevel={setSelectedFloodLevel} // ✅ New
+          isMenuHidden={!menuOpen}
+          hideOnDesktop={false}
+          hescoMode={hescoMode}
+        />
+
           </div>
-  
+
+        
+          <button
+  onClick={toggleHescoMode}
+  className={`hesco-toggle-button ${hescoMode ? 'hesco-on' : 'hesco-off'}`}
+>
+  {hescoMode ? 'HESCO Barriers ON' : 'HESCO Barriers OFF'}
+</button>
+
+
           {menuOpen && <FloodStageMenu setFloodLevelFromMenu={setSelectedFloodLevel} />}
   
           <div style={{ marginTop: '20px' }}>
@@ -353,5 +450,6 @@ useEffect(() => {
     </div>
   );  
 };
+
 
 export default FloodLevels;
