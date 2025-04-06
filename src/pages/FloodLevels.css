@@ -286,7 +286,7 @@ header h1 {
   }
 
   .level-card {
-    margin-top: -25px !important;
+    display: none;
   }
 
   .hesco-toggle-container {

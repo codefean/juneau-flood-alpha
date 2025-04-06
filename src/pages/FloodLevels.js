@@ -25,73 +25,90 @@ const FloodLevels = () => {
   const [errorMessage, setErrorMessage] = useState('');
   const [isSearching, setIsSearching] = useState(false);
   const [waterLevels, setWaterLevels] = useState([]);
+  const [loadingLayers, setLoadingLayers] = useState(false);
+
 
   const toggleMenu = () => {
     setMenuOpen((prev) => !prev);
   };
 
-const toggleHescoMode = () => {
-  const newMode = !hescoMode;
-  setHescoMode(newMode);
-  setFloodLayersLoaded(false);
-
-  const newBucket = newMode
-    ? "https://flood-data-hesco.s3.us-east-2.amazonaws.com"
-    : "https://flood-data.s3.us-east-2.amazonaws.com";
-
-  if (mapRef.current) {
-    // Always clear current flood layers
+  const toggleHescoMode = () => {
+    const newMode = !hescoMode;
+    setHescoMode(newMode);
+    setFloodLayersLoaded(false);
+    setLoadingLayers(true);
+  
+    const newBucket = newMode
+      ? "https://flood-data-hesco.s3.us-east-2.amazonaws.com"
+      : "https://flood-data.s3.us-east-2.amazonaws.com";
+  
+    if (!mapRef.current) return;
+  
+    // Clear existing layers
     floodLevels.forEach((flood) => {
       const layerId = `${flood.id}-fill`;
       const sourceId = flood.id;
-
+  
       if (mapRef.current.getLayer(layerId)) {
         mapRef.current.removeLayer(layerId);
       }
       if (mapRef.current.getSource(sourceId)) {
         mapRef.current.removeSource(sourceId);
       }
-
-      // Build GeoJSON URL from the other bucket
+    });
+  
+    // Reload layers with staggered timing
+    floodLevels.forEach((flood, index) => {
+      const layerId = `${flood.id}-fill`;
+      const sourceId = flood.id;
       const geojsonLevel = flood.id.replace("flood", "");
       const newGeojsonUrl = `${newBucket}/${geojsonLevel}.geojson`;
-
-      // Fetch and add new layer from the updated bucket
-      fetch(newGeojsonUrl)
-        .then((response) => {
-          if (!response.ok) throw new Error("GeoJSON not found");
-
-          return response.json();
-        })
-        .then((data) => {
-          mapRef.current.addSource(sourceId, {
-            type: "geojson",
-            data: data,
+  
+      setTimeout(() => {
+        fetch(newGeojsonUrl)
+          .then((response) => {
+            if (!response.ok) throw new Error("GeoJSON not found");
+            return response.json();
+          })
+          .then((data) => {
+            if (!mapRef.current.getSource(sourceId)) {
+              mapRef.current.addSource(sourceId, {
+                type: "geojson",
+                data,
+              });
+  
+              mapRef.current.addLayer({
+                id: layerId,
+                type: "fill",
+                source: sourceId,
+                layout: {},
+                paint: {
+                  "fill-color": flood.color,
+                  "fill-opacity": 0.5,
+                },
+              });
+  
+              mapRef.current.setLayoutProperty(
+                layerId,
+                "visibility",
+                flood.id === `flood${65 + (selectedFloodLevel - 9)}`
+                  ? "visible"
+                  : "none"
+              );
+            }
+          })
+          .catch((err) => {
+            console.warn(`Could not load ${newGeojsonUrl}:`, err.message);
           });
-
-          mapRef.current.addLayer({
-            id: layerId,
-            type: "fill",
-            source: sourceId,
-            layout: {},
-            paint: {
-              "fill-color": flood.color,
-              "fill-opacity": 0.5,
-            },
-          });
-
-          if (flood.id === `flood${65 + (selectedFloodLevel - 9)}`) {
-            mapRef.current.setLayoutProperty(layerId, 'visibility', 'visible');
-          } else {
-            mapRef.current.setLayoutProperty(layerId, 'visibility', 'none');
-          }
-        })
-        .catch((err) => {
-          console.warn(`Could not load ${newGeojsonUrl}:`, err.message);
-        });
+  
+        // If it's the last layer, turn off loading spinner
+        if (index === floodLevels.length - 1) {
+          setTimeout(() => setLoadingLayers(false), 200); // buffer to finish last paint
+        }
+      }, index * 150); // stagger loading
     });
-  }
-};
+  };
+  
 
   
   
@@ -402,11 +419,17 @@ floodLevels.forEach((flood) => {
 
         
           <button
-  onClick={toggleHescoMode}
-  className={`hesco-toggle-button ${hescoMode ? 'hesco-on' : 'hesco-off'}`}
->
-  {hescoMode ? 'HESCO Barriers ON' : 'HESCO Barriers OFF'}
-</button>
+            onClick={toggleHescoMode}
+            className={`hesco-toggle-button ${hescoMode ? 'hesco-on' : 'hesco-off'}`}
+            disabled={loadingLayers}
+          >
+            {loadingLayers
+              ? "Loading HESCO Data…"
+              : hescoMode
+              ? "HESCO Barriers ON"
+              : "HESCO Barriers OFF"}
+          </button>
+
 
 
           {menuOpen && <FloodStageMenu setFloodLevelFromMenu={setSelectedFloodLevel} />}
