@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
 import './FloodStageMenu.css';
 
-const FloodStageMenu = ({ setFloodLevelFromMenu }) => {
+const FloodStageMenu = ({ setFloodLevelFromMenu, onFloodLayerChange = () => {} }) => {
   const [expanded, setExpanded] = useState(null);
 
   const toggleAccordion = (section, floodLevel) => {
     setExpanded(expanded === section ? null : section);
     if (floodLevel && setFloodLevelFromMenu) {
       setFloodLevelFromMenu(floodLevel);
+      onFloodLayerChange(); // 👈 Rebind hover popup after level change
     }
   };
 

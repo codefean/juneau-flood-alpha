@@ -12,7 +12,8 @@ const FloodStepper = ({
   setSelectedFloodLevel,
   isMenuHidden,
   hideOnDesktop = false,
-  hescoMode = false
+  hescoMode = false,
+  onFloodLayerChange = () => {} // 👈 NEW: Callback to refresh hover logic
 }) => {
   const floodLevel = selectedFloodLevel;
   const [isLayerVisible, setIsLayerVisible] = useState(true);
@@ -58,7 +59,10 @@ const FloodStepper = ({
     if (mapRef.current.getLayer(layerId)) {
       mapRef.current.setLayoutProperty(layerId, 'visibility', 'visible');
     }
-  }, [mapRef, currentBucket]);
+
+    // 👇 Rebind hover popup after the layer is updated
+    onFloodLayerChange();
+  }, [mapRef, currentBucket, onFloodLayerChange]);
 
   // Update map layer when flood level or HESCO mode changes
   useEffect(() => {
@@ -83,7 +87,8 @@ const FloodStepper = ({
 
     setIsLayerVisible(!isLayerVisible);
     if (mapRef.current) {
-      mapRef.current.setLayoutProperty(layerId, 'visibility', newVisibility);
+      mapRef.current.setLayoutProperty(layerId, newVisibility);
+      onFloodLayerChange(); // 👈 Ensure hover popup gets refreshed
     }
   };
 
@@ -121,5 +126,3 @@ const FloodStepper = ({
 };
 
 export default FloodStepper;
-
-
