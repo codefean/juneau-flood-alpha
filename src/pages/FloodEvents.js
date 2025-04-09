@@ -116,8 +116,7 @@ const FloodEvents = () => {
   
       <FloodTable headers={headers} data={data} loading={loading} />
   
-      {/* ✅ Move FloodImages inside the main container */}
-      <FloodImages />
+
     </div>
   );
   

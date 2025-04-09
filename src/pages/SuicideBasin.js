@@ -155,7 +155,11 @@ const images = [
           <h3>Looking Up Mendenhall Glacier</h3>
           </a>
 
+          
+
         </div>
+
+        
         </div>
 
       </div>
