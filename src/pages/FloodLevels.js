@@ -30,37 +30,40 @@ const FloodLevels = () => {
 
   const toggleMenu = () => setMenuOpen((prev) => !prev);
 
-  const setupHoverPopup = useCallback(() => {
+  const setupHoverPopup = useCallback((activeLayerId) => {
     if (!mapRef.current) return;
-
-    mapRef.current.off('mousemove');
-    mapRef.current.off('mouseleave');
-
+  
+    const map = mapRef.current;
+  
+    if (!map.getLayer(activeLayerId)) {
+      console.warn(`Layer "${activeLayerId}" not found. Deferring hover popup setup.`);
+      // Try again after a brief delay
+      setTimeout(() => setupHoverPopup(activeLayerId), 250);
+      return;
+    }
+  
+    // Remove previous listeners for this layer
+    map.off('mousemove', activeLayerId);
+    map.off('mouseleave', activeLayerId);
+  
     const hoverPopup = new mapboxgl.Popup({
       closeButton: false,
       closeOnClick: false,
       offset: 10,
       className: 'hover-popup',
     });
-
-    mapRef.current.on('mousemove', (e) => {
-      const features = mapRef.current.queryRenderedFeatures(e.point, {
-        layers: Array.from({ length: 10 }, (_, i) => `flood${65 + i}-fill`)
-      });
-
-      if (features.length > 0) {
-        const feature = features[0];
-        const depth = feature.properties?.DN || 'Unknown';
-        hoverPopup.setLngLat(e.lngLat).setHTML(`<b>Water Depth: ${depth} ft</b>`).addTo(mapRef.current);
-      } else {
-        hoverPopup.remove();
-      }
+  
+    map.on('mousemove', activeLayerId, (e) => {
+      const feature = e.features?.[0];
+      const depth = feature?.properties?.DN || 'Unknown';
+      hoverPopup.setLngLat(e.lngLat).setHTML(`<b>Water Depth: ${depth} ft</b>`).addTo(map);
     });
-
-    mapRef.current.on('mouseleave', () => {
+  
+    map.on('mouseleave', activeLayerId, () => {
       hoverPopup.remove();
     });
   }, []);
+  
 
   const updateFloodLayers = (mode) => {
     setLoadingLayers(true);
@@ -116,7 +119,7 @@ const FloodLevels = () => {
                 id: layerId,
                 type: "fill",
                 source: sourceId,
-                layout: {},
+                layout: {visibility: "none", },
                 paint: {
                   "fill-color": flood.color,
                   "fill-opacity": 0.5,
@@ -138,8 +141,9 @@ const FloodLevels = () => {
             loadedCount++;
             if (loadedCount === totalFloods) {
               setLoadingLayers(false);
-              setupHoverPopup(); // This ensures hover always gets re-bound
-            }
+              const activeLayerId = `flood${65 + (selectedFloodLevel - 9)}-fill`;
+              setupHoverPopup(activeLayerId); // pass the currently visible layer
+            }            
           });
       });
     }, 300); 
@@ -149,13 +153,6 @@ const FloodLevels = () => {
   const toggleHescoMode = () => {
     setHescoMode((prev) => {
       const newMode = !prev;
-  
-      if (!newMode) {
-        // HESCO is being turned off → force full reload
-        window.location.reload();
-        return newMode;
-      }
-  
       updateFloodLayers(newMode);
       return newMode;
     });
@@ -316,6 +313,19 @@ const FloodLevels = () => {
     }
   };
 
+  const handleFloodLayerChange = useCallback(() => {
+    if (!selectedFloodLevel || isNaN(selectedFloodLevel)) return;
+  
+    const layerId = `flood${65 + (selectedFloodLevel - 9)}-fill`;
+  
+    if (mapRef.current?.getLayer(layerId)) {
+      setupHoverPopup(layerId);
+    } else {
+      console.warn(`Layer ${layerId} not found when setting up hover`);
+    }
+  }, [selectedFloodLevel, mapRef]);
+  
+
   return (
     <div>
       <FloodInfoPopup />
@@ -332,7 +342,8 @@ const FloodLevels = () => {
           isMenuHidden={!menuOpen}
           hideOnDesktop={true}
           hescoMode={hescoMode}
-          onFloodLayerChange={setupHoverPopup}
+          onFloodLayerChange={handleFloodLayerChange}
+
         />
       </div>
 
@@ -365,7 +376,8 @@ const FloodLevels = () => {
             isMenuHidden={!menuOpen}
             hideOnDesktop={false}
             hescoMode={hescoMode}
-            onFloodLayerChange={setupHoverPopup}
+            onFloodLayerChange={handleFloodLayerChange}
+
           />
 
           <button
@@ -383,7 +395,7 @@ const FloodLevels = () => {
 
           <FloodStageMenu 
           setFloodLevelFromMenu={setSelectedFloodLevel} 
-          onFloodLayerChange={setupHoverPopup}/>
+          onFloodLayerChange={() => setupHoverPopup(`flood${65 + (selectedFloodLevel - 9)}-fill`)}/>
 
           <div style={{ marginTop: '20px' }}>
             {waterLevels.map((level) => {

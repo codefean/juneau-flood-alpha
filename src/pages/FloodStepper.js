@@ -46,9 +46,12 @@ const FloodStepper = ({
     const layers = mapRef.current.getStyle().layers || [];
     layers.forEach((layer) => {
       if (layer.id.includes('flood') && layer.id.endsWith('-fill')) {
-        mapRef.current.setLayoutProperty(layer.id, 'visibility', 'none');
+        if (mapRef.current.getLayer(layer.id)) {
+          mapRef.current.setLayoutProperty(layer.id, 'visibility', 'none');
+        }
       }
     });
+    
 
     // Update source data if it exists
     if (mapRef.current.getSource(sourceId)) {
@@ -79,18 +82,19 @@ const FloodStepper = ({
     }
   };
 
-  // Toggle visibility of current flood layer
   const toggleFloodVisibility = () => {
     const geojsonLevel = 65 + (floodLevel - 9);
     const newVisibility = isLayerVisible ? 'none' : 'visible';
     const layerId = `flood${geojsonLevel}-fill`;
-
+  
     setIsLayerVisible(!isLayerVisible);
-    if (mapRef.current) {
-      mapRef.current.setLayoutProperty(layerId, newVisibility);
-      onFloodLayerChange(); // 👈 Ensure hover popup gets refreshed
+  
+    if (mapRef.current && mapRef.current.getLayer(layerId)) {
+      mapRef.current.setLayoutProperty(layerId, 'visibility', newVisibility); // ✅ Fixed here
+      onFloodLayerChange();
     }
   };
+  
 
   // Hide on desktop if specified
   if (hideOnDesktop && !isMobile) return null;
@@ -106,10 +110,15 @@ const FloodStepper = ({
           −
         </button>
         <div
-          className={`flood-level-card ${isLayerVisible ? '' : 'dimmed'}`}
-          style={{ backgroundColor: customColors[floodLevel - 9] }}
-          onClick={toggleFloodVisibility}
-        >
+  className={`flood-level-card ${isLayerVisible ? '' : 'dimmed'}`}
+  style={{ backgroundColor: customColors[floodLevel - 9] }}
+  onClick={() => {
+    const layerId = `flood${65 + (floodLevel - 9)}-fill`;
+    if (mapRef.current?.getLayer(layerId)) {
+      toggleFloodVisibility();
+    }
+  }}
+>
           <div className="water-text">Mendenhall Lake</div>
           {floodLevel} ft
         </div>

@@ -9,13 +9,19 @@
    Layout: Suicide Basin Container
 ================================ */
 .suicide-basin-container {
+  max-width: 1700px;
+  margin: 0 auto;
   padding: 20px;
   padding-left: max(10px, 2vw);
   padding-right: max(10px, 2vw);
   overflow-x: hidden;
   text-align: center;
+  box-sizing: border-box;
 }
 
+.text-center.mt-10 {
+  margin-top: 40px; /* or even 60px for extra breathing room */
+}
 
 /* ===============================
    Headings & Subheadings
@@ -251,6 +257,15 @@
   }
 }
 
+@media (max-width: 1394px) {
+  .glof-h2 {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+}
+
 @media (max-width: 768px) {
   html {
     font-size: 14px;
@@ -364,4 +379,24 @@
   .slider-arrow {
     font-size: 1.5rem;
   }
+}
+
+@media (max-width: 900px) {
+  .flood-section {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .centered-text-block {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+
+.page-wrapper {
+  max-width: 1700px;
+  margin: 0 auto;
+  padding: 0 20px; /* Optional: prevent content from touching edges on smaller screens */
+  box-sizing: border-box;
 }

@@ -81,6 +81,7 @@ const images = [
 
 
   return (
+    
     <div className="suicide-basin-container">
       {/* Title Section */}
       <div className="suicide-basin">
@@ -132,10 +133,12 @@ const images = [
           <p>{images[currentSlide].description}</p>
         </div>
 
-        {/* Live View Section */}
-        <div className="centered-text-block">
+
+<div className="text-center mt-10">
   <h2 className="glof-h2">Live View: Suicide Basin & Mendenhall Glacier</h2>
-  <p className="suicide-basin-subheading">Real-time USGS Images <span> - Updates from Spring to Fall</span></p>
+  <p className="suicide-basin-subheading">
+    Real-time USGS Images <span> - Updates from Spring to Fall</span>
+  </p>
 </div>
 
         <div className="live-view-container">
