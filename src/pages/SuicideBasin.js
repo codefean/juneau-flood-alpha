@@ -24,7 +24,7 @@ const images = [
       src: "https://basin-images.s3.us-east-2.amazonaws.com/GLOF_icewall.png",
       title: "2. Sudden Water Release: The Outburst Flood",
       description:
-        "As the water volume in Suicide Basin increases, buoyant pressure builds on the ice dam, eventually allowing water to escape underneath the glacier. As water flows beneath the Mendenhall Glacier, it creates friction which causes the drainage channels beneath the glacier to melt and grow wider. As a result, the rate at which water is released from the basin increases during drainage events."
+        "As the water volume in Suicide Basin increases, buoyant pressure builds on the ice dam, eventually allowing water to escape underneath the glacier in the form of drainage channels. As water flows through these subglacial channels, it creates friction which causes the drainage channels beneath the glacier to melt and grow wider. As a result, the rate at which water is released from the basin increases during drainage events."
     },
     {
       src: "https://www.climate.gov/sites/default/files/2024-08/SuicideBasinOutburst2024.gif",
@@ -152,7 +152,7 @@ const images = [
         <div className="live-image">
           <img src={timelapse2Url} alt="Live upstream view of Mendenhall Glacier" />
           <a href="https://waterdata.usgs.gov/monitoring-location/1505248590/#dataTypeId=continuous-00020-0&period=P7D&showMedian=true" target="_blank" rel="noopener noreferrer">
-          <h3>Looking Up Mendenhall Glacier</h3>
+          <h3>Mendenhall Glacier from Suicide Basin</h3>
           </a>
 
           

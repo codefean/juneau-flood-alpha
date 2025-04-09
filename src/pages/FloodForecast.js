@@ -186,10 +186,10 @@ const FloodPrediction = () => {
 
         <ul>
           <li>
-            <strong>Flood Potential:</strong> The volume of water and the release rate from Suicide Basin determine flooding severity. Three-dimensional terrain models created by using drones to survey the basin allow the volume of water stored in the basin to be estimated.
+            <strong>Flood Potential:</strong> The volume of water and the release rate from Suicide Basin determine flooding severity. By using drones to survey the basin, researchers can generate three-dimensional terrain models that help estimate the total water volume.
           </li>
           <li>
-            <strong>Changing Water Elevations:</strong> The basin’s water holding capacity changes over time as the Mendenhall Glacier thins and the basin expands outward into the glacier due to iceberg calving.
+            <strong>Changing Water Elevations:</strong> The basin's ability to store water changes over time due to thinning of the Mendenhall Glacier, outward expansion of the basin as icebergs calve (break off) from the Mendenhall Glacier and aw icebergs within Suicide Basin melt.
           </li>
           <li>
             <strong>Time to Prepare:</strong> Once drainage begins from Suicide Basin, floodwaters reach Mendenhall Lake in 1-2 days.
@@ -275,7 +275,6 @@ const FloodPrediction = () => {
 
 
       
-{/* New Info Card: Understanding Flood Stages */}
 <div className="detail-card black-text">
   <h2>Understanding Flood Stages</h2>
   <p>
@@ -284,23 +283,50 @@ const FloodPrediction = () => {
     The National Weather Service defines four primary flood categories: Action Stage, Minor, Moderate, and Major Flooding. The current flood stage and water level is shown above.
   </p>
 
-  <ul>
-    <li><strong>Action Stage (8 - 9ft):</strong> Water levels are elevated but remain below the minor flood threshold. This stage serves as an early warning to monitor conditions closely.</li>
-    <li><strong>Minor Flooding (9ft - 10ft):</strong> Low-lying areas may experience some water coverage, causing minor road flooding or inconvenience. Typically, property damage is minimal.</li>
-    <li><strong>Moderate Flooding (10ft - 14ft):</strong> Water begins inundating structures and roads near the river. Some evacuations might be necessary, and transportation disruptions are likely.</li>
-    <li><strong>Major Flooding (14ft+):</strong> Extensive flooding with a significant risk to homes, businesses, and infrastructure. Evacuations are often required, and severe damage may occur.</li>
-  </ul>
+  <div>
+    <strong>Action Stage (8 - 9ft):</strong> Water levels have reached flood potential. Residents should begin to take mitigation actions for flooding events based on their location.
+    <ul>
+      <li><strong>8 ft:</strong> No visible flooding.</li>
+    </ul>
+  </div>
 
-  <p>
-    Monitoring flood stages allows for proactive flood management, enabling timely warnings and preparedness measures to protect lives and property.
-  </p>
+  <div>
+    <strong>Minor Flooding (9 - 10ft):</strong> Low-lying areas may experience some water coverage, causing minor road flooding or inconvenience. Typically, property damage is minimal.
+    <ul>
+      <li><strong>9 ft:</strong> Water starts covering Skaters Cabin Road.</li>
+      <li><strong>9.5 ft:</strong> Minor yard flooding on View Dr; 0.5 ft of water on Skaters Cabin Road. Campsite 7 floods.</li>
+      <li><strong>10 ft:</strong> Mendenhall Campground low areas submerged up to 3 ft. Skaters Cabin Road under 1.5 ft of water. Some sections of West Glacier Trail impassable.</li>
+    </ul>
+  </div>
+
+  <div>
+    <strong>Moderate Flooding (10 - 14ft):</strong> Water begins inundating structures and roads near the river. Some evacuations might be necessary, and transportation disruptions are likely.
+    <ul>
+      <li><strong>11 ft:</strong> View Dr impassable. Severe bank erosion below Back Loop Bridge. Hazardous river navigation.</li>
+      <li><strong>12.5 ft:</strong> Meander Way (river side) under 2–4 ft of water. Flooding at Dredge Lake Trail System. Severe bank erosion.</li>
+      <li><strong>13 ft:</strong> View Dr backyards flood (1–4 ft). Meander Way, Stream Ct, and Northland St begin flooding. Storm drain backups on Riverside and Riverwood Dr.</li>
+      <li><strong>14 ft:</strong> Northland St, Turn St, Parkview & Center Ct flood. Meander Way under 1–2 ft of water.</li>
+    </ul>
+  </div>
+
+  <div>
+    <strong>Major Flooding (14ft+):</strong> Extensive flooding with a significant risk to homes, businesses, and infrastructure. Evacuations are often required, and severe damage may occur.
+    <ul>
+      <li><strong>14.5 ft:</strong> Meander Way under 2–4 ft of water. Significant flooding on View Dr.</li>
+      <li><strong>15 ft:</strong> Killewich Dr covered with up to 2 ft of water. Marion Dr backyards flood. 1.5 ft of water on Rivercourt Way, Lakeview Ct, Center Ct, Parkview Ct, Turn St & Northland St.</li>
+      <li><strong>15.5+ ft:</strong> Riverside Dr at Tournure St under 1 ft of water. Severe flooding impacts multiple homes.</li>
+    </ul>
+  </div>
+</div>
+
+
 
   <button className="more-data-button" onClick={() => window.open('https://water.noaa.gov/gauges/MNDA2')}>
     More Info
   </button>
 </div>
 
-    </div> 
+
   );
 };
 

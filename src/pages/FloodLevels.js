@@ -10,8 +10,16 @@ import { getFloodStage } from './utils/floodStages';
 // cd /Users/seanfagan/Desktop/juneau-flood-alpha
 
 const customColors = [
-  "#c3b91e", "#e68a1e", "#f4a700", "#23b7c8", "#0056d6",
-  "#d63b3b", "#9b3dbd", "#d94a8c", "#3cb043", "#2abf72"
+  "#c3b91e", // 1 - Mustard yellow (unchanged)
+  "#e68a1e", // 2 - Pumpkin orange (unchanged)
+  "#a1d99b", // 3 - Soft green (was amber, now more visible)
+  "#6baed6", // 4 - Sky blue (was bright cyan)
+  "#2171b5", // 5 - Blue (was royal blue)
+  "#d63b3b", // 6 - Red (unchanged)
+  "#9b3dbd", // 7 - Purple (unchanged)
+  "#fdae6b", // 8 - Light orange-peach (was magenta-pink)
+  "#31a354", // 9 - Strong green (was bright green)
+  "#74c476"  // 10 - Mint green (was sea green)
 ];
 
 const FloodLevels = () => {
