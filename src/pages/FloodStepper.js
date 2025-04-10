@@ -9,7 +9,7 @@ const customColors = [
   "#2171b5", // 5 - Blue (was royal blue)
   "#d63b3b", // 6 - Red (unchanged)
   "#9b3dbd", // 7 - Purple (unchanged)
-  "#fdae6b", // 8 - Light orange-peach (was magenta-pink)
+  "#cd94ff", // 8 - Light orange-peach (was magenta-pink)
   "#31a354", // 9 - Strong green (was bright green)
   "#74c476"  // 10 - Mint green (was sea green)
 ];

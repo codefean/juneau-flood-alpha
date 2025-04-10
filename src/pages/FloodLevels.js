@@ -17,7 +17,7 @@ const customColors = [
   "#2171b5", // 5 - Blue (was royal blue)
   "#d63b3b", // 6 - Red (unchanged)
   "#9b3dbd", // 7 - Purple (unchanged)
-  "#fdae6b", // 8 - Light orange-peach (was magenta-pink)
+  "#cd94ff", // 8 - Light orange-peach (was magenta-pink)
   "#31a354", // 9 - Strong green (was bright green)
   "#74c476"  // 10 - Mint green (was sea green)
 ];
@@ -161,10 +161,23 @@ const FloodLevels = () => {
   const toggleHescoMode = () => {
     setHescoMode((prev) => {
       const newMode = !prev;
-      updateFloodLayers(newMode);
+  
+      const isMobile = window.innerWidth < 768;
+  
+      if (!newMode && isMobile) {
+        // If HESCO is being turned OFF on mobile, refresh to prevent overload
+        window.location.reload();
+      } else {
+        updateFloodLayers(newMode);
+        // After flood layers are updated, reattach popup to visible layer
+        const visibleLayerId = `flood${65 + (selectedFloodLevel - 9)}-fill`;
+        setTimeout(() => setupHoverPopup(visibleLayerId), 300);
+      }
+  
       return newMode;
     });
   };
+  
   
 
   useEffect(() => {
