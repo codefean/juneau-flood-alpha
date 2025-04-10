@@ -430,13 +430,15 @@ const FloodLevels = () => {
                       rel="noopener noreferrer"
                       style={{ color: 'black' }}
                     >
-                      Current Lake Level:
+                      Lake Level:
                     </a>{' '}
                     <strong>{` ${level.value} ft`}</strong>
                   </p>
                   <p>
-                    Flood Stage: <span style={{ color: currentStage?.color || 'black' }}>
-                      <strong>{currentStage?.label || 'Unknown'}</strong>
+                    <span style={{ color: currentStage?.color || 'black' }}>
+                    <span style={{ fontSize: '1.2rem', fontWeight: 'bold' }}>
+                    {currentStage?.label || 'Unknown'}
+                  </span>
                     </span>
                   </p>
                   <p style={{ fontSize: '0.85rem' }}>

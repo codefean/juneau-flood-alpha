@@ -37,7 +37,7 @@ header h1 {
   background: rgba(255, 255, 255, 0.842);
   border-radius: 8px;
   font-size: 15px;
-  line-height: 1;
+  line-height: .8;
   font-family: 'Open Sans', sans-serif;
   color: #000;
   text-align: center;
@@ -284,10 +284,6 @@ header h1 {
     left: 15px;
     width: auto;
     z-index: 2;
-  }
-
-  .level-card {
-    display: none;
   }
 
   .hesco-toggle-container {
