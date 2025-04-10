@@ -61,6 +61,7 @@ header h1 {
   font-size: 16px;
   font-weight: 600;
   margin-bottom: 5px;
+  margin-top: 11px;
   color: #111;
 }
 
@@ -290,11 +291,63 @@ header h1 {
     justify-content: center;
   }
 
+  .level-card {
+    position: relative;
+    margin: -20px 0 10px 10px !important;
+    width: 280px;
+    background: rgba(255, 255, 255, 0.842);
+    border-radius: 8px;
+    font-size: 15px;
+    line-height: .7;
+    font-family: 'Open Sans', sans-serif;
+    color: #000;
+    text-align: center;
+    overflow: hidden;
+    transition: transform 0.2s ease;
+  }
+
+  .level-card h3 {
+    font-size: 20px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    margin: 0;
+    color: #000;
+  }
+  
+  .level-card p {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 5px;
+    margin-top: 11px;
+    color: #111;
+  }
+
   .hesco-toggle-button {
     width: 100%;
     font-size: 15px;
     margin-bottom: 30px;
     margin-top: 1px;
+  }
+
+  .search-container {
+    width: 310px;
+    max-width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    margin-top: -40px;
+  }
+  
+  .search-bar {
+    width: calc(var(--shared-width) - 70px);
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+    font-family: 'Open Sans', sans-serif;
+    margin-bottom: 15px;
+    transition: border-color 0.3s, box-shadow 0.3s;
   }
 
 }
