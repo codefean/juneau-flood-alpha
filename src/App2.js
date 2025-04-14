@@ -8,7 +8,7 @@ import FloodForecast from "./pages/FloodForecast";
 import FloodEvents from "./pages/FloodEvents";
 import SuicideBasin from "./pages/SuicideBasin";
 import FAQ from "./pages/FAQ";
-import ContactPage from "./pages/Contact";
+import Home from "./pages/Home";
 import Footer from "./components/Footer";
 
 // Custom hook for setting the document title
@@ -44,6 +44,11 @@ const FAQPage = () => {
   return <FAQ />;
 };
 
+const HomePage = () => {
+  useDocumentTitle("Home");
+  return <Home />;
+};
+
 
 const App2 = () => {
   return (
@@ -53,13 +58,13 @@ const App2 = () => {
         <Navigation />
         <div className="main-content">
         <Routes>
-        <Route path="/" element={<Navigate to="/flood-levels" />} />
-        <Route path="/flood-levels" element={<FloodLevelsPage />} />
+        <Route path="/" element={<Navigate to="/flood-map" />} />
+        <Route path="/flood-map" element={<FloodLevelsPage />} />
         <Route path="/flood-forecast" element={<FloodPredictionPage />} />
         <Route path="/flood-events" element={<FloodEventsPage />} />
         <Route path="/suicide-basin" element={<SuicideBasinPage />} />
         <Route path="/FAQ" element={<FAQPage />} />
-        <Route path="/contact" element={<ContactPage />} />
+        <Route path="/home" element={<HomePage />} />
         </Routes>
         </div>
         <Footer />

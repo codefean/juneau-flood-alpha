@@ -17,7 +17,7 @@ const Navigation = () => {
       <ul className={isMenuOpen ? "open" : ""}>
         <li>
           <NavLink
-            to="/flood-levels"
+            to="/flood-map"
             className={({ isActive }) => (isActive ? "active-link" : "")}
           >
             Flood Map
@@ -57,10 +57,10 @@ const Navigation = () => {
         </li> */}
         <li>
           <NavLink
-            to="/contact"
+            to="/home"
             className={({ isActive }) => (isActive ? "active-link" : "")}
           >
-            Info
+            Home
           </NavLink>
         </li>
       </ul>
