@@ -49,11 +49,12 @@ html, body {
 }
 
 .footer-logos {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
   justify-content: center;
   align-items: center;
   flex-wrap: wrap; /* Allows logos to wrap if needed */
-  gap: 15px; /* Space between logos */
+  gap: 10px; /* Space between logos */
   margin-top: 10px;
   max-width: 90%; /* Ensures logos don’t exceed the container width */
 }
@@ -69,21 +70,45 @@ html, body {
 /* Responsive Footer Styling */
 @media screen and (max-width: 600px) {
   .footer {
-    font-size: 10px; /* Smaller text for better readability */
-    flex-wrap: wrap;
+    font-size: 11px;
+    padding: 20px 10px;
+    text-align: center;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    word-wrap: break-word;
+    margin-top: 3px;
   }
 
   .footer p {
-    max-width: 90%; /* Ensures text doesn't overflow */
-    word-break: break-word; /* Breaks long words correctly */
+    max-width: 95%;
+    word-break: break-word;
+    margin: 8px 0;
+    margin-right: 30px;
+    margin-left: 5px;
+    line-height: normal;
   }
 
   .footer-logos {
-    justify-content: space-evenly; /* Distribute logos evenly in rows */
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+    gap: 10px;
+    width: 100%;
+    margin-top: 15px;
+    padding: 0 10px;
+    margin-right: 30px;
+    margin-left: 5px;
   }
 
   .footer-logo {
-    height: 45px; /* Slightly smaller logos on mobile */
-    min-width: 100px; /* Prevents logos from shrinking too much */
+    height: 50px;
+    width: 100%;
+    max-width: 100px;
+    object-fit: contain;
+    margin: 0 auto;
+    
   }
 }
+
+
+
