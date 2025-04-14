@@ -7,7 +7,6 @@ import FloodLevels from "./pages/FloodLevels";
 import FloodForecast from "./pages/FloodForecast";
 import FloodEvents from "./pages/FloodEvents";
 import SuicideBasin from "./pages/SuicideBasin";
-import FAQ from "./pages/FAQ";
 import Home from "./pages/Home";
 import Footer from "./components/Footer";
 
@@ -39,11 +38,6 @@ const SuicideBasinPage = () => {
   return <SuicideBasin />;
 };
 
-const FAQPage = () => {
-  useDocumentTitle("FAQ");
-  return <FAQ />;
-};
-
 const HomePage = () => {
   useDocumentTitle("Home");
   return <Home />;
@@ -63,7 +57,6 @@ const App2 = () => {
         <Route path="/flood-forecast" element={<FloodPredictionPage />} />
         <Route path="/flood-events" element={<FloodEventsPage />} />
         <Route path="/suicide-basin" element={<SuicideBasinPage />} />
-        <Route path="/FAQ" element={<FAQPage />} />
         <Route path="/home" element={<HomePage />} />
         </Routes>
         </div>

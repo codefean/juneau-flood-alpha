@@ -47,14 +47,6 @@ const Navigation = () => {
             Suicide Basin
           </NavLink>
         </li>
-        {/* <li>
-          <NavLink
-            to="/FAQ"
-            className={({ isActive }) => (isActive ? "active-link" : "")}
-          >
-            FAQ
-          </NavLink>
-        </li> */}
         <li>
           <NavLink
             to="/home"
