@@ -131,6 +131,26 @@ body {
     align-items: center;
   }
 
+  .flood-events-title{
+    text-align: center !important;
+    margin: -14px 0 -10px;
+    font-size: 1.9rem;
+    color: #154f89;
+  }
+  
+  /* Subheading Below Page Title */
+  .flood-events-subheading {
+    text-align: center;
+    font-size: 1.1rem;
+    color: #0e2b4a;
+    margin: 0 0 5px;
+    font-weight: bold;
+    font-family: 'Open Sans', sans-serif;
+    margin-bottom: 10px;
+    margin-top: 5px;
+  }
+  
+
   .floodcard {
     width: 100%;
     max-width: 95%;
