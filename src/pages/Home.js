@@ -139,7 +139,7 @@ const Home = () => {
   
       <div className="home-intro">
         <div className="home-about-card">
-          <h3>About This Dashboard</h3>
+          <h3>About</h3>
           <p>
             This tool provides mapping of flood impacts, real-time visuals of water levels, and insights about glacial lake outburst floods (GLOFs)
             from Suicide Basin. Use the cards above to explore live flood maps, forecasts, past events, and
