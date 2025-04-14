@@ -132,17 +132,60 @@ const Home = () => {
           </NavLink>
         ))}
       </div>
-
+  
       <div className="home-intro">
         <div className="home-about-card">
           <h3>About This Dashboard</h3>
           <p>
-            This tool provides real-time visualizations and data about glacial lake outburst floods (GLOFs)
+            This tool provides mapping of flood impacts, real-time visuals of water levels, and insights about glacial lake outburst floods (GLOFs)
             from Suicide Basin. Use the cards above to explore live flood maps, forecasts, past events, and
             context on how these floods happen and impact the Juneau area.
           </p>
         </div>
-
+  
+        {/* Resource Section: Safety + Education */}
+        <div className="resources-wrapper">
+          {/* Flood Safety */}
+          <div className="home-about-card">
+            <h3>Flood Safety Resources</h3>
+            <ul className="resource-list">
+              {resourceLinks.map((link, idx) => (
+                <li key={idx}>
+                  <a
+                    href={link.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="resource-link"
+                    style={{ borderLeftColor: link.color }}
+                  >
+                    {link.title}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+  
+          {/* Educational Resources */}
+          <div className="home-about-card">
+            <h3>Educational Resources</h3>
+            <ul className="resource-list">
+              {educationLinks.map((link, idx) => (
+                <li key={idx}>
+                  <a
+                    href={link.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="resource-link"
+                    style={{ borderLeftColor: link.color }}
+                  >
+                    {link.title}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+  
         {/* FAQ Section */}
         <div className="home-about-card">
           <h3>Frequently Asked Questions</h3>
@@ -172,47 +215,19 @@ const Home = () => {
           ))}
         </div>
 
-        {/* Resource Links */}
         <div className="home-about-card">
-          <h3>Flood Safety Resources</h3>
-          <ul className="resource-list">
-            {resourceLinks.map((link, idx) => (
-              <li key={idx}>
-                <a
-                  href={link.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="resource-link"
-                  style={{ borderLeftColor: link.color }}
-                >
-                  {link.title}
-                </a>
-              </li>
-            ))}
-          </ul>
-        </div>
+          <h3>Contact Us</h3>
+          <p> This website is currently in <em>beta testing</em> and is not yet complete.  
+          For additional information, please contact: <br></br>
+          <strong> Eran Hood</strong> at <a href="mailto:ewhood@alaska.edu">ewhood@alaska.edu</a>  or 
+      
+          <strong> Sean Fagan</strong> at <a href="mailto:sfagan2@alaska.edu">sfagan2@alaska.edu</a>
+        </p>
 
-        <div className="home-about-card">
-          <h3>Educational Resources</h3>
-          <ul className="resource-list">
-            {educationLinks.map((link, idx) => (
-              <li key={idx}>
-                <a
-                  href={link.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="resource-link"
-                  style={{ borderLeftColor: link.color }}
-                >
-                  {link.title}
-                </a>
-              </li>
-            ))}
-          </ul>
         </div>
       </div>
     </div>
   );
-};
+}  
 
 export default Home;
