@@ -322,14 +322,16 @@ const FloodPrediction = () => {
       <li><strong>15 ft:</strong> Killewich Dr covered with up to 2 ft of water. Marion Dr backyards flood. 1.5 ft of water on Rivercourt Way, Lakeview Ct, Center Ct, Parkview Ct, Turn St & Northland St.</li>
       <li><strong>15.5+ ft:</strong> Riverside Dr at Tournure St under 1 ft of water. Severe flooding impacts multiple homes.</li>
     </ul>
+
+    <button className="more-data-button" onClick={() => window.open('https://water.noaa.gov/gauges/MNDA2')}>
+    More Info
+  </button>
   </div>
 </div>
 
 
 
-  <button className="more-data-button" onClick={() => window.open('https://water.noaa.gov/gauges/MNDA2')}>
-    More Info
-  </button>
+
 </div>
 
 
