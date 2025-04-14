@@ -264,6 +264,7 @@ body {
   .flood-tracker h2,
   .flood-tracker h4 {
     padding: 0 10px;
+    font-size: 1.8rem;
   }
 
   .flood-forecasting-title {
@@ -342,6 +343,11 @@ body {
     display: none !important;
   }
 
+  .section-title {
+    margin-top: 20px;
+    margin-bottom: 10px;
+  }
+
   .image-pair-container {
     flex-direction: column;
     align-items: center;
@@ -350,6 +356,7 @@ body {
     text-align: center;
     margin-left: -40px;
     max-width: 100%;
+    margin-top: -30px;
   }
 
   .image-container {
@@ -369,27 +376,10 @@ body {
 
   .detail-card,
   .flooding-info {
-    max-width: 86%;
+    max-width: 85%;
+    margin-bottom: 35px;
 
   }
 }
 
-@media (max-width: 480px) {
-  .flood-forecasting-title {
-    font-size: 1.8rem;
-    margin: 15px 0 -5px;
-  }
 
-  .flood-forecasting-subheading {
-    font-size: 1rem;
-    margin: 8px 0 0;
-  }
-
-  .detail-card,
-  .flooding-info {
-    width: calc(100% - 40px); /* full width minus left+right margin */
-
-    margin-right: 10px;
-    margin-left: 10px;
-  }
-}
