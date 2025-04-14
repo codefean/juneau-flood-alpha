@@ -42,26 +42,30 @@ const faqData = [
   {
     question: "Why are GLOFs occurring annually in Suicide Basin?",
     answer:
-      "Common causes include ice or rock avalanches into the lake, rapid snowmelt, heavy rainfall, or internal weakening of the dam structure.",
+      "Common causes include ice or rock avalanches into the lake, rapid snowmelt, heavy rainfall, or internal weakening of the dam structure. In Suicide Basin, the unique topography and ongoing glacier thinning have created conditions for recurring annual GLOFs.",
   },
   {
     question: "Does 1ft of additional water in Suicide Basin equate to 1ft of flooding at my house?",
-    answer: "No.",
+    answer: "Not directly. One foot of water in the lake does not equate to one foot of water at your home or property. Flood risk depends on many factors including elevation, local topography, and how water flows through the valley. Even small increases in lake level can lead to localized flooding in low-lying areas.",
   },
   {
     question: "How long does it take the water from Suicide Basin to Mendenhall Valley?",
     answer:
-      "Once the glacial dam bursts and water is released from Suicide Basin, it takes around 40 hours for the water to reach Mendenhall Valley.",
+      "Once the glacial dam bursts and water is released from Suicide Basin, it takes approximately 40 hours to travel through the glacier and emerge in Mendenhall Lake, eventually impacting the valley.",
   },
   {
     question: "How will climate change affect glacial lake outburst floods?",
     answer:
-      "Climate change is causing Alaska's glaciers to thin and recede, reducing the size and volume of ice-dammed lakes and leading to fewer or smaller GLOFs over time. However, new glacial lakes may form in different areas as glaciers retreat, and even small GLOFs can pose serious threats to nearby communities and ecosystems.",
+      "Climate change is causing Alaska’s glaciers to thin and retreat, reducing the volume and frequency of some GLOFs. However, as glaciers recede, new glacial lakes can form in unstable locations, potentially increasing risk in new areas. Even smaller GLOFs remain hazardous to infrastructure, ecosystems, and public safety.",
   },
   {
     question: "How is Suicide Basin monitored?",
-    answer: "789",
+    answer: "Suicide Basin is monitored through a combination of methods, including satellite imagery, time-lapse cameras, hydrology instruments, and aerial surveys. Researchers also use radar and ground-based sensors to measure ice movement, lake volume, and drainage events. These observations help improve flood forecasting and early warning systems.",
   },
+  {
+    question: "How long will the floods occur?",
+    answer: "As long as there is enough ice to dam water in Suicide Basin, GLOFs may continue. However, the frequency and size of these events are expected to decline as the basin continues to evolve and the glacier thins. Long-term flood behavior will depend on how rapidly the glacier retreats and whether the basin stabilizes or drains completely.",
+  }
 ];
 
 const resourceLinks = [
