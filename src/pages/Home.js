@@ -6,28 +6,28 @@ const cardData = [
   {
     title: 'Flood Map',
     link: '/flood-map',
-    image: '/images/flood-map.png',
+    image: '/images/flood-map.jpg',
     description:
       'View the glacial flood zone at various flood levels and with HESCO barriers.',
   },
   {
     title: 'Flood Forecasting',
     link: '/flood-forecast',
-    image: '/images/flood-forecast.png',
+    image: '/images/flood-forecast.jpg',
     description:
       'How to understand flood forecasts based on gage heights & image data.',
   },
   {
     title: 'Flood Events',
     link: '/flood-events',
-    image: '/images/flood-events.png',
+    image: '/images/flood-events.jpg',
     description:
       'Historical flood event data including impact reports & peak discharge statistics.',
   },
   {
     title: 'Suicide Basin',
     link: '/suicide-basin',
-    image: '/images/suicide-basin.png',
+    image: '/images/suicide-basin.jpg',
     description:
       'How Suicide Basin works & context for recent lake outburst events.',
   },
