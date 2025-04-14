@@ -27,7 +27,7 @@
 .header-title h3,
 .header-title p,
 .header-title div {
-  font-size: clamp(1rem, 5vw, 2rem); /* Scales between 1rem and 2rem */
+  font-size: clamp(1rem, 5vw, 2.2rem); /* Scales between 1rem and 2rem */
   margin: 0;
   word-break: break-word;
 }
