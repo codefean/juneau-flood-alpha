@@ -114,7 +114,7 @@ body {
 
 /* Detail Card */
 .detail-card {
-  background: #ebecee;
+  background: rgb(240, 241, 243); /* Light blue background */
   border-radius: 8px;
   padding: 16px 10px;
   margin: 10px auto 40px;
@@ -220,6 +220,8 @@ body {
   margin: 15px auto;
   cursor: pointer;
   transition: background-color 0.3s ease-in-out, transform 0.2s;
+  margin-top: -15px !important;
+  margin-bottom: 25px;
 }
 
 .more-data-button:hover {
@@ -348,6 +350,11 @@ body {
     margin-bottom: 10px;
   }
 
+  .flood-tracker h2,
+  .flood-tracker h4 {
+    font-size: clamp(1.3rem, 4vw, 1.5rem);
+  }
+
   .image-pair-container {
     flex-direction: column;
     align-items: center;
@@ -383,3 +390,45 @@ body {
 }
 
 
+@media (max-width: 480px) {
+  .flood-tracker h2,
+  .flood-tracker h4,
+  .flood-forecasting-title,
+  .flood-forecasting-subheading {
+    text-align: center;
+    padding: 0 10px;
+  }
+
+  .detail-card {
+    padding: 15px;
+  }
+
+  .lake-level-container,
+  .floodstage-wrapper {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+.about-forecast-card {
+  background: rgb(240, 241, 243); /* Same light neutral background */
+  padding: 20px;
+  border-radius: 8px;
+  text-align: center;
+  width: 90% !important;
+  max-width: 1320px;
+  margin: 20px auto;
+  font-family: 'Open Sans', sans-serif;
+  margin-bottom: 40px;
+}
+
+.about-forecast-card h3 {
+  font-size: 1.5rem;
+  color: #154f89;
+  margin-bottom: 10px;
+}
+
+.about-forecast-card p {
+  font-size: 1.1rem;
+  color: #000000;
+}

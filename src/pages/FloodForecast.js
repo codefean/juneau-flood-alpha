@@ -121,13 +121,13 @@ const FloodPrediction = () => {
       <h1 className="flood-forecasting-title">Explore Flood Forecasting</h1>
       <h3 className="flood-forecasting-subheading">Understanding Water Levels in Suicide Basin & Mendenhall Lake</h3>
 
-      {/* Suicide Basin Section */}
-      <div className="detail-card black-text large-text">
-      <p>
-  <strong>Suicide Basin Monitoring:</strong> The US Geological Survey (USGS) uses time-lapse cameras to take daily images with an elevation scale bar to track water levels visually. Additionally, the USGS tracks precise water elevation in the basin using a tool called a laser range finder. However, floating icebergs can cause sudden changes in readings, either raising or lowering recorded levels due to the icebergsʼ varying heights. USGS monitors of Suicide Basin are online between Spring - Fall.
-  <br /><br />
-  <strong>Mendenhall Lake Monitoring:</strong> The USGS also monitors water levels at a point along the west shore of Mendenhall Lake. If an outburst flood from Suicide Basin occurred, lake water levels help researchers understand the severity of the flood around the lake and downstream. 
-</p>
+
+{/* Suicide Basin Section */}
+<div className="about-forecast-card">
+<p>
+    This page provides real-time monitoring information. The USGS monitors <strong>Suicide Basin</strong> using time-lapse cameras and laser range finders to track water levels — though readings may vary due to floating icebergs. <strong>Mendenhall Lake</strong> levels are also tracked along the west shore to evaluate rising water levels and potential downstream flood impacts following an outburst from Suicide Basin.
+  </p>
+
 
       </div>
 
@@ -178,31 +178,37 @@ const FloodPrediction = () => {
       </div>
 
        {/* Forecasting GLOFs Section */}
-       <div className="detail-card black-text">
-        <h2>Forecasting Glacial Lake Outburst Floods (GLOFs)</h2>
-        <p>
-        Suicide Basin is a glacier-dammed lake that can release outburst floods and impact Mendenhall Valley. Monitoring water levels in Suicide Basin helps to predict flood timing and peak magnitude, allowing mitigation efforts.
-        </p>
+{/* Forecasting GLOFs Section */}
+<div className="detail-card black-text">
+  <h2>Forecasting Glacial Lake Outburst Floods (GLOFs)</h2>
+  <p>
+    Suicide Basin is a glacier-dammed lake that can suddenly release large volumes of water, triggering outburst floods that impact the Mendenhall Valley. Forecasting these floods requires constant monitoring of water levels and understanding changes in the basin’s structure over time. The USGS tracks Suicide Basin using time-lapse cameras with elevation scale bars and precise laser range finders. However, floating icebergs can skew readings by altering the visible water surface. Monitoring is active from spring through fall.
+  </p>
 
-        <ul>
-          <li>
-            <strong>Flood Potential:</strong> The volume of water and the release rate from Suicide Basin determine flooding severity. By using drones to survey the basin, researchers can generate three-dimensional terrain models that help estimate the total water volume.
-          </li>
-          <li>
-            <strong>Changing Water Elevations:</strong> The basin's ability to store water changes over time due to thinning of the Mendenhall Glacier, outward expansion of the basin as icebergs calve (break off) from the Mendenhall Glacier and aw icebergs within Suicide Basin melt.
-          </li>
-          <li>
-            <strong>Time to Prepare:</strong> Once drainage begins from Suicide Basin, floodwaters reach Mendenhall Lake in 1-2 days.
-          </li>
-          <li>
-            <strong>Flood Season:</strong> Outburst floods from Suicide Basin have occurred from June to October, with the largest floods occurring in July & August.
-          </li>
-        </ul>
 
-        <button className="more-data-button" onClick={() => window.open("https://www.weather.gov/ajk/suicideBasin")}>
-          More Info
-        </button>
-      </div>
+  <ul>
+    <li>
+      <strong>Flood Potential:</strong> The volume of water and the release rate from Suicide Basin determine flooding severity. Researchers use drone-based surveys to create three-dimensional terrain models and estimate total water volume.
+    </li>
+    <li>
+      <strong>Changing Water Elevations:</strong> The basin’s capacity evolves over time due to glacier thinning, iceberg calving, and internal ice melt—affecting how much water it can store before an outburst.
+    </li>
+    <li>
+      <strong>Time to Prepare:</strong> Once drainage begins, floodwaters typically reach Mendenhall Lake within 1–2 days, offering a brief window for preparation.
+    </li>
+    <li>
+      <strong>Flood Season:</strong> Outburst floods most commonly occur between June and October, with peak events typically in July and August.
+    </li>
+  </ul>
+
+  <button
+    className="more-data-button"
+    onClick={() => window.open("https://www.weather.gov/ajk/suicideBasin")}
+  >
+    More Info
+  </button>
+</div>
+
 
       {/* Mendenhall Lake Level Section */}
       
@@ -235,7 +241,7 @@ const FloodPrediction = () => {
           </div>
 
           <div className="detail-card black-text flooding-info">
-  <h2>Mendenhall Lake Level & Flood Conditions</h2>
+  <h2 style={{ textAlign: 'left' }}>Mendenhall Lake Level & Flood Conditions</h2>
   <p>
   Mendenhall Lake is a glacially-fed lake at the terminus of Mendenhall Glacier. Water levels fluctuate due to seasonal melting, precipitation, and outburst floods. The <a href="https://waterdata.usgs.gov/monitoring-location/15052500/#dataTypeId=continuous-00065--1654777834&period=P7D&showMedian=false" target="_blank" rel="noopener noreferrer">
         USGS monitors water levels
