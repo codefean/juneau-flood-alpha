@@ -143,8 +143,19 @@ const Home = () => {
           <p>
             This tool provides mapping of flood impacts, real-time visuals of water levels, and insights about glacial lake outburst floods (GLOFs)
             from Suicide Basin. Use the cards above to explore live flood maps, forecasts, past events, and
-            context on how these floods happen and impact the Juneau area.
+            context on how these floods happen and impact the Juneau area. For the NWS Suicide Basin Monitoring Page click below.
           </p>
+
+          <div className="button-wrapper">
+      <a
+        href="https://www.weather.gov/ajk/suicideBasin"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="home-button"
+      >
+        NWS Monitoring Page
+      </a>
+    </div>
         </div>
   
         {/* Resource Section: Safety + Education */}
