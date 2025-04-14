@@ -39,7 +39,7 @@ const SuicideBasinPage = () => {
 };
 
 const HomePage = () => {
-  useDocumentTitle("Home");
+  useDocumentTitle("Juneau Glacial Flood Dashboard");
   return <Home />;
 };
 
