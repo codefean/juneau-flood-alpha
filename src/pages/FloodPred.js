@@ -59,7 +59,7 @@ const FloodPred = ({ onClose }) => {
             <p>{nwsFloodForecast}</p>
 
             <div className="more-info-container">
-              <a href="https://water.noaa.gov/gauges/mnda2" target="_blank" rel="noopener noreferrer" onClick={(e) => e.stopPropagation()}>
+              <a href="https://www.weather.gov/ajk/suicideBasin" target="_blank" rel="noopener noreferrer" onClick={(e) => e.stopPropagation()}>
                 <button className="more-info-btn">NWS Flood Forecast</button>
               </a>
             </div>
