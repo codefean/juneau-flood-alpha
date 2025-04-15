@@ -95,13 +95,13 @@ const resourceLinks = [
 
 const educationLinks = [
   {
-    title: "What is a GLOF?",
+    title: "What is a glacial lake outburst flood?",
     url: "https://www.usgs.gov/programs/climate-adaptation-science-centers/news/increased-understanding-alaskas-glacial-lake#:~:text=Over%20time%2C%20as%20the%20ice,of%20life%20and%20infrastructure%20worldwide.",
     icon: "",
     color: "#1f77b4",
   },
   {
-    title: "The Flood Story",
+    title: "The Flood Story (2019)",
     url: "https://www.arcgis.com/apps/Cascade/index.html?appid=ad88fd5ccd7848139315f42f49343bb5",
     icon: "",
     color: "#1f77b4",
