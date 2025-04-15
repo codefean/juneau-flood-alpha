@@ -19,12 +19,12 @@ const FloodWarn = () => {
           setAlertUrl(alert.web || "https://www.weather.gov/ajk/");
         } else {
           setFloodStatus("No Active Alerts");
-          setAlertUrl("https://water.noaa.gov/gauges/MNDA2");
+          setAlertUrl("https://www.weather.gov/ajk/suicideBasin");
         }
       } catch (error) {
         console.error("Error fetching flood status:", error);
         setFloodStatus("Data unavailable. Check NWS website.");
-        setAlertUrl("https://www.weather.gov/ajk/");
+        setAlertUrl("https://www.weather.gov/ajk/suicideBasin");
       }
     };
 
