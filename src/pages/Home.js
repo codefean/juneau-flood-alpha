@@ -107,8 +107,8 @@ const educationLinks = [
     color: "#1f77b4",
   },
   {
-    title: "Glacier Terminology",
-    url: "https://pubs.usgs.gov/of/2004/1216/",
+    title: "2024 Suicide Basin Flood Report",
+    url: "https://www.weather.gov/media/ajk/suicideBasin/08_2024%20-%20Mendenhall%20River%20Flooding.pdf",
     icon: "",
     color: "#1f77b4",
   },
