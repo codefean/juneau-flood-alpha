@@ -12,14 +12,14 @@ import { getFloodStage } from './utils/floodStages';
 const customColors = [
   "#c3b91e", // 1 - Mustard yellow (unchanged)
   "#e68a1e", // 2 - Pumpkin orange (unchanged)
-  "#a1d99b", // 3 - Soft green (was amber, now more visible)
-  "#6baed6", // 4 - Sky blue (was bright cyan)
-  "#2171b5", // 5 - Blue (was royal blue)
+  "#31a354", // 3 - Vivid green (replacing soft green)
+  "#3182bd", // 4 - Medium blue (richer than sky blue)
+  "#08306b", // 5 - Deep navy blue (stronger than standard blue)
   "#d63b3b", // 6 - Red (unchanged)
   "#9b3dbd", // 7 - Purple (unchanged)
-  "#cd94ff", // 8 - Light orange-peach (was magenta-pink)
-  "#31a354", // 9 - Strong green (was bright green)
-  "#74c476"  // 10 - Mint green (was sea green)
+  "#d13c8f", // 8 - Vibrant magenta
+  "#c2185b", // 9 - Raspberry (replaces green)
+  "#756bb1"  // 10 - Deep violet
 ];
 
 const FloodLevels = () => {
