@@ -15,6 +15,14 @@ const Navigation = () => {
         ☰
       </span>
       <ul className={isMenuOpen ? "open" : ""}>
+      <li>
+          <NavLink
+            to="/home"
+            className={({ isActive }) => (isActive ? "active-link" : "")}
+          >
+            Home
+          </NavLink>
+        </li>
         <li>
           <NavLink
             to="/flood-map"
@@ -47,14 +55,7 @@ const Navigation = () => {
             Suicide Basin
           </NavLink>
         </li>
-        <li>
-          <NavLink
-            to="/home"
-            className={({ isActive }) => (isActive ? "active-link" : "")}
-          >
-            Home
-          </NavLink>
-        </li>
+
       </ul>
     </nav>
   );
