@@ -8,7 +8,7 @@ const FloodStageMenu = ({ setFloodLevelFromMenu, onFloodLayerChange = () => {} }
     setExpanded(expanded === section ? null : section);
     if (floodLevel && setFloodLevelFromMenu) {
       setFloodLevelFromMenu(floodLevel);
-      onFloodLayerChange(); // 👈 Rebind hover popup after level change
+      onFloodLayerChange();
     }
   };
 
@@ -19,7 +19,12 @@ const FloodStageMenu = ({ setFloodLevelFromMenu, onFloodLayerChange = () => {} }
         className={`accordion-section action-stage ${expanded === 'action' ? 'expanded' : ''}`}
         onClick={() => toggleAccordion('action', 9)} 
       >
-        <h4>Action Stage (8 - 9ft)</h4>
+        <h4>
+          <span className="accordion-title">
+            Action Stage (8 - 9ft)
+            <span className={`accordion-arrow ${expanded === 'action' ? 'open' : ''}`}>&#9656;</span>
+          </span>
+        </h4>
         {expanded === 'action' && (
           <div className="accordion-content">
             <p>Water levels have reached flood potential. Residents should begin to take mitigation actions for flooding events based on their location.</p>
@@ -32,7 +37,12 @@ const FloodStageMenu = ({ setFloodLevelFromMenu, onFloodLayerChange = () => {} }
         className={`accordion-section minor-stage ${expanded === 'minor' ? 'expanded' : ''}`}
         onClick={() => toggleAccordion('minor', 10)} 
       >
-        <h4>Minor Flood Stage (9 - 10ft)</h4>
+        <h4>
+          <span className="accordion-title">
+            Minor Flood Stage (9 - 10ft)
+            <span className={`accordion-arrow ${expanded === 'minor' ? 'open' : ''}`}>&#9656;</span>
+          </span>
+        </h4>
         {expanded === 'minor' && (
           <div className="accordion-content">
             <p><strong>9 ft:</strong> Water starts covering Skaters Cabin Road.</p>
@@ -47,7 +57,12 @@ const FloodStageMenu = ({ setFloodLevelFromMenu, onFloodLayerChange = () => {} }
         className={`accordion-section moderate-stage ${expanded === 'moderate' ? 'expanded' : ''}`}
         onClick={() => toggleAccordion('moderate', 14)} 
       >
-        <h4>Moderate Flood Stage (10 - 14ft)</h4>
+        <h4>
+          <span className="accordion-title">
+            Moderate Flood Stage (10 - 14ft)
+            <span className={`accordion-arrow ${expanded === 'moderate' ? 'open' : ''}`}>&#9656;</span>
+          </span>
+        </h4>
         {expanded === 'moderate' && (
           <div className="accordion-content">
             <p><strong>11 ft:</strong> View Dr impassable. Severe bank erosion below Back Loop Bridge. Hazardous river navigation.</p>
@@ -63,7 +78,12 @@ const FloodStageMenu = ({ setFloodLevelFromMenu, onFloodLayerChange = () => {} }
         className={`accordion-section major-stage ${expanded === 'major' ? 'expanded' : ''}`}
         onClick={() => toggleAccordion('major', 15)} 
       >
-        <h4>Major Flood Stage (14ft+)</h4>
+        <h4>
+          <span className="accordion-title">
+            Major Flood Stage (14ft+)
+            <span className={`accordion-arrow ${expanded === 'major' ? 'open' : ''}`}>&#9656;</span>
+          </span>
+        </h4>
         {expanded === 'major' && (
           <div className="accordion-content">
             <p><strong>14.5 ft:</strong> Meander Way under 2-4 ft of water. Significant flooding on View Dr.</p>

@@ -67,3 +67,20 @@
     right: auto; /* Prevents stretching */
   }
 }
+
+
+.accordion-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.accordion-arrow {
+  margin-left: 8px;
+  transition: transform 0.3s ease;
+  font-size: 0.9rem;
+}
+
+.accordion-arrow.open {
+  transform: rotate(90deg);
+}
