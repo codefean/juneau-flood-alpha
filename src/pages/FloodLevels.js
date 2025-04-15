@@ -431,7 +431,7 @@ const FloodLevels = () => {
                       rel="noopener noreferrer"
                       style={{ color: 'black' }}
                     >
-                      Lake Level:
+                      Current Lake Level:
                     </a>{' '}
                     <strong>{` ${level.value} ft`}</strong>
                   </p>
