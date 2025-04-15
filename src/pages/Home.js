@@ -1,6 +1,10 @@
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import './Home.css';
+import "./FloodForecast.css";
+import FloodPred from "./FloodPred";
+import './FloodPred.css';
+
 
 const cardData = [
   {
@@ -125,6 +129,7 @@ const Home = () => {
 
   return (
     <div className="home-container">
+      
       <div className="card-grid">
         {cardData.map((card, index) => (
           <NavLink to={card.link} key={index} className="card">
@@ -241,6 +246,7 @@ const Home = () => {
 
         </div>
       </div>
+
     </div>
   );
 }  

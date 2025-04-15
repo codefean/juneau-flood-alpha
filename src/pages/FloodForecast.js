@@ -63,7 +63,7 @@ const FloodPrediction = () => {
     ],
     mendenhallLake: [
       { top: "19%", left: "51%", text: "Last recorded water level at Mendenhall Lake" },
-      { top: "22%", left: "49%", text: "Current flood stage if the GLOF occurred. 9ft is the lowest flood stage. For all flood stages click here." },
+      { top: "22%", left: "49%", text: "Current flood stage if the GLOF occurred. 9ft is the lowest flood stage." },
       { top: "70%", left: "88%", text: "Today's observation." },
     ],
   };
@@ -114,7 +114,6 @@ const FloodPrediction = () => {
 
   return (
     <div className="flood-tracker" onClick={closeInfoBox}>
-      {/* Flood Prediction Component Moved to the Top */}
       {showFloodPred && <FloodPred onClose={() => setShowFloodPred(false)} />}
 
       {/* Title & Subheading */}
