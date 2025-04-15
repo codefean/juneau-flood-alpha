@@ -8,6 +8,7 @@ import FloodInfoPopup from "./FloodInfoPopup";
 import { getFloodStage } from './utils/floodStages';
 
 // cd /Users/seanfagan/Desktop/juneau-flood-alpha
+// git add. git commit -m "Updated FloodLevels.js" git push origin main
 
 const customColors = [
   "#c3b91e", // 1 - Mustard yellow (unchanged)
