@@ -19,7 +19,7 @@ const useDocumentTitle = (title) => {
 
 // Wrapper components to set the title for each route
 const FloodLevelsPage = () => {
-  useDocumentTitle("Juneau Flood Risk");
+  useDocumentTitle("Juneau Flood Maps");
   return <FloodLevels />;
 };
 
@@ -52,7 +52,7 @@ const App2 = () => {
         <Navigation />
         <div className="main-content">
         <Routes>
-        <Route path="/" element={<Navigate to="/flood-map" />} />
+        <Route path="/" element={<Navigate to="/home" />} />
         <Route path="/flood-map" element={<FloodLevelsPage />} />
         <Route path="/flood-forecast" element={<FloodPredictionPage />} />
         <Route path="/flood-events" element={<FloodEventsPage />} />
