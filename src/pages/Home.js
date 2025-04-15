@@ -92,7 +92,7 @@ const resourceLinks = [
 const educationLinks = [
   {
     title: "What is a GLOF?",
-    url: "https://www.usgs.gov/news/national-news-release/usgs-researchers-track-glacier-lake-outburst-floods",
+    url: "https://www.usgs.gov/programs/climate-adaptation-science-centers/news/increased-understanding-alaskas-glacial-lake#:~:text=Over%20time%2C%20as%20the%20ice,of%20life%20and%20infrastructure%20worldwide.",
     icon: "",
     color: "#1f77b4",
   },
