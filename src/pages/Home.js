@@ -49,8 +49,8 @@ const faqData = [
       "Common causes include ice or rock avalanches into the lake, rapid snowmelt, heavy rainfall, or internal weakening of the dam structure. In Suicide Basin, the unique topography and ongoing glacier thinning have created conditions for recurring annual GLOFs.",
   },
   {
-    question: "Does 1ft of additional water in Suicide Basin equate to 1ft of flooding at my house?",
-    answer: "Not directly. One foot of water in the lake does not equate to one foot of water at your home or property. Flood risk depends on many factors including elevation, local topography, and how water flows through the valley. Even small increases in lake level can lead to localized flooding in low-lying areas.",
+    question: "How does 1ft of additional water in Mendenhall Lake affect flooding at my house?",
+    answer: "One foot of water in the lake does not equate to one foot of water at your home or property. Flood risk depends on many factors including elevation, local topography, and how water flows through the valley. Even small increases in lake level can lead to localized flooding in low-lying areas.",
   },
   {
     question: "How long does it take the water from Suicide Basin to Mendenhall Valley?",
