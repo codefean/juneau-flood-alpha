@@ -3,72 +3,61 @@ import { NavLink } from 'react-router-dom';
 import './Home.css';
 import "./FloodForecast.css";
 
-
-
-
 const cardData = [
   {
     title: 'Flood Map',
     link: '/flood-map',
     image: '/images/flood-map.jpg',
-    description:
-      'View the glacial flood zone at various flood levels and with HESCO barriers.',
+    description: 'View the glacial flood zone at various flood levels and with HESCO barriers.',
   },
   {
     title: 'Flood Forecasting',
     link: '/flood-forecast',
     image: '/images/flood-forecast.jpg',
-    description:
-      'How to understand flood forecasts based on gage heights & image data.',
+    description: 'How to understand flood forecasts based on gage heights & image data.',
   },
   {
     title: 'Flood Events',
     link: '/flood-events',
     image: '/images/flood-events.jpg',
-    description:
-      'Historical flood event data including impact reports & peak discharge statistics.',
+    description: 'Historical flood event data including impact reports & peak discharge statistics.',
   },
   {
     title: 'Suicide Basin',
     link: '/suicide-basin',
     image: '/images/suicide-basin.jpg',
-    description:
-      'How Suicide Basin works & context for recent lake outburst events.',
+    description: 'How Suicide Basin works & context for recent lake outburst events.',
   },
 ];
 
 const faqData = [
   {
     question: "What is a GLOF?",
-    answer:
-      "Glacial lake outburst floods (GLOFs) happen when ice-dammed or moraine-dammed lakes suddenly release large volumes of water, often due to the failure of an ice dam. Ice dams are particularly prone to sudden collapse as water pressure builds and carves a path beneath or around the glacier, triggering rapid drainage and flooding downstream.",
+    answer: "Glacial lake outburst floods (GLOFs) happen when ice-dammed or moraine-dammed lakes suddenly release large volumes of water, often due to the failure of an ice dam...",
   },
   {
     question: "Why are GLOFs occurring annually in Suicide Basin?",
-    answer:
-      "Common causes include ice or rock avalanches into the lake, rapid snowmelt, heavy rainfall, or internal weakening of the dam structure. In Suicide Basin, the unique topography and ongoing glacier thinning have created conditions for recurring annual GLOFs.",
+    answer: "Common causes include ice or rock avalanches into the lake, rapid snowmelt, heavy rainfall, or internal weakening of the dam structure...",
   },
   {
     question: "How does 1ft of additional water in Mendenhall Lake affect flooding at my house?",
-    answer: "One foot of water in the lake does not equate to one foot of water at your home or property. Flood risk depends on many factors including elevation, local topography, and how water flows through the valley. Even small increases in lake level can lead to localized flooding in low-lying areas.",
+    answer: "One foot of water in the lake does not equate to one foot of water at your home or property...",
   },
   {
     question: "How long does it take the water from Suicide Basin to Mendenhall Valley?",
-    answer:
-      "Once the glacial dam bursts and water is released from Suicide Basin, it takes approximately 40 hours to travel through the glacier and emerge in Mendenhall Lake, eventually impacting the valley.",
+    answer: "Once the glacial dam bursts and water is released from Suicide Basin, it takes approximately 40 hours to travel through the glacier...",
   },
   {
     question: "How will climate change affect glacial lake outburst floods?",
-    answer:
-      "Climate change is causing Alaska’s glaciers to thin and retreat, reducing the volume and frequency of some GLOFs. However, as glaciers recede, new glacial lakes can form in unstable locations, potentially increasing risk in new areas. Even smaller GLOFs remain hazardous to infrastructure, ecosystems, and public safety.",
+    answer: "Climate change is causing Alaska’s glaciers to thin and retreat, reducing the volume and frequency of some GLOFs...",
   },
   {
     question: "How is Suicide Basin monitored?",
-    answer: "Suicide Basin is monitored through a combination of methods, including satellite imagery, time-lapse cameras, hydrology instruments, and aerial surveys. Researchers also use radar and ground-based sensors to measure ice movement, lake volume, and drainage events. These observations help improve flood forecasting and early warning systems.",
+    answer: "Suicide Basin is monitored through a combination of methods, including satellite imagery, time-lapse cameras, hydrology instruments, and aerial surveys...",
   },
   {
     question: "How long will the floods occur?",
-    answer: "As long as there is enough ice to dam water in Suicide Basin, GLOFs may continue. However, the frequency and size of these events are expected to decline as the basin continues to evolve and the glacier thins. Long-term flood behavior will depend on how rapidly the glacier retreats and whether the basin stabilizes or drains completely.",
+    answer: "As long as there is enough ice to dam water in Suicide Basin, GLOFs may continue...",
   }
 ];
 
@@ -114,10 +103,9 @@ const educationLinks = [
   },
 ];
 
-
-
 const Home = () => {
   const [openIndex, setOpenIndex] = useState(null);
+  const [viewCount, setViewCount] = useState(null);
 
   const toggleFAQ = (index) => {
     setOpenIndex(openIndex === index ? null : index);
@@ -129,8 +117,18 @@ const Home = () => {
     }
   };
 
-
-  
+  useEffect(() => {
+    fetch('https://api.counterapi.dev/v1/juneauflood/homepage/views/?increment=true')
+      .then((res) => res.json())
+      .then((data) => {
+        if (data && data.value !== undefined) {
+          setViewCount(data.value);
+        }
+      })
+      .catch((err) => {
+        console.error("Failed to fetch view count:", err);
+      });
+  }, []);
 
   return (
     <div className="home-container">
@@ -157,20 +155,19 @@ const Home = () => {
           </p>
 
           <div className="button-wrapper">
-      <a
-        href="https://www.weather.gov/ajk/suicideBasin"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="home-button"
-      >
-        NWS Monitoring Page
-      </a>
-    </div>
+            <a
+              href="https://www.weather.gov/ajk/suicideBasin"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="home-button"
+            >
+              NWS Monitoring Page
+            </a>
+          </div>
         </div>
-  
-        {/* Resource Section: Safety + Education */}
+
+        {/* Flood Safety Resources */}
         <div className="resources-wrapper">
-          {/* Flood Safety */}
           <div className="home-about-card">
             <h3>Flood Safety Resources</h3>
             <ul className="resource-list">
@@ -189,7 +186,7 @@ const Home = () => {
               ))}
             </ul>
           </div>
-  
+
           {/* Educational Resources */}
           <div className="home-about-card">
             <h3>Educational Resources</h3>
@@ -210,7 +207,7 @@ const Home = () => {
             </ul>
           </div>
         </div>
-  
+
         {/* FAQ Section */}
         <div className="home-about-card">
           <h3>Frequently Asked Questions</h3>
@@ -240,21 +237,32 @@ const Home = () => {
           ))}
         </div>
 
+        {true && (
+  <div className="home-about-card">
+    <h3>Page Views</h3>
+    {viewCount !== null && (
+  <div className="home-about-card">
+    <h3>Page Views</h3>
+    <p>This page has been viewed <strong>{viewCount.toLocaleString()}</strong> times.</p>
+  </div>
+)}
+
+  </div>
+)}
+
+        {/* Contact Section */}
         <div className="home-about-card">
           <h3>Contact Us</h3>
-          <p> This website is currently in <em>beta testing</em> and is not yet complete.  
-          For additional information, please contact: <br></br>
-          <strong> Eran Hood</strong> at <a href="mailto:ewhood@alaska.edu">ewhood@alaska.edu</a>  or 
-      
-          <strong> Sean Fagan</strong> at <a href="mailto:sfagan2@alaska.edu">sfagan2@alaska.edu</a>
-        </p>
-
+          <p>
+            This website is currently in <em>beta testing</em> and is not yet complete.  
+            For additional information, please contact: <br />
+            <strong> Eran Hood</strong> at <a href="mailto:ewhood@alaska.edu">ewhood@alaska.edu</a> or
+            <strong> Sean Fagan</strong> at <a href="mailto:sfagan2@alaska.edu">sfagan2@alaska.edu</a>
+          </p>
         </div>
-
       </div>
-
     </div>
   );
-}  
+};
 
 export default Home;
