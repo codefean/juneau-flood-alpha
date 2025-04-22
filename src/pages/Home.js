@@ -130,17 +130,17 @@ const Home = () => {
   };
 
   useEffect(() => {
-    if (!sessionStorage.getItem("loggedView")) {
-      fetch("https://903l6w46gf.execute-api.us-east-2.amazonaws.com/default/logPageView", {
-        method: "POST"
+    fetch('https://your-api-id.execute-api.region.amazonaws.com/prod/logPageView', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        path: window.location.pathname,
+        referrer: document.referrer
+        
       })
-        .then(res => res.json())
-        .then(data => console.log("View logged:", data))
-        .catch(err => console.error("Logging failed:", err));
-  
-      sessionStorage.setItem("loggedView", "true");
-    }
+    });
   }, []);
+  
   
 
   return (
