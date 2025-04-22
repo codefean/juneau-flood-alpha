@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 import './Home.css';
 import "./FloodForecast.css";
-import FloodPred from "./FloodPred";
-import './FloodPred.css';
+
+
 
 
 const cardData = [
@@ -114,6 +114,8 @@ const educationLinks = [
   },
 ];
 
+
+
 const Home = () => {
   const [openIndex, setOpenIndex] = useState(null);
 
@@ -126,6 +128,20 @@ const Home = () => {
       toggleFAQ(index);
     }
   };
+
+  useEffect(() => {
+    if (!sessionStorage.getItem("loggedView")) {
+      fetch("https://903l6w46gf.execute-api.us-east-2.amazonaws.com/default/logPageView", {
+        method: "POST"
+      })
+        .then(res => res.json())
+        .then(data => console.log("View logged:", data))
+        .catch(err => console.error("Logging failed:", err));
+  
+      sessionStorage.setItem("loggedView", "true");
+    }
+  }, []);
+  
 
   return (
     <div className="home-container">
@@ -245,6 +261,7 @@ const Home = () => {
         </p>
 
         </div>
+
       </div>
 
     </div>

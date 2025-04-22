@@ -245,6 +245,13 @@ body {
   transform: scale(1.05);
 }
 
+.traffic-chart-wrapper {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  overflow-x: auto;
+}
+
 
 @media (max-width: 768px) {
   .home-container {
