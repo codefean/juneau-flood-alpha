@@ -44,12 +44,16 @@ const FloodLevels = () => {
   
     const map = mapRef.current;
   
-    if (!map.getLayer(activeLayerId)) {
-      console.warn(`Layer "${activeLayerId}" not found. Deferring hover popup setup.`);
-      // Try again after a brief delay
-      setTimeout(() => setupHoverPopup(activeLayerId), 250);
+    if (!activeLayerId) {
+      console.error("activeLayerId is undefined or empty. Cannot set up hover popup.");
       return;
     }
+    
+    if (!map.getLayer(activeLayerId)) {
+      console.warn(`Layer "${activeLayerId}" not found. Deferring hover popup setup.`);
+      setTimeout(() => setupHoverPopup(activeLayerId), 250);
+      return;
+    }    
   
     // Remove previous listeners for this layer
     map.off('mousemove', activeLayerId);

@@ -129,18 +129,7 @@ const Home = () => {
     }
   };
 
-  useEffect(() => {
-    fetch('https://your-api-id.execute-api.region.amazonaws.com/prod/logPageView', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        path: window.location.pathname,
-        referrer: document.referrer
-        
-      })
-    });
-  }, []);
-  
+
   
 
   return (
