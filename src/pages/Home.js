@@ -230,8 +230,8 @@ const Home = () => {
           <p>
             This website is currently in <em>beta testing</em> and is not yet complete.  
             For additional information, please contact: <br />
-            <strong> Eran Hood</strong> at <a href="mailto:ewhood@alaska.edu">ewhood@alaska.edu</a> or
-            <strong> Sean Fagan</strong> at <a href="mailto:sfagan2@alaska.edu">sfagan2@alaska.edu</a>
+            <strong> Eran Hood</strong> at ewhood@alaska.edu or
+            <strong> Sean Fagan</strong> at sfagan2@alaska.edu
           </p>
         </div>
       </div>
