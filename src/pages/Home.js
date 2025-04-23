@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import './Home.css';
 import "./FloodForecast.css";
@@ -105,7 +105,6 @@ const educationLinks = [
 
 const Home = () => {
   const [openIndex, setOpenIndex] = useState(null);
-  const [viewCount, setViewCount] = useState(null);
 
   const toggleFAQ = (index) => {
     setOpenIndex(openIndex === index ? null : index);
@@ -117,18 +116,6 @@ const Home = () => {
     }
   };
 
-  useEffect(() => {
-    fetch('https://api.counterapi.dev/v1/juneauflood/homepage/views/?increment=true')
-      .then((res) => res.json())
-      .then((data) => {
-        if (data && data.value !== undefined) {
-          setViewCount(data.value);
-        }
-      })
-      .catch((err) => {
-        console.error("Failed to fetch view count:", err);
-      });
-  }, []);
 
   return (
     <div className="home-container">
@@ -236,19 +223,6 @@ const Home = () => {
             </div>
           ))}
         </div>
-
-        {true && (
-  <div className="home-about-card">
-    <h3>Page Views</h3>
-    {viewCount !== null && (
-  <div className="home-about-card">
-    <h3>Page Views</h3>
-    <p>This page has been viewed <strong>{viewCount.toLocaleString()}</strong> times.</p>
-  </div>
-)}
-
-  </div>
-)}
 
         {/* Contact Section */}
         <div className="home-about-card">

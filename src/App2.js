@@ -9,8 +9,8 @@ import FloodEvents from "./pages/FloodEvents";
 import SuicideBasin from "./pages/SuicideBasin";
 import Home from "./pages/Home";
 import Footer from "./components/Footer";
+import { preloadGeojsons } from "./utils/preloadGeojsons"; // ✅ Make sure this path is correct
 
-// Custom hook for setting the document title
 const useDocumentTitle = (title) => {
   React.useEffect(() => {
     document.title = title;
@@ -43,22 +43,30 @@ const HomePage = () => {
   return <Home />;
 };
 
-
 const App2 = () => {
+  // ✅ Move useEffect into the component body
+  React.useEffect(() => {
+    if ("requestIdleCallback" in window) {
+      requestIdleCallback(() => preloadGeojsons());
+    } else {
+      setTimeout(() => preloadGeojsons(), 1000);
+    }
+  }, []);
+
   return (
     <Router>
       <div className="app-container">
         <Header />
         <Navigation />
         <div className="main-content">
-        <Routes>
-        <Route path="/" element={<Navigate to="/home" />} />
-        <Route path="/flood-map" element={<FloodLevelsPage />} />
-        <Route path="/flood-forecast" element={<FloodPredictionPage />} />
-        <Route path="/flood-events" element={<FloodEventsPage />} />
-        <Route path="/suicide-basin" element={<SuicideBasinPage />} />
-        <Route path="/home" element={<HomePage />} />
-        </Routes>
+          <Routes>
+            <Route path="/" element={<Navigate to="/home" />} />
+            <Route path="/flood-map" element={<FloodLevelsPage />} />
+            <Route path="/flood-forecast" element={<FloodPredictionPage />} />
+            <Route path="/flood-events" element={<FloodEventsPage />} />
+            <Route path="/suicide-basin" element={<SuicideBasinPage />} />
+            <Route path="/home" element={<HomePage />} />
+          </Routes>
         </div>
         <Footer />
       </div>
@@ -67,4 +75,3 @@ const App2 = () => {
 };
 
 export default App2;
-
