@@ -8,7 +8,7 @@ const cardData = [
     title: 'Flood Map',
     link: '/flood-map',
     image: '/images/flood-map.jpg',
-    description: 'View the glacial flood zone at various flood levels and with HESCO barriers.',
+    description: 'View the glacial flood zone at various lake levels, with or without HESCO barriers.',
   },
   {
     title: 'Flood Forecasting',
