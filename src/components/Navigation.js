@@ -28,7 +28,7 @@ const Navigation = () => {
             to="/flood-map"
             className={({ isActive }) => (isActive ? "active-link" : "")}
           >
-            Flood Map
+            Flood Maps
           </NavLink>
         </li>
         <li>
