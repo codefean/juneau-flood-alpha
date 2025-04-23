@@ -83,7 +83,7 @@ const FloodLevels = () => {
   
     const newBucket = mode
       ? "https://flood-data-hesco.s3.us-east-2.amazonaws.com"
-      : "https://flood-data.s3.us-east-2.amazonaws.com";
+      : "https://db41y1hte1zn7.cloudfront.net";
   
     if (!mapRef.current) return;
   
@@ -243,7 +243,7 @@ const FloodLevels = () => {
       mapRef.current.on('load', () => {
         const currentBucket = hescoMode
           ? "https://flood-data-hesco.s3.us-east-2.amazonaws.com"
-          : "https://flood-data.s3.us-east-2.amazonaws.com";
+          : "https://db41y1hte1zn7.cloudfront.net";
 
         const floodLevels = Array.from({ length: 10 }, (_, i) => {
           const floodLevel = 9 + i;

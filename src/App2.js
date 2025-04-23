@@ -44,7 +44,6 @@ const HomePage = () => {
 };
 
 const App2 = () => {
-  // ✅ Move useEffect into the component body
   React.useEffect(() => {
     if ("requestIdleCallback" in window) {
       requestIdleCallback(() => preloadGeojsons());

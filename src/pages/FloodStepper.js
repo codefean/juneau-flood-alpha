@@ -31,7 +31,7 @@ const FloodStepper = ({
 
   const currentBucket = hescoMode
     ? 'https://flood-data-hesco.s3.us-east-2.amazonaws.com'
-    : 'https://flood-data.s3.us-east-2.amazonaws.com';
+    : "https://db41y1hte1zn7.cloudfront.net";
 
   // Detect mobile layout changes
   useEffect(() => {
