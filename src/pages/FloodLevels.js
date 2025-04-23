@@ -6,6 +6,7 @@ import FloodStageMenu from './FloodStageMenu';
 import FloodStepper from './FloodStepper';
 import FloodInfoPopup from "./FloodInfoPopup";
 import { getFloodStage } from './utils/floodStages';
+import Search from './Search.js';
 
 // cd /Users/seanfagan/Desktop/juneau-flood-alpha
 // git add. git commit -m "Updated FloodLevels.js" git push origin main
@@ -375,23 +376,8 @@ const FloodLevels = () => {
 
       {menuOpen && (
         <div id="controls" style={{ position: 'absolute', top: '160px', left: '15px', zIndex: 1 }}>
-          <form onSubmit={(e) => { e.preventDefault(); searchAddress(); }} className="search-container">
-            <label htmlFor="search-address" className="visually-hidden"></label>
-            <input
-              type="text"
-              id="search-address"
-              name="searchAddress"
-              value={address}
-              onChange={(e) => setAddress(e.target.value)}
-              placeholder="Enter address (optional)"
-              className="search-bar"
-              autoComplete="on"
-              aria-label="Search address"
-            />
-            <button type="submit" disabled={isSearching} className="search-button" aria-label="Search">
-              {isSearching ? 'Searching…' : 'Search'}
-            </button>
-          </form>
+          <Search mapRef={mapRef} />
+
 
           {errorMessage && <div style={{ color: 'red', marginTop: '10px' }}>{errorMessage}</div>}
 
