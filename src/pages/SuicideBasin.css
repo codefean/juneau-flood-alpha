@@ -180,7 +180,7 @@
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  font-size: 3rem;
+  font-size: 4rem;
   color: rgba(0, 94, 255, 0.8);
   cursor: pointer;
   z-index: 10;

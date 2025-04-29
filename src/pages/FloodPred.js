@@ -24,7 +24,7 @@ const FloodPred = ({ onClose }) => {
           setIsDismissible(true); // Allow dismissal when no alert
         }
       } catch (error) {
-        console.error("Error fetching flood data:", error);
+        console.error("Error fetching status:", error);
         setNwsFloodForecast("Data unavailable. Check NWS website.");
         setIsDismissible(true);
       } finally {

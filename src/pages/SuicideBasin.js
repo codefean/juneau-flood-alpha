@@ -94,7 +94,16 @@ const images = [
 
       {/* Image Comparison Section */}
       <div className="image-comparison-container">
-        <CompareImage leftImage={beforeImage} rightImage={afterImage} />
+        <CompareImage leftImage={beforeImage} rightImage={afterImage}
+        handle={
+          <div style={{
+            backgroundColor: "#1E90FF",  // Handle fill color
+            border: "3px solid white",   // Contrast outline
+            borderRadius: "50%",         // Make it round
+            width: "28px",               // Width of the handle
+            height: "28px",              // Height of the handle
+          }} />
+        } />
       </div>
       <p className="basin-image-caption">
         Slide to see the Mendenhall Glacier and Suicide Basin from 1893 - 2018

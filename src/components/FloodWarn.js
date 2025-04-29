@@ -22,7 +22,7 @@ const FloodWarn = () => {
           setAlertUrl("https://www.weather.gov/ajk/suicideBasin");
         }
       } catch (error) {
-        console.error("Error fetching flood status:", error);
+        console.error("Error fetching status:", error);
         setFloodStatus("Data unavailable. Check NWS website.");
         setAlertUrl("https://www.weather.gov/ajk/suicideBasin");
       }
