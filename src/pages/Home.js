@@ -33,31 +33,31 @@ const cardData = [
 const faqData = [
   {
     question: "What is a GLOF?",
-    answer: "Glacial lake outburst floods (GLOFs) happen when ice-dammed or moraine-dammed lakes suddenly release large volumes of water, often due to the failure of an ice dam...",
+    answer: "Glacial lake outburst floods (GLOFs) happen when ice-dammed or moraine-dammed lakes release large volumes of water to downstream river systems.",
   },
   {
     question: "Why are GLOFs occurring annually in Suicide Basin?",
-    answer: "Common causes include ice or rock avalanches into the lake, rapid snowmelt, heavy rainfall, or internal weakening of the dam structure...",
+    answer: "Mendenhall Glacier acts as a dam that impounds melt water in Suicide Basin. Each summer, water fills the basin until it can lift the glacier and find a drainage channel underneath to flow into Mendenhall Lake. The release of water from Suicide Basin can cause flooding downstream in Mendenhall Lake and Mendenhall River.",
   },
   {
-    question: "How does 1ft of additional water in Mendenhall Lake affect flooding at my house?",
-    answer: "One foot of water in the lake does not equate to one foot of water at your home or property...",
+    question: "How does 1 ft of additional water level in Mendenhall Lake increase the level of flood waters downstream in Mendenhall Valley?",
+    answer: "Changes in the water level in Mendenhall Lake are not equivalent to the changes in the level of flood waters downstream. Moderate increases in the water level in Mendenhall Lake can dramatically increase the volume of water flowing in Mendenhall River. For example, in the 2023 outburst flood, the water level in Mendenhall Lake peaked at 15 ft, which resulted in a streamflow of 34,200 cubic feet per second (cfs) in Mendenhall River. In 2024, the lake level peaked at 16 ft during the flood, which resulted in a streamflow of 42,700 cfs. Thus, the increase in lake level from 15 ft to 16 ft caused streamflow to increase by 25%. This substantial increase in streamflow is why the 1 ft increase in lake level caused the flood water peak in the valley to increase by multiple feet in 2024.",
   },
   {
     question: "How long does it take the water from Suicide Basin to Mendenhall Valley?",
-    answer: "Once the glacial dam bursts and water is released from Suicide Basin, it takes approximately 40 hours to travel through the glacier...",
+    answer: "Once water starts flowing out of Suicide Basin underneath Mendenhall Glacier, it takes around 40 hours for the flood peak to reach Mendenhall Valley.",
   },
   {
     question: "How will climate change affect glacial lake outburst floods?",
     answer: "Climate change is causing Alaska’s glaciers to thin and retreat, reducing the volume and frequency of some GLOFs...",
   },
   {
-    question: "How is Suicide Basin monitored?",
-    answer: "Suicide Basin is monitored through a combination of methods, including satellite imagery, time-lapse cameras, hydrology instruments, and aerial surveys...",
+    question: "How will the recession of Mendenhall Glacier affect glacial lake outburst floods from Suicide Basin?",
+    answer: "The thinning and retreat of Mendenhall Glacier will decrease the threat of outburst floods from Suicide Basin in coming decades. Suicide Basin will no longer be capable of producing outburst floods once the glacier retreats above the opening of the basin. In the meantime, it is possible that the basin will expand outward into the Mendenhall Glacier, increasing its water holding capacity for a period of years before it eventually decreases and disappears.",
   },
   {
-    question: "How long will the floods occur?",
-    answer: "As long as there is enough ice to dam water in Suicide Basin, GLOFs may continue...",
+    question: "How long will the GLOFs occur?",
+    answer: "As long as Mendenhall Glacier has enough ice to dam water in Suicide Basin, GLOFs may continue.",
   }
 ];
 

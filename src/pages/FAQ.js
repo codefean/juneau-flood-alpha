@@ -6,7 +6,7 @@ const faqData = [
   {
     question: "What is a GLOF?",
     answer:
-      "Glacial lake outburst floods (GLOFs) happen when ice-dammed or moraine-dammed lakes suddenly release large volumes of water, often due to the failure of an ice dam. Ice dams are particularly prone to sudden collapse as water pressure builds and carves a path beneath or around the glacier, triggering rapid drainage and flooding downstream.",
+      "Glacial lake outburst floods (GLOFs) happen when ice-dammed or moraine-dammed lakes release large volumes of water to downstream river systems.",
   },
   {
     question: "Why are GLOFs occuring annually in Suicide Basin?",
