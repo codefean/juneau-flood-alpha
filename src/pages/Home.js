@@ -5,7 +5,7 @@ import "./FloodForecast.css";
 
 const cardData = [
   {
-    title: 'Flood Map',
+    title: 'Flood Maps',
     link: '/flood-map',
     image: '/images/flood-map.jpg',
     description: 'View the glacial flood zone at various lake levels, with or without HESCO barriers.',
@@ -32,7 +32,7 @@ const cardData = [
 
 const faqData = [
   {
-    question: "What is a GLOF?",
+    question: "What is a Glacial lake outburst floods (GLOFs)?",
     answer: "Glacial lake outburst floods (GLOFs) happen when ice-dammed or moraine-dammed lakes release large volumes of water to downstream river systems.",
   },
   {
@@ -52,7 +52,7 @@ const faqData = [
     answer: "The thinning and retreat of Mendenhall Glacier will decrease the threat of outburst floods from Suicide Basin in coming decades. Suicide Basin will no longer be capable of producing outburst floods once the glacier retreats above the opening of the basin. In the meantime, it is possible that the basin will expand outward into the Mendenhall Glacier, increasing its water holding capacity for a period of years before it eventually decreases and disappears.",
   },
   {
-    question: "How long will the GLOFs occur?",
+    question: "How long will the GLOFs occur at Mendenhall glacier?",
     answer: "As long as Mendenhall Glacier has enough ice to dam water in Suicide Basin, GLOFs may continue.",
   }
 ];
