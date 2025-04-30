@@ -44,12 +44,8 @@ const faqData = [
     answer: "Changes in the water level in Mendenhall Lake are not equivalent to the changes in the level of flood waters downstream. Moderate increases in the water level in Mendenhall Lake can dramatically increase the volume of water flowing in Mendenhall River. For example, in the 2023 outburst flood, the water level in Mendenhall Lake peaked at 15 ft, which resulted in a streamflow of 34,200 cubic feet per second (cfs) in Mendenhall River. In 2024, the lake level peaked at 16 ft during the flood, which resulted in a streamflow of 42,700 cfs. Thus, the increase in lake level from 15 ft to 16 ft caused streamflow to increase by 25%. This substantial increase in streamflow is why the 1 ft increase in lake level caused the flood water peak in the valley to increase by multiple feet in 2024.",
   },
   {
-    question: "How long does it take the water from Suicide Basin to Mendenhall Valley?",
+    question: "How long does it take the water from Suicide Basin to reach Mendenhall Valley?",
     answer: "Once water starts flowing out of Suicide Basin underneath Mendenhall Glacier, it takes around 40 hours for the flood peak to reach Mendenhall Valley.",
-  },
-  {
-    question: "How will climate change affect glacial lake outburst floods?",
-    answer: "Climate change is causing Alaska’s glaciers to thin and retreat, reducing the volume and frequency of some GLOFs...",
   },
   {
     question: "How will the recession of Mendenhall Glacier affect glacial lake outburst floods from Suicide Basin?",
