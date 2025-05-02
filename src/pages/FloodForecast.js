@@ -64,7 +64,7 @@ const FloodPrediction = () => {
     mendenhallLake: [
       { top: "19%", left: "51%", text: "Last recorded water level at Mendenhall Lake" },
       { top: "22%", left: "49%", text: "Current flood stage if the GLOF occurred. 9ft is the lowest flood stage." },
-      { top: "70%", left: "88%", text: "Today's observation." },
+      { top: "70%", left: "69.8%", text: "Today's observation." },
     ],
   };
 
