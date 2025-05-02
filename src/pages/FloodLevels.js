@@ -27,14 +27,10 @@ const customColors = [
 const FloodLevels = () => {
   const mapContainerRef = useRef(null);
   const mapRef = useRef(null);
-  const searchMarkerRef = useRef(null);
-
   const [selectedFloodLevel, setSelectedFloodLevel] = useState(9);
   const [menuOpen, setMenuOpen] = useState(true);
   const [hescoMode, setHescoMode] = useState(false);
-  const [address, setAddress] = useState('');
-  const [errorMessage, setErrorMessage] = useState('');
-  const [isSearching, setIsSearching] = useState(false);
+  const [errorMessage] = useState('');
   const [waterLevels, setWaterLevels] = useState([]);
   const [loadingLayers, setLoadingLayers] = useState(false);
 
@@ -310,35 +306,7 @@ const FloodLevels = () => {
     }
   }, [hescoMode, setupHoverPopup]);
 
-  const searchAddress = async () => {
-    setIsSearching(true);
-    try {
-      setErrorMessage('');
-      const response = await fetch(
-        `https://api.mapbox.com/geocoding/v5/mapbox.places/${encodeURIComponent(address)}.json?access_token=${mapboxgl.accessToken}`
-      );
-      const data = await response.json();
-      if (data.features?.length > 0) {
-        const [lng, lat] = data.features[0].geometry.coordinates;
 
-        if (searchMarkerRef.current) {
-          searchMarkerRef.current.remove();
-        }
-
-        searchMarkerRef.current = new mapboxgl.Marker({ color: 'red' })
-          .setLngLat([lng, lat])
-          .addTo(mapRef.current);
-
-        mapRef.current.flyTo({ center: [lng, lat], zoom: 14 });
-      } else {
-        setErrorMessage('Address not found.');
-      }
-    } catch {
-      setErrorMessage('Search failed. Try again.');
-    } finally {
-      setIsSearching(false);
-    }
-  };
 
   const handleFloodLayerChange = useCallback(() => {
     if (!selectedFloodLevel || isNaN(selectedFloodLevel)) return;
@@ -350,7 +318,7 @@ const FloodLevels = () => {
     } else {
       console.warn(`Layer ${layerId} not found when setting up hover`);
     }
-  }, [selectedFloodLevel, mapRef]);
+  }, [selectedFloodLevel, mapRef, setupHoverPopup]);
   
 
   return (
@@ -393,7 +361,7 @@ const FloodLevels = () => {
           />
 
           <button
-            title="HESCO maps will be available in May"
+            title="HESCO maps assuming fully functional barriers"
             onClick={toggleHescoMode}
             className={`hesco-toggle-button ${hescoMode ? 'hesco-on' : 'hesco-off'}`}
             disabled={loadingLayers}
