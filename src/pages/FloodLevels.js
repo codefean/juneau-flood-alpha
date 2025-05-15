@@ -239,10 +239,12 @@ const FloodLevels = () => {
       });
 
       mapRef.current.on('load', () => {
+        setLoadingLayers(true); // Start spinner
+      
         const currentBucket = hescoMode
           ? "https://flood-data-hesco.s3.us-east-2.amazonaws.com"
           : "https://flood-data.s3.us-east-2.amazonaws.com";
-
+      
         const floodLevels = Array.from({ length: 10 }, (_, i) => {
           const floodLevel = 9 + i;
           const geojsonLevel = 65 + i;
@@ -253,23 +255,36 @@ const FloodLevels = () => {
             color: customColors[i],
           };
         });
-
-        floodLevels.forEach((flood) => {
-          mapRef.current.addSource(flood.id, { type: 'geojson', data: flood.geojson });
-          mapRef.current.addLayer({
-            id: `${flood.id}-fill`,
-            type: 'fill',
-            source: flood.id,
-            layout: {},
-            paint: {
-              'fill-color': flood.color,
-              'fill-opacity': 0.5,
-            },
-          });
-          mapRef.current.setLayoutProperty(`${flood.id}-fill`, 'visibility', 'none');
+      
+        // Use Promise.all to wait until all layers are loaded
+        Promise.all(
+          floodLevels.map((flood) =>
+            fetch(flood.geojson)
+              .then((res) => res.json())
+              .then((data) => {
+                mapRef.current.addSource(flood.id, { type: 'geojson', data });
+                mapRef.current.addLayer({
+                  id: `${flood.id}-fill`,
+                  type: 'fill',
+                  source: flood.id,
+                  layout: {},
+                  paint: {
+                    'fill-color': flood.color,
+                    'fill-opacity': 0.5,
+                  },
+                });
+                mapRef.current.setLayoutProperty(`${flood.id}-fill`, 'visibility', 'none');
+              })
+              .catch((err) => {
+                console.warn(`Error loading ${flood.geojson}:`, err.message);
+              })
+          )
+        ).then(() => {
+          setupHoverPopup();
+          setTimeout(() => {
+            setLoadingLayers(false); // Stop spinner after slight delay
+          }, 300);
         });
-
-        setupHoverPopup();
 
         const markerCoordinates = [
           {
