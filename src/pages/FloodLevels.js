@@ -34,6 +34,7 @@ const FloodLevels = () => {
   const [waterLevels, setWaterLevels] = useState([]);
   const [loadingLayers, setLoadingLayers] = useState(false);
 
+
   const toggleMenu = () => setMenuOpen((prev) => !prev);
 
   const setupHoverPopup = useCallback((activeLayerId) => {
@@ -430,7 +431,6 @@ const FloodLevels = () => {
         {loadingLayers && (
           <div className="map-loading-overlay">
             <div className="spinner" />
-            <p className="loading-text">Loading flood data...</p>
           </div>
         )}
 
