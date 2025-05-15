@@ -386,7 +386,7 @@ const FloodLevels = () => {
               ? 'Loading HESCO Data…'
               : hescoMode
               ? 'HESCO Barriers ON'
-              : 'HESCO Barriers OFF'}
+              : 'HESCO Barriers OFF (14ft+)'}
           </button>
 
 
@@ -426,6 +426,14 @@ const FloodLevels = () => {
           </div>
         </div>
       )}
+
+        {loadingLayers && (
+          <div className="map-loading-overlay">
+            <div className="spinner" />
+            <p className="loading-text">Loading flood data...</p>
+          </div>
+        )}
+
     </div>
   );
 };
