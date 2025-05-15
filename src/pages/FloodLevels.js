@@ -319,6 +319,14 @@ const FloodLevels = () => {
       console.warn(`Layer ${layerId} not found when setting up hover`);
     }
   }, [selectedFloodLevel, mapRef, setupHoverPopup]);
+
+
+  useEffect(() => {
+    if (hescoMode && selectedFloodLevel < 14) {
+      setHescoMode(false);
+      updateFloodLayers(false); // Switch back to non-HESCO
+    }
+  }, [selectedFloodLevel, hescoMode]);
   
 
   return (
@@ -361,10 +369,18 @@ const FloodLevels = () => {
           />
 
           <button
-            title="HESCO maps assuming fully functional barriers"
-            onClick={toggleHescoMode}
+            title={
+              selectedFloodLevel < 14
+                ? 'HESCO maps are only available for 14ft and above'
+                : 'HESCO maps assuming fully functional barriers'
+            }
+            onClick={() => {
+              if (selectedFloodLevel >= 14) {
+                toggleHescoMode();
+              }
+            }}
             className={`hesco-toggle-button ${hescoMode ? 'hesco-on' : 'hesco-off'}`}
-            disabled={loadingLayers}
+            disabled={loadingLayers || selectedFloodLevel < 14}
           >
             {loadingLayers
               ? 'Loading HESCO Data…'
@@ -372,6 +388,7 @@ const FloodLevels = () => {
               ? 'HESCO Barriers ON'
               : 'HESCO Barriers OFF'}
           </button>
+
 
           <FloodStageMenu 
           setFloodLevelFromMenu={setSelectedFloodLevel} 
