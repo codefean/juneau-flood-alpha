@@ -79,28 +79,26 @@ const FloodLevels = () => {
   const updateFloodLayers = (mode) => {
     setLoadingLayers(true);
   
-    const newBucket = mode
-      ? "https://flood-data-hesco.s3.us-east-2.amazonaws.com"
-      : "https://flood-data.s3.us-east-2.amazonaws.com";
+    const baseTilesets = {
+      65: "3z7whbfp",
+      66: "8kk8etzn",
+      67: "akq41oym",
+      68: "5vsqqhd8",
+      69: "awu2n97c",
+      70: "a2ttaa7t",
+      71: "0rlea0ym",
+      72: "44bl8opr",
+      73: "65em8or7",
+      74: "9qrkn8pk",
+    };
   
-    if (!mapRef.current) return;
+    const currentBucket = "https://flood-data-hesco.s3.us-east-2.amazonaws.com";
+    const validLevels = Array.from({ length: 10 }, (_, i) => 65 + i); // 65-74
   
-    const floodLevels = Array.from({ length: 10 }, (_, i) => {
-      const floodLevel = 9 + i;
-      const geojsonLevel = 65 + i;
-      return {
-        id: `flood${geojsonLevel}`,
-        name: `${floodLevel} ft`,
-        geojson: `${newBucket}/${geojsonLevel}.geojson`,
-        color: customColors[i],
-      };
-    });
-  
-    // Step 1: Remove existing layers and sources
-    floodLevels.forEach((flood) => {
-      const layerId = `${flood.id}-fill`;
-      const sourceId = flood.id;
-  
+    // Remove all existing flood layers and sources
+    validLevels.forEach((level) => {
+      const layerId = `flood${level}-fill`;
+      const sourceId = `flood${level}`;
       if (mapRef.current.getLayer(layerId)) {
         mapRef.current.removeLayer(layerId);
       }
@@ -109,56 +107,76 @@ const FloodLevels = () => {
       }
     });
   
-    // Step 2: Add them back after short delay to let map "settle"
-    setTimeout(() => {
-      let loadedCount = 0;
-      const totalFloods = floodLevels.length;
+    let loadedCount = 0;
   
-      floodLevels.forEach((flood, index) => {
-        const layerId = `${flood.id}-fill`;
-        const sourceId = flood.id;
+    validLevels.forEach((level) => {
+      const floodId = `flood${level}`;
+      const layerId = `${floodId}-fill`;
+      const visible = floodId === `flood${65 + (selectedFloodLevel - 9)}`;
   
-        fetch(flood.geojson)
-          .then((response) => {
-            if (!response.ok) throw new Error("GeoJSON not found");
-            return response.json();
-          })
+      if (!mode) {
+        // Non-HESCO mode – use Mapbox tilesets
+        mapRef.current.addSource(floodId, {
+          type: 'vector',
+          url: `mapbox://mapfean.${baseTilesets[level]}`,
+        });
+  
+        mapRef.current.addLayer({
+          id: layerId,
+          type: 'fill',
+          source: floodId,
+          'source-layer': String(level),
+          layout: {
+            visibility: visible ? 'visible' : 'none',
+          },
+          paint: {
+            'fill-color': customColors[level - 65],
+            'fill-opacity': 0.5,
+          },
+        });
+  
+        loadedCount++;
+        if (loadedCount === validLevels.length) {
+          setLoadingLayers(false);
+          setupHoverPopup(`${floodId}-fill`);
+        }
+      } else {
+        // HESCO mode – use GeoJSON from S3
+        fetch(`${currentBucket}/${level}.geojson`)
+          .then((res) => res.json())
           .then((data) => {
-            if (!mapRef.current.getSource(sourceId)) {
-              mapRef.current.addSource(sourceId, { type: "geojson", data });
-              mapRef.current.addLayer({
-                id: layerId,
-                type: "fill",
-                source: sourceId,
-                layout: {visibility: "none", },
-                paint: {
-                  "fill-color": flood.color,
-                  "fill-opacity": 0.5,
-                },
-              });
-              mapRef.current.setLayoutProperty(
-                layerId,
-                "visibility",
-                flood.id === `flood${65 + (selectedFloodLevel - 9)}`
-                  ? "visible"
-                  : "none"
-              );
-            }
+            mapRef.current.addSource(floodId, {
+              type: 'geojson',
+              data,
+            });
+  
+            mapRef.current.addLayer({
+              id: layerId,
+              type: 'fill',
+              source: floodId,
+              layout: {
+                visibility: visible ? 'visible' : 'none',
+              },
+              paint: {
+                'fill-color': customColors[level - 65],
+                'fill-opacity': 0.5,
+              },
+            });
           })
           .catch((err) => {
-            console.warn(`Could not load ${flood.geojson}:`, err.message);
+            console.warn(`Error loading GeoJSON for flood${level}:`, err.message);
           })
           .finally(() => {
             loadedCount++;
-            if (loadedCount === totalFloods) {
+            if (loadedCount === validLevels.length) {
               setLoadingLayers(false);
-              const activeLayerId = `flood${65 + (selectedFloodLevel - 9)}-fill`;
-              setupHoverPopup(activeLayerId); // pass the currently visible layer
-            }            
+              setupHoverPopup(`${floodId}-fill`);
+            }
           });
-      });
-    }, 300); 
+      }
+    });
   };
+  
   
 
   const toggleHescoMode = () => {
