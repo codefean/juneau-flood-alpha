@@ -124,7 +124,9 @@ const FloodPrediction = () => {
 {/* Suicide Basin Section */}
 <div className="about-forecast-card">
 <p>
-    This page provides real-time monitoring information. The USGS monitors <strong>Suicide Basin</strong> using time-lapse cameras and laser range finders to track water levels — though readings may vary due to floating icebergs. <strong>Mendenhall Lake</strong> levels are also tracked along the west shore to evaluate rising water levels and potential downstream flood impacts following an outburst from Suicide Basin.
+This page provides information about real-time monitoring efforts. The USGS monitors Suicide Basin using time-lapse cameras and a laser range finder
+ to track water levels — though icebergs that float in front of the laser may cause levels to jump around. Mendenhall Lake levels are also tracked
+  continuously at a site on the west shore. Lake level is an important predictor of downstream flood impacts following an outburst from Suicide Basin.
   </p>
 
 

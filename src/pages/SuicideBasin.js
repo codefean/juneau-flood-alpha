@@ -100,8 +100,8 @@ const images = [
             backgroundColor: "#1E90FF",  // Handle fill color
             border: "3px solid white",   // Contrast outline
             borderRadius: "50%",         // Make it round
-            width: "28px",               // Width of the handle
-            height: "28px",              // Height of the handle
+            width: "18px",               // Width of the handle
+            height: "18px",              // Height of the handle
           }} />
         } />
       </div>

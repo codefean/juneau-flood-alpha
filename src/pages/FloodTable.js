@@ -6,10 +6,10 @@ const S3_CSV_URL = "https://flood-events.s3.us-east-2.amazonaws.com/FloodEvents.
 
 const COLUMN_NAME_MAPPING = {
   "Release Stage D.S. Gage (ft)": "Pre Flood Water Level at Mendenhall Lake (ft)",
-  "D.S. Gage Release Flow (cfs)": "Pre Flood Flow Rate at Mendenhall Lake (cfs)",
+  "D.S. Gage Release Flow (cfs)": "Pre-flood Streamflow in Mendenhall River (cfs)",
   "Crest Date": "Peak Water Level Date",
   "Crest Stage D.S. Gage (ft)": "Peak Water Level at Mendenhall Lake (ft)",
-  "D.S. Gage Crest Flow (cfs)": "Peak Water Level Flow Rate (cfs)",
+  "D.S. Gage Crest Flow (cfs)": "Peak Flow in Mendenhall River (cfs)",
   "Impacts": "NWS Impacts",
 };
 
@@ -42,10 +42,10 @@ const FloodTable = () => {
           skipEmptyLines: true,
           complete: (result) => {
             const rawData = result.data;
-  
+
             // Process data and add index column
             const processedData = rawData.map((row, index) => {
-              const newRow = { Index: index + 1 }; // Start from 1
+              const newRow = { Index: index + 1 };
               Object.keys(row).forEach((key) => {
                 if (!EXCLUDED_COLUMNS.includes(key)) {
                   const newKey = COLUMN_NAME_MAPPING[key] || key;
@@ -54,10 +54,9 @@ const FloodTable = () => {
               });
               return newRow;
             });
-  
-            // Set headers, placing "Index" first
+
             const newHeaders = ["Index", ...Object.keys(processedData[0] || {}).filter(h => h !== "Index")];
-  
+
             setData(processedData);
             setSortedData(processedData);
             setHeaders(newHeaders);
@@ -70,18 +69,37 @@ const FloodTable = () => {
         setLoading(false);
       });
   }, []);
-  
 
   const handleSort = (column) => {
     const direction = sortConfig.key === column && sortConfig.direction === "asc" ? "desc" : "asc";
 
-    const sorted = [...sortedData].sort((a, b) => {
-      const aValue = parseFloat(a[column]) || a[column] || 0;
-      const bValue = parseFloat(b[column]) || b[column] || 0;
+    const isDateColumn = (value) => {
+      return /^\d{4}-\d{2}-\d{2}$/.test(value) || !isNaN(Date.parse(value));
+    };
 
-      if (aValue < bValue) return direction === "asc" ? -1 : 1;
-      if (aValue > bValue) return direction === "asc" ? 1 : -1;
-      return 0;
+    const sorted = [...sortedData].sort((a, b) => {
+      const aRaw = a[column];
+      const bRaw = b[column];
+
+      // Check for date comparison
+      if (isDateColumn(aRaw) && isDateColumn(bRaw)) {
+        const aDate = new Date(aRaw);
+        const bDate = new Date(bRaw);
+        return direction === "asc" ? aDate - bDate : bDate - aDate;
+      }
+
+      // Check for numeric comparison
+      const aValue = parseFloat(aRaw);
+      const bValue = parseFloat(bRaw);
+
+      if (!isNaN(aValue) && !isNaN(bValue)) {
+        return direction === "asc" ? aValue - bValue : bValue - aValue;
+      }
+
+      // Default to string comparison
+      return direction === "asc"
+        ? String(aRaw).localeCompare(String(bRaw))
+        : String(bRaw).localeCompare(String(aRaw));
     });
 
     setSortedData(sorted);
@@ -94,12 +112,11 @@ const FloodTable = () => {
         <p>Loading data...</p>
       ) : (
         <>
-          {/* Table Title and Subtitle */}
           <h3 className="flood-table-title">Mendenhall Glacial Lake Outburst Flood Events Table</h3>
           <h4 className="flood-table-subtitle">
             Select Columns To Explore Flood Data
           </h4>
-  
+
           <table className="flood-table">
             <thead>
               <tr>
@@ -121,12 +138,12 @@ const FloodTable = () => {
                   .map((row, rowIndex) => {
                     const isPreviewRow = !expanded && rowIndex >= visibleCount;
                     let opacity = 1;
-  
+
                     if (isPreviewRow) {
                       const previewIndex = rowIndex - visibleCount;
                       opacity = 0.7 - previewIndex * 0.2;
                     }
-  
+
                     return (
                       <tr key={rowIndex} style={{ opacity, transition: "opacity 0.3s ease-in-out" }}>
                         {headers.map((header, colIndex) => {
@@ -134,7 +151,7 @@ const FloodTable = () => {
                           const cellStyle = isFloodStageColumn
                             ? { backgroundColor: getFloodStageColor(parseFloat(row[header])) }
                             : {};
-  
+
                           return (
                             <td key={colIndex} style={cellStyle}>
                               {row[header] || "—"}
@@ -155,7 +172,7 @@ const FloodTable = () => {
         </>
       )}
     </div>
-  );  
+  );
 };
 
 export default FloodTable;

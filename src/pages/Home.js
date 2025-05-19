@@ -8,25 +8,25 @@ const cardData = [
     title: 'Flood Maps',
     link: '/flood-map',
     image: '/images/flood-map.jpg',
-    description: 'View the glacial flood zone at various lake levels, with or without HESCO barriers.',
+    description: 'View the glacial flood zone at various lake levels, with or without HESCO barriers',
   },
   {
     title: 'Flood Forecasting',
     link: '/flood-forecast',
     image: '/images/flood-forecast.jpg',
-    description: 'How to understand flood forecasts based on gage heights & image data.',
+    description: 'Understand flood forecasts based on Suicide Basin & Mendenhall Lake water levels',
   },
   {
     title: 'Flood Events',
     link: '/flood-events',
     image: '/images/flood-events.jpg',
-    description: 'Historical flood event data including impact reports & peak discharge statistics.',
+    description: 'Historical data from outburst floods, including peak water level and streamflow',
   },
   {
     title: 'Suicide Basin',
     link: '/suicide-basin',
     image: '/images/suicide-basin.jpg',
-    description: 'How Suicide Basin works & context for recent lake outburst events.',
+    description: 'Learn how Suicide Basin was formed and how it releases outburst floods',
   },
 ];
 
@@ -132,9 +132,9 @@ const Home = () => {
         <div className="home-about-card">
           <h3>About</h3>
           <p>
-            This tool provides mapping of flood impacts, real-time visuals of water levels, and insights about glacial lake outburst floods (GLOFs)
-            from Suicide Basin. Use the cards above to explore live flood maps, forecasts, past events, and
-            context on how these floods happen and impact the Juneau area. For the National Weather Service Suicide Basin monitoring page click below.
+          This dashboard provides interactive flood inundation maps for the Mendenhall Valley. It also contains information about about glacial lake outburst floods (GLOFs)
+          from Suicide Basin. Use the cards above to explore flood maps, flood forecasting, past outburst flood events, and understand how outburst floods originate from
+          Suicide Basin and impact the Juneau area. For the National Weather Service Suicide Basin monitoring page click below
           </p>
 
           <div className="button-wrapper">

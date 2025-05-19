@@ -64,7 +64,6 @@ const FloodGraph = () => {
                 releaseStage: row["Release Stage D.S. Gage (ft)"] || "Unknown",
                 crestDate: row["Crest Date"],
                 crestStage: row["Crest Stage D.S. Gage (ft)"],
-                impacts: row["Impacts"] || "No impacts reported",
                 color,
               });
 
@@ -225,10 +224,9 @@ const FloodGraph = () => {
             <div className="event-info-card" onClick={handleEventCardClick} style={{ borderRight: `5px solid ${eventCardColor}`, "--hover-color": `${eventCardColor}20` }}>
               <h3 className="event-title">Flood Event Info</h3>
               <p><strong>Release Start Date:</strong> {selectedEvent.releaseDate}</p>
-              <p><strong>Starting Water Level:</strong> {selectedEvent.releaseStage} ft</p>
-              <p><strong>Peak Water Level Date:</strong> {selectedEvent.crestDate}</p>
-              <p><strong>Peak Water Level:</strong> {selectedEvent.crestStage} ft</p>
-              <p><strong>NWS Impacts:</strong> {selectedEvent.impacts}</p>
+              <p><strong>Pre-flood Level:</strong> {selectedEvent.releaseStage} ft</p>
+              <p><strong>Flood Peak Level Date:</strong> {selectedEvent.crestDate}</p>
+              <p><strong>Flood Peak Level:</strong> {selectedEvent.crestStage} ft</p>
             </div>
           )}
         </>
