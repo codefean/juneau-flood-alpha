@@ -11,14 +11,14 @@ import { getFloodStage } from './utils/floodStages';
 import Search from './Search.js';
 
 const customColors = [
-  "#c3b91e", "#e68a1e", "#31a354", "#3182bd", "#08306b",
+  "#c3b91e", "#c3b91e", "#e68a1e", "#31a354", "#3182bd", "#124187",
   "#d63b3b", "#9b3dbd", "#d13c8f", "#c2185b", "#756bb1"
 ];
 
 const FloodLevels = () => {
   const mapContainerRef = useRef(null);
   const mapRef = useRef(null);
-  const [selectedFloodLevel, setSelectedFloodLevel] = useState(9);
+  const [selectedFloodLevel, setSelectedFloodLevel] = useState(8);
   const [menuOpen, setMenuOpen] = useState(true);
   const [hescoMode, setHescoMode] = useState(false);
   const [errorMessage] = useState('');
@@ -47,6 +47,7 @@ const FloodLevels = () => {
 
   const tilesetMap = {
     base: {
+      64: "ccav82q0",
       65: "3z7whbfp",
       66: "8kk8etzn",
       67: "akq41oym",
@@ -70,7 +71,7 @@ const FloodLevels = () => {
 
 const updateFloodLayers = (mode) => {
   setLoadingLayers(true);
-  const validLevels = Array.from({ length: 10 }, (_, i) => 65 + i);
+  const validLevels = Array.from({ length: 11 }, (_, i) => 64 + i); // 64–74
 
   validLevels.forEach((level) => {
     const layerId = `flood${level}-fill`;
@@ -88,7 +89,7 @@ const updateFloodLayers = (mode) => {
   validLevels.forEach((level) => {
     const floodId = `flood${level}`;
     const layerId = `${floodId}-fill`;
-    const visible = floodId === `flood${65 + (selectedFloodLevel - 9)}`;
+    const visible = floodId === `flood${64 + (selectedFloodLevel - 8)}`;
 
     const tilesetId = mode
       ? tilesetMap.hesco[level]
@@ -115,7 +116,7 @@ const updateFloodLayers = (mode) => {
         visibility: visible ? 'visible' : 'none',
       },
       paint: {
-        'fill-color': customColors[level - 65],
+        'fill-color': customColors[level - 64],
         'fill-opacity': 0.5,
       },
     });
@@ -136,7 +137,7 @@ const updateFloodLayers = (mode) => {
         window.location.reload();
       } else {
         updateFloodLayers(newMode);
-        const visibleLayerId = `flood${65 + (selectedFloodLevel - 9)}-fill`;
+        const visibleLayerId = `flood${64 + (selectedFloodLevel - 8)}-fill`;
         setTimeout(() => setupHoverPopup(visibleLayerId), 300);
       }
       return newMode;
@@ -241,7 +242,7 @@ const updateFloodLayers = (mode) => {
           >
             {loadingLayers ? 'Loading HESCO Data…' : hescoMode ? 'HESCO Barriers ON' : 'HESCO Barriers OFF (14ft+)'}
           </button>
-          <FloodStageMenu setFloodLevelFromMenu={setSelectedFloodLevel} onFloodLayerChange={() => setupHoverPopup(`flood${65 + (selectedFloodLevel - 9)}-fill`)} />
+          <FloodStageMenu setFloodLevelFromMenu={setSelectedFloodLevel} onFloodLayerChange={() => setupHoverPopup(`flood${64 + (selectedFloodLevel - 8)}-fill`)} />
           <div style={{ marginTop: '20px' }}>
             {waterLevels.map((level) => {
               const currentStage = getFloodStage(level.value);

@@ -4,7 +4,7 @@ import React, { useState, useEffect, useCallback } from 'react';
 import './FloodStepper.css';
 
 const customColors = [
-  "#c3b91e", "#e68a1e", "#31a354", "#3182bd", "#08306b",
+   "#c3b91e", "#c3b91e", "#e68a1e", "#31a354", "#3182bd", "#124187",
   "#d63b3b", "#9b3dbd", "#d13c8f", "#c2185b", "#756bb1"
 ];
 
@@ -21,7 +21,7 @@ const FloodStepper = ({
   const [isLayerVisible, setIsLayerVisible] = useState(true);
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
 
-  const minFloodLevel = 9;
+  const minFloodLevel = 8;
   const maxFloodLevel = 18;
 
   useEffect(() => {
@@ -33,7 +33,7 @@ const FloodStepper = ({
   const updateFloodLayer = useCallback((level) => {
     if (!mapRef.current) return;
 
-    const layerId = `flood${65 + (level - 9)}-fill`;
+    const layerId = `flood${64 + (selectedFloodLevel - 8)}-fill`;
 
     const layers = mapRef.current.getStyle().layers || [];
     layers.forEach((layer) => {
@@ -67,7 +67,7 @@ const FloodStepper = ({
   };
 
   const toggleFloodVisibility = () => {
-    const layerId = `flood${65 + (floodLevel - 9)}-fill`;
+    const layerId = `flood${64 + (floodLevel - 10)}-fill`;
     const newVisibility = isLayerVisible ? 'none' : 'visible';
 
     setIsLayerVisible(!isLayerVisible);
@@ -93,9 +93,9 @@ const FloodStepper = ({
 
         <div
           className={`flood-level-card ${isLayerVisible ? '' : 'dimmed'}`}
-          style={{ backgroundColor: customColors[floodLevel - 9] }}
+          style={{ backgroundColor: customColors[floodLevel - 8] }}
           onClick={() => {
-            const layerId = `flood${65 + (floodLevel - 9)}-fill`;
+            const layerId = `flood${64 + (floodLevel - 11)}-fill`;
             if (mapRef.current?.getLayer(layerId)) {
               toggleFloodVisibility();
             }
