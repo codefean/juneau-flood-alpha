@@ -239,7 +239,7 @@ const updateFloodLayers = (mode) => {
             onFloodLayerChange={handleFloodLayerChange}
           />
           <button
-            title={selectedFloodLevel < 14 ? 'HESCO maps are only available for 14ft and above' : 'HESCO maps assuming fully functional barriers'}
+            title={selectedFloodLevel < 14 ? 'HESCO maps are only available for 14ft - 18ft' : 'HESCO maps assuming fully functional barriers'}
             onClick={() => { if (selectedFloodLevel >= 14) toggleHescoMode(); }}
             className={`hesco-toggle-button ${hescoMode ? 'hesco-on' : 'hesco-off'}`}
             disabled={loadingLayers || selectedFloodLevel < 14 || selectedFloodLevel > 18}
