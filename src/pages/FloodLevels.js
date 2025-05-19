@@ -11,7 +11,7 @@ import { getFloodStage } from './utils/floodStages';
 import Search from './Search.js';
 
 const customColors = [
-  "#c3b91e", "#c3b91e", "#e68a1e", "#31a354", "#3182bd", "#124187",
+  "#87c210", "#c3b91e", "#e68a1e", "#31a354", "#3182bd", "#124187",
   "#d63b3b", "#9b3dbd", "#d13c8f", "#c2185b", "#756bb1"
 ];
 
