@@ -12,7 +12,7 @@ import Search from './Search.js';
 
 const customColors = [
   "#87c210", "#c3b91e", "#e68a1e", "#31a354", "#3182bd", "#124187",
-  "#d63b3b", "#9b3dbd", "#d13c8f", "#c2185b", "#756bb1"
+  "#d63b3b", "#9b3dbd", "#d13c8f", "#c2185b", "#756bb1", "#f59380"
 ];
 
 const FloodLevels = () => {
@@ -58,6 +58,7 @@ const FloodLevels = () => {
       72: "44bl8opr",
       73: "65em8or7",
       74: "9qrkn8pk",
+      75: "3ktp8nyu",
     },
     hesco: {
       70: "cjs05ojz",
@@ -71,7 +72,7 @@ const FloodLevels = () => {
 
 const updateFloodLayers = (mode) => {
   setLoadingLayers(true);
-  const validLevels = Array.from({ length: 11 }, (_, i) => 64 + i); // 64–74
+  const validLevels = Array.from({ length: 12 }, (_, i) => 64 + i); // 64–74
 
   validLevels.forEach((level) => {
     const layerId = `flood${level}-fill`;
@@ -95,10 +96,13 @@ const updateFloodLayers = (mode) => {
       ? tilesetMap.hesco[level]
       : tilesetMap.base[level];
 
-    if (mode && !tilesetId) {
-      loadedCount++;
-      return;
-    }
+      if (mode && !tilesetId) {
+        loadedCount++;
+        if (loadedCount === validLevels.length) {
+          setLoadingLayers(false);
+        }
+        return;
+      }
 
     const sourceLayerName = mode ? `flood${level}` : String(level);
 
@@ -117,7 +121,7 @@ const updateFloodLayers = (mode) => {
       },
       paint: {
         'fill-color': customColors[level - 64],
-        'fill-opacity': 0.5,
+        'fill-opacity': 0.4,
       },
     });
 
@@ -158,14 +162,14 @@ const updateFloodLayers = (mode) => {
   }, [hescoMode]);
 
   useEffect(() => {
-    if (hescoMode && selectedFloodLevel < 14) {
+    if (hescoMode && (selectedFloodLevel < 14 || selectedFloodLevel > 18)) {
       setHescoMode(false);
       updateFloodLayers(false);
     }
   }, [selectedFloodLevel, hescoMode]);
 
   const handleFloodLayerChange = useCallback(() => {
-    const layerId = `flood${65 + (selectedFloodLevel - 9)}-fill`;
+    const layerId = `flood${64 + (selectedFloodLevel - 8)}-fill`;
     if (mapRef.current?.getLayer(layerId)) {
       setupHoverPopup(layerId);
     }
@@ -238,7 +242,7 @@ const updateFloodLayers = (mode) => {
             title={selectedFloodLevel < 14 ? 'HESCO maps are only available for 14ft and above' : 'HESCO maps assuming fully functional barriers'}
             onClick={() => { if (selectedFloodLevel >= 14) toggleHescoMode(); }}
             className={`hesco-toggle-button ${hescoMode ? 'hesco-on' : 'hesco-off'}`}
-            disabled={loadingLayers || selectedFloodLevel < 14}
+            disabled={loadingLayers || selectedFloodLevel < 14 || selectedFloodLevel > 18}
           >
             {loadingLayers ? 'Loading HESCO Data…' : hescoMode ? 'HESCO Barriers ON' : 'HESCO Barriers OFF (14ft+)'}
           </button>

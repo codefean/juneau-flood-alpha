@@ -5,7 +5,7 @@ import './FloodStepper.css';
 
 const customColors = [
    "#87c210", "#c3b91e", "#e68a1e", "#31a354", "#3182bd", "#124187",
-  "#d63b3b", "#9b3dbd", "#d13c8f", "#c2185b", "#756bb1"
+  "#d63b3b", "#9b3dbd", "#d13c8f", "#c2185b", "#756bb1", "#f59380"
 ];
 
 const FloodStepper = ({
@@ -22,7 +22,7 @@ const FloodStepper = ({
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
 
   const minFloodLevel = 8;
-  const maxFloodLevel = 18;
+  const maxFloodLevel = 19;
 
   useEffect(() => {
     const handleResize = () => setIsMobile(window.innerWidth < 768);
@@ -95,7 +95,7 @@ const FloodStepper = ({
           className={`flood-level-card ${isLayerVisible ? '' : 'dimmed'}`}
           style={{ backgroundColor: customColors[floodLevel - 8] }}
           onClick={() => {
-            const layerId = `flood${64 + (floodLevel - 11)}-fill`;
+            const layerId = `flood${64 + (floodLevel - 12)}-fill`;
             if (mapRef.current?.getLayer(layerId)) {
               toggleFloodVisibility();
             }
