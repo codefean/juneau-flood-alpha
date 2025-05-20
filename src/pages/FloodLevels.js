@@ -12,7 +12,7 @@ import Search from './Search.js';
 
 const customColors = [
   "#87c210", "#c3b91e", "#e68a1e", "#31a354", "#3182bd", "#124187",
-  "#d63b3b", "#9b3dbd", "#d13c8f", "#c2185b", "#756bb1", "#f59380"
+  "#d63b3b", "#9b3dbd", "#d13c8f", "#c2185b", "#756bb1", "#f59380","#ba4976",
 ];
 
 const FloodLevels = () => {
@@ -59,6 +59,7 @@ const FloodLevels = () => {
       73: "65em8or7",
       74: "9qrkn8pk",
       75: "3ktp8nyu",
+      76: "avpruavl",
     },
     hesco: {
       70: "cjs05ojz",
@@ -72,7 +73,7 @@ const FloodLevels = () => {
 
 const updateFloodLayers = (mode) => {
   setLoadingLayers(true);
-  const validLevels = Array.from({ length: 12 }, (_, i) => 64 + i); // 64–74
+  const validLevels = Array.from({ length: 13 }, (_, i) => 64 + i); // 64–76
 
   validLevels.forEach((level) => {
     const layerId = `flood${level}-fill`;
