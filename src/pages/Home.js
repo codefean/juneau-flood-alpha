@@ -32,7 +32,7 @@ const cardData = [
 
 const faqData = [
   {
-    question: "What is a Glacial lake outburst floods (GLOFs)?",
+    question: "What are Glacial lake outburst floods (GLOFs)?",
     answer: "Glacial lake outburst floods (GLOFs) happen when ice-dammed or moraine-dammed lakes release large volumes of water to downstream river systems.",
   },
   {
