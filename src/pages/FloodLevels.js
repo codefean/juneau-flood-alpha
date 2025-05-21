@@ -240,12 +240,12 @@ const updateFloodLayers = (mode) => {
             onFloodLayerChange={handleFloodLayerChange}
           />
           <button
-            title={selectedFloodLevel < 14 ? 'HESCO maps are only available for 14ft - 18ft' : 'HESCO maps assuming fully functional barriers'}
+            title={selectedFloodLevel < 14 ? 'HESCO maps are only available for 14ft - 18ft & assume fully functional barriers' : 'HESCO maps are only available for 14ft - 18ft & assume fully functional barriers'}
             onClick={() => { if (selectedFloodLevel >= 14) toggleHescoMode(); }}
             className={`hesco-toggle-button ${hescoMode ? 'hesco-on' : 'hesco-off'}`}
             disabled={loadingLayers || selectedFloodLevel < 14 || selectedFloodLevel > 18}
           >
-            {loadingLayers ? 'Loading HESCO Data…' : hescoMode ? 'HESCO Barriers ON' : 'HESCO Barriers OFF (14ft+)'}
+            {loadingLayers ? 'Loading HESCO Data…' : hescoMode ? 'HESCO Barriers ON' : 'HESCO Barriers OFF (14-18ft)'}
           </button>
           <FloodStageMenu setFloodLevelFromMenu={setSelectedFloodLevel} onFloodLayerChange={() => setupHoverPopup(`flood${64 + (selectedFloodLevel - 8)}-fill`)} />
           <div style={{ marginTop: '20px' }}>
