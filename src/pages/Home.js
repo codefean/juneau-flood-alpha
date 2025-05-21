@@ -14,7 +14,7 @@ const cardData = [
     title: 'Flood Forecasting',
     link: '/flood-forecast',
     image: '/images/flood-forecast.jpg',
-    description: 'Understand flood forecasts based on Suicide Basin & Mendenhall Lake water levels',
+    description: 'Flood forecasts based on Suicide Basin & Mendenhall Lake water levels',
   },
   {
     title: 'Flood Events',
@@ -132,9 +132,9 @@ const Home = () => {
         <div className="home-about-card">
           <h3>About</h3>
           <p>
-          This dashboard provides interactive flood inundation maps for the Mendenhall Valley. It also contains information about about glacial lake outburst floods (GLOFs)
-          from Suicide Basin. Use the cards above to explore flood maps, flood forecasting, past outburst flood events, and understand how outburst floods originate from
-          Suicide Basin and impact the Juneau area. For the National Weather Service Suicide Basin monitoring page click below
+          This dashboard provides an interactive view of the flood inundation maps created by the City and Borough of Juneau for the Mendenhall Valley. It also contains information about about glacial lake outburst floods (GLOFs)
+          from Suicide Basin. Use the cards above to explore flood maps, flood forecasting, past outburst flood events, and understand how outburst floods originate from Suicide Basin and impact the Juneau area. For the National
+          Weather Service Suicide Basin monitoring page click below
           </p>
 
           <div className="button-wrapper">
@@ -224,10 +224,9 @@ const Home = () => {
         <div className="home-about-card">
           <h3>Contact Us</h3>
           <p>
-            This website is currently in <em>beta testing</em> and is not yet complete.  
-            For additional information, please contact: <br />
-            <strong> Eran Hood</strong> at ewhood@alaska.edu or
-            <strong> Sean Fagan</strong> at sfagan2@alaska.edu
+            This dashboard is maintained by the University of Alaska Southeast. For questions or comments, please contact:
+            <br />
+            <strong>UAS-GLOF-info@alaska.edu</strong>
           </p>
         </div>
       </div>

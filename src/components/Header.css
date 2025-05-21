@@ -52,8 +52,25 @@
 }
 
 /* Show and scale logo on larger screens */
-@media (min-width: 968px) {
+@media (min-width: 1142px) {
   .header-image {
     display: flex;
   }
+}
+
+/* Add spacing between logos */
+.header-image a {
+  margin-right: 10px;
+}
+
+/* Ensure logos are aligned and scaled well */
+.header-image img {
+  height: auto;
+  max-height: 70px;
+  max-width: 100%;
+  object-fit: contain;
+}
+
+.header-image a:first-child {
+  margin-right: 12px;
 }
