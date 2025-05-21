@@ -132,11 +132,10 @@ const Home = () => {
         <div className="home-about-card">
           <h3>About</h3>
           <p>
-          This dashboard provides an interactive view of the flood inundation maps created by the City and Borough of Juneau for the Mendenhall Valley. It also contains information about about glacial lake outburst floods (GLOFs)
-          from Suicide Basin. Use the cards above to explore flood maps, flood forecasting, past outburst flood events, and understand how outburst floods originate from Suicide Basin and impact the Juneau area. For the National
-          Weather Service Suicide Basin monitoring page click below
+            This dashboard provides an interactive view of the <a href="https://juneau.org/engineering-public-works/flood-inundation-maps" target="_blank" rel="noopener noreferrer">flood inundation maps</a> created by the City and Borough of Juneau for the Mendenhall Valley. It also contains information about glacial lake outburst floods (GLOFs)
+            from Suicide Basin. Use the cards above to explore flood maps, flood forecasting, past outburst flood events, and understand how outburst floods originate from Suicide Basin and impact the Juneau area. For the National
+            Weather Service Suicide Basin monitoring page click below
           </p>
-
           <div className="button-wrapper">
             <a
               href="https://www.weather.gov/ajk/suicideBasin"
