@@ -18,7 +18,7 @@ const customColors = [
 const FloodLevels = () => {
   const mapContainerRef = useRef(null);
   const mapRef = useRef(null);
-  const [selectedFloodLevel, setSelectedFloodLevel] = useState(8);
+  const [selectedFloodLevel, setSelectedFloodLevel] = useState(9);
   const [menuOpen, setMenuOpen] = useState(true);
   const [hescoMode, setHescoMode] = useState(false);
   const [errorMessage] = useState('');

@@ -45,6 +45,7 @@ const FloodStageMenu = ({ setFloodLevelFromMenu, onFloodLayerChange = () => {} }
         </h4>
         {expanded === 'minor' && (
           <div className="accordion-content">
+            <p><strong>Impacts</strong></p>
             <p><strong>9 ft:</strong> Water starts covering Skaters Cabin Road.</p>
             <p><strong>9.5 ft:</strong> Minor yard flooding on View Dr; 0.5 ft of water on Skaters Cabin Road. Campsite 7 floods.</p>
             <p><strong>10 ft:</strong> Mendenhall Campground low areas submerged up to 3 ft. Skaters Cabin Road under 1.5 ft of water. Some sections of West Glacier Trail impassable.</p>
@@ -65,6 +66,7 @@ const FloodStageMenu = ({ setFloodLevelFromMenu, onFloodLayerChange = () => {} }
         </h4>
         {expanded === 'moderate' && (
           <div className="accordion-content">
+            <p><strong>Impacts Without HESCO Barriers</strong></p>
             <p><strong>11 ft:</strong> View Dr impassable. Severe bank erosion below Back Loop Bridge. Hazardous river navigation.</p>
             <p><strong>12.5 ft:</strong> Meander Way (river side) under 2-4 ft of water. Flooding at Dredge Lake Trail System. Severe bank erosion.</p>
             <p><strong>13 ft:</strong> View Dr backyards flood (1-4 ft). Meander Way, Stream Ct, and Northland St begin flooding. Storm drain backups on Riverside and Riverwood Dr.</p>
@@ -86,6 +88,7 @@ const FloodStageMenu = ({ setFloodLevelFromMenu, onFloodLayerChange = () => {} }
         </h4>
         {expanded === 'major' && (
           <div className="accordion-content">
+            <p><strong>Impacts Without HESCO Barriers</strong></p>
             <p><strong>14.5 ft:</strong> Meander Way under 2-4 ft of water. Significant flooding on View Dr.</p>
             <p><strong>15 ft:</strong> Killewich Dr covered with up to 2 ft of water. Marion Dr backyards flood. 1.5 ft of water on Rivercourt Way, Lakeview Ct, Center Ct, Parkview Ct, Turn St & Northland St.</p>
             <p><strong>15.5+ ft:</strong> Riverside Dr at Tournure St under 1 ft of water. Severe flooding impacts multiple homes.</p>
