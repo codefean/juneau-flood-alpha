@@ -1,5 +1,3 @@
-// cd /Users/seanfagan/Desktop/juneau-flood-alpha
-
 import React, { useEffect, useRef, useState, useCallback } from 'react';
 import mapboxgl from 'mapbox-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
@@ -12,7 +10,7 @@ import Search from './Search.js';
 
 const customColors = [
   "#87c210", "#c3b91e", "#e68a1e", "#31a354", "#3182bd", "#124187",
-  "#d63b3b", "#9b3dbd", "#d13c8f", "#c2185b", "#756bb1", "#f59380","#ba4976",
+  "#d63b3b", "#9b3dbd", "#d13c8f", "#c2185b", "#756bb1", "#f59380", "#ba4976",
 ];
 
 const FloodLevels = () => {
@@ -47,56 +45,39 @@ const FloodLevels = () => {
 
   const tilesetMap = {
     base: {
-      64: "ccav82q0",
-      65: "3z7whbfp",
-      66: "8kk8etzn",
-      67: "akq41oym",
-      68: "5vsqqhd8",
-      69: "awu2n97c",
-      70: "a2ttaa7t",
-      71: "0rlea0ym",
-      72: "44bl8opr",
-      73: "65em8or7",
-      74: "9qrkn8pk",
-      75: "3ktp8nyu",
+      64: "ccav82q0", 65: "3z7whbfp", 66: "8kk8etzn", 67: "akq41oym",
+      68: "5vsqqhd8", 69: "awu2n97c", 70: "a2ttaa7t", 71: "0rlea0ym",
+      72: "44bl8opr", 73: "65em8or7", 74: "9qrkn8pk", 75: "3ktp8nyu",
       76: "avpruavl",
     },
     hesco: {
-      70: "cjs05ojz",
-      71: "1z6funv6",
-      72: "9kmxxb2g",
-      73: "4nh8p66z",
-      74: "cz0f7io4",
+      70: "cjs05ojz", 71: "1z6funv6", 72: "9kmxxb2g", 73: "4nh8p66z", 74: "cz0f7io4",
     },
   };
-  
 
-const updateFloodLayers = (mode) => {
-  setLoadingLayers(true);
-  const validLevels = Array.from({ length: 13 }, (_, i) => 64 + i); // 64–76
+  const updateFloodLayers = (mode) => {
+    setLoadingLayers(true);
+    const validLevels = Array.from({ length: 13 }, (_, i) => 64 + i); // 64–76
 
-  validLevels.forEach((level) => {
-    const layerId = `flood${level}-fill`;
-    const sourceId = `flood${level}`;
-    if (mapRef.current.getLayer(layerId)) {
-      mapRef.current.removeLayer(layerId);
-    }
-    if (mapRef.current.getSource(sourceId)) {
-      mapRef.current.removeSource(sourceId);
-    }
-  });
+    validLevels.forEach((level) => {
+      const layerId = `flood${level}-fill`;
+      const sourceId = `flood${level}`;
+      if (mapRef.current.getLayer(layerId)) {
+        mapRef.current.removeLayer(layerId);
+      }
+      if (mapRef.current.getSource(sourceId)) {
+        mapRef.current.removeSource(sourceId);
+      }
+    });
 
-  let loadedCount = 0;
+    let loadedCount = 0;
 
-  validLevels.forEach((level) => {
-    const floodId = `flood${level}`;
-    const layerId = `${floodId}-fill`;
-    const visible = floodId === `flood${64 + (selectedFloodLevel - 8)}`;
+    validLevels.forEach((level) => {
+      const floodId = `flood${level}`;
+      const layerId = `${floodId}-fill`;
+      const visible = floodId === `flood${64 + (selectedFloodLevel - 8)}`;
 
-    const tilesetId = mode
-      ? tilesetMap.hesco[level]
-      : tilesetMap.base[level];
-
+      const tilesetId = mode ? tilesetMap.hesco[level] : tilesetMap.base[level];
       if (mode && !tilesetId) {
         loadedCount++;
         if (loadedCount === validLevels.length) {
@@ -105,35 +86,34 @@ const updateFloodLayers = (mode) => {
         return;
       }
 
-    const sourceLayerName = mode ? `flood${level}` : String(level);
+      const sourceLayerName = mode ? `flood${level}` : String(level);
 
-    mapRef.current.addSource(floodId, {
-      type: 'vector',
-      url: `mapbox://mapfean.${tilesetId}`,
+      mapRef.current.addSource(floodId, {
+        type: 'vector',
+        url: `mapbox://mapfean.${tilesetId}`,
+      });
+
+      mapRef.current.addLayer({
+        id: layerId,
+        type: 'fill',
+        source: floodId,
+        'source-layer': sourceLayerName,
+        layout: {
+          visibility: visible ? 'visible' : 'none',
+        },
+        paint: {
+          'fill-color': customColors[level - 64],
+          'fill-opacity': 0.4,
+        },
+      });
+
+      loadedCount++;
+      if (loadedCount === validLevels.length) {
+        setLoadingLayers(false);
+        setupHoverPopup(`${floodId}-fill`);
+      }
     });
-
-    mapRef.current.addLayer({
-      id: layerId,
-      type: 'fill',
-      source: floodId,
-      'source-layer': sourceLayerName,
-      layout: {
-        visibility: visible ? 'visible' : 'none',
-      },
-      paint: {
-        'fill-color': customColors[level - 64],
-        'fill-opacity': 0.4,
-      },
-    });
-
-    loadedCount++;
-    if (loadedCount === validLevels.length) {
-      setLoadingLayers(false);
-      setupHoverPopup(`${floodId}-fill`);
-    }
-  });
-};
-  
+  };
 
   const toggleHescoMode = () => {
     setHescoMode((prev) => {
@@ -158,7 +138,44 @@ const updateFloodLayers = (mode) => {
         center: [-134.572823, 58.397411],
         zoom: 11,
       });
-      mapRef.current.on('load', () => updateFloodLayers(hescoMode));
+
+      mapRef.current.on('load', () => {
+        updateFloodLayers(hescoMode);
+
+        // Add USGS gage markers
+        const markerCoordinates = [
+          {
+            lat: 58.4293972,
+            lng: -134.5745592,
+            popupContent: `
+              <a href="https://waterdata.usgs.gov/monitoring-location/15052500/" target="_blank">
+                <b>USGS Mendenhall Lake Level Gage</b>
+              </a>`,
+          },
+          {
+            lat: 58.4595556,
+            lng: -134.5038333,
+            popupContent: `
+              <a href="https://waterdata.usgs.gov/monitoring-location/1505248590/" target="_blank">
+                <b>USGS Suicide Basin Level Gage</b>
+              </a>`,
+          },
+        ];
+
+        markerCoordinates.forEach((coord) => {
+          const markerEl = document.createElement('div');
+          markerEl.className = 'usgs-marker';
+
+          const marker = new mapboxgl.Marker(markerEl)
+            .setLngLat([coord.lng, coord.lat])
+            .addTo(mapRef.current);
+
+          if (coord.popupContent) {
+            const popup = new mapboxgl.Popup({ offset: 25 }).setHTML(coord.popupContent);
+            marker.setPopup(popup);
+          }
+        });
+      });
     }
   }, [hescoMode]);
 
@@ -240,14 +257,17 @@ const updateFloodLayers = (mode) => {
             onFloodLayerChange={handleFloodLayerChange}
           />
           <button
-            title={selectedFloodLevel < 14 ? 'HESCO maps are only available for 14ft - 18ft & assume fully functional barriers' : 'HESCO maps are only available for 14ft - 18ft & assume fully functional barriers'}
+            title="HESCO maps are only available for 14ft - 18ft & assume fully functional barriers"
             onClick={() => { if (selectedFloodLevel >= 14) toggleHescoMode(); }}
             className={`hesco-toggle-button ${hescoMode ? 'hesco-on' : 'hesco-off'}`}
             disabled={loadingLayers || selectedFloodLevel < 14 || selectedFloodLevel > 18}
           >
             {loadingLayers ? 'Loading HESCO Data…' : hescoMode ? 'HESCO Barriers ON' : 'HESCO Barriers OFF (14-18ft)'}
           </button>
-          <FloodStageMenu setFloodLevelFromMenu={setSelectedFloodLevel} onFloodLayerChange={() => setupHoverPopup(`flood${64 + (selectedFloodLevel - 8)}-fill`)} />
+          <FloodStageMenu
+            setFloodLevelFromMenu={setSelectedFloodLevel}
+            onFloodLayerChange={() => setupHoverPopup(`flood${64 + (selectedFloodLevel - 8)}-fill`)}
+          />
           <div style={{ marginTop: '20px' }}>
             {waterLevels.map((level) => {
               const currentStage = getFloodStage(level.value);
