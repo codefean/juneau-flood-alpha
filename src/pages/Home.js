@@ -54,7 +54,28 @@ const faqData = [
   {
     question: "How long will the GLOFs occur at Mendenhall glacier?",
     answer: "As long as Mendenhall Glacier has enough ice to dam water in Suicide Basin, GLOFs may continue.",
-  }
+  },
+{
+  question: "What are the scenarios for a flood release from Suicide Basin?",
+  answer: (
+    <>
+      <p>
+        There are three primary scenarios describing how much water drains from the glacier-dammed lake during a Glacial Lake Outburst Flood (GLOF):
+      </p>
+      <ol>
+        <li>
+          <strong>Full Volume Release</strong>: All water in the lake drains in a single event, even if the lake wasn’t at full capacity beforehand.
+        </li>
+        <li>
+          <strong>Full Basin Release</strong>: The lake was at full capacity (equal to the dam height) and then drained almost completely.
+        </li>
+        <li>
+          <strong>Partial Basin Release</strong>: Only part of the water drains during the flood; a significant volume remains in the lake afterward.
+        </li>
+      </ol>
+    </>
+  )
+}
 ];
 
 const resourceLinks = [

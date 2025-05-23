@@ -80,46 +80,46 @@ const FloodEvents = () => {
       });
   }, []);
 
-  return (
-    <div className="flood-events-container">
-      <h2 className="flood-events-title">Historical Flood Data</h2>
-      <h2 className="flood-events-subheading">Learn About Past Glacial Outburst Flood Events</h2>
-  
-      <div className="flood-cards-container">
-        {latestFloodEvent && (
-          <div className="floodcard last-glof">
-            <h2 className="flood-card">Most Recent Flood Event</h2>
-            <p><strong>Peak Water Level:</strong> {latestFloodEvent["Peak Water Level at Mendenhall Lake (ft)"]} ft</p>
-            <p><strong>Duration:</strong> {latestFloodEvent["Release Start Date"]} -- {latestFloodEvent["Peak Water Level Date"]}</p>
-          </div>
-        )}
-  
-        {largestFloodEvent && (
-          <div className="floodcard largest-glof">
-            <h2 className="flood-card">Largest Flood Event</h2>
-            <p><strong>Peak Water Level:</strong> {largestFloodEvent["Peak Water Level at Mendenhall Lake (ft)"]} ft</p>
-            <p><strong>Duration:</strong> {largestFloodEvent["Release Start Date"]} -- {largestFloodEvent["Peak Water Level Date"]}</p>
-          </div>
-        )}
-      </div>
-  
-      {/* About This Page Card */}
-      <div className="about-floods-card">
-        <p>
-          This page provides historical data on glacial lake outburst flood events that raised water levels at Mendenhall Lake to over 8ft (Action Stage). You can explore past flood events, visualize trends, and view important details such as peak water levels and flow rates in Mendenhall River.
-        </p>
-      </div>
-  
-      <div className="visuals-container">
-        <FloodGraph scatterData={scatterData} />
-      </div>
-  
-      <FloodTable headers={headers} data={data} loading={loading} />
-  
+return (
+  <div className="flood-events-container">
+    <h2 className="flood-events-title">Historical Flood Data</h2>
+    <h2 className="flood-events-subheading">Learn About Past Glacial Outburst Flood Events</h2>
 
+    <div className="flood-cards-container">
+      {latestFloodEvent && (
+        <div className="floodcard last-glof">
+          <h2 className="flood-card">Most Recent Flood Event</h2>
+          <p><strong>Peak Water Level:</strong> {latestFloodEvent["Peak Water Level at Mendenhall Lake (ft)"]} ft</p>
+          <p><strong>Duration:</strong> {latestFloodEvent["Release Start Date"]} -- {latestFloodEvent["Peak Water Level Date"]}</p>
+        </div>
+      )}
+
+      {largestFloodEvent && (
+        <div className="floodcard largest-glof">
+          <h2 className="flood-card">Largest Flood Event</h2>
+          <p><strong>Peak Water Level:</strong> {largestFloodEvent["Peak Water Level at Mendenhall Lake (ft)"]} ft</p>
+          <p><strong>Duration:</strong> {largestFloodEvent["Release Start Date"]} -- {largestFloodEvent["Peak Water Level Date"]}</p>
+        </div>
+      )}
     </div>
-  );
-  
-};
 
+    <div className="about-floods-card">
+      <p>
+        This page provides historical data on glacial lake outburst flood events that raised water levels at Mendenhall Lake to over 8ft (Action Stage). You can explore past flood events, visualize trends, and view important details such as peak water levels and flow rates in Mendenhall River.
+      </p>
+    </div>
+
+    <div className="visuals-container">
+      <FloodGraph scatterData={scatterData} />
+    </div>
+
+    <FloodTable headers={headers} data={data} loading={loading} />
+
+    {/* Add FloodImages component here */}
+    <div className="flood-images-container">
+      <FloodImages />
+    </div>
+  </div>
+);
+}
 export default FloodEvents;

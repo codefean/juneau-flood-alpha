@@ -55,7 +55,7 @@ const FloodImage = () => {
         <p>Loading data...</p>
       ) : (
         <>
-          <h3 className="flood-image-title"> Suicide Basin Flood Season Timelapses</h3>
+          <h3 className="flood-image-title"> Historical Suicide Basin Flood Season Timelapses</h3>
           <h4 className="flood-image-subtitle">
             Select Arrows to See Annual Flood Events
           </h4>

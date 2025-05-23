@@ -8,6 +8,8 @@ import FloodInfoPopup from "./FloodInfoPopup";
 import { getFloodStage } from './utils/floodStages';
 import Search from './Search.js';
 
+// cd /Users/seanfagan/Desktop/juneau-flood-alpha
+
 const customColors = [
   "#87c210", "#c3b91e", "#e68a1e", "#31a354", "#3182bd", "#124187",
   "#d63b3b", "#9b3dbd", "#d13c8f", "#c2185b", "#756bb1", "#f59380", "#ba4976",
