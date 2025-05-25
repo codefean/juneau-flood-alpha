@@ -252,7 +252,7 @@ This page provides information about real-time monitoring efforts. The USGS moni
   The water level in Mendenhall Lake is measured every 15 minutes by a sensor in the lake. The NWS uses forecasts of rainfall,
   glacier melt, and water release from Suicide Basin to forecast water levels
   in Mendenhall Lake (graph, left). During outburst floods, lake levels can rise rapidly, posing a significant flood risk.
-  For example, in August 2024, the water level in Mendenhall Lake surged by over 10 ft in just two days. Such extreme fluctuations
+  For example, during the August 2024 outburst flood, the water level in Mendenhall Lake surged by over 10 ft in just two days. Such extreme fluctuations
   highlight the importance of continuous monitoring and early warnings.
   </p>
   <p>

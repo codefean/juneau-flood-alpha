@@ -53,7 +53,7 @@ const faqData = [
   },
   {
     question: "How long will the GLOFs occur at Mendenhall glacier?",
-    answer: "As long as Mendenhall Glacier has enough ice to dam water in Suicide Basin, GLOFs may continue.",
+    answer: "GLOFs will continue to occur as long at Mendenhall Glacier has enough ice to form a dam at the entrance to Suicide Basin. Based on current rates of thinning and retreat it is likely that the Mendenhall Glacier will retreat up to Suicide Basin in the next 25-35 years. It is also possible that new ice-marginal basins could form higher up Mendenhall Glacier in the future.",
   },
 {
   question: "What are the scenarios for a flood release from Suicide Basin?",
@@ -73,6 +73,21 @@ const faqData = [
           <strong>Partial Basin Release</strong>: Only part of the water drains during the flood; a significant volume remains in the lake afterward.
         </li>
       </ol>
+    </>
+  )
+},
+{
+  question: "How much does the water level in Mendenhall Lake change during a GLOF?",
+  answer: (
+    <>
+      <p>
+        Large outburst floods such as the August, 2024 event can raise the water level in Mendenhall Lake by 10 ft or more in the course of a few days (see graph below). During smaller GLOFs, such as the July 2015 event, the rise in the lake level can be much smaller (~2 ft).
+      </p>
+      <img
+        src="https://basin-images.s3.us-east-2.amazonaws.com/GLOF+Graph.png"
+        alt="GLOF Graph"
+        style={{ width: '100%', maxWidth: '600px', marginTop: '1rem', borderRadius: '8px' }}
+      />
     </>
   )
 }
