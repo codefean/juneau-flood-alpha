@@ -19,7 +19,7 @@ const FloodLevels = () => {
   const mapContainerRef = useRef(null);
   const mapRef = useRef(null);
   const [selectedFloodLevel, setSelectedFloodLevel] = useState(9);
-  const [menuOpen, setMenuOpen] = useState(true);
+  const [menuOpen, setMenuOpen] = useState(() => window.innerWidth >= 800);
   const [hescoMode, setHescoMode] = useState(false);
   const [errorMessage] = useState('');
   const [waterLevels, setWaterLevels] = useState([]);
@@ -179,21 +179,7 @@ const FloodLevels = () => {
         });
       });
     }
-  }, [const images = [
-  {
-    src: "https://www.weather.gov/images/ajk/suicideBasin/archive/2022/SuicideBasinLoop_Raw_2022_Compressed.gif",
-    title: "2022",
-  },
-  {
-    src: "https://www.weather.gov/images/ajk/suicideBasin/archive/2023/SuicideBasinLoop_Raw_2023_Compressed.gif",
-    title: "2023",
-  },
-  {
-    src: "https://basin-images.s3.us-east-2.amazonaws.com/2024_SB.gif",
-    title: "2024",
-  }
-];
-hescoMode]);
+  }, [hescoMode]);
 
   useEffect(() => {
     if (hescoMode && (selectedFloodLevel < 14 || selectedFloodLevel > 18)) {
