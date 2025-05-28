@@ -179,7 +179,21 @@ const FloodLevels = () => {
         });
       });
     }
-  }, [hescoMode]);
+  }, [const images = [
+  {
+    src: "https://www.weather.gov/images/ajk/suicideBasin/archive/2022/SuicideBasinLoop_Raw_2022_Compressed.gif",
+    title: "2022",
+  },
+  {
+    src: "https://www.weather.gov/images/ajk/suicideBasin/archive/2023/SuicideBasinLoop_Raw_2023_Compressed.gif",
+    title: "2023",
+  },
+  {
+    src: "https://basin-images.s3.us-east-2.amazonaws.com/2024_SB.gif",
+    title: "2024",
+  }
+];
+hescoMode]);
 
   useEffect(() => {
     if (hescoMode && (selectedFloodLevel < 14 || selectedFloodLevel > 18)) {

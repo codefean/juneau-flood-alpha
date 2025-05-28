@@ -3,6 +3,7 @@ import { NavLink } from 'react-router-dom';
 import './Home.css';
 import "./FloodForecast.css";
 
+
 const cardData = [
   {
     title: 'Flood Maps',
@@ -92,6 +93,8 @@ const faqData = [
   )
 }
 ];
+
+
 
 const resourceLinks = [
   {
@@ -255,6 +258,8 @@ const Home = () => {
             </div>
           ))}
         </div>
+
+
 
         {/* Contact Section */}
         <div className="home-about-card">
