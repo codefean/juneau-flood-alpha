@@ -281,7 +281,7 @@ const FloodLevels = () => {
                   </p>
                   <p>
                     <span style={{ color: currentStage?.color || 'black' }}>
-                      <span style={{ fontSize: '1.2rem', fontWeight: 'bold' }}>{currentStage?.label || 'Unknown'}</span>
+                      <span style={{ fontSize: '1.2rem', fontWeight: 'bold' }}>{currentStage?.label || 'OFFLINE'}</span>
                     </span>
                   </p>
                   <p style={{ fontSize: '0.85rem' }}>{level.dateTime || 'N/A'}</p>
