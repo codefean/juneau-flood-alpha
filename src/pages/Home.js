@@ -99,7 +99,7 @@ const faqData = [
 const resourceLinks = [
   {
     title: "City & Borough of Juneau",
-    url: "https://juneau.org/manager/flood-response",
+    url: "https://juneau.org/emergency/emergency-flood-response",
     icon: "",
     color: "#30964b",
   },

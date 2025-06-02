@@ -57,14 +57,13 @@ const FloodPrediction = () => {
 
   const markers = {
     suicideBasin: [
-      { top: "76.5%", left: "82.5%", text: "This website pulls the most recent image of Suicide Basin." },
       { top: "55%", left: "19.5%", text: "Current glacial lake water levels" },
       { top: "70%", left: "48.5%", text: "Movement of floating ice can impact water level measurements on the hydrograph." },
     ],
     mendenhallLake: [
       { top: "19%", left: "51%", text: "Last recorded water level at Mendenhall Lake" },
       { top: "22%", left: "49%", text: "Current flood stage if the GLOF occurred. 9ft is the lowest flood stage." },
-      { top: "70%", left: "69.8%", text: "Today's observation." },
+      { top: "70%", left: "69.8%", text: "Today's forecast." },
     ],
   };
 
@@ -102,14 +101,15 @@ const FloodPrediction = () => {
     }, []);
   
     // Function to determine flood stage text based on water level
-    const getFloodStage = (level) => {
-      if (level === null) return "Loading...";
-      if (level < 8) return `No Flood Risk at ${level.toFixed(1)}ft of water`;
-      if (level >= 8 && level < 9) return `Action Stage at ${level.toFixed(1)}ft of water`;
-      if (level >= 9 && level < 11) return `Minor Flood Stage at ${level.toFixed(1)}ft of water`;
-      if (level >= 11 && level < 14) return `Moderate Flood Stage at ${level.toFixed(1)}ft of water`;
-      if (level >= 14) return `Major Flood Stage at ${level.toFixed(1)} ft`;
-    };
+const getFloodStage = (level) => {
+  if (level === null) return "Loading...";
+  if (level < 0) return "No Water Level Data Available";
+  if (level < 8) return `No Flood Risk at ${level.toFixed(1)}ft of water`;
+  if (level < 9) return `Action Stage at ${level.toFixed(1)}ft of water`;
+  if (level < 11) return `Minor Flood Stage at ${level.toFixed(1)}ft of water`;
+  if (level < 14) return `Moderate Flood Stage at ${level.toFixed(1)}ft of water`;
+  return `Major Flood Stage at ${level.toFixed(1)} ft`;
+};
   
 
   return (
@@ -125,7 +125,7 @@ const FloodPrediction = () => {
 <div className="about-forecast-card">
 <p>
 This page provides information about real-time monitoring efforts. The USGS monitors Suicide Basin using time-lapse cameras and a laser range finder
- to track water levels — though icebergs that float in front of the laser may cause levels to jump around. Mendenhall Lake levels are also tracked
+ to track water levels — <strong>though icebergs that float in front of the laser may cause levels to jump around</strong>. Mendenhall Lake levels are also tracked
   continuously at a site on the west shore. Lake level is an important predictor of downstream flood impacts following an outburst from Suicide Basin.
   </p>
 
@@ -150,7 +150,7 @@ This page provides information about real-time monitoring efforts. The USGS moni
                   className="flood-image suicide-basin-image"
                   onError={(e) => (e.target.src = "/fallback-image.jpg")}
                 />
-                <p className="image-caption">Latest USGS Image of Suicide Basin (Online Spring - Fall)</p>
+                <p className="image-caption">Latest USGS Image of Suicide Basin</p>
 
                 <Tooltip
                   markers={markers.suicideBasin}
@@ -172,7 +172,7 @@ This page provides information about real-time monitoring efforts. The USGS moni
                 style={{ width: "92%", maxWidth: "900px", height: "auto" }}
                 onError={(e) => (e.target.src = "/fallback-image.jpg")}
               />
-              <p className="image-caption">Latest Water Elevation Chart for Suicide Basin Glacial Lake (Online Spring - Fall)</p>
+              <p className="image-caption">Latest Water Elevation (Pool Height) for Suicide Basin Glacial Dammed Lake</p>
             </div>
           </div>
         </div>
@@ -257,7 +257,7 @@ This page provides information about real-time monitoring efforts. The USGS moni
   </p>
   <p>
   When the water level in Mendenhall Lake is forecasted to exceed the flood stage, a flood watch or warning is issued. When the water
-  level exceeds 8 ft, flooding can occur in Mendenhall Valley. Flood stages for Mendenhall Lake range from minor (9-10 ft) to major (14+ ft)
+  level exceeds 9ft, flooding can occur in Mendenhall Valley. Flood stages for Mendenhall Lake range from minor (9-10 ft) to major (14+ ft)
   and are color coded to highlight known impacts documented by the NWS (below).
   </p>
 
@@ -291,9 +291,9 @@ This page provides information about real-time monitoring efforts. The USGS moni
   </p>
 
   <div>
-    <strong>Action Stage (8 - 9ft):</strong> Water levels have reached flood potential. Residents should begin to take mitigation actions for flooding events based on their location.
+    <strong>Action Stage (8 - 9ft):</strong> Water levels have reached bankfull conditions and minor flooding will occur above this level. Residents should begin to take mitigation actions for flooding events based on their location.
     <ul>
-      <li><strong>8 ft:</strong> No visible flooding.</li>
+      <li><strong>8 ft:</strong> Bankfull risk starts.</li>
     </ul>
   </div>
 
