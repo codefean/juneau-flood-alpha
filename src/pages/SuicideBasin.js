@@ -73,12 +73,11 @@ const images = [
     prevArrow: <PrevArrow />,
   };
 
-  // Live View Image URLs
-  const timelapse1Url =
-    "https://usgs-nims-images.s3.amazonaws.com/720/AK_Glacial_Lake_2_and_half_miles_North_of_Nugget_Creek_near_Auke_Bay/AK_Glacial_Lake_2_and_half_miles_North_of_Nugget_Creek_near_Auke_Bay___2024-11-08T17-05-23Z.jpg";
-  const timelapse2Url =
-    "https://usgs-nims-images.s3.amazonaws.com/720/AK_Glacial_Lake_near_Nugget_LOOKING_UPSTREAM_GLACIER_VIEW/AK_Glacial_Lake_near_Nugget_LOOKING_UPSTREAM_GLACIER_VIEW___2024-11-07T17-05-03Z.jpg";
+const timestamp = new Date().getTime(); // for cache busting
 
+const timelapse1Url = `https://usgs-nims-images.s3.amazonaws.com/overlay/AK_Glacial_Lake_2_and_half_miles_North_of_Nugget_Creek_near_Auke_Bay/AK_Glacial_Lake_2_and_half_miles_North_of_Nugget_Creek_near_Auke_Bay___2024-11-23T17-05-08Z.jpg?cb=${timestamp}`;
+
+const timelapse2Url = `https://usgs-nims-images.s3.amazonaws.com/overlay/AK_Glacial_Lake_near_Nugget_LOOKING_UPSTREAM_GLACIER_VIEW/AK_Glacial_Lake_near_Nugget_LOOKING_UPSTREAM_GLACIER_VIEW___2025-06-09T17-05-22Z.jpg?cb=${timestamp}`;
 
   return (
     
