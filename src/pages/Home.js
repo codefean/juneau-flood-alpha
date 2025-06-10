@@ -140,6 +140,9 @@ const educationLinks = [
 
 const Home = () => {
   const [openIndex, setOpenIndex] = useState(null);
+  const [showAllFAQs, setShowAllFAQs] = useState(false);
+
+  const previewFAQCount = 6;
 
   const toggleFAQ = (index) => {
     setOpenIndex(openIndex === index ? null : index);
@@ -230,33 +233,46 @@ const Home = () => {
           </div>
         </div>
 
-        {/* FAQ Section */}
         <div className="home-about-card">
           <h3>Frequently Asked Questions</h3>
-          {faqData.map((faq, index) => (
-            <div
-              key={index}
-              className={`faq-row ${openIndex === index ? 'open' : ''}`}
-              onClick={() => toggleFAQ(index)}
-              onKeyDown={(e) => handleKeyDown(e, index)}
-              tabIndex={0}
-              role="button"
-              aria-expanded={openIndex === index}
-            >
-              <div className="faq-question">
-                {faq.question}
-                <span
-                  className={`faq-toggle-icon ${openIndex === index ? 'rotated' : ''}`}
+          {faqData
+            .slice(0, showAllFAQs ? faqData.length : previewFAQCount)
+            .map((faq, index) => {
+              const isPreview = !showAllFAQs && index >= previewFAQCount;
+              return (
+                <div
+                  key={index}
+                  className={`faq-row ${openIndex === index ? 'open' : ''}`}
+                  onClick={() => toggleFAQ(index)}
+                  onKeyDown={(e) => handleKeyDown(e, index)}
+                  tabIndex={0}
+                  role="button"
+                  aria-expanded={openIndex === index}
+                  style={{
+                    opacity: isPreview ? 0.7 : 1,
+                    transition: "opacity 0.3s ease-in-out",
+                  }}
                 >
-                  {openIndex === index ? '−' : '+'}
-                </span>
-              </div>
-              <div className={`faq-answer ${openIndex === index ? 'show' : ''}`}>
-                {faq.answer}
-              </div>
-              {index !== faqData.length - 1 && <hr className="faq-divider" />}
+                  <div className="faq-question">
+                    {faq.question}
+                    <span className={`faq-toggle-icon ${openIndex === index ? 'rotated' : ''}`}>
+                      {openIndex === index ? '−' : '+'}
+                    </span>
+                  </div>
+                  <div className={`faq-answer ${openIndex === index ? 'show' : ''}`}>
+                    {faq.answer}
+                  </div>
+                  {index !== faqData.length - 1 && <hr className="faq-divider" />}
+                </div>
+              );
+            })}
+          {faqData.length > previewFAQCount && (
+            <div className="button-wrapper">
+              <button className="home-button" onClick={() => setShowAllFAQs(!showAllFAQs)}>
+                {showAllFAQs ? "Show Less" : "Show More"}
+              </button>
             </div>
-          ))}
+          )}
         </div>
 
 

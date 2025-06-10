@@ -238,6 +238,8 @@ body {
   transition: background-color 0.3s ease-in-out, transform 0.2s;
   text-decoration: none;
   align-items: center;
+  margin-top: -10px;
+  margin-bottom: 10px;
 }
 
 .home-button:hover {
