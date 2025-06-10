@@ -298,38 +298,44 @@ This page provides information about real-time monitoring efforts. The USGS moni
   </div>
 
   <div>
-    <strong>Minor Flooding (9 - 10ft):</strong> Low-lying areas may experience some water coverage, causing minor road flooding or inconvenience. Typically, property damage is minimal.
+    <strong>Minor Flooding (9 - 10.5 ft):</strong>
     <ul>
-      <li><strong>9 ft:</strong> Water starts covering Skaters Cabin Road.</li>
-      <li><strong>9.5 ft:</strong> Minor yard flooding on View Dr; 0.5 ft of water on Skaters Cabin Road. Campsite 7 floods.</li>
-      <li><strong>10 ft:</strong> Mendenhall Campground low areas submerged up to 3 ft. Skaters Cabin Road under 1.5 ft of water. Some sections of West Glacier Trail impassable.</li>
+      <li><strong>9 ft:</strong> Water starts covering Skaters Cabin Rd and flows into Mendenhall Campground.</li>
+      <li><strong>9.5 ft:</strong> 0.5 ft of water covers Skaters Cabin Rd. Campsite 7 flooded; water over the road between campsites 8 and 9.</li>
+      <li><strong>10 ft:</strong> Mendenhall Campground inundated with up to 3 ft of water. Skaters Cabin Rd has up to 1.5 ft of water. Portions of West Glacier Trail impassable. Minor yard flooding on View Dr begins.</li>
+      <li><strong>10.5 ft:</strong> Over 3 ft of water near Mt. McGinnis trailhead. Mendenhall Campground evacuation starts.</li>
     </ul>
   </div>
 
   <div>
-    <strong>Moderate Flooding (10 - 14ft):</strong> Water begins inundating structures and roads near the river. Some evacuations might be necessary, and transportation disruptions are likely.
+    <strong>Moderate Flooding (11 - 14 ft):</strong>
     <ul>
-      <li><strong>11 ft:</strong> View Dr impassable. Severe bank erosion below Back Loop Bridge. Hazardous river navigation.</li>
-      <li><strong>12.5 ft:</strong> Meander Way (river side) under 2–4 ft of water. Flooding at Dredge Lake Trail System. Severe bank erosion.</li>
-      <li><strong>13 ft:</strong> View Dr backyards flood (1–4 ft). Meander Way, Stream Ct, and Northland St begin flooding. Storm drain backups on Riverside and Riverwood Dr.</li>
-      <li><strong>14 ft:</strong> Northland St, Turn St, Parkview & Center Ct flood. Meander Way under 1–2 ft of water.</li>
+      <li><strong>11 ft:</strong> Yards flood on View Dr (up to 1.5 ft of water). Bank erosion begins below Back Loop Bridge. Backyard flooding on Meander Way. Dredge Lake Trail impassable; floodwaters reach Dredge Lake.</li>
+      <li><strong>11.5 ft:</strong> Road past 9374 View Dr begins to flood. Water nears some homes at end of View Dr.</li>
+      <li><strong>12 ft:</strong> Bank erosion worsens. 0.5 ft water on road past 9374 View Dr. Flooding begins in some homes on View Dr.</li>
+      <li><strong>12.5 ft:</strong> 2–4 ft of water in Meander Way backyards.</li>
+      <li><strong>13 ft:</strong> 2 ft of water on road past 9374 View Dr. 1–2 ft of water in some homes on View Dr.</li>
+      <li><strong>13.5 ft:</strong> Water backs up behind homes between Riverside Dr and Mendenhall River School. Yard flooding begins on River Rd. Severe bank erosion along the river.</li>
+      <li><strong>14 ft:</strong> Road past 9374 View Dr impassable. More homes on View Dr see moderate to major flooding. Water approaches driveways on River Rd.</li>
     </ul>
   </div>
 
   <div>
-    <strong>Major Flooding (14ft+):</strong> Extensive flooding with a significant risk to homes, businesses, and infrastructure. Evacuations are often required, and severe damage may occur.
+    <strong>Major Flooding (14+ ft):</strong>
     <ul>
-      <li><strong>14.5 ft:</strong> Meander Way under 2–4 ft of water. Significant flooding on View Dr.</li>
-      <li><strong>15 ft:</strong> Killewich Dr covered with up to 2 ft of water. Marion Dr backyards flood. 1.5 ft of water on Rivercourt Way, Lakeview Ct, Center Ct, Parkview Ct, Turn St & Northland St.</li>
-      <li><strong>15.5+ ft:</strong> Riverside Dr at Tournure St under 1 ft of water. Severe flooding impacts multiple homes.</li>
+      <li><strong>15 ft:</strong> Major home flooding on View Dr. Water in backyards and driveways along River Rd. Up to 1 ft of water on Riverside Dr near Tournure St and Mendenhall River School.</li>
+      <li><strong>16 ft:</strong> Water overtops banks near Wildmeadow Ln. 0.5 ft water at Skaters Cabin Rd & Arctic Cir intersection. Backyard flooding begins between Tamarack Ct and Whitewater Ct. Flooding near River Rd and Meadow Ln.</li>
+      <li><strong>17 ft:</strong> Homes flooded near Wildmeadow Ln and Meadow Ln to Eagle St. Businesses in Vintage Park Blvd threatened. Tournure St covered in water. All of View Dr flooded.</li>
+      <li><strong>18 ft:</strong> Water over both sides of Back Loop Rd near Mint Way to Chelsea Ct. Mendenhall Loop Rd and Egan Dr begin flooding. Businesses between Sherwood Ln and Bentwood Pl impacted. Water in low areas of neighborhoods east of Radcliffe Rd.</li>
+      <li><strong>19 ft:</strong> Roads like Slim Williams Way, Black Wolf Way, and Pond Vista Dr flooded. Homes on Tournure St inundated. Egan Dr and Mendenhall Mall Rd flooded and impassable. Widespread home and business flooding near Mendenhall River.</li>
+      <li><strong>20 ft:</strong> Backyards along Gladstone St flooded. Homes south of Mendenhall Loop Rd inundated. Widespread flooding on both sides of Mendenhall River. Egan Dr impassable in multiple locations. Mendenhall wastewater treatment plant affected.</li>
     </ul>
 
     <button className="more-data-button" onClick={() => window.open('https://water.noaa.gov/gauges/MNDA2')}>
-    More Info
-  </button>
+      More Info
+    </button>
   </div>
 </div>
-
 
 
 
