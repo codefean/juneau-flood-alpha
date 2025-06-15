@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 import './Home.css';
 import "./FloodForecast.css";
+
 
 
 const cardData = [
@@ -141,6 +142,7 @@ const educationLinks = [
 const Home = () => {
   const [openIndex, setOpenIndex] = useState(null);
   const [showAllFAQs, setShowAllFAQs] = useState(false);
+  const [showAnalyticsCard, setShowAnalyticsCard] = useState(true);
 
   const previewFAQCount = 6;
 
@@ -153,6 +155,11 @@ const Home = () => {
       toggleFAQ(index);
     }
   };
+
+  useEffect(() => {
+  const isMobile = window.innerWidth <= 768;
+  setShowAnalyticsCard(!isMobile);
+}, []);
 
 
   return (
@@ -275,7 +282,27 @@ const Home = () => {
           )}
         </div>
 
-
+      
+{showAnalyticsCard && (
+  <div className="home-about-card">
+    <h3>Website Analytics</h3>
+    <div style={{ position: 'relative', paddingBottom: '60.25%', height: 0, overflow: 'hidden', marginTop: '.5rem', marginBottom: '-10rem' }}>
+      <iframe
+        title="Public Analytics Dashboard"
+        src="https://lookerstudio.google.com/embed/reporting/1f1348f9-369e-4e90-9485-45fc7b2cae7f/page/lpBOF?hl=en"
+        frameBorder="0"
+        style={{
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          width: '100%',
+          height: '70%',
+          border: '0',
+        }}
+      ></iframe>
+    </div>
+  </div>
+)}
 
         {/* Contact Section */}
         <div className="home-about-card">
