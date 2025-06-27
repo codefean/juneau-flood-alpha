@@ -286,7 +286,6 @@ const Home = () => {
     <iframe
       title="Public Analytics Dashboard"
       src="https://lookerstudio.google.com/embed/reporting/1f1348f9-369e-4e90-9485-45fc7b2cae7f/page/lpBOF?hl=en"
-      allowFullScreen
     ></iframe>
   </div>
 </div>
