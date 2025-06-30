@@ -250,7 +250,7 @@ Here's how the hydrograph looked when this occured in 2024.
                     top: "2.5%",
                     left: "50%",
                     width: "400px",
-                    height: "16px",
+                    height: "14px",
                     backgroundColor: "#0d008d",
                     borderRadius: "2px",
                     cursor: "pointer",

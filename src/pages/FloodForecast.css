@@ -377,15 +377,6 @@ body {
     margin-top: -30px;
   }
 
-  .blue-square-tooltip {
-    top: 2.5% !important;
-    left: 50% !important;
-    width: 200px !important;
-    height: 10px !important;
-    background-color: #0d008d !important;
-    border-radius: 2px !important;
-  }
-
   .image-container {
     max-width: 100%;
   }
@@ -458,7 +449,7 @@ body {
     top: 2.5% !important;
     left: 50% !important;
     width: 60% !important;
-    height: 13.5px !important;
+    height: 10.7px !important;
     background-color: #0d008d !important;
     border-radius: 2px !important;
   }
