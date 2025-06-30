@@ -242,6 +242,20 @@ Here's how the hydrograph looked when this occured in 2024.
                   activeInfo={activeInfo}
                   imageId="mendenhallLake"
                 />
+                {/* ADD BLUE SQUARE TOOLTIP */}
+                <div
+                  className="blue-square-tooltip"
+                  style={{
+                    position: "absolute",
+                    top: "2.5%",
+                    left: "50%",
+                    width: "400px",
+                    height: "16px",
+                    backgroundColor: "#0d008d",
+                    borderRadius: "2px",
+                    cursor: "pointer",
+                  }}
+                ></div>
               </>
             )}
           </div>

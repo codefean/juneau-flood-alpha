@@ -256,6 +256,18 @@ body {
   margin-left: 4px;
 }
 
+.blue-square-tooltip {
+  position: absolute;
+  top: 30%;  /* adjust based on where you want it on the image */
+  left: 50%; /* adjust as needed */
+  width: clamp(8px, 1.2%, 14px);
+  height: clamp(8px, 1.2%, 14px);
+  background-color: blue;
+  border-radius: 2px;
+  cursor: pointer;
+  transform: translate(-50%, -50%);
+}
+
 /* ========== RESPONSIVE STYLES ========== */
 @media (max-width: 1268px) {
   .flood-forecasting-title,
@@ -266,6 +278,7 @@ body {
     padding: 0 10px;
     font-size: 1.8rem;
   }
+
 
   .flood-forecasting-title {
     font-size: 2rem;
@@ -364,6 +377,15 @@ body {
     margin-top: -30px;
   }
 
+  .blue-square-tooltip {
+    top: 2.5% !important;
+    left: 50% !important;
+    width: 200px !important;
+    height: 10px !important;
+    background-color: #0d008d !important;
+    border-radius: 2px !important;
+  }
+
   .image-container {
     max-width: 100%;
   }
@@ -429,4 +451,15 @@ body {
 .about-forecast-card p {
   font-size: 1.1rem;
   color: #000000;
+}
+
+@media (max-width: 810px) {
+  .blue-square-tooltip {
+    top: 2.5% !important;
+    left: 50% !important;
+    width: 60% !important;
+    height: 13.5px !important;
+    background-color: #0d008d !important;
+    border-radius: 2px !important;
+  }
 }
