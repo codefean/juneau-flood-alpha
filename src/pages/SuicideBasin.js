@@ -5,8 +5,8 @@ import { FaArrowLeft, FaArrowRight } from "react-icons/fa"; // Import arrow icon
 import "./SuicideBasin.css";
 
 const SuicideBasin = () => {
-  const beforeImage = "https://juneauflood-basin-images.s3.us-east-2.amazonaws.com/1893_glacier.jpg";
-  const afterImage = "https://juneauflood-basin-images.s3.us-east-2.amazonaws.com/2018_glacier.jpg";
+  const beforeImage = "https://basin-images.s3.us-east-2.amazonaws.com/1893_glacier.jpg";
+  const afterImage = "https://basin-images.s3.us-east-2.amazonaws.com/2018_glacier.jpg";
 
 
 
