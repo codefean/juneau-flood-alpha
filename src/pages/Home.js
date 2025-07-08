@@ -4,7 +4,7 @@ import './Home.css';
 import "./FloodForecast.css";
 
 
-// cd /Users/seanfagan/Desktop/juneau-flood-alpha
+//cd /Users/seanfagan/Desktop/juneau-flood-alpha
 
 const cardData = [
   {
