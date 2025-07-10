@@ -264,8 +264,8 @@ Here's how the hydrograph looked when this occured in 2024.
   <h2 style={{ textAlign: 'left' }}>Mendenhall Lake Level & Flood Conditions</h2>
   <p>
   Mendenhall Lake is a glacially-fed lake at the terminus of Mendenhall Glacier. Water levels fluctuate due to seasonal melting, precipitation, and outburst floods. The <a href="https://waterdata.usgs.gov/monitoring-location/15052500/#dataTypeId=continuous-00065--1654777834&period=P7D&showMedian=false" target="_blank" rel="noopener noreferrer">
-        USGS monitors water levels
-      </a> along the lake’s west shore to track these changes in real time.
+        USGS monitors water level
+      </a> (also referred to as stage) along the lake’s west shore to track these changes in real time.
   </p>
   <p>
   The water level in Mendenhall Lake is measured every 15 minutes by a sensor in the lake. The NWS uses forecasts of rainfall,
