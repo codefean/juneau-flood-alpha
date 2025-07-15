@@ -13,11 +13,11 @@ const Header = () => {
           <img src="/UAS.png" alt="University of Alaska Southeast Logo" className="logo" />
         </a>
       </div>
-      <div className="header-title">
-        <h1 onClick={() => window.location.href = 'https://www.juneauflood.com/#/home'} style={{ cursor: 'pointer' }}>
-          Juneau Glacial Flood Dashboard
-        </h1>
-      </div>
+<div class="header-title">
+  <h1>Juneau Glacial Flood Dashboard</h1>
+  <div class="header-subtitle">University of Alaska Southeast | Alaska Climate Adaptation Science Center</div>
+</div>
+
       <FloodWarn />
     </header>
   );

@@ -19,6 +19,7 @@
   align-items: center;
   text-align: center;
   padding: 0 10px;
+  flex-direction: column;
 }
 
 /* Responsive text inside header */
@@ -73,4 +74,17 @@
 
 .header-image a:first-child {
   margin-right: 12px;
+}
+
+.header-subtitle {
+  font-size: 0.65rem !important;
+  color: #e0e0e0;
+  display: none; /* hidden by default */
+}
+
+/* Show on smaller screens */
+@media (max-width: 500px) {
+  .header-subtitle {
+    display: block;
+  }
 }
