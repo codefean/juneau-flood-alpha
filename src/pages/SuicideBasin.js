@@ -5,8 +5,8 @@ import { FaArrowLeft, FaArrowRight } from "react-icons/fa"; // Import arrow icon
 import "./SuicideBasin.css";
 
 const SuicideBasin = () => {
-  const beforeImage = "https://basin-images.s3.us-east-2.amazonaws.com/1893_glacier.jpg";
-  const afterImage = "https://basin-images.s3.us-east-2.amazonaws.com/2018_glacier.jpg";
+  const beforeImage = "https://juneauflood-basin-images.s3.us-west-2.amazonaws.com/1893_glacier.jpg";
+  const afterImage = "https://juneauflood-basin-images.s3.us-west-2.amazonaws.com/2018_glacier.jpg";
 
 
 
@@ -15,13 +15,13 @@ const images = [
  
   
   {
-      src: "https://basin-images.s3.us-east-2.amazonaws.com/GLOF_orgin.png",
+      src: "https://juneauflood-basin-images.s3.us-west-2.amazonaws.com/GLOF_orgin.jpg",
       title: "1. Formation of the Glacial Pool",
       description:
         "Suicide Basin accumulates water from glacial melt and precipitation. A natural ice dam, formed by the Mendenhall Glacier, temporarily holds back the water (shown in next slide). During summer, the water level in the basin can increase by more than 6 ft per day. Much of the lake is not visible but is hidden beneath floating icebergs."
     },
     {
-      src: "https://basin-images.s3.us-east-2.amazonaws.com/GLOF_icewall.png",
+      src: "https://juneauflood-basin-images.s3.us-west-2.amazonaws.com/GLOF_icewall.jpg",
       title: "2. Sudden Water Release: The Outburst Flood",
       description:
         "As the water volume in Suicide Basin increases, buoyant pressure builds on the ice dam, eventually allowing water to escape underneath the glacier in the form of drainage channels. As water flows through these subglacial channels, it creates friction which causes the drainage channels beneath the glacier to melt and grow wider. As a result, the rate at which water is released from the basin increases during drainage events."
@@ -152,7 +152,7 @@ const timelapse2Url = `https://usgs-nims-images.s3.amazonaws.com/overlay/AK_Glac
         <div className="live-view-container">
         <div className="live-image">
           <img src={timelapse1Url} alt="Live view of glacial lake near Nugget Creek" />
-          <a href="https://waterdata.usgs.gov/monitoring-location/1505248590/#dataTypeId=continuous-00020-0&period=P7D&showMedian=true" target="_blank" rel="noopener noreferrer">
+          <a href="https://usgs-nims-images.s3.amazonaws.com/overlay/AK_Glacial_Lake_2_and_half_miles_North_of_Nugget_Creek_near_Auke_Bay/AK_Glacial_Lake_2_and_half_miles_North_of_Nugget_Creek_near_Auke_Bay_newest.jpghttps://usgs-nims-images.s3.amazonaws.com/overlay/AK_Glacial_Lake_2_and_half_miles_North_of_Nugget_Creek_near_Auke_Bay/AK_Glacial_Lake_2_and_half_miles_North_of_Nugget_Creek_near_Auke_Bay___2025-07-15T01-00-08Z.jpg" target="_blank" rel="noopener noreferrer">
           <h3>Suicide Basin</h3>
           </a>
         </div>
