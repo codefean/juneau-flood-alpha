@@ -127,8 +127,8 @@ const educationLinks = [
     color: "#1f77b4",
   },
   {
-    title: "The Flood Story (2019)",
-    url: "https://www.arcgis.com/apps/Cascade/index.html?appid=ad88fd5ccd7848139315f42f49343bb5",
+    title: "The Flood Story (2025)",
+    url: "https://storymaps.arcgis.com/stories/70036c7709294a4caa6ce14c6a3cc64d",
     icon: "",
     color: "#1f77b4",
   },
