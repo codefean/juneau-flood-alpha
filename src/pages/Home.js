@@ -177,7 +177,7 @@ const Home = () => {
         <div className="home-about-card">
           <h3>About</h3>
           <p>
-            This dashboard was created and is maintained by the University of Alaksa Southeast in partnership with the Alaska Climate Adaptation Science Center. The page provides an interactive view of the <a href="https://juneau.org/engineering-public-works/flood-inundation-maps" target="_blank" rel="noopener noreferrer">flood inundation maps</a> contracted by the City and Borough of Juneau for the Mendenhall Valley.
+            This dashboard was created and is maintained by the University of Alaska Southeast in partnership with the Alaska Climate Adaptation Science Center. The page provides an interactive view of the <a href="https://juneau.org/engineering-public-works/flood-inundation-maps" target="_blank" rel="noopener noreferrer">flood inundation maps</a> contracted by the City and Borough of Juneau for the Mendenhall Valley.
             It also contains information about glacial lake outburst floods (GLOFs) from Suicide Basin. Use the cards above to explore flood maps, flood forecasting, past outburst flood events, and understand how outburst floods originate from Suicide Basin and impact the Juneau area.
             This website is for planning purposes only.
             For the National Weather Service monitoring page click below.
