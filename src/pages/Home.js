@@ -121,14 +121,14 @@ const resourceLinks = [
 
 const educationLinks = [
   {
-    title: "What is a glacial lake outburst flood?",
-    url: "https://www.usgs.gov/programs/climate-adaptation-science-centers/news/increased-understanding-alaskas-glacial-lake#:~:text=Over%20time%2C%20as%20the%20ice,of%20life%20and%20infrastructure%20worldwide.",
+    title: "Story Map: Understand the Mendenhall GLOF",
+    url: "https://storymaps.arcgis.com/stories/72cef125bbfa4f989356bf9350cd5d63",
     icon: "",
     color: "#1f77b4",
   },
   {
-    title: "The Flood Story (2025)",
-    url: "https://storymaps.arcgis.com/stories/70036c7709294a4caa6ce14c6a3cc64d",
+    title: "Story Map: How Suicide Basin is Monitored",
+    url: "https://storymaps.arcgis.com/stories/2ad8631c1abb4dfab3ec92b34f27ba8c",
     icon: "",
     color: "#1f77b4",
   },
