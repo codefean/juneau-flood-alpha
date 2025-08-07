@@ -33,7 +33,7 @@ const FloodPred = ({ onClose }) => {
     };
 
     fetchFloodData();
-    const interval = setInterval(fetchFloodData, 600000); // Update every 10 minutes
+    const interval = setInterval(fetchFloodData, 500000); // Update every 10 minutes
     return () => clearInterval(interval);
   }, []);
 

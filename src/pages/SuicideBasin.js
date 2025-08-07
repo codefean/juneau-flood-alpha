@@ -1,16 +1,17 @@
 import React, { useState } from "react";
-import CompareImage from "react-compare-image";
-import Slider from "react-slick";
-import { FaArrowLeft, FaArrowRight } from "react-icons/fa"; // Import arrow icons
+import CompareImage from "react-compare-image"; // For image before/after slider
+import Slider from "react-slick"; // For GLOF slideshow
+import { FaArrowLeft, FaArrowRight } from "react-icons/fa"; // Custom navigation icons
 import "./SuicideBasin.css";
 
+
 const SuicideBasin = () => {
+  // URLs for image comparison (1893 vs 2018)
   const beforeImage = "https://juneauflood-basin-images.s3.us-west-2.amazonaws.com/1893_glacier.jpg";
   const afterImage = "https://juneauflood-basin-images.s3.us-west-2.amazonaws.com/2018_glacier.jpg";
 
 
-
-// AWS S3 Image URLs for GLOF slider
+// Image slider content (GLOF steps)
 const images = [
  
   
@@ -40,9 +41,6 @@ const images = [
     },
 
   ];
-
-
-  
   
 
   // Track current slide index
@@ -73,11 +71,11 @@ const images = [
     prevArrow: <PrevArrow />,
   };
 
+  // Timestamp appended to URLs to avoid image caching
 const timestamp = new Date().getTime();
-const timelapse1Url = `https://usgs-nims-images.s3.amazonaws.com/overlay/AK_Glacial_Lake_2_and_half_miles_North_of_Nugget_Creek_near_Auke_Bay/latest.jpg?cb=${timestamp}`;
-
 const timelapse2Url = `https://usgs-nims-images.s3.amazonaws.com/overlay/AK_Glacial_Lake_near_Nugget_LOOKING_UPSTREAM_GLACIER_VIEW/AK_Glacial_Lake_near_Nugget_LOOKING_UPSTREAM_GLACIER_VIEW___2025-06-09T17-05-22Z.jpg?cb=${timestamp}`;
 
+  // ------------------- COMPONENT UI -------------------
   return (
     
     <div className="suicide-basin-container">
@@ -179,10 +177,8 @@ const timelapse2Url = `https://usgs-nims-images.s3.amazonaws.com/overlay/AK_Glac
 </div>
 
 
-        </div>
-
-        
-        </div>
+</div>
+</div>
   );
 };
 

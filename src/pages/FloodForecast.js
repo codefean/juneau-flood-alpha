@@ -1,19 +1,24 @@
 import React, { useState, useEffect } from "react";
 import "./FloodForecast.css";
-import FloodPred from "./FloodPred";
-import Tooltip from "./Tooltip";
-import FloodStageBar from "./FloodStageBar";
 
+// Component Imports
+import FloodPred from "./FloodPred";               // Displays alert banner if NWS Flood Alert is active
+import Tooltip from "./Tooltip";                   // Tooltip component for visual annotations
+import FloodStageBar from "./FloodStageBar";       // Color-coded flood stage indicator based on live data
+
+// Main component
 const FloodPrediction = () => {
-  const [imageUrl, setImageUrl] = useState("");
-  const [hydroGraphUrl, setHydroGraphUrl] = useState("");
-  const [loading, setLoading] = useState(true);
-  const [waterLevel, setWaterLevel] = useState(null);
-  const [error, setError] = useState(null);
-  const [activeInfo, setActiveInfo] = useState(null);
-  const [showFloodPred, setShowFloodPred] = useState(true);
+  // State for live images and water level
+  const [imageUrl, setImageUrl] = useState("");                     // Suicide Basin image
+  const [hydroGraphUrl, setHydroGraphUrl] = useState("");           // Hydrograph image
+  const [loading, setLoading] = useState(true);                     // Loading state for images
+  const [waterLevel, setWaterLevel] = useState(null);               // Real-time Mendenhall Lake level
+  const [error, setError] = useState(null);                         // Error message for water level
+  const [activeInfo, setActiveInfo] = useState(null);               // Info box active state (for tooltips)
+  const [showFloodPred, setShowFloodPred] = useState(true);         // NWS Alert display toggle
 
 
+  // Load fresh images on mount and every hour
   useEffect(() => {
     const updateImages = () => {
       setImageUrl(
@@ -30,13 +35,12 @@ const FloodPrediction = () => {
     return () => clearInterval(interval);
   }, []);
 
-
-  
-
+// Handles clicking on visual tooltip markers
   const handleMarkerClick = (marker, event, imageId) => {
     const wrapperRect = event.target.closest(".image-wrapper").getBoundingClientRect();
     const markerRect = event.target.getBoundingClientRect();
 
+    // Toggle visibility if clicking the same marker
     if (activeInfo && activeInfo.imageId === imageId && activeInfo.text === marker.text) {
       setActiveInfo(null);
     } else {
@@ -49,12 +53,14 @@ const FloodPrediction = () => {
     }
   };
 
+  // Closes tooltip info box if clicked outside
   const closeInfoBox = (e) => {
     if (!e.target.closest(".info-box") && !e.target.closest(".info-marker")) {
       setActiveInfo(null);
     }
   };
 
+  // Tooltip marker positions for Suicide Basin and Mendenhall
   const markers = {
     suicideBasin: [
       { top: "55%", left: "19.5%", text: "Current glacial lake water levels" },
@@ -92,24 +98,26 @@ const FloodPrediction = () => {
         setError(error.message);
       }
     };
-  
+
+  // Poll for lake level every 60s
     useEffect(() => {
       fetchWaterLevels();
       const interval = setInterval(fetchWaterLevels, 60000); // Update every 60 seconds
       return () => clearInterval(interval);
     }, []);
   
-    // Function to determine flood stage text based on water level
-const getFloodStage = (level) => {
-  if (level === null) return "Loading...";
-  if (level < 0) return "No Water Level Data Available";
-  if (level < 8) return `No Flood Risk at ${level.toFixed(1)}ft of water`;
-  if (level < 9) return `Action Stage at ${level.toFixed(1)}ft of water`;
-  if (level < 11) return `Minor Flood Stage at ${level.toFixed(1)}ft of water`;
-  if (level < 14) return `Moderate Flood Stage at ${level.toFixed(1)}ft of water`;
-  return `Major Flood Stage at ${level.toFixed(1)} ft`;
-};
+  // Translate water level into descriptive stage
+  const getFloodStage = (level) => {
+    if (level === null) return "Loading...";
+    if (level < 0) return "No Water Level Data Available";
+    if (level < 8) return `No Flood Risk at ${level.toFixed(1)}ft of water`;
+    if (level < 9) return `Action Stage at ${level.toFixed(1)}ft of water`;
+    if (level < 11) return `Minor Flood Stage at ${level.toFixed(1)}ft of water`;
+    if (level < 14) return `Moderate Flood Stage at ${level.toFixed(1)}ft of water`;
+    return `Major Flood Stage at ${level.toFixed(1)} ft`;
+  };
   
+  // ------------------- COMPONENT UI -------------------
 
   return (
     <div className="flood-tracker" onClick={closeInfoBox}>
@@ -134,8 +142,11 @@ This page provides information about real-time monitoring efforts. The USGS moni
       {/* Image Section */}
       
       <div className="flood-content">
+
+        {/* Suicide Basin Section */}
       <h2 className="section-title">Suicide Basin Water Level</h2>
         <div className="image-pair-container">
+          
           
           {/* Suicide Basin Image */}
           <div className="image-container suicide-basin-container">
@@ -161,7 +172,7 @@ This page provides information about real-time monitoring efforts. The USGS moni
             )}
           </div>
 
-          {/* NOAA Hydrograph Image */}
+          {/* NOAA Hydrograph for Suicide Basin */}
           <div className="image-container additional-image-container">
             <div className="image-wrapper additional-image-wrapper">
               <img
@@ -177,8 +188,7 @@ This page provides information about real-time monitoring efforts. The USGS moni
         </div>
       </div>
 
-       {/* Forecasting GLOFs Section */}
-{/* Forecasting GLOFs Section */}
+{/* Education Section - GLOF Forecasting */}
 <div className="detail-card black-text">
   <h2>Forecasting Glacial Lake Outburst Floods (GLOFs)</h2>
   <p>
@@ -260,29 +270,29 @@ Here's how the hydrograph looked when this occured in 2024.
             )}
           </div>
 
-          <div className="detail-card black-text flooding-info">
-  <h2 style={{ textAlign: 'left' }}>Mendenhall Lake Level & Flood Conditions</h2>
-  <p>
-  Mendenhall Lake is a glacially-fed lake at the terminus of Mendenhall Glacier. Water levels fluctuate due to seasonal melting, precipitation, and outburst floods. The <a href="https://waterdata.usgs.gov/monitoring-location/15052500/#dataTypeId=continuous-00065--1654777834&period=P7D&showMedian=false" target="_blank" rel="noopener noreferrer">
-        USGS monitors water level
-      </a> (also referred to as stage) along the lake’s west shore to track these changes in real time.
-  </p>
-  <p>
-  The water level in Mendenhall Lake is measured every 15 minutes by a sensor in the lake. The NWS uses forecasts of rainfall,
-  glacier melt, and water release from Suicide Basin to forecast water levels
-  in Mendenhall Lake (graph, left). During outburst floods, lake levels can rise rapidly, posing a significant flood risk.
-  For example, during the August 2024 outburst flood, the water level in Mendenhall Lake <a href="https://basin-images.s3.us-east-2.amazonaws.com/mlake_hydrograph.png" target="_blank" rel="noreferrer">
-  surged by over 10 ft in just two days.
-</a> Such extreme fluctuations
-  highlight the importance of continuous monitoring and early warnings.
-  </p>
-  <p>
-  When the water level in Mendenhall Lake is forecasted to exceed the flood stage, a flood watch or warning is issued. When the water
-  level exceeds 9ft, flooding can occur in Mendenhall Valley. Flood stages for Mendenhall Lake range from minor (9-10 ft) to major (14+ ft)
-  and are color coded to highlight known impacts documented by the NWS (below).
-  </p>
+        <div className="detail-card black-text flooding-info">
+        <h2 style={{ textAlign: 'left' }}>Mendenhall Lake Level & Flood Conditions</h2>
+        <p>
+        Mendenhall Lake is a glacially-fed lake at the terminus of Mendenhall Glacier. Water levels fluctuate due to seasonal melting, precipitation, and outburst floods. The <a href="https://waterdata.usgs.gov/monitoring-location/15052500/#dataTypeId=continuous-00065--1654777834&period=P7D&showMedian=false" target="_blank" rel="noopener noreferrer">
+              USGS monitors water level
+            </a> (also referred to as stage) along the lake’s west shore to track these changes in real time.
+        </p>
+        <p>
+        The water level in Mendenhall Lake is measured every 15 minutes by a sensor in the lake. The NWS uses forecasts of rainfall,
+        glacier melt, and water release from Suicide Basin to forecast water levels
+        in Mendenhall Lake (graph, left). During outburst floods, lake levels can rise rapidly, posing a significant flood risk.
+        For example, during the August 2024 outburst flood, the water level in Mendenhall Lake <a href="https://basin-images.s3.us-east-2.amazonaws.com/mlake_hydrograph.png" target="_blank" rel="noreferrer">
+        surged by over 10 ft in just two days.
+      </a> Such extreme fluctuations
+        highlight the importance of continuous monitoring and early warnings.
+        </p>
+        <p>
+        When the water level in Mendenhall Lake is forecasted to exceed the flood stage, a flood watch or warning is issued. When the water
+        level exceeds 9ft, flooding can occur in Mendenhall Valley. Flood stages for Mendenhall Lake range from minor (9-10 ft) to major (14+ ft)
+        and are color coded to highlight known impacts documented by the NWS (below).
+        </p>
 
-</div>
+          </div>
         </div>
       </div>
       
@@ -302,7 +312,6 @@ Here's how the hydrograph looked when this occured in 2024.
   </div>
 
 
-      
 <div className="detail-card black-text">
   <h2>Understanding Flood Stages</h2>
   <p>
@@ -357,8 +366,6 @@ Here's how the hydrograph looked when this occured in 2024.
     </button>
   </div>
 </div>
-
-
 
 </div>
 

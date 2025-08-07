@@ -7,6 +7,8 @@ import FloodImages from "./FloodImages";
 
 const S3_CSV_URL = "https://flood-events.s3.us-east-2.amazonaws.com/FloodEvents.csv";
 
+
+// Rename specific CSV headers for clarity and UI display
 const COLUMN_NAME_MAPPING = {
   "Release Stage D.S. Gage (ft)": "Release Start Stage at Mendenhall Lake (ft)",
   "D.S. Gage Release Flow (cfs)": "Release Flow Rate at Mendenhall Lake (cfs)",
@@ -52,6 +54,7 @@ const FloodEvents = () => {
             });
             setData(filteredData);
 
+            // Determine latest and largest flood events
             if (filteredData.length > 0) {
               setLatestFloodEvent(filteredData[0]); // Most recent flood event
               setLargestFloodEvent(
@@ -79,6 +82,9 @@ const FloodEvents = () => {
         setLoading(false);
       });
   }, []);
+
+
+  // ------------------- COMPONENT UI -------------------
 
 return (
   <div className="flood-events-container">

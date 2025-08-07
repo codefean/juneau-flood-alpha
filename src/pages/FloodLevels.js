@@ -1,32 +1,42 @@
 import React, { useEffect, useRef, useState, useCallback } from 'react';
 import mapboxgl from 'mapbox-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
+
+// Local styles and components
 import './FloodLevels.css';
-import FloodStageMenu from './FloodStageMenu';
-import FloodStepper from './FloodStepper';
-import FloodInfoPopup from "./FloodInfoPopup";
-import { getFloodStage } from './utils/floodStages';
-import Search from './Search.js';
+import FloodStageMenu from './FloodStageMenu';        // Accordion for flood level impacts
+import FloodStepper from './FloodStepper';            // Stepper for selecting flood height
+import FloodInfoPopup from "./FloodInfoPopup";        // Info popup for map disclaimers
+import { getFloodStage } from './utils/floodStages';  // Util function for stage descriptions
+import Search from './Search.js';                     // Address search bar
+
 
 // cd /Users/seanfagan/Desktop/juneau-flood-alpha
 
+// Custom color palette for each flood level (64–76)
 const customColors = [
   "#87c210", "#c3b91e", "#e68a1e", "#31a354", "#3182bd", "#124187",
   "#d63b3b", "#9b3dbd", "#d13c8f", "#c2185b", "#756bb1", "#f59380", "#ba4976",
 ];
 
 const FloodLevels = () => {
-  const mapContainerRef = useRef(null);
-  const mapRef = useRef(null);
-  const [selectedFloodLevel, setSelectedFloodLevel] = useState(9);
-  const [menuOpen, setMenuOpen] = useState(() => window.innerWidth >= 800);
-  const [hescoMode, setHescoMode] = useState(false);
-  const [errorMessage] = useState('');
-  const [waterLevels, setWaterLevels] = useState([]);
-  const [loadingLayers, setLoadingLayers] = useState(false);
+  const mapContainerRef = useRef(null);   // DOM reference for Mapbox container
+  const mapRef = useRef(null);            // Stores the map instance
+
+  // UI state
+  const [selectedFloodLevel, setSelectedFloodLevel] = useState(9);      // Default is 9 ft
+  const [menuOpen, setMenuOpen] = useState(() => window.innerWidth >= 800); // Show menu on desktop
+  const [hescoMode, setHescoMode] = useState(false);                    // HESCO toggle
+  const [errorMessage] = useState('');                                  // Placeholder for errors
+  const [waterLevels, setWaterLevels] = useState([]);                   // Live USGS level
+  const [loadingLayers, setLoadingLayers] = useState(false);            // For loading overlay
+
 
   const toggleMenu = () => setMenuOpen((prev) => !prev);
 
+    /**
+   * Enables hover tooltips on flood layers to show water depth
+   */
   const setupHoverPopup = useCallback((activeLayerId) => {
     if (!mapRef.current || !activeLayerId) return;
     const map = mapRef.current;
@@ -34,6 +44,8 @@ const FloodLevels = () => {
       setTimeout(() => setupHoverPopup(activeLayerId), 250);
       return;
     }
+
+    // Show depth on hover
     map.off('mousemove', activeLayerId);
     map.off('mouseleave', activeLayerId);
     const hoverPopup = new mapboxgl.Popup({ closeButton: false, closeOnClick: false, offset: 10, className: 'hover-popup' });
@@ -42,9 +54,14 @@ const FloodLevels = () => {
       const depth = feature?.properties?.DN || 'Unknown';
       hoverPopup.setLngLat(e.lngLat).setHTML(`<b>Water Depth: ${depth} ft</b>`).addTo(map);
     });
+
+    // Remove on mouseout
     map.on('mouseleave', activeLayerId, () => hoverPopup.remove());
   }, []);
 
+    /**
+   * Map of flood level tilesets (base vs HESCO)
+   */
   const tilesetMap = {
     base: {
       64: "ccav82q0", 65: "3z7whbfp", 66: "8kk8etzn", 67: "akq41oym",
@@ -57,6 +74,9 @@ const FloodLevels = () => {
     },
   };
 
+    /**
+   * Loads Mapbox vector tiles for all flood levels
+   */
   const updateFloodLayers = (mode) => {
     setLoadingLayers(true);
     const validLevels = Array.from({ length: 13 }, (_, i) => 64 + i); // 64–76
@@ -117,6 +137,9 @@ const FloodLevels = () => {
     });
   };
 
+  /**
+   * HESCO Mode Toggle Handler
+   */
   const toggleHescoMode = () => {
     setHescoMode((prev) => {
       const newMode = !prev;
@@ -131,6 +154,9 @@ const FloodLevels = () => {
     });
   };
 
+  /**
+   * Mapbox Initialization
+   */
   useEffect(() => {
     mapboxgl.accessToken = 'pk.eyJ1IjoibWFwZmVhbiIsImEiOiJjbTNuOGVvN3cxMGxsMmpzNThzc2s3cTJzIn0.1uhX17BCYd65SeQsW1yibA';
     if (!mapRef.current) {
@@ -181,6 +207,8 @@ const FloodLevels = () => {
     }
   }, [hescoMode]);
 
+
+  //* Resets HESCO mode if out-of-range level is selected
   useEffect(() => {
     if (hescoMode && (selectedFloodLevel < 14 || selectedFloodLevel > 18)) {
       setHescoMode(false);
@@ -188,6 +216,7 @@ const FloodLevels = () => {
     }
   }, [selectedFloodLevel, hescoMode]);
 
+  //* Updates hover popup when flood layer changes
   const handleFloodLayerChange = useCallback(() => {
     const layerId = `flood${64 + (selectedFloodLevel - 8)}-fill`;
     if (mapRef.current?.getLayer(layerId)) {
@@ -195,6 +224,7 @@ const FloodLevels = () => {
     }
   }, [selectedFloodLevel, setupHoverPopup]);
 
+//* Polls USGS API for live lake level data
   useEffect(() => {
     const fetchWaterLevels = async () => {
       const gages = [{ id: '15052500', name: 'Mendenhall Lake Stage Level' }];
@@ -234,6 +264,8 @@ const FloodLevels = () => {
       <button onClick={toggleMenu} className="menu-toggle-button">
         {menuOpen ? 'Hide Menu' : 'Show Menu'}
       </button>
+
+      {/* Mobile Stepper UI */}
       <div className="flood-stepper-container">
         <FloodStepper
           mapRef={mapRef}
@@ -245,6 +277,8 @@ const FloodLevels = () => {
           onFloodLayerChange={handleFloodLayerChange}
         />
       </div>
+
+      {/* Sidebar Menu (Desktop + Tablet) */}
       {menuOpen && (
         <div id="controls" style={{ position: 'absolute', top: '160px', left: '15px', zIndex: 1 }}>
           <Search mapRef={mapRef} />
