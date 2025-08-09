@@ -205,7 +205,7 @@ This page provides information about real-time monitoring efforts. The USGS moni
     </li>
     <li>
       <strong>Time to Prepare:</strong> Once drainage begins, floodwaters typically reach Mendenhall Lake within 1–2 days, offering a brief window for preparation. <a 
-  href="https://basin-images.s3.us-east-2.amazonaws.com/NOAA_Hydrograph.png" 
+  href="https://flood-events.s3.us-east-2.amazonaws.com/NOAA_Hydrograph.png" 
   target="_blank" 
   rel="noreferrer"
 >
@@ -281,7 +281,7 @@ Here's how the hydrograph looked when this occured in 2024.
         The water level in Mendenhall Lake is measured every 15 minutes by a sensor in the lake. The NWS uses forecasts of rainfall,
         glacier melt, and water release from Suicide Basin to forecast water levels
         in Mendenhall Lake (graph, left). During outburst floods, lake levels can rise rapidly, posing a significant flood risk.
-        For example, during the August 2024 outburst flood, the water level in Mendenhall Lake <a href="https://basin-images.s3.us-east-2.amazonaws.com/mlake_hydrograph.png" target="_blank" rel="noreferrer">
+        For example, during the August 2024 outburst flood, the water level in Mendenhall Lake <a href="https://flood-events.s3.us-east-2.amazonaws.com/mlake_hydrograph.png" target="_blank" rel="noreferrer">
         surged by over 10 ft in just two days.
       </a> Such extreme fluctuations
         highlight the importance of continuous monitoring and early warnings.
