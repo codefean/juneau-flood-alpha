@@ -19,7 +19,7 @@ const EvacuationPopup = ({ level = 17, autoClose = false, autoCloseDelay = 5000 
         <h2 id="flood-popup-title">Current Flood Evacuation Zone</h2>
         <p></p>
         <p className="reduce-top-margin">
-          If the basin releases residents within the 17ft lake stage (Without HESCOs) are advised to evacuate
+          Prepare to evacuate if you are within the 17ft lake stage (Without HESCOs)
         </p>
         <p className="reduce-top-margin">
           - City & Borough of Juneau
