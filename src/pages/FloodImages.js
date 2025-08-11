@@ -17,7 +17,7 @@ const images = [
     title: "2023",
   },
   {
-    src: "https://basin-images.s3.us-east-2.amazonaws.com/2024_SB.gif",
+    src: "https://www.climate.gov/sites/default/files/2024-08/SuicideBasinOutburst2024.gif",
     title: "2024",
   }
 ];

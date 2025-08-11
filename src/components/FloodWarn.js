@@ -18,7 +18,7 @@ const FloodWarn = () => {
           setFloodStatus(alert.headline || alert.event || "Advisory Issued");
           setAlertUrl(alert.web || "https://www.weather.gov/ajk/");
         } else {
-          setFloodStatus("No Active Alerts");
+          setFloodStatus("Active Alerts");
           setAlertUrl("https://www.weather.gov/ajk/suicideBasin");
         }
       } catch (error) {
