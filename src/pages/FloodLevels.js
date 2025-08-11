@@ -31,6 +31,9 @@ const FloodLevels = () => {
   const [errorMessage] = useState('');                                  // Placeholder for errors
   const [waterLevels, setWaterLevels] = useState([]);                   // Live USGS level
   const [loadingLayers, setLoadingLayers] = useState(false);            // For loading overlay
+  const popupRef = useRef(null);
+  const hoverHandlersRef = useRef({ move: null, out: null });
+
 
 
   const toggleMenu = () => setMenuOpen((prev) => !prev);
@@ -38,27 +41,66 @@ const FloodLevels = () => {
     /**
    * Enables hover tooltips on flood layers to show water depth
    */
-  const setupHoverPopup = useCallback((activeLayerId) => {
-    if (!mapRef.current || !activeLayerId) return;
-    const map = mapRef.current;
-    if (!map.getLayer(activeLayerId)) {
-      setTimeout(() => setupHoverPopup(activeLayerId), 250);
-      return;
-    }
+const setupHoverPopup = useCallback((activeLayerId) => {
+  const map = mapRef.current;
+  if (!map || !activeLayerId) return;
 
-    // Show depth on hover
-    map.off('mousemove', activeLayerId);
-    map.off('mouseleave', activeLayerId);
-    const hoverPopup = new mapboxgl.Popup({ closeButton: false, closeOnClick: false, offset: 10, className: 'hover-popup' });
-    map.on('mousemove', activeLayerId, (e) => {
-      const feature = e.features?.[0];
-      const depth = feature?.properties?.DN || 'Unknown';
-      hoverPopup.setLngLat(e.lngLat).setHTML(`<b>Water Depth: ${depth} ft</b>`).addTo(map);
+  // Wait until layer exists
+  if (!map.getLayer(activeLayerId)) {
+    setTimeout(() => setupHoverPopup(activeLayerId), 250);
+    return;
+  }
+
+  // Remove prior handlers, if any
+  if (hoverHandlersRef.current.move) {
+    map.off('mousemove', hoverHandlersRef.current.move);
+    hoverHandlersRef.current.move = null;
+  }
+  if (hoverHandlersRef.current.out) {
+    map.off('mouseout', hoverHandlersRef.current.out);
+    hoverHandlersRef.current.out = null;
+  }
+
+  // Reuse a single popup instance
+  if (!popupRef.current) {
+    popupRef.current = new mapboxgl.Popup({
+      closeButton: false,
+      closeOnClick: false,
+      offset: 10,
+      className: 'hover-popup',
     });
+  }
 
-    // Remove on mouseout
-    map.on('mouseleave', activeLayerId, () => hoverPopup.remove());
-  }, []);
+  const moveHandler = (e) => {
+    // Only consider features from the active layer
+    const features = map.queryRenderedFeatures(e.point, { layers: [activeLayerId] });
+    const feature = features && features[0];
+
+    if (feature) {
+      const props = feature.properties || {};
+      const depth = props.DN ?? props.depth ?? 'Unknown'; // try both keys
+      popupRef.current
+        .setLngLat(e.lngLat)
+        .setHTML(`<b>Water Depth: ${depth} ft</b>`)
+        .addTo(map);
+      map.getCanvas().style.cursor = 'crosshair';
+    } else {
+      popupRef.current.remove();
+      map.getCanvas().style.cursor = '';
+    }
+  };
+
+  const outHandler = () => {
+    popupRef.current.remove();
+    map.getCanvas().style.cursor = '';
+  };
+
+  map.on('mousemove', moveHandler);   // bind to map, not layer
+  map.on('mouseout', outHandler);
+
+  hoverHandlersRef.current.move = moveHandler;
+  hoverHandlersRef.current.out = outHandler;
+}, []);
 
     /**
    * Map of flood level tilesets (base vs HESCO)
@@ -261,12 +303,13 @@ const FloodLevels = () => {
   return (
     <div>
       <EvacuationPopup
-  level={17}
-  threshold={17}
-  zoneLabel="non-HESCO"
-  autoClose={false}
-  onClose={() => console.log('closed')}
-/>
+        level={17}
+        threshold={17}
+        zoneLabel="non-HESCO"
+        autoClose={false}
+        onClose={() => console.log('closed')}
+      />
+    
       <FloodInfoPopup />
       <div id="map" ref={mapContainerRef} style={{ height: '90vh', width: '100vw' }} />
       <button onClick={toggleMenu} className="menu-toggle-button">
