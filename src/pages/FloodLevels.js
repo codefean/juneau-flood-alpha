@@ -322,7 +322,7 @@ const FloodLevels = () => {
                     <strong>{` ${level.value} ft`}</strong>
                   </p>
                   <p>
-                    <span style={{ color: currentStage?.color || 'black' }}>
+                    <span style={{ color:'black' }}>
                       <span style={{ fontSize: '1.2rem', fontWeight: 'bold' }}>{currentStage?.label || 'OFFLINE'}</span>
                     </span>
                   </p>
