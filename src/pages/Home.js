@@ -19,6 +19,13 @@ const cardData = [
       'Flood forecasts based on Suicide Basin & Mendenhall Lake water levels',
   },
   {
+    title: 'Live: River Cameras',
+    link: 'https://streaming.tscak.com/',
+    image: '/images/floodcam.png',
+    description: 'Watch livestreams of Mendenhall River from Juneau Flood Solutions',
+    mobileOnly: true,
+  },
+  {
     title: 'Flood Events',
     link: '/flood-events',
     image: '/images/flood-events.jpg',
@@ -31,13 +38,6 @@ const cardData = [
     image: '/images/suicide-basin.jpg',
     description:
       'Learn how Suicide Basin was formed and how it releases outburst floods',
-  },
-  {
-    title: 'Live: River Cameras',
-    link: 'https://streaming.tscak.com/',
-    image: '/images/floodcam.png',
-    description: 'Watch livestreams of Mendenhall River from Juneau Flood Solutions',
-    mobileOnly: true,
   },
 ];
 
