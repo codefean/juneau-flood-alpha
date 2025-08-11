@@ -17,8 +17,12 @@ const EvacuationPopup = ({ level = 17, autoClose = false, autoCloseDelay = 5000 
     <div className="flood-popup-overlay" role="dialog" aria-modal="true" aria-labelledby="flood-popup-title">
       <div className="flood-popup-box">
         <h2 id="flood-popup-title">Current Flood Evacuation Zone</h2>
+        <p></p>
         <p className="reduce-top-margin">
-          Residents within the 17ft lake stage (Without HESCOs) are advised to evacuate
+          If the basin releases residents within the 17ft lake stage (Without HESCOs) are advised to evacuate
+        </p>
+        <p className="reduce-top-margin">
+          - City & Borough of Juneau
         </p>
         <button className="popup-close-button" onClick={() => setVisible(false)}>
           OK
