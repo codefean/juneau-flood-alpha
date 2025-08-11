@@ -19,9 +19,6 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
 
-.map-loading-overlay {
-  pointer-events: none !important; /* <- critical so hover can pass through */
-}
 
 .mapboxgl-popup,
 .mapboxgl-popup * {
@@ -352,21 +349,7 @@ header h1 {
   box-sizing: border-box;
 }
 
-.spinner {
-  border: 5px solid #f3f3f3;
-  border-top: 5px solid #3182bd;
-  border-radius: 50%;
-  width: 40px;
-  height: 40px;
-  animation: spin 1s linear infinite;
-}
 
-.loading-text {
-  font-size: 1rem;
-  color: #333;
-  margin-top: 12px;
-  text-align: center;
-}
 
 @media (max-width: 600px) {
   .spinner {

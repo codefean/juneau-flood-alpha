@@ -120,65 +120,67 @@ const setupHoverPopup = useCallback((activeLayerId) => {
     /**
    * Loads Mapbox vector tiles for all flood levels
    */
-  const updateFloodLayers = (mode) => {
-    setLoadingLayers(true);
-    const validLevels = Array.from({ length: 13 }, (_, i) => 64 + i); // 64–76
+const updateFloodLayers = (mode) => {
+  setLoadingLayers(true);
+  const map = mapRef.current;
+  const validLevels = Array.from({ length: 13 }, (_, i) => 64 + i); // 64–76
+  const visibleLayerId = `flood${64 + (selectedFloodLevel - 8)}-fill`;
 
-    validLevels.forEach((level) => {
-      const layerId = `flood${level}-fill`;
-      const sourceId = `flood${level}`;
-      if (mapRef.current.getLayer(layerId)) {
-        mapRef.current.removeLayer(layerId);
-      }
-      if (mapRef.current.getSource(sourceId)) {
-        mapRef.current.removeSource(sourceId);
-      }
-    });
+  // Remove old layers & sources
+  validLevels.forEach((level) => {
+    const layerId = `flood${level}-fill`;
+    const sourceId = `flood${level}`;
+    if (map.getLayer(layerId)) map.removeLayer(layerId);
+    if (map.getSource(sourceId)) map.removeSource(sourceId);
+  });
 
-    let loadedCount = 0;
+  let loadedCount = 0;
 
-    validLevels.forEach((level) => {
-      const floodId = `flood${level}`;
-      const layerId = `${floodId}-fill`;
-      const visible = floodId === `flood${64 + (selectedFloodLevel - 8)}`;
+  validLevels.forEach((level) => {
+    const floodId = `flood${level}`;
+    const layerId = `${floodId}-fill`;
+    const visible = floodId === `flood${64 + (selectedFloodLevel - 8)}`;
 
-      const tilesetId = mode ? tilesetMap.hesco[level] : tilesetMap.base[level];
-      if (mode && !tilesetId) {
-        loadedCount++;
-        if (loadedCount === validLevels.length) {
-          setLoadingLayers(false);
-        }
-        return;
-      }
-
-      const sourceLayerName = mode ? `flood${level}` : String(level);
-
-      mapRef.current.addSource(floodId, {
-        type: 'vector',
-        url: `mapbox://mapfean.${tilesetId}`,
-      });
-
-      mapRef.current.addLayer({
-        id: layerId,
-        type: 'fill',
-        source: floodId,
-        'source-layer': sourceLayerName,
-        layout: {
-          visibility: visible ? 'visible' : 'none',
-        },
-        paint: {
-          'fill-color': customColors[level - 64],
-          'fill-opacity': 0.4,
-        },
-      });
-
+    const tilesetId = mode ? tilesetMap.hesco[level] : tilesetMap.base[level];
+    if (mode && !tilesetId) {
       loadedCount++;
       if (loadedCount === validLevels.length) {
         setLoadingLayers(false);
-        setupHoverPopup(`${floodId}-fill`);
+        map.once('idle', () => setupHoverPopup(visibleLayerId));
       }
+      return;
+    }
+
+    const sourceLayerName = mode ? `flood${level}` : String(level);
+
+    map.addSource(floodId, {
+      type: 'vector',
+      url: `mapbox://mapfean.${tilesetId}`,
     });
-  };
+
+    map.addLayer({
+      id: layerId,
+      type: 'fill',
+      source: floodId,
+      'source-layer': sourceLayerName,
+      layout: {
+        visibility: visible ? 'visible' : 'none',
+      },
+      paint: {
+        'fill-color': customColors[level - 64],
+        'fill-opacity': 0.4,
+      },
+    });
+
+    loadedCount++;
+    if (loadedCount === validLevels.length) {
+      setLoadingLayers(false);
+      // Wait until the map finishes rendering with the new layer
+      map.once('idle', () => setupHoverPopup(visibleLayerId));
+    }
+  });
+};
+
 
   /**
    * HESCO Mode Toggle Handler
