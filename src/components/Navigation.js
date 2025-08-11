@@ -55,6 +55,17 @@ const Navigation = () => {
             Suicide Basin
           </NavLink>
         </li>
+        <li>
+          <a
+            href="https://streaming.tscak.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{ color: "#fa4444", fontWeight: "bold" }}
+          >
+            LIVE: River Cam
+          </a>
+        </li>
+        
 
       </ul>
     </nav>
