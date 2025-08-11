@@ -18,7 +18,7 @@ const EvacuationPopup = ({ level = 17, autoClose = false, autoCloseDelay = 5000 
       <div className="flood-popup-box">
         <h2 id="flood-popup-title">Current Flood Evacuation Zone</h2>
         <p className="reduce-top-margin">
-          Evacuate if you are within the <strong>{level}ft</strong> (non-HESCO) zone
+          Residents within the 17ft lake stage (Without HESCOs) are advised to evacuate
         </p>
         <button className="popup-close-button" onClick={() => setVisible(false)}>
           OK
