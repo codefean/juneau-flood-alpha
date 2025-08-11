@@ -43,9 +43,9 @@
 }
 
 .flood-pred-card {
-  background: rgb(235, 241, 249);
-  border-left: 3px solid #00509e;
-  border-right: 3px solid #00509e;
+  background: rgb(248, 206, 206);
+  border-left: 3px solid #9d0303;
+  border-right: 3px solid #9d0303;
   padding: 8px 12px;
   border-radius: 8px;
   font-size: 0.9rem;
@@ -79,7 +79,7 @@
 
 .more-info-btn {
   display: inline-block;
-  background-color: #1c68b4;
+  background-color: #9d0303;
   color: #ffffff;
   border: none;
   padding: 6px 12px; /* Reduced padding */
@@ -144,7 +144,7 @@
 
 /* Change color on hover for dismissible cards */
 .flood-pred-card.clickable:hover {
-  background-color: rgb(219, 231, 247); 
+  background-color: rgb(247, 221, 219); 
 }
 
 /* Non-dismissible alert (active flood warning) */
