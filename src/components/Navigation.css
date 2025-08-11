@@ -55,7 +55,7 @@
 
 
 /* Responsive Styles */
-@media (max-width: 830px) {
+@media (max-width: 925px) {
   .navigation .menu-toggle {
     display: block; /* Show the menu toggle on smaller screens */
   }
