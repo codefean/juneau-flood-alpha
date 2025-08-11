@@ -62,7 +62,7 @@ const Navigation = () => {
             rel="noopener noreferrer"
             style={{ color: "#fa4444", fontWeight: "bold" }}
           >
-            LIVE: River Cam
+            LIVE: River Cams
           </a>
         </li>
         
