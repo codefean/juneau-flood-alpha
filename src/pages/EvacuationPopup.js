@@ -16,7 +16,7 @@ const EvacuationPopup = ({ level = 17, autoClose = false, autoCloseDelay = 5000 
   return (
     <div className="flood-popup-overlay" role="dialog" aria-modal="true" aria-labelledby="flood-popup-title">
       <div className="flood-popup-box">
-        <h2 id="flood-popup-title">Current Evacuation Flood Zone</h2>
+        <h2 id="flood-popup-title">Current Flood Evacuation Zone</h2>
         <p className="reduce-top-margin">
           Evacuate if you are within the <strong>{level}ft</strong> (non-HESCO) zone
         </p>
