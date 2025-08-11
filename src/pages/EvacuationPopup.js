@@ -19,7 +19,7 @@ const EvacuationPopup = ({ level = 17, autoClose = false, autoCloseDelay = 5000 
         <h2 id="flood-popup-title">Current Flood Evacuation Zone</h2>
         <p></p>
         <p className="evacuation-text">
-          Prepare to evacuate if you are within the {level}ft lake stage (Without HESCOs)
+          The City and Borough of Juneau recommends that residents in the 17ft lake level inundation zone (without HESCOs) prepare to evacuate upon confirmation of a subglacial release from Suicide Basin
         </p>
         <p className="evacuation-source">
           - City &amp; Borough of Juneau
