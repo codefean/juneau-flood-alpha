@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState, useCallback } from 'react';
 import mapboxgl from 'mapbox-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
+import EvacuationPopup from "./EvacuationPopup";
 
 // Local styles and components
 import './FloodLevels.css';
@@ -24,7 +25,7 @@ const FloodLevels = () => {
   const mapRef = useRef(null);            // Stores the map instance
 
   // UI state
-  const [selectedFloodLevel, setSelectedFloodLevel] = useState(9);      // Default is 9 ft
+  const [selectedFloodLevel, setSelectedFloodLevel] = useState(17);      // Default is 9 ft
   const [menuOpen, setMenuOpen] = useState(() => window.innerWidth >= 800); // Show menu on desktop
   const [hescoMode, setHescoMode] = useState(false);                    // HESCO toggle
   const [errorMessage] = useState('');                                  // Placeholder for errors
@@ -259,6 +260,13 @@ const FloodLevels = () => {
 
   return (
     <div>
+      <EvacuationPopup
+  level={17}
+  threshold={17}
+  zoneLabel="non-HESCO"
+  autoClose={false}
+  onClose={() => console.log('closed')}
+/>
       <FloodInfoPopup />
       <div id="map" ref={mapContainerRef} style={{ height: '90vh', width: '100vw' }} />
       <button onClick={toggleMenu} className="menu-toggle-button">
