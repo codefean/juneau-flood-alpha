@@ -18,11 +18,19 @@ const EvacuationPopup = ({ level = 17, autoClose = false, autoCloseDelay = 5000 
       <div className="flood-popup-box">
         <h2 id="flood-popup-title">Current Flood Evacuation Zone</h2>
         <p></p>
-        <p className="evacuation-text">
-          The City & Borough of Juneau recommends that residents in the 17ft lake level inundation zone (shown with HESCO barriers OFF) prepare to evacuate upon confirmation of a subglacial release from Suicide Basin
-        </p>
+          <p className="evacuation-text">
+
+              <strong>The Suicide Basin glacial outburst underway. </strong> 
+          </p>
+          <p className="evacuation-text">
+              The City & Borough of Juneau recommends that residents in the 17ft lake level inundation zone (shown with HESCO barriers OFF) evacuate. 
+          </p>
+
+          <p className="evacuation-text">
+            The flood peak is forecasted for Wednesday evening at a 16.6ft lake level.
+          </p>
         <button className="popup-close-button" onClick={() => setVisible(false)}>
-          OK
+          <strong>OK</strong>
         </button>
       </div>
     </div>
