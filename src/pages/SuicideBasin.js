@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import CompareImage from "react-compare-image"; // For image before/after slider
 import Slider from "react-slick"; // For GLOF slideshow
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa"; // Custom navigation icons
@@ -10,6 +10,16 @@ const SuicideBasin = () => {
   const beforeImage = "https://juneauflood-basin-images.s3.us-west-2.amazonaws.com/1893_glacier.jpg";
   const afterImage = "https://juneauflood-basin-images.s3.us-west-2.amazonaws.com/2018_glacier.jpg";
 
+
+  const [cacheBuster, setCacheBuster] = useState(Date.now());
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCacheBuster(Date.now()); // Force URL change to refresh image
+    }, 60 * 60 * 1000); // 1 hour
+
+    return () => clearInterval(interval); // Cleanup
+  }, []);
 
 // Image slider content (GLOF steps)
 const images = [
@@ -147,34 +157,34 @@ const timelapse2Url = `https://usgs-nims-images.s3.amazonaws.com/overlay/AK_Glac
 </div>
 
 <div className="live-view-container">
-  <div className="live-image">
-    <img
-      src={`https://usgs-nims-images.s3.amazonaws.com/overlay/AK_Glacial_Lake_2_and_half_miles_North_of_Nugget_Creek_near_Auke_Bay/AK_Glacial_Lake_2_and_half_miles_North_of_Nugget_Creek_near_Auke_Bay_newest.jpg?cb=${Date.now()}`}
-      alt="Live view of glacial lake near Nugget Creek"
-    />
-    <a
-      href="https://usgs-nims-images.s3.amazonaws.com/overlay/AK_Glacial_Lake_2_and_half_miles_North_of_Nugget_Creek_near_Auke_Bay/AK_Glacial_Lake_2_and_half_miles_North_of_Nugget_Creek_near_Auke_Bay_newest.jpg"
-      target="_blank"
-      rel="noopener noreferrer"
-    >
-      <h3>Suicide Basin</h3>
-    </a>
-  </div>
+        <div className="live-image">
+          <img
+            src={`https://usgs-nims-images.s3.amazonaws.com/overlay/AK_Glacial_Lake_2_and_half_miles_North_of_Nugget_Creek_near_Auke_Bay/AK_Glacial_Lake_2_and_half_miles_North_of_Nugget_Creek_near_Auke_Bay_newest.jpg?cb=${cacheBuster}`}
+            alt="Live view of glacial lake near Nugget Creek"
+          />
+          <a
+            href="https://usgs-nims-images.s3.amazonaws.com/overlay/AK_Glacial_Lake_2_and_half_miles_North_of_Nugget_Creek_near_Auke_Bay/AK_Glacial_Lake_2_and_half_miles_North_of_Nugget_Creek_near_Auke_Bay_newest.jpg"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <h3>Suicide Basin</h3>
+          </a>
+        </div>
 
-  <div className="live-image">
-    <img
-      src={timelapse2Url}
-      alt="Live upstream view of Mendenhall Glacier"
-    />
-    <a
-      href="https://waterdata.usgs.gov/monitoring-location/1505248590/#dataTypeId=continuous-00020-0&period=P7D&showMedian=true"
-      target="_blank"
-      rel="noopener noreferrer"
-    >
-      <h3>Mendenhall Glacier from Suicide Basin</h3>
-    </a>
-  </div>
-</div>
+        <div className="live-image">
+          <img
+            src={'https://www.weather.gov/images/ajk/suicideBasin/CurrentCamB.jpg'}
+            alt="Live upstream view of Mendenhall Glacier"
+          />
+          <a
+            href="https://www.weather.gov/images/ajk/suicideBasin/CurrentCamB.jpg"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <h3>Mendenhall Glacier from Suicide Basin</h3>
+          </a>
+        </div>
+      </div>
 
 
 </div>
