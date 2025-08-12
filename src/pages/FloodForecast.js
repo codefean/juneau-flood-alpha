@@ -67,8 +67,7 @@ const FloodPrediction = () => {
       { top: "70%", left: "48.5%", text: "Movement of floating ice can impact water level measurements on the hydrograph." },
     ],
     mendenhallLake: [
-      { top: "70%", left: "69.8%", text: "Today's forecast." },
-      { top: "40%", left: "79.8%", text: "Future forecast." },
+
     ],
   };
 
