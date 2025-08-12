@@ -159,7 +159,7 @@ const timelapse2Url = `https://usgs-nims-images.s3.amazonaws.com/overlay/AK_Glac
 <div className="live-view-container">
         <div className="live-image">
           <img
-            src={`https://usgs-nims-images.s3.amazonaws.com/overlay/AK_Glacial_Lake_2_and_half_miles_North_of_Nugget_Creek_near_Auke_Bay/AK_Glacial_Lake_2_and_half_miles_North_of_Nugget_Creek_near_Auke_Bay_newest.jpg?cb=${cacheBuster}`}
+             src={`https://www.weather.gov/images/ajk/suicideBasin/current.jpg?cb=${cacheBuster}`}
             alt="Live view of glacial lake near Nugget Creek"
           />
           <a
