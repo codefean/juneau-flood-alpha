@@ -173,7 +173,8 @@ const timelapse2Url = `https://usgs-nims-images.s3.amazonaws.com/overlay/AK_Glac
 
         <div className="live-image">
           <img
-            src={'https://www.weather.gov/images/ajk/suicideBasin/CurrentCamB.jpg'}
+            src={`https://www.weather.gov/images/ajk/suicideBasin/CurrentCamB.jpg?cb=${cacheBuster}`}
+
             alt="Live upstream view of Mendenhall Glacier"
           />
           <a
