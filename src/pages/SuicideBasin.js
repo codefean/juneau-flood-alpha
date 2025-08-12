@@ -34,7 +34,7 @@ const images = [
         "This timelapse animation shows the water level in the basin from late April through mid-September, 2024. The largest glacier outburst flood on record at Mendenhall occurred on August 5-7, 2024. More than 15 billion gallons of water were released from Suicide Basin, and the water level in Mendenhall Lake reached a record level of 15.99 ft."
     },
     {
-      src: "https://basin-images.s3.us-east-2.amazonaws.com/GLOF_map.png",
+      src: "https://juneauflood-basin-images.s3.us-west-2.amazonaws.com/GLOF_map.jpg",
       title: "4. Reaching the Valley",
       description:
         "Once meltwater is released from Suicide Basin, it reaches Mendenhall Lake within one to two days. The extent of flooding in Mendenhall Valley is determined by the volume of water stored in the basin and the rate at which it flows under Mendenhall Glacier and into Mendenhall Lake, raising the lake level."
