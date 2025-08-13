@@ -27,7 +27,7 @@ const EvacuationPopup = ({ level = 17, autoClose = false, autoCloseDelay = 5000 
           </p>
 
           <p className="evacuation-text">
-            The flood peak is forecasted for Wednesday evening at a 16.6ft lake level.
+            The flood peak is forecasted for Wednesday between 8AM - 12PM at a 16.3 - 16.8ft lake level.
           </p>
         <button className="popup-close-button" onClick={() => setVisible(false)}>
           <strong>OK</strong>
