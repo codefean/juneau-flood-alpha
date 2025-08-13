@@ -122,9 +122,7 @@ return (
     <FloodTable headers={headers} data={data} loading={loading} />
 
     {/* Add FloodImages component here */}
-    <div className="flood-images-container">
-      <FloodImages />
-    </div>
+
   </div>
 );
 }
