@@ -20,7 +20,7 @@ const FloodPred = ({ onClose }) => {
           setNwsFloodForecast(alert.headline || alert.event || "Advisory Issued");
           setIsDismissible(false); // Prevent dismissal when there is an alert
         } else {
-          setNwsFloodForecast("Active Alerts.");
+          setNwsFloodForecast("No Active Alerts.");
           setIsDismissible(true); // Allow dismissal when no alert
         }
       } catch (error) {

@@ -25,7 +25,7 @@ const FloodLevels = () => {
   const mapRef = useRef(null);            // Stores the map instance
 
   // UI state
-  const [selectedFloodLevel, setSelectedFloodLevel] = useState(17);      // Default is 9 ft
+  const [selectedFloodLevel, setSelectedFloodLevel] = useState(9);      // Default is 9 ft
   const [menuOpen, setMenuOpen] = useState(() => window.innerWidth >= 800); // Show menu on desktop
   const [hescoMode, setHescoMode] = useState(false);                    // HESCO toggle
   const [errorMessage] = useState('');                                  // Placeholder for errors
@@ -304,13 +304,6 @@ const updateFloodLayers = (mode) => {
 
   return (
     <div>
-      <EvacuationPopup
-        level={17}
-        threshold={17}
-        zoneLabel="non-HESCO"
-        autoClose={false}
-        onClose={() => console.log('closed')}
-      />
     
       <FloodInfoPopup />
       <div id="map" ref={mapContainerRef} style={{ height: '90vh', width: '100vw' }} />

@@ -19,13 +19,6 @@ const cardData = [
       'Flood forecasts based on Suicide Basin & Mendenhall Lake water levels',
   },
   {
-    title: 'Live: River Cameras',
-    link: 'https://streaming.tscak.com/',
-    image: '/images/floodcam.png',
-    description: 'Watch livestreams of Mendenhall River from Juneau Flood Solutions',
-    mobileOnly: true,
-  },
-  {
     title: 'Flood Events',
     link: '/flood-events',
     image: '/images/flood-events.jpg',
