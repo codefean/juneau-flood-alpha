@@ -10,6 +10,8 @@ import FloodStepper from './FloodStepper';            // Stepper for selecting f
 import FloodInfoPopup from "./FloodInfoPopup";        // Info popup for map disclaimers
 import { getFloodStage } from './utils/floodStages';  // Util function for stage descriptions
 import Search from './Search.js';                     // Address search bar
+import Loc from './loc';
+import './loc.css';
 
 
 // cd /Users/seanfagan/Desktop/juneau-flood-alpha
@@ -33,9 +35,7 @@ const FloodLevels = () => {
   const [loadingLayers, setLoadingLayers] = useState(false);            // For loading overlay
   const popupRef = useRef(null);
   const hoverHandlersRef = useRef({ move: null, out: null });
-
-
-
+  const [mapReady, setMapReady] = useState(false);
   const toggleMenu = () => setMenuOpen((prev) => !prev);
 
     /**
@@ -70,6 +70,17 @@ const setupHoverPopup = useCallback((activeLayerId) => {
       className: 'hover-popup',
     });
   }
+
+
+  if (!mapRef.current.getSource('mapbox-dem')) {
+    mapRef.current.addSource('mapbox-dem', {
+      type: 'raster-dem',
+      url: 'mapbox://mapbox.mapbox-terrain-dem-v1',
+      tileSize: 512,
+      maxzoom: 14,
+    });
+  }
+  mapRef.current.setTerrain({ source: 'mapbox-dem', exaggeration: 1.0 });
 
   const moveHandler = (e) => {
     // Only consider features from the active layer
@@ -248,6 +259,7 @@ const updateFloodLayers = (mode) => {
             marker.setPopup(popup);
           }
         });
+        setMapReady(true);
       });
     }
   }, [hescoMode]);
@@ -310,6 +322,8 @@ const updateFloodLayers = (mode) => {
       <button onClick={toggleMenu} className="menu-toggle-button">
         {menuOpen ? 'Hide Menu' : 'Show Menu'}
       </button>
+      {mapReady && <Loc mapRef={mapRef} />}
+
 
       {/* Mobile Stepper UI */}
       <div className="flood-stepper-container">
