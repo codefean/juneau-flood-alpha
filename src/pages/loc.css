@@ -13,3 +13,10 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+/* Hide on mobile (less than 768px) */
+@media (max-width: 767px) {
+  .loc-readout {
+    display: none;
+  }
+}
