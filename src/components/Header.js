@@ -12,6 +12,9 @@ const Header = () => {
         <a href="https://uas.alaska.edu/" target="_blank" rel="noopener noreferrer">
           <img src="/UAS.png" alt="University of Alaska Southeast Logo" className="logo" />
         </a>
+        <a href="https://nsf.gov/" target="_blank" rel="noopener noreferrer">
+          <img src="/NSF.png" alt="National Science Foundation Logo" className="logo" />
+        </a>
       </div>
 <div class="header-title">
   <h1>Juneau Glacial Flood Dashboard</h1>

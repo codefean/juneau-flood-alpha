@@ -53,7 +53,7 @@
 }
 
 /* Show and scale logo on larger screens */
-@media (min-width: 1142px) {
+@media (min-width: 1238px) {
   .header-image {
     display: flex;
   }
