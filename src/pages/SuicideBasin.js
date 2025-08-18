@@ -149,43 +149,7 @@ const timelapse2Url = `https://usgs-nims-images.s3.amazonaws.com/overlay/AK_Glac
         </div>
 
 
-<div className="text-center mt-10">
-  <h2 className="glof-h2">Live View: Suicide Basin & Mendenhall Glacier</h2>
-  <p className="suicide-basin-subheading">
-    Real-time USGS Images <span> - Updates from Spring to Fall</span>
-  </p>
-</div>
 
-<div className="live-view-container">
-        <div className="live-image">
-          <img
-             src={`https://www.weather.gov/images/ajk/suicideBasin/current.jpg?cb=${cacheBuster}`}
-            alt="Live view of glacial lake near Nugget Creek"
-          />
-          <a
-            href="https://usgs-nims-images.s3.amazonaws.com/overlay/AK_Glacial_Lake_2_and_half_miles_North_of_Nugget_Creek_near_Auke_Bay/AK_Glacial_Lake_2_and_half_miles_North_of_Nugget_Creek_near_Auke_Bay_newest.jpg"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <h3>Suicide Basin</h3>
-          </a>
-        </div>
-
-        <div className="live-image">
-          <img
-            src={`https://www.weather.gov/images/ajk/suicideBasin/CurrentCamB.jpg?cb=${cacheBuster}`}
-
-            alt="Live upstream view of Mendenhall Glacier"
-          />
-          <a
-            href="https://www.weather.gov/images/ajk/suicideBasin/CurrentCamB.jpg"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <h3>Mendenhall Glacier from Suicide Basin</h3>
-          </a>
-        </div>
-      </div>
 
 
 </div>

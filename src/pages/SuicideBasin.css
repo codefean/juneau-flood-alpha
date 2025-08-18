@@ -245,6 +245,35 @@
   margin-top: -2px;
 }
 
+.threejs-embed {
+  position: relative;
+  width: 100%;
+  /* 16:9 aspect ratio; tweak as you like */
+  padding-top: 56.25%;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+  margin: 16px 0 32px;
+}
+
+/* Make the viewer fill the frame */
+.threejs-embed iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+/* Optional: align with your existing headings/subheadings */
+.threejs-embed + .basin-image-caption {
+  text-align: center;
+  font-size: 0.95rem;
+  color: #6a7685;
+  margin-top: 8px;
+}
+
+
 
 /* ===============================
    Responsive Styles
