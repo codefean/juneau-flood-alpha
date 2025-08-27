@@ -71,6 +71,24 @@ header h1 {
   color: #111;
 }
 
+.business-popup {
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: #222;
+  background-color: #fff;
+  padding: 6px 10px;
+  border-radius: 6px;
+
+  pointer-events: none;
+}
+
+.mapboxgl-popup-tip {
+  display: none; /* Hide the default popup tip if you want a cleaner look */
+}
+
+
+
 .lake-level-card {
   background: rgba(255, 255, 255, 0.722);
   padding: 10px 15px;

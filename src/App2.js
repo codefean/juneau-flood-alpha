@@ -9,7 +9,8 @@ import FloodEvents from "./pages/FloodEvents";
 import SuicideBasin from "./pages/SuicideBasin";
 import Home from "./pages/Home";
 import Footer from "./components/Footer";
-import { preloadGeojsons } from "./utils/preloadGeojsons"; // ✅ Make sure this path is correct
+import { preloadGeojsons } from "./utils/preloadGeojsons";
+import StoryMap from "./pages/StoryMap";
 
 const useDocumentTitle = (title) => {
   React.useEffect(() => {
@@ -43,6 +44,11 @@ const HomePage = () => {
   return <Home />;
 };
 
+const StoryMapPage = () => {
+  useDocumentTitle("Story Map");
+  return <StoryMap />;
+};
+
 const App2 = () => {
   React.useEffect(() => {
     if ("requestIdleCallback" in window) {
@@ -65,6 +71,7 @@ const App2 = () => {
             <Route path="/flood-events" element={<FloodEventsPage />} />
             <Route path="/suicide-basin" element={<SuicideBasinPage />} />
             <Route path="/home" element={<HomePage />} />
+            <Route path="/story-map" element={<StoryMapPage />} />
           </Routes>
         </div>
         <Footer />
