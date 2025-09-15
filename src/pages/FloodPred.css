@@ -43,9 +43,9 @@
 }
 
 .flood-pred-card {
-  background: rgb(220, 234, 248);
-  border-left: 3px solid #0c5c95;
-  border-right: 3px solid #0c5c95;
+  background: rgb(240, 200, 200);
+  border-left: 3px solid #9d0303;
+  border-right: 3px solid #9d0303;
   padding: 8px 12px;
   border-radius: 8px;
   font-size: 0.9rem;
@@ -79,7 +79,7 @@
 
 .more-info-btn {
   display: inline-block;
-  background-color: #0c5c95;
+  background-color: #9d0303;
   color: #ffffff;
   border: none;
   padding: 6px 12px; /* Reduced padding */
