@@ -21,12 +21,7 @@ const useDocumentTitle = (title) => {
 // Wrapper components to set the title for each route
 const FloodLevelsPage = () => {
   useDocumentTitle("Juneau Flood Maps");
-  // 👇 give .main-content an extra class for this page
-  return (
-    <div className="main-content floodlevels-page">
-      <FloodLevels />
-    </div>
-  );
+  return <FloodLevels />;
 };
 
 const FloodPredictionPage = () => {
@@ -68,16 +63,17 @@ const App2 = () => {
       <div className="app-container">
         <Header />
         <Navigation />
-        {/* Notice: main-content is only applied here for normal routes */}
-        <Routes>
-          <Route path="/" element={<Navigate to="/home" />} />
-          <Route path="/flood-map" element={<FloodLevelsPage />} />
-          <Route path="/flood-forecast" element={<FloodPredictionPage />} />
-          <Route path="/flood-events" element={<FloodEventsPage />} />
-          <Route path="/suicide-basin" element={<SuicideBasinPage />} />
-          <Route path="/home" element={<HomePage />} />
-          <Route path="/story-map" element={<StoryMapPage />} />
-        </Routes>
+        <div className="main-content">
+          <Routes>
+            <Route path="/" element={<Navigate to="/home" />} />
+            <Route path="/flood-map" element={<FloodLevelsPage />} />
+            <Route path="/flood-forecast" element={<FloodPredictionPage />} />
+            <Route path="/flood-events" element={<FloodEventsPage />} />
+            <Route path="/suicide-basin" element={<SuicideBasinPage />} />
+            <Route path="/home" element={<HomePage />} />
+            <Route path="/story-map" element={<StoryMapPage />} />
+          </Routes>
+        </div>
         <Footer />
       </div>
     </Router>
