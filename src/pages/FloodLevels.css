@@ -1,10 +1,6 @@
 @import 'mapbox-gl/dist/mapbox-gl.css';
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap');
 
-/* Variables */
-:root {
-  --shared-width: 300px;
-}
 
 /* Base Styles */
 body {
@@ -17,6 +13,11 @@ body {
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+}
+
+/* Variables */
+:root {
+  --shared-width: 300px;
 }
 
 
@@ -33,6 +34,7 @@ header h1 {
   white-space: nowrap;
   overflow: hidden;
 }
+
 
 /* Cards */
 .level-card {

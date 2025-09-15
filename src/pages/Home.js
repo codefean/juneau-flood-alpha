@@ -3,6 +3,8 @@ import { NavLink } from 'react-router-dom';
 import './Home.css';
 import './FloodForecast.css';
 
+// cd /Users/seanfagan/Desktop/Alaska-GLOF
+
 const cardData = [
   {
     title: 'Flood Maps',

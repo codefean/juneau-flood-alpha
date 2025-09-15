@@ -1,15 +1,14 @@
 import React, { useEffect, useRef, useState, useCallback } from 'react';
 import mapboxgl from 'mapbox-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
-import EvacuationPopup from "./EvacuationPopup";
 
 // Local styles and components
 import './FloodLevels.css';
-import FloodStageMenu from './FloodStageMenu';        // Accordion for flood level impacts
-import FloodStepper from './FloodStepper';            // Stepper for selecting flood height
-import FloodInfoPopup from "./FloodInfoPopup";        // Info popup for map disclaimers
-import { getFloodStage } from './utils/floodStages';  // Util function for stage descriptions
-import Search from './Search.js';                     // Address search bar
+import FloodStageMenu from './FloodStageMenu';        
+import FloodStepper from './FloodStepper';            
+import FloodInfoPopup from "./FloodInfoPopup";        
+import { getFloodStage } from './utils/floodStages';  
+import Search from './Search.js';                     
 import Loc from './loc';
 import './loc.css';
 
@@ -315,7 +314,7 @@ const updateFloodLayers = (mode) => {
   }, []);
 
   return (
-    <div>
+    <div class="main-content floodlevels-page">
     
       <FloodInfoPopup />
       <div id="map" ref={mapContainerRef} style={{ height: '90vh', width: '100vw' }} />

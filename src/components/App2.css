@@ -26,3 +26,13 @@ html, body {
   width: 100%;
   margin-top: auto; /* Ensures it moves to the bottom */
 }
+
+/* Hide footer when on FloodLevels page */
+.floodlevels-page ~ footer {
+  display: none !important;
+}
+
+/* Optional: expand map to full height when footer is hidden */
+.floodlevels-page #map {
+  height: 100vh !important;
+}
