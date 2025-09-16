@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App2 from './App2'; // Import the new main component
-import './styles/App2.css'; // Ensure your global styles are loaded
+import App2 from './App2'; 
+import './styles/App2.css'; 
 
 ReactDOM.render(
   <React.StrictMode>

@@ -16,9 +16,9 @@ const Header = () => {
           <img src="/NSF.png" alt="National Science Foundation Logo" className="logo" />
         </a>
       </div>
-<div class="header-title">
+<div className="header-title">
   <h1>Juneau Glacial Flood Dashboard</h1>
-  <div class="header-subtitle">University of Alaska Southeast | Alaska Climate Adaptation Science Center</div>
+  <div className="header-subtitle">University of Alaska Southeast | Alaska Climate Adaptation Science Center</div>
 </div>
 
       <FloodWarn />

@@ -314,7 +314,7 @@ const updateFloodLayers = (mode) => {
   }, []);
 
   return (
-    <div class="main-content floodlevels-page">
+    <div className="main-content floodlevels-page">
     
       <FloodInfoPopup />
       <div id="map" ref={mapContainerRef} style={{ height: '90vh', width: '100vw' }} />

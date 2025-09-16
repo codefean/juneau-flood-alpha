@@ -9,7 +9,6 @@ import FloodEvents from "./pages/FloodEvents";
 import SuicideBasin from "./pages/SuicideBasin";
 import Home from "./pages/Home";
 import Footer from "./components/Footer";
-import { preloadGeojsons } from "./utils/preloadGeojsons";
 import StoryMap from "./pages/StoryMap";
 
 const useDocumentTitle = (title) => {
@@ -50,13 +49,7 @@ const StoryMapPage = () => {
 };
 
 const App2 = () => {
-  React.useEffect(() => {
-    if ("requestIdleCallback" in window) {
-      requestIdleCallback(() => preloadGeojsons());
-    } else {
-      setTimeout(() => preloadGeojsons(), 1000);
-    }
-  }, []);
+
 
   return (
     <Router>
