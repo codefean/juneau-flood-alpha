@@ -2,7 +2,6 @@ import React, { useState, useRef } from 'react';
 import mapboxgl from 'mapbox-gl';
 import './Search.css';
 
-// Set your Mapbox access token here
 mapboxgl.accessToken = 'pk.eyJ1IjoibWFwZmVhbiIsImEiOiJjbTNuOGVvN3cxMGxsMmpzNThzc2s3cTJzIn0.1uhX17BCYd65SeQsW1yibA';
 
 // Bounding box and proximity for Juneau (~20-mile radius)
@@ -15,6 +14,7 @@ const Search = ({ mapRef }) => {
   const [isSearching, setIsSearching] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
   const searchMarkerRef = useRef(null);
+  const userMarkerRef = useRef(null);
 
   const fetchSuggestions = async (query) => {
     if (!query) return setSuggestions([]);
@@ -65,7 +65,7 @@ const Search = ({ mapRef }) => {
           .setLngLat([lng, lat])
           .addTo(mapRef.current);
 
-        mapRef.current.flyTo({ center: [lng, lat], zoom: 14 });
+        mapRef.current.flyTo({ center: [lng, lat], zoom: 17.5 });
       }
     } catch {
       setErrorMessage('Search failed. Try again.');
@@ -74,13 +74,42 @@ const Search = ({ mapRef }) => {
     }
   };
 
+  // NEW: Handle geolocation
+  const handleLocate = () => {
+    if (!navigator.geolocation) {
+      alert('Geolocation is not supported by your browser');
+      return;
+    }
+
+    navigator.geolocation.getCurrentPosition(
+      (position) => {
+        const { longitude, latitude } = position.coords;
+
+        // Remove old user marker if exists
+        if (userMarkerRef.current) {
+          userMarkerRef.current.remove();
+        }
+
+        // Add new blue marker for user
+        userMarkerRef.current = new mapboxgl.Marker({ color: 'red' })
+          .setLngLat([longitude, latitude])
+          .addTo(mapRef.current);
+
+        mapRef.current.flyTo({ center: [longitude, latitude], zoom: 17.5 });
+      },
+      () => {
+        alert('Unable to retrieve your location');
+      }
+    );
+  };
+
   return (
     <div className="search-container">
       <div style={{ position: 'relative', width: '100%' }}>
         <input
           className="search-bar"
           type="text"
-          placeholder="Search address (optional)"
+          placeholder="Search address..."
           value={address}
           onChange={(e) => {
             setAddress(e.target.value);
@@ -97,6 +126,11 @@ const Search = ({ mapRef }) => {
           </ul>
         )}
       </div>
+
+      {/* NEW: Geolocation button to the LEFT */}
+
+
+      {/* Existing search button */}
       <button
         onClick={searchAddress}
         disabled={isSearching}
@@ -104,7 +138,12 @@ const Search = ({ mapRef }) => {
       >
         {isSearching ? '...' : 'Search'}
       </button>
+
+
       {errorMessage && <p style={{ color: 'red', marginTop: '5px' }}>{errorMessage}</p>}
+            <button title="Find my location" onClick={handleLocate} className="locate-button">
+        📍
+      </button>
     </div>
   );
 };
