@@ -26,7 +26,7 @@ export default function Topographic3DTerrainMap() {
     const modelAltitude = 30;
 
   // pick zoom level depending on screen width
-  const initialZoom = window.innerWidth < 915 ? 11.7 : 12.7;
+  const initialZoom = window.innerWidth < 915 ? 12.2 : 12.7;
 
   const map = new mapboxgl.Map({
     container: mapContainer.current,
@@ -156,7 +156,7 @@ export default function Topographic3DTerrainMap() {
 
           map.setCenter([lng, lat]);
           map.setBearing((angle * 180) / Math.PI);
-          map.setZoom(13.5);
+          map.setZoom(12.7);
         }
         animationRef.current = requestAnimationFrame(animateCamera);
       }
