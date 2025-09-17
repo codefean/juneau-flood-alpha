@@ -435,3 +435,19 @@
   padding: 0 20px; /* Optional: prevent content from touching edges on smaller screens */
   box-sizing: border-box;
 }
+
+.glof-h2 {
+  position: relative;
+}
+
+.glof-h2 .anchor-link {
+  margin-left: 8px;
+  font-size: 0.8em;
+  text-decoration: none;
+  opacity: 0.6;
+  transition: opacity 0.2s;
+}
+
+.glof-h2 .anchor-link:hover {
+  opacity: 1;
+}

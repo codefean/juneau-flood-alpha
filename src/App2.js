@@ -10,6 +10,7 @@ import SuicideBasin from "./pages/SuicideBasin";
 import Home from "./pages/Home";
 import Footer from "./components/Footer";
 import StoryMap from "./pages/StoryMap";
+import ScrollToHashElement from "./components/ScrollToHashElement"; // ✅ add this
 
 const useDocumentTitle = (title) => {
   React.useEffect(() => {
@@ -49,10 +50,9 @@ const StoryMapPage = () => {
 };
 
 const App2 = () => {
-
-
   return (
     <Router>
+      <ScrollToHashElement /> {/* ✅ ensures hash scrolling works */}
       <div className="app-container">
         <Header />
         <Navigation />
