@@ -156,7 +156,7 @@ export default function Topographic3DTerrainMap() {
 
           map.setCenter([lng, lat]);
           map.setBearing((angle * 180) / Math.PI);
-          map.setZoom(12.7);
+          map.setZoom(12.9);
         }
         animationRef.current = requestAnimationFrame(animateCamera);
       }
