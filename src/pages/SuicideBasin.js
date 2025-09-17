@@ -3,6 +3,7 @@ import CompareImage from "react-compare-image"; // For image before/after slider
 import Slider from "react-slick"; // For GLOF slideshow
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa"; // Custom navigation icons
 import "./SuicideBasin.css";
+import SBmodel from './SBmodel';
 
 
 const SuicideBasin = () => {
@@ -147,7 +148,8 @@ const timelapse2Url = `https://usgs-nims-images.s3.amazonaws.com/overlay/AK_Glac
           <h3>{images[currentSlide].title}</h3>
           <p>{images[currentSlide].description}</p>
         </div>
-
+      <h2 className="glof-h2">Suicide Basin for Scale</h2>
+<SBmodel />
 
 
 
