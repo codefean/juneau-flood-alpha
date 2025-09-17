@@ -281,7 +281,6 @@ visibility: hidden;
   }
 
   .fullscreen-btn {
-    font-size: 0.75rem;
-    max-width: 90px;
+visibility: hidden;
   }
 }
