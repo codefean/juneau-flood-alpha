@@ -231,7 +231,7 @@
   transition: background 0.2s ease-in-out;
   position: absolute;
   bottom: 35px;
-  right: 15px; /* bottom-right corner */
+
 }
 
 .controls button:hover,
