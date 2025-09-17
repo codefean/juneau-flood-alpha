@@ -25,15 +25,18 @@ export default function Topographic3DTerrainMap() {
     const { modelOrigin, orbitCenter } = location;
     const modelAltitude = 30;
 
-    const map = new mapboxgl.Map({
-      container: mapContainer.current,
-      style: "mapbox://styles/mapbox/satellite-streets-v12",
-      center: modelOrigin,
-      zoom: 12.7,
-      pitch: 65,
-      bearing: 0,
-      antialias: true,
-    });
+  // pick zoom level depending on screen width
+  const initialZoom = window.innerWidth < 915 ? 11.7 : 12.7;
+
+  const map = new mapboxgl.Map({
+    container: mapContainer.current,
+    style: "mapbox://styles/mapbox/satellite-streets-v12",
+    center: modelOrigin,
+    zoom: initialZoom,
+    pitch: 65,
+    bearing: 0,
+    antialias: true,
+  });
 
     map.on("load", () => {
       map.addSource("mapbox-dem", {

@@ -148,15 +148,8 @@ const timelapse2Url = `https://usgs-nims-images.s3.amazonaws.com/overlay/AK_Glac
           <h3>{images[currentSlide].title}</h3>
           <p>{images[currentSlide].description}</p>
         </div>
-<h2 id="suicide-basin-scale" className="glof-h2">
+<h2 className="glof-h2">
   Suicide Basin for Scale
-  <a
-    href="#suicide-basin-scale"
-    className="anchor-link"
-    aria-label="Link to Suicide Basin for Scale section"
-  >
-  
-  </a>
 </h2>
 <SBmodel />
 
