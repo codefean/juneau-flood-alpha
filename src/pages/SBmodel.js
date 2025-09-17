@@ -10,8 +10,10 @@ mapboxgl.accessToken =
 export default function Topographic3DTerrainMap() {
   const mapContainer = useRef(null);
   const animationRef = useRef(null);
+  const wrapperRef = useRef(null);
 
   const [paused, setPaused] = useState(false);
+  const [isFakeFullscreen, setIsFakeFullscreen] = useState(false);
 
   // state for location
   const [location, setLocation] = useState({
@@ -34,7 +36,6 @@ export default function Topographic3DTerrainMap() {
     });
 
     map.on("load", () => {
-      // === TERRAIN & FOG ===
       map.addSource("mapbox-dem", {
         type: "raster-dem",
         url: "mapbox://mapbox.mapbox-terrain-dem-v1",
@@ -62,7 +63,6 @@ export default function Topographic3DTerrainMap() {
         },
       ]);
 
-      // === MODEL TRANSFORM ===
       const mercatorCoord = mapboxgl.MercatorCoordinate.fromLngLat(
         modelOrigin,
         modelAltitude
@@ -74,7 +74,6 @@ export default function Topographic3DTerrainMap() {
         scale: mercatorCoord.meterInMercatorCoordinateUnits(),
       };
 
-      // === CUSTOM LAYER ===
       const customLayer = {
         id: "3d-model",
         type: "custom",
@@ -106,7 +105,6 @@ export default function Topographic3DTerrainMap() {
               const scale = targetSize / maxDim;
 
               this.model.scale.set(scale, scale, scale);
-
               this.scene.add(this.model);
             },
             undefined,
@@ -143,7 +141,6 @@ export default function Topographic3DTerrainMap() {
 
       map.addLayer(customLayer);
 
-      // === CAMERA ORBIT ===
       let angle = 0;
       const speedFactor = 9300;
 
@@ -169,63 +166,88 @@ export default function Topographic3DTerrainMap() {
     };
   }, [paused, location]);
 
+  // === Fullscreen toggle ===
+  const toggleFullscreen = () => {
+    const el = wrapperRef.current;
+
+    if (!el) return;
+
+    if (!document.fullscreenElement && !isFakeFullscreen) {
+      // Try real fullscreen
+      if (el.requestFullscreen) {
+        el.requestFullscreen().catch(() => {});
+      } else if (el.webkitRequestFullscreen) {
+        el.webkitRequestFullscreen();
+      } else if (el.msRequestFullscreen) {
+        el.msRequestFullscreen();
+      } else {
+        // Fallback for iOS Safari
+        el.style.position = "fixed";
+        el.style.top = 0;
+        el.style.left = 0;
+        el.style.width = "100vw";
+        el.style.height = "100vh";
+        el.style.zIndex = 9999;
+        setIsFakeFullscreen(true);
+      }
+    } else {
+      // Exit fullscreen
+      if (document.exitFullscreen) {
+        document.exitFullscreen();
+      }
+      if (isFakeFullscreen) {
+        el.removeAttribute("style");
+        setIsFakeFullscreen(false);
+      }
+    }
+  };
+
   return (
-    <div className="map-wrapper">
+    <div className="map-wrapper" ref={wrapperRef}>
       <div ref={mapContainer} className="map-container" />
 
-      {/* === Data Box Overlay === */}
+      {/* Overlay Data Box */}
       <div className="data-box">
         <h4>Suicide Basin for Scale</h4>
         <p>
-          Model shows Suicide Basin on <strong>8/13/2025</strong>: Empty after the{" "}
-          <em>largest flood event</em> on record.
+          Model shows Suicide Basin on <strong>8/13/2025</strong>: Empty after
+          the <em>largest flood event</em> on record.
         </p>
       </div>
 
-     <div className="controls">
-  <button className="pause-btn" onClick={() => setPaused((p) => !p)}>
-    {paused ? "▶ Resume Orbit" : "⏸ Pause Orbit"}
-  </button>
+      {/* Controls */}
+      <div className="controls">
+        <button className="pause-btn" onClick={() => setPaused((p) => !p)}>
+          {paused ? "▶ Resume Orbit" : "⏸ Pause Orbit"}
+        </button>
 
-  <button
-    onClick={() =>
-      setLocation({
-        modelOrigin: [-134.575402, 58.393573], // Mendenhall Valley
-        orbitCenter: [-134.575402, 58.393573],
-      })
-    }
-  >
-    Mendenhall Valley
-  </button>
+        <button
+          onClick={() =>
+            setLocation({
+              modelOrigin: [-134.575402, 58.393573],
+              orbitCenter: [-134.575402, 58.393573],
+            })
+          }
+        >
+          Mendenhall Valley
+        </button>
 
-  <button
-    onClick={() =>
-      setLocation({
-        modelOrigin: [-134.4197, 58.3019], // Downtown Juneau
-        orbitCenter: [-134.4197, 58.3019],
-      })
-    }
-  >
-    Downtown Juneau
-  </button>
-  
-</div>
-<button
-  className="fullscreen-btn"
-  onClick={() => {
-    const wrapper = document.querySelector(".map-wrapper");
-    if (!document.fullscreenElement) {
-      wrapper.requestFullscreen().catch((err) => {
-        console.error(`Error enabling fullscreen: ${err.message}`);
-      });
-    } else {
-      document.exitFullscreen();
-    }
-  }}
->
-  ⛶ Fullscreen
-</button>
+        <button
+          onClick={() =>
+            setLocation({
+              modelOrigin: [-134.4197, 58.3019],
+              orbitCenter: [-134.4197, 58.3019],
+            })
+          }
+        >
+          Downtown Juneau
+        </button>
+      </div>
 
-</div>
+      {/* Fullscreen Button */}
+      <button className="fullscreen-btn" onClick={toggleFullscreen}>
+        ⛶ Fullscreen
+      </button>
+    </div>
   );
 }
