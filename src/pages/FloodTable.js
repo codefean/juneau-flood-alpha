@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Papa from "papaparse"; // CSV parser
 import "./FloodTable.css"; // Import styles
 
-const S3_CSV_URL = "https://flood-events.s3.us-east-2.amazonaws.com/FloodEvents.csv";
+const S3_CSV_URL = "https://juneauflood-basin-images.s3.us-west-2.amazonaws.com/FloodEvents.csv";
 
 const COLUMN_NAME_MAPPING = {
   "Release Stage D.S. Gage (ft)": "Pre Flood Water Level at Mendenhall Lake (ft)",

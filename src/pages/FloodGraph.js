@@ -10,7 +10,7 @@ import {
 } from "recharts";
 import "./FloodGraph.css";
 
-const S3_CSV_URL = "https://flood-events.s3.us-east-2.amazonaws.com/FloodEvents.csv";
+const S3_CSV_URL = "https://juneauflood-basin-images.s3.us-west-2.amazonaws.com/FloodEvents.csv";
 
 const getFloodStageColor = (stage) => {
   if (stage >= 8 && stage < 9) return "#ffeb3b"; // Brighter Yellow for Action Stage (8-9 ft)
