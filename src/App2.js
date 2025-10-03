@@ -10,7 +10,8 @@ import SuicideBasin from "./pages/SuicideBasin";
 import Home from "./pages/Home";
 import Footer from "./components/Footer";
 import StoryMap from "./pages/StoryMap";
-import ScrollToHashElement from "./components/ScrollToHashElement"; // ✅ add this
+import ScrollToHashElement from "./components/ScrollToHashElement";
+import Feedback from "./pages/feedback";
 
 const useDocumentTitle = (title) => {
   React.useEffect(() => {
@@ -18,7 +19,7 @@ const useDocumentTitle = (title) => {
   }, [title]);
 };
 
-// Wrapper components to set the title for each route
+
 const FloodLevelsPage = () => {
   useDocumentTitle("Juneau Flood Maps");
   return <FloodLevels />;
@@ -49,10 +50,15 @@ const StoryMapPage = () => {
   return <StoryMap />;
 };
 
+const FeedbackPage = () => {
+  useDocumentTitle("Feedback");
+  return <Feedback />;
+};
+
 const App2 = () => {
   return (
     <Router>
-      <ScrollToHashElement /> {/* ✅ ensures hash scrolling works */}
+      <ScrollToHashElement /> 
       <div className="app-container">
         <Header />
         <Navigation />
@@ -65,6 +71,7 @@ const App2 = () => {
             <Route path="/suicide-basin" element={<SuicideBasinPage />} />
             <Route path="/home" element={<HomePage />} />
             <Route path="/story-map" element={<StoryMapPage />} />
+            <Route path="/feedback" element={<FeedbackPage />} />
           </Routes>
         </div>
         <Footer />
