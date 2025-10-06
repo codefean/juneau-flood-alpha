@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 import './Home.css';
 import './FloodForecast.css';
 
-// cd /Users/seanfagan/Desktop/Alaska-GLOF
+// cd /Users/seanfagan/Desktop/juneau-flood-alpha
 
 const cardData = [
   {
