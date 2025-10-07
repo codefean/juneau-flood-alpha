@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 import './Home.css';
 import './FloodForecast.css';
+import EventPopup from './EventPopup';
 
 // cd /Users/seanfagan/Desktop/juneau-flood-alpha
 
@@ -181,6 +182,7 @@ const Home = () => {
 
   return (
     <div className="home-container">
+      <EventPopup autoClose={true} autoCloseDelay={8000} />
       <div className="card-grid">
         {cardData
           .filter((card) => !card.mobileOnly || isMobile)

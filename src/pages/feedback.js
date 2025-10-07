@@ -6,6 +6,8 @@ import "./FloodEvents.css";
 const Feedback = ({ headers, data, loading, scatterData }) => {
   return (
     <div className="feedback-page">
+
+
       {/* === Flood Events Section === */}
       <div className="flood-events-container">
         <h2 className="flood-events-title">
