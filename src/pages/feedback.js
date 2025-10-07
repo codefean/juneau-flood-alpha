@@ -74,7 +74,7 @@ const Feedback = ({ headers, data, loading, scatterData }) => {
       <div className="feedback-container">
         <iframe
           src="https://docs.google.com/forms/d/e/1FAIpQLScpAxn2kehZVgTVavv0DLuR0tRNAMwqEQnGI-NzFGt831lS1A/viewform?usp=header"
-          width="100%"
+          width="97.5%"
           height="800"
           title="Feedback Form"
         ></iframe>
