@@ -63,6 +63,16 @@ const Navigation = () => {
             Story Map
           </NavLink>
         </li>
+          <li>
+          <NavLink
+            to="/feedback"
+            style={({ isActive }) => ({
+              color: isActive ? "#fa4444" : "inherit",
+            })}
+          >
+            Feedback
+          </NavLink>
+        </li>
 
         
 

@@ -191,13 +191,13 @@ const FloodEvents = () => {
                     <Stat
             target="7/19/11"
             label="First Flood Event Recorded"
-            tooltip="First documented flood events from NWS."
+            tooltip="First documented flood event at Suicide Basin from NWS above 8ft (Minor Flood Stage)."
           />
           {/* Stat 1: Total Flood Events */}
           <Stat
             target={totalEvents}
             label="Total Flood Events Recorded"
-            tooltip="All documented flood events from NWS."
+            tooltip="Documented flood events from NWS above 8ft (Minor Flood Stage)."
           />
 
           {/* Stat 2: Largest Flood Event */}
