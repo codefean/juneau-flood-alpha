@@ -66,9 +66,7 @@ const Navigation = () => {
           <li>
           <NavLink
             to="/feedback"
-            style={({ isActive }) => ({
-              color: isActive ? "#fa4444" : "inherit",
-            })}
+            className={({ isActive }) => (isActive ? "active-link" : "")}
           >
             Feedback
           </NavLink>
