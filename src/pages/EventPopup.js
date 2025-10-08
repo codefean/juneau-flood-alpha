@@ -23,15 +23,15 @@ const EventPopup = () => {
 
   return (
     <div
-      className="flood-popup-overlay"
+      className="event-popup-overlay"
       role="dialog"
       aria-modal="true"
-      aria-labelledby="flood-popup-title"
+      aria-labelledby="event-popup-title"
     >
-      <div className="flood-popup-box" ref={boxRef}>
-        <h2 id="flood-popup-title">Dashboard Feedback & Events</h2>
+      <div className="event-popup-box" ref={boxRef}>
+        <h2 id="event-popup-title">Dashboard Feedback & Events</h2>
 
-        <p className="evacuation-text">
+        <p className="event-text">
           We’re seeking your feedback to help improve the Juneau Flood Dashboard. 
           Join one of the upcoming events or share your ideas through the online form.
         </p>

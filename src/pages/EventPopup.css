@@ -1,5 +1,5 @@
 /* === Overlay === */
-.flood-popup-overlay {
+.event-popup-overlay {
   position: fixed;
   inset: 0;
   background: rgba(0, 0, 0, 0.309); /* subtle dark overlay */
@@ -11,7 +11,7 @@
 }
 
 /* === Popup Box === */
-.flood-popup-box {
+.event-popup-box {
   position: relative; /* ✅ makes the close button anchor to this box */
   background: rgba(255, 255, 255, 0.94);
   padding: 22px 26px;
@@ -29,14 +29,14 @@
 
 
 /* === Title & Text === */
-.flood-popup-box h2 {
+.event-popup-box h2 {
   margin: 0 0 10px;
   font-size: 1.8rem;
   font-weight: 800;
   color: #154f89;
 }
 
-.flood-popup-box p {
+.event-popup-box p {
   margin: 0 0 18px;
   font-size: 1.1rem;
   font-weight: 500;
@@ -45,7 +45,7 @@
   margin-bottom: 30px !important;
 }
 
-.flood-popup-box p strong {
+.event-popup-box p strong {
   font-weight: 700;
   color: #0e2b4a;
 }
@@ -74,12 +74,12 @@
 }
 
 /* === Text Variants === */
-.flood-popup-box .evacuation-text {
+.event-popup-box .evacuation-text {
   font-size: 1.05rem;
   font-weight: 500;
 }
 
-.flood-popup-box .evacuation-source {
+.event-popup-box .evacuation-source {
   font-size: 0.95rem;
   font-style: italic;
   color: #2f2e2e;
@@ -108,36 +108,36 @@
 
 /* === Responsive === */
 @media (max-width: 1000px) {
-  .flood-popup-box {
+  .event-popup-box {
     width: 80%;
     padding: 18px;
   }
 
-  .flood-popup-box h2 {
+  .event-popup-box h2 {
     font-size: 1.4rem;
   }
 
-  .flood-popup-box p {
+  .event-popup-box p {
     font-size: 1rem;
   }
 
-  .popup-close-button {
+  .event-close-button {
     font-size: 15px;
     padding: 10px 22px;
   }
 }
 
 @media (max-width: 600px) {
-  .flood-popup-box {
+  .event-popup-box {
     width: 90%;
     padding: 14px;
   }
 
-  .flood-popup-box h2 {
+  .event-popup-box h2 {
     font-size: 1.3rem !important;
   }
 
-  .flood-popup-box p {
+  .event-popup-box p {
     font-size: 0.95rem !important;
   }
 

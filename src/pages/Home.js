@@ -3,8 +3,44 @@ import { NavLink } from 'react-router-dom';
 import './Home.css';
 import './FloodForecast.css';
 import EventPopup from './EventPopup';
+import Slider from "react-slick"; // For slideshow
+import { FaArrowLeft, FaArrowRight } from "react-icons/fa"; // Custom navigation icons
+import "./SuicideBasin.css";
 
 // cd /Users/seanfagan/Desktop/juneau-flood-alpha
+// https://juneauflood-basin-images.s3.us-west-2.amazonaws.com/flood-impacts/
+
+
+
+  const images = [
+  {
+      src: "https://juneauflood-basin-images.s3.us-west-2.amazonaws.com/flood-impacts/flood_image1.png",
+      title: "August 3rd 2024 - 15.99 ft Mendenhall Lake Level",
+      description:
+        " "
+    },
+    {
+      src: "https://juneauflood-basin-images.s3.us-west-2.amazonaws.com/flood-impacts/flood_image2.png",
+      title: "August 3rd 2024 - 15.99 ft Mendenhall Lake Level",
+      description:
+        ""
+    },
+    {
+      src: "https://juneauflood-basin-images.s3.us-west-2.amazonaws.com/flood-impacts/flood_image3.png",
+      title: "August 3rd 2024 - 15.99 ft Mendenhall Lake Level",
+      description:
+        ""
+    },
+    {
+      src: "https://juneauflood-basin-images.s3.us-west-2.amazonaws.com/flood-impacts/home_video.mp4",
+      title: "August 23rd 2023 - 14.97 ft Mendenhall Lake Level",
+      description:
+        ""
+    },
+
+  ];
+
+
 
 const cardData = [
   {
@@ -180,6 +216,34 @@ const Home = () => {
     }
   };
 
+    // Track current slide index
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  // Custom Arrow Components
+  const NextArrow = ({ onClick }) => (
+    <div className="slider-arrow2 next" onClick={onClick}>
+      <FaArrowRight />
+    </div>
+  );
+
+  const PrevArrow = ({ onClick }) => (
+    <div className="slider-arrow2 prev" onClick={onClick}>
+      <FaArrowLeft />
+    </div>
+  );
+
+  // Slider settings with custom arrows
+  const settings = {
+    dots: false,
+    infinite: true,
+    speed: 400,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    afterChange: (index) => setCurrentSlide(index),
+    nextArrow: <NextArrow />,
+    prevArrow: <PrevArrow />,
+  };
+
   return (
     <div className="home-container">
       <EventPopup autoClose={true} autoCloseDelay={8000} />
@@ -247,6 +311,44 @@ const Home = () => {
             </a>
           </div>
         </div>
+
+<div className="home-flood-card">
+  <h3>Flood Impacts</h3>
+
+    <div className="impact-slider">
+      <Slider {...settings}>
+        {images.map((item, index) => (
+          <div key={index} className="slide-wrapper">
+            {item.src.endsWith('.mp4') ? (
+              <video
+                className="impact-media"
+                src={item.src}
+                controls
+                muted
+                playsInline
+                preload="metadata"
+              />
+            ) : (
+              <img
+                src={item.src}
+                alt={item.title}
+                className="impact-media"
+                loading="lazy"
+              />
+            )}
+            <div className="slide-caption">
+              <h4>{item.title}</h4>
+              {item.description && <p>{item.description}</p>}
+            </div>
+          </div>
+        ))}
+      </Slider>
+    </div>
+
+  <p>
+  </p>
+</div>
+
 
         <div className="resources-wrapper">
           <div className="home-about-card">

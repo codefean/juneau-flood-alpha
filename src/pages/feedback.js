@@ -17,7 +17,7 @@ const Feedback = ({ headers, data, loading, scatterData }) => {
           Share Your Thoughts to Improve The Dashboard
         </h3>
 
-        <div className="about-floods-card">
+        <div className="about-feedback-card">
           <p>
             We’re seeking your feedback to help improve the Juneau Flood Dashboard. 
             Please join one of the upcoming events or share your ideas through the online feedback form below. 

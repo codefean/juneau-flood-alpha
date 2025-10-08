@@ -422,15 +422,18 @@ body {
 }
 
 .about-forecast-card {
-  background: rgb(240, 241, 243); /* Same light neutral background */
-  padding: 20px;
-  border-radius: 8px;
+  background-color: #f9fbfc;
+  border: 1px solid #dce7ef;
+  border-radius: 16px;
+  padding: 24px 28px;
   text-align: center;
-  width: 90% !important;
+  line-height: 1.7;
+  margin: 0 auto;
   max-width: 1320px;
   margin: 20px auto;
   font-family: 'Open Sans', sans-serif;
   margin-bottom: 40px;
+
 }
 
 .about-forecast-card h3 {

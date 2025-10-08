@@ -66,10 +66,13 @@ body {
 
 /* About This Page Card */
 .about-floods-card {
-  background: rgb(240, 241, 243); /* Light blue background */
-  padding: 10px;
-  border-radius: 8px;
+  background-color: #f9fbfc;
+  border: 1px solid #dce7ef;
+  border-radius: 16px;
+  padding: 24px 28px;
   text-align: center;
+  line-height: 1.7;
+  margin: 0 auto;
   max-width: 950px;
   margin: 20px auto;
   font-family: 'Open Sans', sans-serif;
