@@ -9,11 +9,11 @@ const Feedback = ({ headers, data, loading, scatterData }) => {
 
 
       {/* === Flood Events Section === */}
-      <div className="flood-events-container">
-        <h2 className="flood-events-title">
+      <div className="flood-feedback-container">
+        <h2 className="flood-feedback-title">
           Feedback and Suggestions
         </h2>
-        <h3 className="flood-events-subheading">
+        <h3 className="flood-feedback-subheading">
           Share Your Thoughts to Improve The Dashboard
         </h3>
 
