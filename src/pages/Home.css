@@ -390,6 +390,8 @@ body {
   .analytics-iframe-wrapper {
     padding-bottom: 45.25%; /* 16:9 aspect ratio for desktop */
   }
+
+
 }
 
 
@@ -417,6 +419,10 @@ body {
   .home-about-card {
     padding: 12px 15px;
     font-size: 1rem;
+      width: 85%;
+  position: relative;
+   margin-left: auto;
+  margin-right: auto;
   }
 
   .home-about-card h3 {
@@ -444,6 +450,59 @@ body {
     font-size: 1rem;
     padding: 0.5rem 0.75rem;
   }
+
+  .home-flood-card {
+  max-width: 1156px;
+  padding: 12px 20px;
+  background: #f4f5f5;
+  border-radius: 8px;
+  font-size: 1.2rem;
+  color: #000000;
+  margin-bottom: 20px !important;
+  margin-top: 30px;
+  height: 300px;
+  width: 85%;
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+
+}
+
+.resources-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 95%;
+  margin-top: -10px;
+  margin-bottom: -10px;
+}
+
+.slide-caption {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  color: #fff;
+  padding: .8rem;
+  text-align: left;
+
+}
+
+.slide-caption h4 {
+  margin: 0;
+  font-size: .9rem;
+  font-weight: 600;
+    margin-bottom: -7px;
+}
+
+.slide-caption p {
+  font-size: .8rem;
+  margin-top: 0.3rem;
+}
 }
 
 @media (max-width: 480px) {
