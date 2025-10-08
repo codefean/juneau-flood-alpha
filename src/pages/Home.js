@@ -17,25 +17,25 @@ import "./SuicideBasin.css";
       src: "https://juneauflood-basin-images.s3.us-west-2.amazonaws.com/flood-impacts/flood_image1.png",
       title: "August 3rd 2024 - 15.99 ft Mendenhall Lake Level",
       description:
-        " "
+        "Credit: Alaska National Guard"
     },
     {
       src: "https://juneauflood-basin-images.s3.us-west-2.amazonaws.com/flood-impacts/flood_image2.png",
       title: "August 3rd 2024 - 15.99 ft Mendenhall Lake Level",
       description:
-        ""
+        "Credit: Alaska National Guard"
     },
     {
       src: "https://juneauflood-basin-images.s3.us-west-2.amazonaws.com/flood-impacts/flood_image3.png",
       title: "August 3rd 2024 - 15.99 ft Mendenhall Lake Level",
       description:
-        ""
+        "Credit: Alaska National Guard"
     },
     {
       src: "https://juneauflood-basin-images.s3.us-west-2.amazonaws.com/flood-impacts/home_video.mp4",
       title: "August 23rd 2023 - 14.97 ft Mendenhall Lake Level",
       description:
-        ""
+        "Credit: Sam Nolan"
     },
 
   ];
