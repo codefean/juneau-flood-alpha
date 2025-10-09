@@ -1,5 +1,5 @@
 import React from "react";
-import { HashRouter as Router, Routes, Route, Navigate } from "react-router-dom";
+import { HashRouter as Router, Routes, Route, Navigate, useLocation } from "react-router-dom";
 import "./styles/App2.css";
 import Header from "./components/Header";
 import Navigation from "./components/Navigation";
@@ -12,6 +12,7 @@ import Footer from "./components/Footer";
 import StoryMap from "./pages/StoryMap";
 import ScrollToHashElement from "./components/ScrollToHashElement";
 import Feedback from "./pages/feedback";
+import SBmodel from "./pages/SBmodel2";
 
 const useDocumentTitle = (title) => {
   React.useEffect(() => {
@@ -19,65 +20,44 @@ const useDocumentTitle = (title) => {
   }, [title]);
 };
 
+// Wrap routes in a layout-aware container
+const Layout = ({ children }) => {
+  const location = useLocation();
+  const noLayoutRoutes = ["/sb-model"]; // Add paths that should have no header/footer
+  const isMinimal = noLayoutRoutes.includes(location.pathname);
 
-const FloodLevelsPage = () => {
-  useDocumentTitle("Juneau Flood Maps");
-  return <FloodLevels />;
-};
+  return (
+    <div className={`app-container ${isMinimal ? "full-screen-page" : ""}`}>
+      {!isMinimal && <Header />}
+      {!isMinimal && <Navigation />}
 
-const FloodPredictionPage = () => {
-  useDocumentTitle("Flood Forecast");
-  return <FloodForecast />;
-};
+      <div className="main-content">{children}</div>
 
-const FloodEventsPage = () => {
-  useDocumentTitle("Flood Events");
-  return <FloodEvents />;
-};
-
-const SuicideBasinPage = () => {
-  useDocumentTitle("Suicide Basin");
-  return <SuicideBasin />;
-};
-
-const HomePage = () => {
-  useDocumentTitle("Juneau Glacial Flood Dashboard");
-  return <Home />;
-};
-
-const StoryMapPage = () => {
-  useDocumentTitle("Story Map");
-  return <StoryMap />;
-};
-
-const FeedbackPage = () => {
-  useDocumentTitle("Feedback");
-  return <Feedback />;
+      {!isMinimal && <Footer />}
+    </div>
+  );
 };
 
 const App2 = () => {
   return (
     <Router>
-      <ScrollToHashElement /> 
-      <div className="app-container">
-        <Header />
-        <Navigation />
-        <div className="main-content">
-          <Routes>
-            <Route path="/" element={<Navigate to="/home" />} />
-            <Route path="/flood-map" element={<FloodLevelsPage />} />
-            <Route path="/flood-forecast" element={<FloodPredictionPage />} />
-            <Route path="/flood-events" element={<FloodEventsPage />} />
-            <Route path="/suicide-basin" element={<SuicideBasinPage />} />
-            <Route path="/home" element={<HomePage />} />
-            <Route path="/story-map" element={<StoryMapPage />} />
-            <Route path="/feedback" element={<FeedbackPage />} />
-          </Routes>
-        </div>
-        <Footer />
-      </div>
+      <ScrollToHashElement />
+      <Layout>
+        <Routes>
+          <Route path="/" element={<Navigate to="/home" />} />
+          <Route path="/flood-map" element={<FloodLevels />} />
+          <Route path="/flood-forecast" element={<FloodForecast />} />
+          <Route path="/flood-events" element={<FloodEvents />} />
+          <Route path="/suicide-basin" element={<SuicideBasin />} />
+          <Route path="/home" element={<Home />} />
+          <Route path="/story-map" element={<StoryMap />} />
+          <Route path="/feedback" element={<Feedback />} />
+          <Route path="/sb-model" element={<SBmodel />} />
+        </Routes>
+      </Layout>
     </Router>
   );
 };
 
 export default App2;
+
