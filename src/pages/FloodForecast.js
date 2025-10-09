@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./FloodForecast.css";
 
-// Component Imports
-import FloodPred from "./FloodPred";               // Displays alert banner if NWS Flood Alert is active
 import Tooltip from "./Tooltip";                   // Tooltip component for visual annotations
 import FloodStageBar from "./FloodStageBar";       // Color-coded flood stage indicator based on live data
 
@@ -15,7 +13,6 @@ const FloodPrediction = () => {
   const [waterLevel, setWaterLevel] = useState(null);               // Real-time Mendenhall Lake level
   const [error, setError] = useState(null);                         // Error message for water level
   const [activeInfo, setActiveInfo] = useState(null);               // Info box active state (for tooltips)
-  const [showFloodPred, setShowFloodPred] = useState(true);         // NWS Alert display toggle
 
 
   // Load fresh images on mount and every hour
@@ -120,7 +117,6 @@ const FloodPrediction = () => {
 
   return (
     <div className="flood-tracker" onClick={closeInfoBox}>
-      {showFloodPred && <FloodPred onClose={() => setShowFloodPred(false)} />}
 
       {/* Title & Subheading */}
       <h1 className="flood-forecasting-title">Explore Flood Forecasting</h1>
