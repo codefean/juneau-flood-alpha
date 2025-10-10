@@ -395,6 +395,10 @@ body {
 
   .about-forecast-card {
     padding: 10px !important;
+    width: 85%;
+    position: relative;
+   margin-left: auto;
+   margin-right: auto;
   }
 
 }

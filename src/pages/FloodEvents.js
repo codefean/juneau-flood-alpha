@@ -225,7 +225,7 @@ const FloodEvents = () => {
 
       {/* === Main Flood Data === */}
       <div className="flood-events-container">
-        <h2 className="flood-events-title">Historical Flood Data for Suicide Basin</h2>
+        <h2 className="flood-events-title">Mendenhall Valley Flood Records</h2>
         <h2 className="flood-events-subheading">
           Learn About Past Glacial Outburst Flood Events
         </h2>

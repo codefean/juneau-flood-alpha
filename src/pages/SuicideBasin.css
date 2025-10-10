@@ -40,7 +40,7 @@
 }
 
 .suicide-basin h2 {
-  margin: -14px 0 -10px;
+  margin: -15px 0 -10px;
   font-size: 2.4rem;
 }
 
@@ -312,13 +312,15 @@
     padding: 15px;
   }
 
-  .suicide-basin h2 {
-    font-size: 2rem;
-  }
+.suicide-basin h2 {
+  margin: -5px 0 -10px !important;
+  font-size: 2rem !important;
+}
 
-  .suicide-basin-subheading,
-  .live-view-subtitle {
-    font-size: 1.2rem;
+  .suicide-basin-subheading {
+    font-size: .9rem !important;
+    margin-top: 2px;
+    margin-bottom: 2px;
   }
 
   .image-comparison-container {
@@ -351,7 +353,7 @@
   }
 
   .glof-info-card h3 {
-    font-size: 1.4rem;
+    font-size: 1.2rem !important;
   }
 
   .glof-info-card p {
