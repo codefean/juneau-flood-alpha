@@ -4,6 +4,7 @@ import Slider from "react-slick"; // For GLOF slideshow
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa"; // Custom navigation icons
 import "./SuicideBasin.css";
 import SBmodel from './SBmodel';
+import './StoryMap.css';
 
 
 const SuicideBasin = () => {
@@ -92,72 +93,39 @@ const timelapse2Url = `https://usgs-nims-images.s3.amazonaws.com/overlay/AK_Glac
     <div className="suicide-basin-container">
       {/* Title Section */}
       <div className="suicide-basin">
-        <h2>Explore Suicide Basin</h2>
+        <h2>How Suicide Basin Works</h2>
       </div>
       <p className="suicide-basin-subheading">
-        Understand The Glacial Lake Outburst Floods Origin
+        Understand The Glacial Lake Outburst Floods
       </p>
       
 
-      {/* Image Comparison Section */}
-      <div className="image-comparison-container">
-        <CompareImage leftImage={beforeImage} rightImage={afterImage}
-        handle={
-          <div style={{
-            backgroundColor: "#1E90FF",  // Handle fill color
-            border: "3px solid white",   // Contrast outline
-            borderRadius: "50%",         // Make it round
-            width: "18px",               // Width of the handle
-            height: "18px",              // Height of the handle
-          }} />
-        } />
-      </div>
-      <p className="basin-image-caption">
-        Slide to see the Mendenhall Glacier and Suicide Basin from 1893 - 2018
-      </p>
-      {/* Suicide Basin Info Card */}
+            {/* Suicide Basin Info Card */}
 <div className="suicide-basin-info-card">
-  <h3 className="suicide-basin-info-title">What is Suicide Basin?</h3>
   <p>
   Suicide Basin is an over-deepened bedrock basin located approximately 3km up the Mendenhall Glacier in Juneau, Alaska. It was formed by the retreat of the Suicide Glacier,
-  which left an open space alongside the Mendenhall Glacier (above). Suicide Basin plays a crucial role in the formation of recurring glacial lake outburst floods (GLOFs) because
+  which left an open space alongside the Mendenhall Glacier. Suicide Basin plays a crucial role in the formation of recurring glacial lake outburst floods (GLOFs) because
   Mendenhall Glacier acts as a dam that allows meltwater to accumulate in the basin. When water stored in the basin escapes beneath the ice dam, billions of gallons of water can
   be released into Mendenhall Lake, leading to flooding downstream.
-    <br /><br />
-    The storage capacity of Suicide Basin varies annually due to ongoing changes in Mendenhall Glacier, such as ice calving and melting. Scientists monitor these changes using
-    drones, satellite imagery, and elevation models, but the exact mechanisms that control the rate of water release from Suicide Basin to Mendenhall Lake remain uncertain. Understanding
-    these processes is essential for predicting and mitigating flood impacts in the surrounding communities.
   </p>
 </div>
+    <div className="story-map-container">
+      <iframe
+        src="https://storymaps.arcgis.com/stories/72cef125bbfa4f989356bf9350cd5d63"
+        width="100%"
+        height="650px"
+        frameBorder="0"
+        allowFullScreen
+        allow="geolocation"
+        title="StoryMap"
+      ></iframe>
+      </div>
 
-
-      {/* GLOF Image Slider Section */}
-      <h2 className="glof-h2">Glacial Lake Outburst Flood Process</h2>
-      <p className="suicide-basin-subheading">How Suicide Basin Floods The Mendenhall Valley</p>
-      <div className="glof-content">
-        <div className="glof-slider">
-          <Slider {...settings}>
-            {images.map((image, index) => (
-              <div key={index} className="glof-slide">
-                <img src={image.src} alt={image.title} className="glof-image" />
-              </div>
-            ))}
-          </Slider>
-        </div>
-        <div className="glof-info-card">
-          <h3>{images[currentSlide].title}</h3>
-          <p>{images[currentSlide].description}</p>
-        </div>
 <h2 className="glof-h2">
   Suicide Basin for Scale
 </h2>
 <SBmodel />
 
-
-
-
-
-</div>
 </div>
   );
 };

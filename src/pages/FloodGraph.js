@@ -168,7 +168,7 @@ const FloodGraph = () => {
               Select Points To Explore The Data
             </h4>
 
-            <ResponsiveContainer width="100%" height={400}>
+            <ResponsiveContainer width="100%" height={400} debounce={100}>
               <ScatterChart
                 margin={{ top: 20, right: 30, left: 10, bottom: 30 }}
               >

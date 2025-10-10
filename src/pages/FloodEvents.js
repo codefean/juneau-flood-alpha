@@ -2,8 +2,8 @@ import React, { useState, useEffect, useRef } from "react";
 import Papa from "papaparse";
 import FloodGraph from "./FloodGraph";
 import FloodTable from "./FloodTable";
-import FloodImages from "./FloodImages";
 import "./FloodEvents.css";
+import CompareImage from "react-compare-image"; 
 
 const S3_CSV_URL =
   "https://juneauflood-basin-images.s3.us-west-2.amazonaws.com/FloodEvents.csv";
@@ -32,12 +32,16 @@ const FloodEvents = () => {
   const [latestFloodEvent, setLatestFloodEvent] = useState(null);
   const [largestFloodEvent, setLargestFloodEvent] = useState(null);
   const [totalEvents, setTotalEvents] = useState(0);
+  const beforeImage = "https://juneauflood-basin-images.s3.us-west-2.amazonaws.com/1893_glacier.jpg";
+  const afterImage = "https://juneauflood-basin-images.s3.us-west-2.amazonaws.com/2018_glacier.jpg";
+
 
   const Stat = ({ target, label, tooltip, showPlus = false }) => {
   const [count, setCount] = useState(0);
   const ref = useRef(null);
   const [isVisible, setIsVisible] = useState(false);
   const [showTooltip, setShowTooltip] = useState(false);
+
 
   // Detect numeric targets
   const isNumeric = typeof target === "number" && !isNaN(target);
@@ -247,7 +251,50 @@ const FloodEvents = () => {
           <FloodTable headers={headers} data={data} loading={loading} />
           <FloodGraph scatterData={scatterData} />
         </div>
+
+
+        {/* Image Comparison Section */}
+        <h3 className="flood-table-title"> Suicide Basin: The Source of Flood Events </h3>
+          <h4 className="flood-table-subtitle">
+            Slide to see the Mendenhall Glacier and Suicide Basin from 1893 - 2018
+          </h4>
+      <div className="image-comparison-container">
+  <CompareImage
+    leftImage={beforeImage}
+    rightImage={afterImage}
+    handle={
+      <div
+        style={{
+          backgroundColor: "#1E90FF",
+          border: "3px solid white",
+          borderRadius: "50%",
+          width: "18px",
+          height: "18px",
+        }}
+      />
+    }
+  />
+</div>
+<div className="suicide-basin-info-card2">
+  <p>
+  Suicide Basin is an over-deepened bedrock basin located approximately 3km up the Mendenhall Glacier in Juneau, Alaska. It was formed by the retreat of the Suicide Glacier,
+  which left an open space alongside the Mendenhall Glacier.
+  Mendenhall Glacier acts as a dam that allows meltwater to accumulate in the basin. When water stored in the basin escapes beneath the ice dam, billions of gallons of water can
+  be released into Mendenhall Lake, leading to flooding downstream.
+  </p>
+            <div className="events-button-wrapper">
+            <a
+              href="https://www.juneauflood.com/#/suicide-basin"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="events-button"
+            >
+              Learn More
+            </a>
+          </div>
       </div>
+</div>
+
     </div>
   );
 };

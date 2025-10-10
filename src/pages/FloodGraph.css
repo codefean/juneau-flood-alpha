@@ -67,6 +67,7 @@
   width: auto; /* Adapts to content */
   word-wrap: break-word;
   overflow: hidden;
+  margin-left: 10px;
 }
 
 

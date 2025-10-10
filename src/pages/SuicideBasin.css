@@ -26,11 +26,13 @@
 /* ===============================
    Headings & Subheadings
 ================================ */
-.suicide-basin h2,
-.live-view-title {
-  text-align: center;
+
+
+.suicide-basin h2 {
+  text-align: center !important;
+  margin: -2px 0 -10px;
+  font-size: 2.4rem;
   color: #154f89;
-  font-weight: bold;
 }
 
 .glof-h2{
@@ -39,15 +41,6 @@
   font-weight: bold;
 }
 
-.suicide-basin h2 {
-  margin: -15px 0 -10px;
-  font-size: 2.4rem;
-}
-
-.glof-h2 {
-  font-size: 1.9rem;
-  margin-bottom: -5px;
-}
 
 .live-view-title {
   font-size: 1.9rem;
@@ -58,33 +51,11 @@
   text-align: center;
   font-size: 1.3rem;
   color: #0e2b4a;
-  margin: 0 0 5px;
+  margin: 0 0  15px;
   font-weight: bold;
   font-family: 'Open Sans', sans-serif;
-  margin-bottom: -10px;
 }
 
-
-/* ===============================
-   Image Comparison Section
-================================ */
-.image-comparison-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  max-width: 1350px;
-  max-height: 590px;
-  margin: 20px auto;
-  overflow: hidden;
-}
-
-.basin-image-caption {
-  text-align: center;
-  font-size: 18px;
-  color: #0e2b4a;
-  font-weight: bold;
-  margin-top: -5px;
-}
 
 
 /* ===============================
@@ -92,7 +63,7 @@
 ================================ */
 .suicide-basin-info-card {
   max-width: 1310px;
-  margin: 20px auto -10px;
+  margin: 20px auto 10px;
   padding: 15px 20px;
   background-color: #f9fbfc;
   border: 1px solid #dce7ef;
@@ -100,7 +71,7 @@
   line-height: 1.7;
   margin: 0 auto;
   max-width: 1320px;
-  text-align: left;
+  text-align: center;
 }
 
 .suicide-basin-info-title {
@@ -108,6 +79,18 @@
   font-weight: bold;
   color: #154f89;
   margin-bottom: 10px;
+}
+
+
+.suicide-basin-info-card h3 {
+  font-size: 1.5rem;
+  color: #154f89;
+  margin-bottom: 10px;
+}
+
+.suicide-basin-info-card p {
+  font-size: 1.1rem;
+  color: #000000;
 }
 
 
@@ -160,6 +143,7 @@
   color: #000000;
   max-width: 300px;
   text-align: left;
+
 }
 
 .glof-info-card h3 {
@@ -172,6 +156,7 @@
 .glof-info-card p {
   font-size: 1.1rem;
   line-height: 1.5;
+  
 }
 
 
@@ -323,11 +308,6 @@
     margin-bottom: 2px;
   }
 
-  .image-comparison-container {
-    flex-direction: column;
-    max-width: 100%;
-    margin: 15px auto;
-  }
 
   .basin-image-caption {
     font-size: 13px;

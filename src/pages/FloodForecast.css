@@ -23,7 +23,7 @@ body {
 /* Titles & Headings */
 .flood-forecasting-title {
   text-align: center !important;
-  font-size: 2.6rem;
+  font-size: 2.4rem;
   color: #154f89;
   font-weight: bold;
   margin: 15px 0 -20px;
@@ -313,18 +313,17 @@ body {
 
   .detail-card,
   .flooding-info {
-    max-width: 90%;
-    margin: 20px auto;
+    max-width: 85% !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
   }
 
-  .detail-card {
-    padding: 20px;
+    .detail-card p,
+  .flooding-info p{
+font-size: 1.1rem;
   }
 
-  .flooding-info {
-    padding: 15px;
-    text-align: center;
-  }
+
 
   .hydrograph-container,
   .usgs-image,
@@ -366,6 +365,13 @@ body {
   .flood-tracker h4 {
     font-size: clamp(1.3rem, 4vw, 1.5rem);
   }
+
+    .about-forecast-card p {
+  font-size: .95rem !important;
+  color: #000000;
+}
+
+
 
   .image-pair-container {
     flex-direction: column;
@@ -430,7 +436,7 @@ body {
   background-color: #f9fbfc;
   border: 1px solid #dce7ef;
   border-radius: 16px;
-  padding: 24px 28px;
+  padding: 10px 20px;
   text-align: center;
   line-height: 1.7;
   margin: 0 auto;

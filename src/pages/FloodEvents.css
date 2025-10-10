@@ -60,6 +60,20 @@ body {
   margin-top: 8px;
 }
 
+.suicide-basin-info-card2 {
+  margin: 20px auto 10px;
+  padding: 1px 15px;
+  background-color: #f9fbfc;
+  border: 1px solid #dce7ef;
+  border-radius: 16px;
+  line-height: 1.7;
+  margin: 0 auto;
+  max-width: auto !important;
+  width: 90%;
+  text-align: left;
+
+}
+
 .floodcard h2 {
   font-size: 1rem;
 }
@@ -69,7 +83,7 @@ body {
   background-color: #f9fbfc;
   border: 1px solid #dce7ef;
   border-radius: 16px;
-  padding: 24px 28px;
+  padding: 2px 28px;
   text-align: center;
   line-height: 1.7;
   margin: 0 auto;
@@ -125,6 +139,53 @@ body {
   font-family: 'Open Sans', sans-serif;
 }
 
+.events-button-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.events-button {
+  display: inline-block;
+  background-color: #00509e;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 5px 15px;
+  border: none;
+  border-radius: 5px;
+  text-align: center;
+  cursor: pointer;
+  width: 90px;
+  transition: background-color 0.3s ease-in-out, transform 0.2s;
+  text-decoration: none;
+  align-items: center;
+  margin-top: -10px;
+  margin-bottom: 10px;
+}
+
+.events-button:hover {
+  background-color: #9d0303;
+  transform: scale(1.05);
+}
+
+.image-comparison-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: auto;
+  width: 90%;
+  margin: 20px auto;
+  overflow: hidden;
+}
+
+.basin-image-caption {
+  text-align: center;
+  font-size: 18px;
+  color: #0e2b4a;
+  font-weight: bold;
+  margin-top: -5px;
+}
 
 
 /* Responsive Design */
@@ -140,7 +201,23 @@ body {
     font-size: 1.6rem;
     color: #154f89;
   }
-  
+
+    .image-comparison-container {
+    flex-direction: column;
+    max-width: 95%;
+    margin: 15px auto;
+  }
+
+  .suicide-basin-info-card2 {
+  margin: 20px auto 10px;
+  padding: 1px 15px;
+  background-color: #f9fbfc;
+  border: 1px solid #dce7ef;
+  border-radius: 16px;
+  line-height: 1.7;
+  text-align: center;
+
+}
   /* Subheading Below Page Title */
   .flood-events-subheading {
     text-align: center;
