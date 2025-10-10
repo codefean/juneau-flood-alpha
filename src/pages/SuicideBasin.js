@@ -96,7 +96,7 @@ const timelapse2Url = `https://usgs-nims-images.s3.amazonaws.com/overlay/AK_Glac
         <h2>How Suicide Basin Works</h2>
       </div>
       <p className="suicide-basin-subheading">
-        Understand The Glacial Lake Outburst Floods
+        Understand the Annual Glacial Lake Outburst Floods
       </p>
       
 
