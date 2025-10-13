@@ -23,7 +23,7 @@ const getFloodStageColor = (stage) => {
 };
 
 const FloodTable = () => {
-  const [data, setData] = useState([]);
+  const [, setData] = useState([]);
   const [headers, setHeaders] = useState([]);
   const [loading, setLoading] = useState(true);
   const [sortedData, setSortedData] = useState([]);

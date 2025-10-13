@@ -1,20 +1,16 @@
+// FloodLevels.js
 import React, { useEffect, useRef, useState, useCallback } from 'react';
 import mapboxgl from 'mapbox-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
 
-// Local styles and components
 import './FloodLevels.css';
-import FloodStageMenu from './FloodStageMenu';        
-import FloodStepper from './FloodStepper';            
-import FloodInfoPopup from "./FloodInfoPopup";        
-import { getFloodStage } from './utils/floodStages';  
-import Search from './Search.js';                     
+import FloodStageMenu from './FloodStageMenu';
+import FloodStepper from './FloodStepper';
+import FloodInfoPopup from "./FloodInfoPopup";
+import { getFloodStage } from './utils/floodStages';
+import Search from './Search.js';
 import Loc from './loc';
 import './loc.css';
-
-
-// cd /Users/seanfagan/Desktop/juneau-flood-alpha
-
 
 export const parcelTileset = {
   url: "mapbox://mapfean.74ijmvrj",
@@ -28,36 +24,31 @@ const customColors = [
   "#d63b3b", "#9b3dbd", "#d13c8f", "#c2185b", "#756bb1", "#f59380", "#ba4976",
 ];
 
-const FloodLevels = () => {
-  const mapContainerRef = useRef(null);   // DOM reference for Mapbox container
-  const mapRef = useRef(null);            // Stores the map instance
+const FloodLevels2 = () => {
+  const mapContainerRef = useRef(null);
+  const mapRef = useRef(null);
 
-  // UI state
-  const [selectedFloodLevel, setSelectedFloodLevel] = useState(9);      // Default is 9 ft
-  const [menuOpen, setMenuOpen] = useState(() => window.innerWidth >= 800); // Show menu on desktop
-  const [hescoMode, setHescoMode] = useState(false);                    // HESCO toggle
-  const [errorMessage] = useState('');                                  // Placeholder for errors
-  const [waterLevels, setWaterLevels] = useState([]);                   // Live USGS level
-  const [loadingLayers, setLoadingLayers] = useState(false);            // For loading overlay
+  const [selectedFloodLevel, setSelectedFloodLevel] = useState(9);
+  const [menuOpen, setMenuOpen] = useState(() => window.innerWidth >= 800);
+  const [hescoMode, setHescoMode] = useState(false);
+  const [errorMessage] = useState('');
+  const [waterLevels, setWaterLevels] = useState([]);
+  const [loadingLayers, setLoadingLayers] = useState(false);
   const popupRef = useRef(null);
   const hoverHandlersRef = useRef({ move: null, out: null });
   const [mapReady, setMapReady] = useState(false);
   const toggleMenu = () => setMenuOpen((prev) => !prev);
 
-    /**
-   * Enables hover tooltips on flood layers to show water depth
-   */
+  // Unified flood + parcel hover popup
 const setupHoverPopup = useCallback((activeLayerId) => {
   const map = mapRef.current;
   if (!map || !activeLayerId) return;
 
-  // Wait until layer exists
   if (!map.getLayer(activeLayerId)) {
     setTimeout(() => setupHoverPopup(activeLayerId), 250);
     return;
   }
 
-  // Remove prior handlers, if any
   if (hoverHandlersRef.current.move) {
     map.off('mousemove', hoverHandlersRef.current.move);
     hoverHandlersRef.current.move = null;
@@ -67,7 +58,6 @@ const setupHoverPopup = useCallback((activeLayerId) => {
     hoverHandlersRef.current.out = null;
   }
 
-  // Reuse a single popup instance
   if (!popupRef.current) {
     popupRef.current = new mapboxgl.Popup({
       closeButton: false,
@@ -77,51 +67,82 @@ const setupHoverPopup = useCallback((activeLayerId) => {
     });
   }
 
-
-  if (!mapRef.current.getSource('mapbox-dem')) {
-    mapRef.current.addSource('mapbox-dem', {
-      type: 'raster-dem',
-      url: 'mapbox://mapbox.mapbox-terrain-dem-v1',
-      tileSize: 512,
-      maxzoom: 14,
-    });
-  }
-  mapRef.current.setTerrain({ source: 'mapbox-dem', exaggeration: 1.0 });
+  let hoveredParcelId = null;
 
   const moveHandler = (e) => {
-    // Only consider features from the active layer
-    const features = map.queryRenderedFeatures(e.point, { layers: [activeLayerId] });
-    const feature = features && features[0];
+    const floodFeatures = map.queryRenderedFeatures(e.point, { layers: [activeLayerId] });
+    const floodFeature = floodFeatures && floodFeatures[0];
 
-    if (feature) {
-      const props = feature.properties || {};
-      const depth = props.DN ?? props.depth ?? 'Unknown'; // try both keys
+    const parcelFeatures = map.queryRenderedFeatures(e.point, { layers: ['parcels-fill'] });
+    const parcelFeature = parcelFeatures && parcelFeatures[0];
+
+    let address = 'Unknown';
+    if (parcelFeature) {
+      const parcelProps = parcelFeature.properties || {};
+      address = parcelProps.site_addrs ?? 'Unknown';
+
+      const taxId = parcelProps.tax_id ?? '';
+      if (hoveredParcelId !== taxId) {
+        hoveredParcelId = taxId;
+        map.setFilter('parcels-highlight', ['==', 'tax_id', taxId]);
+      }
+    } else {
+      hoveredParcelId = null;
+      map.setFilter('parcels-highlight', ['==', 'tax_id', '']);
+    }
+
+    if (floodFeature) {
+      const floodProps = floodFeature.properties || {};
+      const depth = floodProps.DN ?? floodProps.depth ?? 'Unknown';
+
+      const addressLine = address && address !== 'Unknown'
+        ? `<br/><b>Address:</b> ${address}`
+        : '';
+
       popupRef.current
         .setLngLat(e.lngLat)
-        .setHTML(`<b>Water Depth: ${depth} ft</b>`)
+        .setHTML(
+          `<div style="font-size:13px;line-height:1.4;">
+             <b>Water Depth:</b> ${depth} ft${addressLine}
+           </div>`
+        )
         .addTo(map);
       map.getCanvas().style.cursor = 'crosshair';
+    } else if (parcelFeature) {
+      if (address && address !== 'Unknown') {
+        popupRef.current
+          .setLngLat(e.lngLat)
+          .setHTML(
+            `<div style="font-size:13px;line-height:1.4;">
+               <b>Address:</b> ${address}
+             </div>`
+          )
+          .addTo(map);
+      } else {
+        popupRef.current.remove();
+      }
+      map.getCanvas().style.cursor = 'pointer';
     } else {
       popupRef.current.remove();
-      map.getCanvas().style.cursor = 'crosshair';
+      map.getCanvas().style.cursor = '';
     }
   };
 
   const outHandler = () => {
     popupRef.current.remove();
-    map.getCanvas().style.cursor = 'crosshair';
+    map.getCanvas().style.cursor = '';
+    hoveredParcelId = null;
+    map.setFilter('parcels-highlight', ['==', 'tax_id', '']);
   };
 
-  map.on('mousemove', moveHandler);   // bind to map, not layer
+  map.on('mousemove', moveHandler);
   map.on('mouseout', outHandler);
 
   hoverHandlersRef.current.move = moveHandler;
   hoverHandlersRef.current.out = outHandler;
 }, []);
 
-    /**
-   * Map of flood level tilesets (base vs HESCO)
-   */
+
   const tilesetMap = {
     base: {
       64: "ccav82q0", 65: "3z7whbfp", 66: "8kk8etzn", 67: "akq41oym",
@@ -134,74 +155,57 @@ const setupHoverPopup = useCallback((activeLayerId) => {
     },
   };
 
-    /**
-   * Loads Mapbox vector tiles for all flood levels
-   */
-const updateFloodLayers = (mode) => {
-  setLoadingLayers(true);
-  const map = mapRef.current;
-  const validLevels = Array.from({ length: 13 }, (_, i) => 64 + i); // 64–76
-  const visibleLayerId = `flood${64 + (selectedFloodLevel - 8)}-fill`;
+  const updateFloodLayers = (mode) => {
+    setLoadingLayers(true);
+    const map = mapRef.current;
+    const validLevels = Array.from({ length: 13 }, (_, i) => 64 + i);
+    const visibleLayerId = `flood${64 + (selectedFloodLevel - 8)}-fill`;
 
-  // Remove old layers & sources
-  validLevels.forEach((level) => {
-    const layerId = `flood${level}-fill`;
-    const sourceId = `flood${level}`;
-    if (map.getLayer(layerId)) map.removeLayer(layerId);
-    if (map.getSource(sourceId)) map.removeSource(sourceId);
-  });
+    validLevels.forEach((level) => {
+      const layerId = `flood${level}-fill`;
+      const sourceId = `flood${level}`;
+      if (map.getLayer(layerId)) map.removeLayer(layerId);
+      if (map.getSource(sourceId)) map.removeSource(sourceId);
+    });
 
-  let loadedCount = 0;
+    let loadedCount = 0;
 
-  validLevels.forEach((level) => {
-    const floodId = `flood${level}`;
-    const layerId = `${floodId}-fill`;
-    const visible = floodId === `flood${64 + (selectedFloodLevel - 8)}`;
+    validLevels.forEach((level) => {
+      const floodId = `flood${level}`;
+      const layerId = `${floodId}-fill`;
+      const visible = floodId === `flood${64 + (selectedFloodLevel - 8)}`;
+      const tilesetId = mode ? tilesetMap.hesco[level] : tilesetMap.base[level];
+      if (mode && !tilesetId) {
+        loadedCount++;
+        if (loadedCount === validLevels.length) {
+          setLoadingLayers(false);
+          map.once('idle', () => setupHoverPopup(visibleLayerId));
+        }
+        return;
+      }
 
-    const tilesetId = mode ? tilesetMap.hesco[level] : tilesetMap.base[level];
-    if (mode && !tilesetId) {
+      const sourceLayerName = mode ? `flood${level}` : String(level);
+      map.addSource(floodId, {
+        type: 'vector',
+        url: `mapbox://mapfean.${tilesetId}`,
+      });
+      map.addLayer({
+        id: layerId,
+        type: 'fill',
+        source: floodId,
+        'source-layer': sourceLayerName,
+        layout: { visibility: visible ? 'visible' : 'none' },
+        paint: { 'fill-color': customColors[level - 64], 'fill-opacity': 0.4 },
+      });
+
       loadedCount++;
       if (loadedCount === validLevels.length) {
         setLoadingLayers(false);
         map.once('idle', () => setupHoverPopup(visibleLayerId));
       }
-      return;
-    }
-
-    const sourceLayerName = mode ? `flood${level}` : String(level);
-
-    map.addSource(floodId, {
-      type: 'vector',
-      url: `mapbox://mapfean.${tilesetId}`,
     });
+  };
 
-    map.addLayer({
-      id: layerId,
-      type: 'fill',
-      source: floodId,
-      'source-layer': sourceLayerName,
-      layout: {
-        visibility: visible ? 'visible' : 'none',
-      },
-      paint: {
-        'fill-color': customColors[level - 64],
-        'fill-opacity': 0.4,
-      },
-    });
-
-    loadedCount++;
-    if (loadedCount === validLevels.length) {
-      setLoadingLayers(false);
-      // Wait until the map finishes rendering with the new layer
-      map.once('idle', () => setupHoverPopup(visibleLayerId));
-    }
-  });
-};
-
-
-  /**
-   * HESCO Mode Toggle Handler
-   */
   const toggleHescoMode = () => {
     setHescoMode((prev) => {
       const newMode = !prev;
@@ -216,11 +220,10 @@ const updateFloodLayers = (mode) => {
     });
   };
 
-  /**
-   * Mapbox Initialization
-   */
   useEffect(() => {
-    mapboxgl.accessToken = 'pk.eyJ1IjoibWFwZmVhbiIsImEiOiJjbTNuOGVvN3cxMGxsMmpzNThzc2s3cTJzIn0.1uhX17BCYd65SeQsW1yibA';
+    mapboxgl.accessToken =
+      'pk.eyJ1IjoibWFwZmVhbiIsImEiOiJjbTNuOGVvN3cxMGxsMmpzNThzc2s3cTJzIn0.1uhX17BCYd65SeQsW1yibA';
+
     if (!mapRef.current) {
       mapRef.current = new mapboxgl.Map({
         container: mapContainerRef.current,
@@ -231,6 +234,46 @@ const updateFloodLayers = (mode) => {
 
       mapRef.current.on('load', () => {
         updateFloodLayers(hescoMode);
+
+        // Add parcel tileset
+        mapRef.current.addSource(parcelTileset.sourceId, {
+          type: 'vector',
+          url: parcelTileset.url,
+        });
+
+        mapRef.current.addLayer({
+          id: 'parcels-fill',
+          type: 'fill',
+          source: parcelTileset.sourceId,
+          'source-layer': parcelTileset.sourceLayer,
+          paint: {
+            'fill-color': '#000000',
+            'fill-opacity': 0,
+          },
+        });
+
+        mapRef.current.addLayer({
+          id: 'parcels-outline',
+          type: 'line',
+          source: parcelTileset.sourceId,
+          'source-layer': parcelTileset.sourceLayer,
+          paint: {
+            'line-color': '#000000',
+            'line-opacity': 0,
+          },
+        });
+
+        mapRef.current.addLayer({
+          id: 'parcels-highlight',
+          type: 'line',
+          source: parcelTileset.sourceId,
+          'source-layer': parcelTileset.sourceLayer,
+          paint: {
+            'line-color': '#ffcc00',
+            'line-width': 3,
+          },
+          filter: ['==', 'tax_id', ''],
+        });
 
         // Add USGS gage markers
         const markerCoordinates = [
@@ -255,23 +298,20 @@ const updateFloodLayers = (mode) => {
         markerCoordinates.forEach((coord) => {
           const markerEl = document.createElement('div');
           markerEl.className = 'usgs-marker';
-
           const marker = new mapboxgl.Marker(markerEl)
             .setLngLat([coord.lng, coord.lat])
             .addTo(mapRef.current);
-
           if (coord.popupContent) {
             const popup = new mapboxgl.Popup({ offset: 25 }).setHTML(coord.popupContent);
             marker.setPopup(popup);
           }
         });
+
         setMapReady(true);
       });
     }
-  }, [hescoMode]);
+  }, [hescoMode, setupHoverPopup]);
 
-
-  //* Resets HESCO mode if out-of-range level is selected
   useEffect(() => {
     if (hescoMode && (selectedFloodLevel < 14 || selectedFloodLevel > 18)) {
       setHescoMode(false);
@@ -279,7 +319,6 @@ const updateFloodLayers = (mode) => {
     }
   }, [selectedFloodLevel, hescoMode]);
 
-  //* Updates hover popup when flood layer changes
   const handleFloodLayerChange = useCallback(() => {
     const layerId = `flood${64 + (selectedFloodLevel - 8)}-fill`;
     if (mapRef.current?.getLayer(layerId)) {
@@ -287,7 +326,6 @@ const updateFloodLayers = (mode) => {
     }
   }, [selectedFloodLevel, setupHoverPopup]);
 
-//* Polls USGS API for live lake level data
   useEffect(() => {
     const fetchWaterLevels = async () => {
       const gages = [{ id: '15052500', name: 'Mendenhall Lake Stage Level' }];
@@ -295,14 +333,26 @@ const updateFloodLayers = (mode) => {
         const fetchedLevels = await Promise.all(
           gages.map(async (gage) => {
             try {
-              const response = await fetch(`https://waterservices.usgs.gov/nwis/iv/?format=json&sites=${gage.id}&parameterCd=00065&siteStatus=active`);
+              const response = await fetch(
+                `https://waterservices.usgs.gov/nwis/iv/?format=json&sites=${gage.id}&parameterCd=00065&siteStatus=active`
+              );
               if (!response.ok) throw new Error(`HTTP status ${response.status}`);
               const data = await response.json();
               const values = data?.value?.timeSeries?.[0]?.values?.[0]?.value;
               if (values?.length > 0) {
                 const latest = values[values.length - 1];
-                const alaskaTime = new Intl.DateTimeFormat('en-US', { timeZone: 'America/Anchorage', timeStyle: 'short', dateStyle: 'medium' }).format(new Date(latest.dateTime));
-                return { id: gage.id, name: gage.name, value: parseFloat(latest.value) > 0 ? latest.value : 'N/A', dateTime: alaskaTime, status: 'Online' };
+                const alaskaTime = new Intl.DateTimeFormat('en-US', {
+                  timeZone: 'America/Anchorage',
+                  timeStyle: 'short',
+                  dateStyle: 'medium',
+                }).format(new Date(latest.dateTime));
+                return {
+                  id: gage.id,
+                  name: gage.name,
+                  value: parseFloat(latest.value) > 0 ? latest.value : 'N/A',
+                  dateTime: alaskaTime,
+                  status: 'Online',
+                };
               }
               return { id: gage.id, name: gage.name, value: 'N/A', dateTime: 'N/A', status: 'Offline' };
             } catch {
@@ -322,7 +372,6 @@ const updateFloodLayers = (mode) => {
 
   return (
     <div className="main-content floodlevels-page">
-    
       <FloodInfoPopup />
       <div id="map" ref={mapContainerRef} style={{ height: '90vh', width: '100vw' }} />
       <button onClick={toggleMenu} className="menu-toggle-button">
@@ -330,8 +379,6 @@ const updateFloodLayers = (mode) => {
       </button>
       {mapReady && <Loc mapRef={mapRef} />}
 
-
-      {/* Mobile Stepper UI */}
       <div className="flood-stepper-container">
         <FloodStepper
           mapRef={mapRef}
@@ -344,7 +391,6 @@ const updateFloodLayers = (mode) => {
         />
       </div>
 
-      {/* Sidebar Menu (Desktop + Tablet) */}
       {menuOpen && (
         <div id="controls" style={{ position: 'absolute', top: '160px', left: '15px', zIndex: 1 }}>
           <Search mapRef={mapRef} />
@@ -376,11 +422,13 @@ const updateFloodLayers = (mode) => {
               return (
                 <div key={level.id} className="level-card">
                   <p>
-                    <a href="https://waterdata.usgs.gov/monitoring-location/15052500/" target="_blank" rel="noopener noreferrer" style={{ color: 'black' }}>Current Lake Level:</a>
+                    <a href="https://waterdata.usgs.gov/monitoring-location/15052500/" target="_blank" rel="noopener noreferrer" style={{ color: 'black' }}>
+                      Current Lake Level:
+                    </a>
                     <strong>{` ${level.value} ft`}</strong>
                   </p>
                   <p>
-                    <span style={{ color:'black' }}>
+                    <span style={{ color: 'black' }}>
                       <span style={{ fontSize: '1.2rem', fontWeight: 'bold' }}>{currentStage?.label || 'OFFLINE'}</span>
                     </span>
                   </p>
@@ -391,6 +439,7 @@ const updateFloodLayers = (mode) => {
           </div>
         </div>
       )}
+
       {loadingLayers && (
         <div className="map-loading-overlay">
           <div className="spinner" />
@@ -400,4 +449,4 @@ const updateFloodLayers = (mode) => {
   );
 };
 
-export default FloodLevels;
+export default FloodLevels2;

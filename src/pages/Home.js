@@ -217,7 +217,7 @@ const Home = () => {
   };
 
     // Track current slide index
-  const [currentSlide, setCurrentSlide] = useState(0);
+  const [, setCurrentSlide] = useState(0);
 
   // Custom Arrow Components
   const NextArrow = ({ onClick }) => (

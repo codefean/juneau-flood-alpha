@@ -9,16 +9,12 @@ import FloodEvents from "./pages/FloodEvents";
 import SuicideBasin from "./pages/SuicideBasin";
 import Home from "./pages/Home";
 import Footer from "./components/Footer";
-import StoryMap from "./pages/StoryMap";
 import ScrollToHashElement from "./components/ScrollToHashElement";
 import Feedback from "./pages/feedback";
 import SBmodel from "./pages/SBmodel2";
+import FloodLevels2 from "./pages/FloodLevels2";
 
-const useDocumentTitle = (title) => {
-  React.useEffect(() => {
-    document.title = title;
-  }, [title]);
-};
+
 
 // Wrap routes in a layout-aware container
 const Layout = ({ children }) => {
@@ -46,11 +42,11 @@ const App2 = () => {
         <Routes>
           <Route path="/" element={<Navigate to="/home" />} />
           <Route path="/flood-map" element={<FloodLevels />} />
+          <Route path="/flood-map2" element={<FloodLevels2 />} />
           <Route path="/flood-forecast" element={<FloodForecast />} />
           <Route path="/flood-events" element={<FloodEvents />} />
           <Route path="/suicide-basin" element={<SuicideBasin />} />
           <Route path="/home" element={<Home />} />
-          <Route path="/story-map" element={<StoryMap />} />
           <Route path="/feedback" element={<Feedback />} />
           <Route path="/sb-model" element={<SBmodel />} />
         </Routes>

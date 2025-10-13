@@ -1,91 +1,10 @@
-import React, { useState, useEffect } from "react";
-import CompareImage from "react-compare-image"; // For image before/after slider
-import Slider from "react-slick"; // For GLOF slideshow
-import { FaArrowLeft, FaArrowRight } from "react-icons/fa"; // Custom navigation icons
+
 import "./SuicideBasin.css";
 import SBmodel from './SBmodel';
 import './StoryMap.css';
 
 
 const SuicideBasin = () => {
-  // URLs for image comparison (1893 vs 2018)
-  const beforeImage = "https://juneauflood-basin-images.s3.us-west-2.amazonaws.com/1893_glacier.jpg";
-  const afterImage = "https://juneauflood-basin-images.s3.us-west-2.amazonaws.com/2018_glacier.jpg";
-
-
-  const [cacheBuster, setCacheBuster] = useState(Date.now());
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCacheBuster(Date.now()); // Force URL change to refresh image
-    }, 60 * 60 * 1000); // 1 hour
-
-    return () => clearInterval(interval); // Cleanup
-  }, []);
-
-// Image slider content (GLOF steps)
-const images = [
- 
-  
-  {
-      src: "https://juneauflood-basin-images.s3.us-west-2.amazonaws.com/GLOF_orgin.jpg",
-      title: "1. Formation of the Glacial Pool",
-      description:
-        "Suicide Basin accumulates water from glacial melt and precipitation. A natural ice dam, formed by the Mendenhall Glacier, temporarily holds back the water (shown in next slide). During summer, the water level in the basin can increase by more than 6 ft per day. Much of the lake is not visible but is hidden beneath floating icebergs."
-    },
-    {
-      src: "https://juneauflood-basin-images.s3.us-west-2.amazonaws.com/GLOF_icewall.jpg",
-      title: "2. Sudden Water Release",
-      description:
-        "As the water volume in Suicide Basin increases, buoyant pressure builds on the ice dam, eventually allowing water to escape underneath the glacier in the form of drainage channels. As water flows through these subglacial channels, it creates friction which causes the drainage channels beneath the glacier to melt and grow wider. As a result, the rate at which water is released from the basin increases during drainage events."
-    },
-    {
-      src: "https://www.climate.gov/sites/default/files/2024-08/SuicideBasinOutburst2024.gif",
-      title: "3. Suicide Basin's 2024 Outburst Flood",
-      description:
-        "This timelapse animation shows the water level in the basin from late April through mid-September, 2024. The largest glacier outburst flood on record at Mendenhall occurred on August 5-7, 2024. More than 15 billion gallons of water were released from Suicide Basin, and the water level in Mendenhall Lake reached a record level of 15.99 ft."
-    },
-    {
-      src: "https://juneauflood-basin-images.s3.us-west-2.amazonaws.com/GLOF_map.jpg",
-      title: "4. Reaching the Valley",
-      description:
-        "Once meltwater is released from Suicide Basin, it reaches Mendenhall Lake within one to two days. The extent of flooding in Mendenhall Valley is determined by the volume of water stored in the basin and the rate at which it flows under Mendenhall Glacier and into Mendenhall Lake, raising the lake level."
-    },
-
-  ];
-  
-
-  // Track current slide index
-  const [currentSlide, setCurrentSlide] = useState(0);
-
-  // Custom Arrow Components
-  const NextArrow = ({ onClick }) => (
-    <div className="slider-arrow next" onClick={onClick}>
-      <FaArrowRight />
-    </div>
-  );
-
-  const PrevArrow = ({ onClick }) => (
-    <div className="slider-arrow prev" onClick={onClick}>
-      <FaArrowLeft />
-    </div>
-  );
-
-  // Slider settings with custom arrows
-  const settings = {
-    dots: true,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    afterChange: (index) => setCurrentSlide(index),
-    nextArrow: <NextArrow />,
-    prevArrow: <PrevArrow />,
-  };
-
-  // Timestamp appended to URLs to avoid image caching
-const timestamp = new Date().getTime();
-const timelapse2Url = `https://usgs-nims-images.s3.amazonaws.com/overlay/AK_Glacial_Lake_near_Nugget_LOOKING_UPSTREAM_GLACIER_VIEW/AK_Glacial_Lake_near_Nugget_LOOKING_UPSTREAM_GLACIER_VIEW___2025-06-09T17-05-22Z.jpg?cb=${timestamp}`;
 
   // ------------------- COMPONENT UI -------------------
   return (
