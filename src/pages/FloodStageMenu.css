@@ -38,19 +38,19 @@
 
 /* Color coding for different flood stages */
 .action-stage {
-  background-color: #e4e406; /* Yellow */
+  background-color: #e4e406ea; /* Yellow */
 }
 
 .minor-stage {
-  background-color: #ffaa00; /* Orange */
+  background-color: #ffaa00ea; /* Orange */
 }
 
 .moderate-stage {
-  background-color: #ff4500; /* Red */
+  background-color: #ff4400eb; /* Red */
 }
 
 .major-stage {
-  background-color: #b604b6; /* Purple */
+  background-color: #b604b6e9; /* Purple */
 }
 
 .accordion-section:hover {
@@ -60,11 +60,7 @@
 /* Mobile responsive adjustments */
 @media (max-width: 768px) {
   .accordion-container {
-    position: relative;
-    top: -15px;
-    max-width: 300px; /* Limit maximum width */
-    margin-left: 10px; /* Keep space from the edge */
-    right: auto; /* Prevents stretching */
+display: none;
   }
 }
 

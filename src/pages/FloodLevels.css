@@ -18,13 +18,78 @@ code {
 /* Variables */
 :root {
   --shared-width: 300px;
+  
 }
+
+#controls {
+  position: absolute;
+  top: 120px !important;
+  left: 15px;
+  z-index: 1;
+}
+
 
 
 .mapboxgl-popup,
 .mapboxgl-popup * {
   z-index: 10001;   /* beat the overlay */
 }
+
+/* Popup container */
+.mapboxgl-popup {
+  max-width: 250px;
+  font-family: sans-serif;
+  z-index: 90 !important;
+  height: auto !important;
+}
+
+/* Frosted content box */
+.mapboxgl-popup-content {
+  overflow: hidden;
+  border-radius: 8px;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(3px);
+  color: white;
+  padding: 12px;
+  z-index: 4;
+  height: auto !important;
+}
+
+/* Title styling */
+.mapboxgl-popup-content h4 {
+  margin: 0 0 6px;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+/* Text styling */
+.mapboxgl-popup-content p {
+  margin: 0;
+  font-size: 0.9rem;
+  line-height: 1.1;
+  white-space: normal;
+}
+
+/* Arrow (tip) */
+.mapboxgl-popup-tip {
+  border-top-color: rgba(0, 0, 0, 0.6) !important;
+}
+
+/* Close button styling */
+.mapboxgl-popup-close-button {
+  color: white;
+  font-size: 1.5rem;
+  line-height: 1;
+}
+
+.mapboxgl-popup-close-button:hover {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+}
+
+
+
 
 header h1 {
   font-size: clamp(16px, 6vw, 36px);
@@ -38,31 +103,27 @@ header h1 {
 
 /* Cards */
 .level-card {
-  position: relative;
+position: relative;
   margin: -5px 0 10px 10px;
   padding: 10px;
-  width: 280px;
-  background: rgba(255, 255, 255, 0.842);
+  width: 295px;
+  color: white;
+  z-index: 10;
+  background: rgba(0, 0, 0, 0.675);
+  backdrop-filter: blur(3px);
+  margin-top: -10px !important;
+  padding: 2px;
   border-radius: 8px;
-  font-size: 15px;
-  line-height: .8;
-  font-family: 'Open Sans', sans-serif;
-  color: #000;
-  text-align: center;
-  overflow: hidden;
-  transition: transform 0.2s ease;
+  margin-top: -10px !important;
 }
 
-.level-card:hover {
-  transform: translateY(-3px);
-}
 
 .level-card h3 {
   font-size: 20px;
   font-weight: bold;
   letter-spacing: 1px;
   margin: 0;
-  color: #000;
+  color: #ffffff;
 }
 
 .level-card p {
@@ -70,20 +131,12 @@ header h1 {
   font-weight: 600;
   margin-bottom: 5px;
   margin-top: 11px;
-  color: #111;
+  color: #ffffff;
+  text-align: center;
+  line-height: 12px;
 }
 
-.business-popup {
-  font-family: 'Inter', sans-serif;
-  font-size: 14px;
-  font-weight: 600;
-  color: #222;
-  background-color: #fff;
-  padding: 6px 10px;
-  border-radius: 6px;
 
-  pointer-events: none;
-}
 
 .mapboxgl-popup-tip {
   display: none; /* Hide the default popup tip if you want a cleaner look */
@@ -91,25 +144,6 @@ header h1 {
 
 
 
-.lake-level-card {
-  background: rgba(255, 255, 255, 0.722);
-  padding: 10px 15px;
-  border-radius: 8px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: fit-content;
-  margin: 10px auto;
-}
-
-.lake-level-title {
-  font-size: 20px;
-  font-weight: bold;
-  letter-spacing: 1px;
-  margin: 0;
-  text-align: center;
-  color: #000;
-}
 
 /* Markers */
 .usgs-marker {
@@ -205,32 +239,34 @@ header h1 {
 .hesco-toggle-button {
   color: white;
   font-size: 16px;
-  padding: 12px 24px;
   border: none;
-  border-radius: 6px;
+  border-radius: 8px;
   cursor: pointer;
-  width: 100%;
-  max-width: 300px;
+  width: 295px;
+  padding: 10px;
   display: block;
   font-weight: bold;
-  margin-top: 10px;
+  margin-top: 3px;
+  margin-bottom: -1px;
   margin-left: 10px !important;
   transition: background-color 0.3s ease;
+
 }
 
 /* HESCO Off = dim gray */
 .hesco-off {
-  background-color: #555 !important;
+  background-color: rgba(0, 0, 0, 0.6) !important;
+  backdrop-filter: blur(3px);
 }
 
 /* HESCO On = bright green */
 .hesco-on {
-  background-color: #28a745 !important;
+  background-color: #28a746db !important;
   
 }
 
 .hesco-off:hover {
-  background-color: #666 !important;
+  background-color: #3e49409e !important;
 }
 
 .hesco-on:hover {
@@ -266,46 +302,30 @@ header h1 {
     z-index: 2;
   }
 
-  .hesco-toggle-container {
-    justify-content: center;
-  }
 
+  .hesco-toggle-button {
+  color: white;
+  font-size: 16px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  display: block;
+  font-weight: bold;
+  transition: background-color 0.5s ease;
+  width: 100%;
+
+}
   .level-card {
     position: relative;
-    margin: -20px 0 10px 10px !important;
-    width: 280px;
-    background: rgba(255, 255, 255, 0.842);
-    border-radius: 8px;
-    font-size: 15px;
-    line-height: .7;
-    font-family: 'Open Sans', sans-serif;
-    color: #000;
-    text-align: center;
-    overflow: hidden;
-    transition: transform 0.2s ease;
-  }
-
-  .level-card h3 {
-    font-size: 20px;
-    font-weight: bold;
-    letter-spacing: 1px;
-    margin: 0;
-    color: #000;
+    width: 100%;
+    margin-top: -12px !important;
   }
   
   .level-card p {
-    font-size: 16px;
+    font-size: 15px;
     font-weight: 600;
     margin-bottom: 5px;
-    margin-top: 11px;
-    color: #111;
-  }
-
-  .hesco-toggle-button {
-    width: 100%;
-    font-size: 15px;
-    margin-bottom: 20px;
-    margin-top: 5px;
+    color: #ffffff;
   }
 
 
@@ -314,20 +334,6 @@ header h1 {
 @media (min-width: 769px) {
   .menu-toggle-button {
     display: none !important;
-  }
-
-  .hesco-toggle-button {
-    background-color: #007bff;
-    color: white;
-    font-size: 16px;
-    padding: 12px 24px;
-    width: 100%;
-    max-width: 300px;
-    display: block;
-    font-weight: bold;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-    margin-bottom: 10px !important;
-    margin-left: 10px!important;
   }
 }
 
@@ -338,7 +344,6 @@ header h1 {
 
   .level-card {
     max-width: 300px;
-    padding: 6px;
   }
 
   .flood-button {
@@ -385,4 +390,40 @@ header h1 {
 
 @keyframes spin {
   to { transform: rotate(360deg); }
+}
+
+
+@media (max-width: 1056px) {
+#controls {
+  position: absolute;
+  top: 165px !important;
+  left: 15px;
+  z-index: 1;
+}
+
+
+}
+
+@media (max-width: 922px) {
+#controls {
+  position: absolute;
+  top: 185px !important;
+  left: 15px;
+  z-index: 1;
+}
+}
+
+@media (max-width: 667px) {
+#controls {
+  position: absolute;
+  top: 165px !important;
+  left: 15px;
+  z-index: 1;
+}
+}
+
+@media (max-width: 374px) {
+#controls {
+display: none !important;
+}
 }

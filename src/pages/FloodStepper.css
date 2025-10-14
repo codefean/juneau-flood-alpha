@@ -4,7 +4,7 @@
   align-items: center;
   justify-content: space-between;
   gap: 5px;
-  background: rgba(255, 255, 255, 0.5);
+  background-color: rgba(63, 62, 62, 0) !important;
   padding: 5px;
   border-radius: 8px;
   width: 100%; /* Makes it responsive */
@@ -19,14 +19,13 @@
   background-color: #007bff;
   color: white;
   border: none;
-  padding: 10px 15px; /* Slightly larger for touch devices */
   font-size: 26px;
   font-weight: bold;
   border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.3s ease, transform 0.2s ease;
   max-width: 50px;
-  min-height: 58px;
+  min-height: 55px;
   flex : 1; /* Makes buttons take up equal space */
 }
 
@@ -36,13 +35,12 @@
 }
 
 .stepper-button:hover:not(:disabled) {
-  background-color: #0056b3;
-  transform: scale(1.05);
+  background-color: #007bffbe;
 }
 
 /* Flood Level Display */
 .flood-level-card {
-  padding: 10px 15px;
+  padding: 4px 1px;
   color: white;
   font-size: 18px;
   font-weight: bold;
@@ -123,7 +121,7 @@
 @media screen and (max-width: 1024px) {
   .stepper-container {
     position: fixed;
-    bottom: 60px; /* Moves it up slightly */
+    bottom: 40px !important; /* Moves it up slightly */
     left: 50%;
     width: 80vw; /* Adjusts to screen width */
     max-width: 500px; /* Prevents it from getting too large */

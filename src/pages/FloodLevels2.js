@@ -9,8 +9,6 @@ import FloodStepper from './FloodStepper';
 import FloodInfoPopup from "./FloodInfoPopup";
 import { getFloodStage } from './utils/floodStages';
 import Search from './Search.js';
-import Loc from './loc';
-import './loc.css';
 
 export const parcelTileset = {
   url: "mapbox://mapfean.74ijmvrj",
@@ -100,28 +98,29 @@ const setupHoverPopup = useCallback((activeLayerId) => {
         : '';
 
       popupRef.current
-        .setLngLat(e.lngLat)
-        .setHTML(
-          `<div style="font-size:13px;line-height:1.4;">
-             <b>Water Depth:</b> ${depth} ft${addressLine}
-           </div>`
-        )
-        .addTo(map);
+  .setLngLat(e.lngLat)
+  .setHTML(`
+    <div>
+      <p><b>Water Depth: </b>${depth} ft</p>
+      ${addressLine ? `<p><b>Address:</b> ${address}</p>` : ''}
+    </div>
+  `)
+  .addTo(map);
       map.getCanvas().style.cursor = 'crosshair';
     } else if (parcelFeature) {
       if (address && address !== 'Unknown') {
-        popupRef.current
-          .setLngLat(e.lngLat)
-          .setHTML(
-            `<div style="font-size:13px;line-height:1.4;">
-               <b>Address:</b> ${address}
-             </div>`
-          )
-          .addTo(map);
+popupRef.current
+  .setLngLat(e.lngLat)
+  .setHTML(`
+    <div>
+      <p><b>Address:</b> ${address}</p>
+    </div>
+  `)
+  .addTo(map);
       } else {
         popupRef.current.remove();
       }
-      map.getCanvas().style.cursor = 'pointer';
+      map.getCanvas().style.cursor = 'crosshair';
     } else {
       popupRef.current.remove();
       map.getCanvas().style.cursor = '';
@@ -269,7 +268,7 @@ const setupHoverPopup = useCallback((activeLayerId) => {
           source: parcelTileset.sourceId,
           'source-layer': parcelTileset.sourceLayer,
           paint: {
-            'line-color': '#ffcc00',
+            'line-color': 'blue',
             'line-width': 3,
           },
           filter: ['==', 'tax_id', ''],
@@ -372,12 +371,13 @@ const setupHoverPopup = useCallback((activeLayerId) => {
 
   return (
     <div className="main-content floodlevels-page">
+
+      
       <FloodInfoPopup />
       <div id="map" ref={mapContainerRef} style={{ height: '90vh', width: '100vw' }} />
       <button onClick={toggleMenu} className="menu-toggle-button">
         {menuOpen ? 'Hide Menu' : 'Show Menu'}
       </button>
-      {mapReady && <Loc mapRef={mapRef} />}
 
       <div className="flood-stepper-container">
         <FloodStepper
@@ -393,7 +393,6 @@ const setupHoverPopup = useCallback((activeLayerId) => {
 
       {menuOpen && (
         <div id="controls" style={{ position: 'absolute', top: '160px', left: '15px', zIndex: 1 }}>
-          <Search mapRef={mapRef} />
           {errorMessage && <div style={{ color: 'red', marginTop: '10px' }}>{errorMessage}</div>}
           <FloodStepper
             mapRef={mapRef}
@@ -422,13 +421,13 @@ const setupHoverPopup = useCallback((activeLayerId) => {
               return (
                 <div key={level.id} className="level-card">
                   <p>
-                    <a href="https://waterdata.usgs.gov/monitoring-location/15052500/" target="_blank" rel="noopener noreferrer" style={{ color: 'black' }}>
+                    <a href="https://waterdata.usgs.gov/monitoring-location/15052500/" target="_blank" rel="noopener noreferrer" style={{ color: 'white' }}>
                       Current Lake Level:
                     </a>
                     <strong>{` ${level.value} ft`}</strong>
                   </p>
                   <p>
-                    <span style={{ color: 'black' }}>
+                    <span style={{ color: 'white' }}>
                       <span style={{ fontSize: '1.2rem', fontWeight: 'bold' }}>{currentStage?.label || 'OFFLINE'}</span>
                     </span>
                   </p>
@@ -439,6 +438,8 @@ const setupHoverPopup = useCallback((activeLayerId) => {
           </div>
         </div>
       )}
+
+  <Search mapRef={mapRef} />
 
       {loadingLayers && (
         <div className="map-loading-overlay">

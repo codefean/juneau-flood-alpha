@@ -12,7 +12,6 @@ import Footer from "./components/Footer";
 import ScrollToHashElement from "./components/ScrollToHashElement";
 import Feedback from "./pages/feedback";
 import SBmodel from "./pages/SBmodel2";
-import FloodLevels2 from "./pages/FloodLevels2";
 
 
 
@@ -42,7 +41,6 @@ const App2 = () => {
         <Routes>
           <Route path="/" element={<Navigate to="/home" />} />
           <Route path="/flood-map" element={<FloodLevels />} />
-          <Route path="/flood-map2" element={<FloodLevels2 />} />
           <Route path="/flood-forecast" element={<FloodForecast />} />
           <Route path="/flood-events" element={<FloodEvents />} />
           <Route path="/suicide-basin" element={<SuicideBasin />} />
