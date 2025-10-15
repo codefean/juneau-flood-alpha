@@ -12,7 +12,13 @@ import "./SuicideBasin.css";
 
 
   const images = [
-  {
+      {
+      src: "https://juneauflood-basin-images.s3.us-west-2.amazonaws.com/flood-impacts/home_video.mp4",
+      title: "August 23rd 2023 - 14.97 ft Mendenhall Lake Level",
+      description:
+        "Credit: Sam Nolan"
+    },
+    {
       src: "https://juneauflood-basin-images.s3.us-west-2.amazonaws.com/flood-impacts/flood_image1.png",
       title: "August 3rd 2024 - 15.99 ft Mendenhall Lake Level",
       description:
@@ -31,10 +37,16 @@ import "./SuicideBasin.css";
         "Credit: Alaska National Guard"
     },
     {
-      src: "https://juneauflood-basin-images.s3.us-west-2.amazonaws.com/flood-impacts/home_video.mp4",
-      title: "August 23rd 2023 - 14.97 ft Mendenhall Lake Level",
+      src: "https://juneauflood-basin-images.s3.us-west-2.amazonaws.com/flood-impacts/2025_impacts1.png",
+      title: "August 13th 2025 - 16.67 ft Mendenhall Lake Level",
       description:
-        "Credit: Sam Nolan"
+        "Credit: City and Borough of Juneau"
+    },
+    {
+      src: "https://juneauflood-basin-images.s3.us-west-2.amazonaws.com/flood-impacts/2025_impacts2.png",
+      title: "August 13th, 2025 - 16.67 ft Mendenhall Lake Level",
+      description:
+        "Credit: City and Borough of Juneau"
     },
 
   ];

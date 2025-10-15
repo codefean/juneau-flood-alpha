@@ -1,7 +1,6 @@
 // FloodLevels.js
 import React, { useEffect, useRef, useState, useCallback } from 'react';
 import mapboxgl from 'mapbox-gl';
-import 'mapbox-gl/dist/mapbox-gl.css';
 
 import './FloodLevels.css';
 import FloodStageMenu from './FloodStageMenu';
@@ -35,6 +34,7 @@ const FloodLevels = () => {
   const popupRef = useRef(null);
   const hoverHandlersRef = useRef({ move: null, out: null });
   const [mapReady, setMapReady] = useState(false);
+  const [gageMarkers, setGageMarkers] = useState([]);
   const toggleMenu = () => setMenuOpen((prev) => !prev);
 
   // Unified flood + parcel hover popup
@@ -275,36 +275,33 @@ popupRef.current
         });
 
         // Add USGS gage markers
-        const markerCoordinates = [
-          {
-            lat: 58.4293972,
-            lng: -134.5745592,
-            popupContent: `
-              <a href="https://waterdata.usgs.gov/monitoring-location/15052500/" target="_blank">
-                <b>USGS Mendenhall Lake Level Gage</b>
-              </a>`,
-          },
-          {
-            lat: 58.4595556,
-            lng: -134.5038333,
-            popupContent: `
-              <a href="https://waterdata.usgs.gov/monitoring-location/1505248590/" target="_blank">
-                <b>USGS Suicide Basin Level Gage</b>
-              </a>`,
-          },
-        ];
+const markerCoordinates = [
+  {
+    id: '15052500',
+    lat: 58.4293972,
+    lng: -134.5745592,
+    name: 'USGS Mendenhall Lake Level Gage',
+    link: 'https://waterdata.usgs.gov/monitoring-location/15052500/',
+  },
+  {
+    id: '1505248590',
+    lat: 58.4595556,
+    lng: -134.5038333,
+    name: 'USGS Suicide Basin Level Gage',
+    link: 'https://waterdata.usgs.gov/monitoring-location/1505248590/',
+  },
+];
 
-        markerCoordinates.forEach((coord) => {
-          const markerEl = document.createElement('div');
-          markerEl.className = 'usgs-marker';
-          const marker = new mapboxgl.Marker(markerEl)
-            .setLngLat([coord.lng, coord.lat])
-            .addTo(mapRef.current);
-          if (coord.popupContent) {
-            const popup = new mapboxgl.Popup({ offset: 25 }).setHTML(coord.popupContent);
-            marker.setPopup(popup);
-          }
-        });
+const markers = markerCoordinates.map(coord => {
+  const el = document.createElement('div');
+  el.className = 'usgs-marker';
+  const marker = new mapboxgl.Marker(el).setLngLat([coord.lng, coord.lat]).addTo(mapRef.current);
+  const popup = new mapboxgl.Popup({ offset: 25 }).setHTML(`<b>${coord.name}</b><br/>Loading…`);
+  marker.setPopup(popup);
+  return { ...coord, marker, popup };
+});
+setGageMarkers(markers);
+
 
         setMapReady(true);
       });
@@ -368,6 +365,32 @@ popupRef.current
     const interval = setInterval(fetchWaterLevels, 60000);
     return () => clearInterval(interval);
   }, []);
+
+  useEffect(() => {
+  if (!mapReady || gageMarkers.length === 0 || waterLevels.length === 0) return;
+
+  gageMarkers.forEach(({ id, popup }) => {
+    const level = waterLevels.find(l => l.id === id);
+    if (level) {
+      popup.setHTML(`
+        <a href="https://waterdata.usgs.gov/monitoring-location/${id}/" target="_blank" rel="noopener noreferrer">  
+          <b>${level.name}</b><br/>      </a>
+          Current Level: <strong>${level.value} ft</strong><br/>
+          <small>${level.dateTime}</small>
+
+      `);
+    } else {
+      popup.setHTML(`
+        <div style="top: 15px;">
+        <a href="https://waterdata.usgs.gov/monitoring-location/${id}/" target="_blank" rel="noopener noreferrer">
+          <b>USGS Suicide Basin Gage</b><br/>        </a>
+          Current Level: <strong>OFFLINE</strong><br/>
+
+      `);
+    }
+  });
+}, [mapReady, gageMarkers, waterLevels]);
+
 
     useEffect(() => {
     document.body.style.overflow = 'hidden';

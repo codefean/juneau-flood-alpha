@@ -38,6 +38,8 @@ code {
 .mapboxgl-popup,
 .mapboxgl-popup * {
   z-index: 10001;   /* beat the overlay */
+  
+  
 }
 
 /* Popup container */
