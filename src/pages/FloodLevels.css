@@ -104,27 +104,18 @@ header h1 {
 /* Cards */
 .level-card {
 position: relative;
-  margin: -5px 0 10px 10px;
+  margin: -10px 0 10px 10px !important;
   padding: 10px;
-  width: 295px;
+  width: 297px;
   color: white;
   z-index: 10;
-  background: rgba(0, 0, 0, 0.675);
+  background: rgba(105, 104, 104, 0.343); 
   backdrop-filter: blur(3px);
-  margin-top: -10px !important;
   padding: 2px;
   border-radius: 8px;
   margin-top: -10px !important;
 }
 
-
-.level-card h3 {
-  font-size: 20px;
-  font-weight: bold;
-  letter-spacing: 1px;
-  margin: 0;
-  color: #ffffff;
-}
 
 .level-card p {
   font-size: 16px;
@@ -237,26 +228,30 @@ position: relative;
 
 
 .hesco-toggle-button {
-  color: white;
+  color: rgb(255, 255, 255);
   font-size: 16px;
   border: none;
   border-radius: 8px;
   cursor: pointer;
-  width: 295px;
+  width: 299px;
   padding: 10px;
   display: block;
   font-weight: bold;
   margin-top: 3px;
-  margin-bottom: -1px;
+  margin-bottom: -4px;
   margin-left: 10px !important;
   transition: background-color 0.3s ease;
+    border-radius: 8px;
+  border: 0.9px solid white;
 
 }
 
 /* HESCO Off = dim gray */
 .hesco-off {
-  background-color: rgba(0, 0, 0, 0.6) !important;
-  backdrop-filter: blur(3px);
+  background-color: rgba(66, 65, 65, 0.6);
+  backdrop-filter: blur(2px);
+  color: rgba(255, 255, 255, 0.934);
+  border: 0.9px solid rgba(255, 255, 255, 0.868);
 }
 
 /* HESCO On = bright green */
@@ -266,7 +261,8 @@ position: relative;
 }
 
 .hesco-off:hover {
-  background-color: #3e49409e !important;
+  background-color: #c1eeca9e !important;
+  color: rgb(255, 255, 255) !important;
 }
 
 .hesco-on:hover {

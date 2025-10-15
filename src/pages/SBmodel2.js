@@ -17,8 +17,8 @@ export default function Topographic3DTerrainMap() {
 
   // state for location
   const [location, setLocation] = useState({
-    modelOrigin: [-134.4197, 58.3019],
-    orbitCenter: [-134.4197, 58.3019],
+      modelOrigin: [-134.575402, 58.393573],
+      orbitCenter: [-134.575402, 58.393573],
   });
 
   useEffect(() => {

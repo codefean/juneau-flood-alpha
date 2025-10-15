@@ -32,7 +32,7 @@ const SuicideBasin = () => {
       <iframe
         src="https://storymaps.arcgis.com/stories/72cef125bbfa4f989356bf9350cd5d63"
         width="100%"
-        height="650px"
+        height="675px"
         frameBorder="0"
         allowFullScreen
         allow="geolocation"
@@ -40,10 +40,8 @@ const SuicideBasin = () => {
       ></iframe>
       </div>
 
-<h2 className="glof-h2">
-  Suicide Basin for Scale
-</h2>
-<SBmodel />
+
+
 
 </div>
   );

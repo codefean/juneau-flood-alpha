@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 import './Home.css';
 import './FloodForecast.css';
-import EventPopup from './EventPopup';
 import Slider from "react-slick"; // For slideshow
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa"; // Custom navigation icons
 import "./SuicideBasin.css";
@@ -246,7 +245,6 @@ const Home = () => {
 
   return (
     <div className="home-container">
-      <EventPopup autoClose={true} autoCloseDelay={8000} />
       <div className="card-grid">
         {cardData
           .filter((card) => !card.mobileOnly || isMobile)
