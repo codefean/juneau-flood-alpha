@@ -54,7 +54,7 @@ code {
 .mapboxgl-popup-content {
   overflow: hidden;
   border-radius: 8px;
-  background: rgba(0, 0, 0, 0.6);
+  background: rgba(59, 59, 59, 0.6);
   backdrop-filter: blur(3px);
   color: white;
   padding: 12px;
