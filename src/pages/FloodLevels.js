@@ -246,6 +246,12 @@ map.addLayer({
 
       mapRef.current.on('load', () => {
         updateFloodLayers(hescoMode);
+        const map = mapRef.current;
+        const initialLayerId = `flood${64 + (selectedFloodLevel - 8)}-fill`;
+        map.once('idle', () => setupHoverPopup(initialLayerId));
+        map.getCanvas().style.cursor = 'crosshair';
+
+        
 
         // Add parcel tileset
         mapRef.current.addSource(parcelTileset.sourceId, {
