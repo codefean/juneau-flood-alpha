@@ -8,6 +8,8 @@ import FloodStepper from './FloodStepper';
 import FloodInfoPopup from "./FloodInfoPopup";
 import { getFloodStage } from './utils/floodStages';
 import Search from './Search.js';
+import FloodRecordsBar from './FloodKey.js';
+
 
 export const parcelTileset = {
   url: "mapbox://mapfean.74ijmvrj",
@@ -169,41 +171,52 @@ popupRef.current
 
     let loadedCount = 0;
 
-    validLevels.forEach((level) => {
-      const floodId = `flood${level}`;
-      const layerId = `${floodId}-fill`;
-      const visible = floodId === `flood${64 + (selectedFloodLevel - 8)}`;
-      const tilesetId = mode ? tilesetMap.hesco[level] : tilesetMap.base[level];
-      if (mode && !tilesetId) {
-        loadedCount++;
-        if (loadedCount === validLevels.length) {
-          setLoadingLayers(false);
-          map.once('idle', () => setupHoverPopup(visibleLayerId));
-        }
-        return;
-      }
+[...validLevels].reverse().forEach((level) => {
+  const floodId = `flood${level}`;
+  const fillId = `${floodId}-fill`;
+  const visible = floodId === `flood${64 + (selectedFloodLevel - 8)}`;
+  const tilesetId = mode ? tilesetMap.hesco[level] : tilesetMap.base[level];
 
-      const sourceLayerName = mode ? `flood${level}` : String(level);
-      map.addSource(floodId, {
-        type: 'vector',
-        url: `mapbox://mapfean.${tilesetId}`,
-      });
-      map.addLayer({
-        id: layerId,
-        type: 'fill',
-        source: floodId,
-        'source-layer': sourceLayerName,
-        layout: { visibility: visible ? 'visible' : 'none' },
-        paint: { 'fill-color': customColors[level - 64], 'fill-opacity': 0.4 },
-      });
+  if (mode && !tilesetId) {
+    loadedCount++;
+    if (loadedCount === validLevels.length) {
+      setLoadingLayers(false);
+      map.once('idle', () => setupHoverPopup(visibleLayerId));
+    }
+    return;
+  }
 
-      loadedCount++;
-      if (loadedCount === validLevels.length) {
-        setLoadingLayers(false);
-        map.once('idle', () => setupHoverPopup(visibleLayerId));
-      }
-    });
+  const sourceLayerName = mode ? `flood${level}` : String(level);
+
+  map.addSource(floodId, {
+    type: 'vector',
+    url: `mapbox://mapfean.${tilesetId}`,
+  });
+
+  // --- FILL LAYER (main visible flood area) ---
+// --- FILL LAYER ONLY (no outlines ever) ---
+map.addLayer({
+  id: fillId,
+  type: 'fill',
+  source: floodId,
+  'source-layer': sourceLayerName,
+  layout: { visibility: visible ? 'visible' : 'none' },
+  paint: {
+    'fill-color': customColors[level - 64],
+    'fill-opacity': 0.5,
+  },
+});
+
+  loadedCount++;
+  if (loadedCount === validLevels.length) {
+    setLoadingLayers(false);
+    if (selectedFloodLevel !== 'All') {
+      map.once('idle', () => setupHoverPopup(visible ? fillId : null));
+    }
+  }
+});
   };
+
 
   const toggleHescoMode = () => {
     setHescoMode((prev) => {
@@ -468,7 +481,7 @@ setGageMarkers(markers);
           </div>
         </div>
       )}
-
+<FloodRecordsBar />
   <Search mapRef={mapRef} />
 
       {loadingLayers && (
