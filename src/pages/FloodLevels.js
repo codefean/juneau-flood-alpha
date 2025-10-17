@@ -396,6 +396,7 @@ setGageMarkers(markers);
           <b>${level.name}</b><br/>      </a>
           Current Level: <strong>${level.value} ft</strong><br/>
           <small>${level.dateTime}</small>
+          
 
       `);
     } else {
