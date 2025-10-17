@@ -207,7 +207,7 @@ const Home = () => {
   const [openIndex, setOpenIndex] = useState(null);
   const [showAllFAQs, setShowAllFAQs] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
-  const previewFAQCount = 6;
+  const previewFAQCount = 4;
 
   useEffect(() => {
     const mq = window.matchMedia('(max-width: 768px)');
@@ -438,7 +438,7 @@ const Home = () => {
           {faqData.length > previewFAQCount && (
             <div className="button-wrapper">
               <button
-                className="home-button"
+                className="faq-button"
                 onClick={() => setShowAllFAQs(!showAllFAQs)}
               >
                 {showAllFAQs ? 'Show Less' : 'Show More'}

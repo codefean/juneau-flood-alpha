@@ -33,6 +33,12 @@
   word-break: break-word;
 }
 
+  .dashboard-link {
+    text-decoration: none; /* remove underline */
+    color: inherit;        /* inherit header text color */
+    transition: color 0.3s ease, text-decoration 0.3s ease;
+  }
+
 
 /* Logo styles */
 .header-image {

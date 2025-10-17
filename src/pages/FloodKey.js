@@ -68,6 +68,9 @@ const FloodKey = () => {
         className="flood-records-title"
       >
         Flood Events
+            <span className="flood-events-tooltip">
+      Recorded glacial lake outbust floods by NWS. Years indicate the highest ever recorded lake levels.
+    </span>
       </a>
 
       {floodLevels.map((level, i) => {
