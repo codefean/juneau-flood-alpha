@@ -136,6 +136,24 @@ position: relative;
 
 
 
+
+
+/* Show on smaller screens */
+@media (max-width: 500px) {
+    .level-card {
+    display: none !important;
+  }
+}
+/* Show it again when the screen width is 500px or larger */
+@media (min-width: 500px) {
+  .level-card {
+    display: block !important;
+  }
+}
+
+
+
+
 .mapboxgl-popup-tip {
   display: none; /* Hide the default popup tip if you want a cleaner look */
 }
@@ -224,7 +242,6 @@ position: relative;
   border-radius: 6px;
   font-size: 12px;
   width: 180px;
-  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
   white-space: nowrap;
   display: none;
 }
@@ -276,6 +293,18 @@ position: relative;
   background-color: #218838 !important; /* darker green for hover */
 }
 
+@media (max-width: 500px) {
+  .hesco-toggle-button {
+    display: none !important;
+  }
+}
+
+@media (min-width: 501px) {
+  .hesco-toggle-button {
+    display: block;
+  }
+}
+
 
 
 
@@ -297,18 +326,10 @@ position: relative;
     text-align: center !important;
   }
 
-  .flood-stepper-container {
-    position: absolute;
-    bottom: 100px;
-    left: 15px;
-    width: auto;
-    z-index: 2;
-  }
-
 
   .hesco-toggle-button {
   color: white;
-  font-size: 16px;
+  font-size: 14px;
   border: none;
   border-radius: 8px;
   cursor: pointer;
@@ -316,6 +337,7 @@ position: relative;
   font-weight: bold;
   transition: background-color 0.5s ease;
   width: 100%;
+  margin-top: 45px;
 
 }
   .level-card {
@@ -423,10 +445,62 @@ position: relative;
   left: 15px;
   z-index: 1;
 }
+
+  .hesco-toggle-button {
+  color: white;
+  font-size: 11px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  display: block;
+  font-weight: bold;
+  transition: background-color 0.5s ease;
+  width: 130%;
+  margin-top: 40px;
+  margin-left: -35px !important;
+
+}
 }
 
 @media (max-width: 374px) {
 #controls {
 display: none !important;
 }
+}
+
+
+.hesco-toggle-button-mobile {
+  position: absolute;
+  bottom: 75px; /* adjust as needed */
+  left: 52%;
+  transform: translateX(-50%);
+  background: rgba(61, 61, 61, 0.6);
+  backdrop-filter: blur(3px);
+  border: 0.9px solid white;
+  border-radius: 8px;
+  color: #fff;
+  font-size: 12px;
+  font-weight: bold;
+  width: 55%;
+  max-width: 400px;
+  padding: 6px;
+  text-align: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  z-index: 5;
+}
+
+/* ✅ Hide on desktop */
+@media (min-width: 501px) {
+  .hesco-toggle-button-mobile {
+    display: none !important;
+  }
+}
+
+@media (max-width: 361px) {
+.hesco-toggle-button-mobile{
+  position: absolute;
+  top: calc(116px + 6.5%);
+}
+
 }

@@ -9,6 +9,8 @@ import FloodInfoPopup from "./FloodInfoPopup";
 import { getFloodStage } from './utils/floodStages';
 import Search from './Search.js';
 import FloodRecordsBar from './FloodKey.js';
+import FloodCardMobile from './FloodCardMobile';
+
 
 
 export const parcelTileset = {
@@ -288,7 +290,8 @@ map.addLayer({
           'source-layer': parcelTileset.sourceLayer,
           paint: {
             'line-color': 'blue',
-            'line-width': 3,
+            'line-width': 2,
+            'line-opacity': 0.8,
           },
           filter: ['==', 'tax_id', ''],
         });
@@ -425,9 +428,6 @@ setGageMarkers(markers);
       
       <FloodInfoPopup />
       <div id="map" ref={mapContainerRef} style={{ height: '90vh', width: '100vw' }} />
-      <button onClick={toggleMenu} className="menu-toggle-button">
-        {menuOpen ? 'Hide Menu' : 'Show Menu'}
-      </button>
 
       <div className="flood-stepper-container">
         <FloodStepper
@@ -483,13 +483,27 @@ setGageMarkers(markers);
                   </p>
                   <p style={{ fontSize: '0.85rem' }}>{level.dateTime || 'N/A'}</p>
                 </div>
+                
               );
             })}
           </div>
         </div>
       )}
+
+
+      
 <FloodRecordsBar />
-  <Search mapRef={mapRef} />
+<Search mapRef={mapRef} waterLevels={waterLevels} />
+<FloodCardMobile waterLevels={waterLevels} />
+          <button
+            title="HESCO maps are only available for 14ft - 18ft & assume fully functional barriers"
+            onClick={() => { if (selectedFloodLevel >= 14) toggleHescoMode(); }}
+            className={`hesco-toggle-button-mobile ${hescoMode ? 'hesco-on' : 'hesco-off'}`}
+            disabled={loadingLayers || selectedFloodLevel < 14 || selectedFloodLevel > 18}
+          >
+            {loadingLayers ? 'Loading HESCO Data…' : hescoMode ? 'HESCO Barriers ON' : 'HESCO Barriers OFF (14-18ft)'}
+          </button>
+  
 
       {loadingLayers && (
         <div className="map-loading-overlay">
