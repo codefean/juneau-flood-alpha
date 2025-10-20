@@ -120,10 +120,10 @@
 @media screen and (max-width: 1024px) {
   .stepper-container {
     position: fixed;
-    bottom: 40px !important; /* Moves it up slightly */
+    bottom: 1px !important; /* Moves it up slightly */
     left: 50%;
-    width: 80vw; /* Adjusts to screen width */
-    max-width: 500px; /* Prevents it from getting too large */
+    width: 70vw; 
+    max-width: 400px;
     transform: translateX(-50%); /* Center it properly */
     z-index: 1000;
     background: rgba(255, 255, 255, 0.9);

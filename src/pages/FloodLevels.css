@@ -139,13 +139,13 @@ position: relative;
 
 
 /* Show on smaller screens */
-@media (max-width: 500px) {
+@media (max-width: 851px) {
     .level-card {
     display: none !important;
   }
 }
 /* Show it again when the screen width is 500px or larger */
-@media (min-width: 500px) {
+@media (min-width: 851px) {
   .level-card {
     display: block !important;
   }
@@ -290,16 +290,16 @@ position: relative;
 }
 
 .hesco-on:hover {
-  background-color: #218838 !important; /* darker green for hover */
+  background-color: #218838 !important;
 }
 
-@media (max-width: 500px) {
+@media (max-width: 850px) {
   .hesco-toggle-button {
     display: none !important;
   }
 }
 
-@media (min-width: 501px) {
+@media (min-width: 850px) {
   .hesco-toggle-button {
     display: block;
   }
@@ -308,8 +308,8 @@ position: relative;
 
 
 
-/* Mobile Responsiveness */
-@media (max-width: 768px) {
+
+@media (max-width: 850px) {
   #controls {
     position: absolute;
     top: calc(100% + 10px);
@@ -328,16 +328,8 @@ position: relative;
 
 
   .hesco-toggle-button {
-  color: white;
-  font-size: 14px;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  display: block;
-  font-weight: bold;
-  transition: background-color 0.5s ease;
-  width: 100%;
-  margin-top: 45px;
+  display: none;
+ 
 
 }
   .level-card {
@@ -432,7 +424,6 @@ position: relative;
 @media (max-width: 922px) {
 #controls {
   position: absolute;
-  top: 185px !important;
   left: 15px;
   z-index: 1;
 }
@@ -446,20 +437,7 @@ position: relative;
   z-index: 1;
 }
 
-  .hesco-toggle-button {
-  color: white;
-  font-size: 11px;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  display: block;
-  font-weight: bold;
-  transition: background-color 0.5s ease;
-  width: 130%;
-  margin-top: 40px;
-  margin-left: -35px !important;
 
-}
 }
 
 @media (max-width: 374px) {
@@ -491,7 +469,7 @@ display: none !important;
 }
 
 /* ✅ Hide on desktop */
-@media (min-width: 501px) {
+@media (min-width: 850px) {
   .hesco-toggle-button-mobile {
     display: none !important;
   }
@@ -500,7 +478,6 @@ display: none !important;
 @media (max-width: 361px) {
 .hesco-toggle-button-mobile{
   position: absolute;
-  top: calc(116px + 6.5%);
 }
 
 }

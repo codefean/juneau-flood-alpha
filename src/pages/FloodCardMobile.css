@@ -41,7 +41,7 @@
 }
 
 /* Hide on desktop */
-@media (min-width: 500px) {
+@media (min-width: 850px) {
   .level-card-mobile {
     display: none;
   }

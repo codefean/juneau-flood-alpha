@@ -275,7 +275,7 @@
   opacity: 1;
 }
 
-@media (max-width: 1100px) { /* Only show for desktop users */
+@media (max-width: 850px) { /* Only show for desktop users */
   .flood-records-container {
     display: none;
   }
