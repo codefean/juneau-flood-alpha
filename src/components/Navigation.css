@@ -6,7 +6,6 @@
 
 
 
-
 .navigation .menu-toggle {
   display: none; 
   cursor: pointer;
@@ -50,12 +49,12 @@
 
 @media (max-width: 850px) {
   .navigation .menu-toggle {
-    display: block; /* Show the menu toggle on smaller screens */
+    display: block;
     height: 29px;
   }
 
   .navigation ul {
-    display: none; /* Hide menu by default */
+    display: none;
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -63,5 +62,12 @@
     width: 100%;
     position: absolute;
     left: 0;
+    top: 40px; /* adjust if needed to sit below the bar */
+    z-index: 1000;
+  }
+
+  /* ✅ This tells it to open when toggled */
+  .navigation ul.open {
+    display: flex;
   }
 }
