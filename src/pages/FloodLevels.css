@@ -111,7 +111,7 @@ header h1 {
 /* Cards */
 .level-card {
 position: relative;
-  margin: -10px 0 10px 10px !important;
+  margin: -10px 0 5px -1px !important;
   padding: 10px;
   width: 297px;
   color: white;
@@ -263,7 +263,7 @@ position: relative;
   font-weight: bold;
   margin-top: 3px;
   margin-bottom: -4px;
-  margin-left: 10px !important;
+  margin-left: -1px !important;
   transition: background-color 0.3s ease;
     border-radius: 8px;
   border: 0.9px solid white;

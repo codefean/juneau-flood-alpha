@@ -5,7 +5,7 @@
   margin-top: 10px;
   width: 100%; /* Adjust width to reduce it */
   max-width: 300px; /* Limit maximum width */
-  margin-left: 10px;
+  margin-left: -1px;
   margin-right: auto; /* Fixing the missing 'px' */
   display: flex; /* Prevent expansion */
   flex-direction: column; /* Ensure content stacks vertically */

@@ -8,7 +8,6 @@ import "./SuicideBasin.css";
 
 // cd /Users/seanfagan/Desktop/juneau-flood-alpha
 // https://juneauflood-basin-images.s3.us-west-2.amazonaws.com/flood-impacts/
-//   background-color: #0c5c95; 
 
 
   const images = [

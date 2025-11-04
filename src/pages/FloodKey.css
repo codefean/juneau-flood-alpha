@@ -1,7 +1,7 @@
 .flood-records-container {
   position: absolute;
   top: 120px;
-  right: 20px;
+  right: 10px;
   display: flex;
   flex-direction: column-reverse;
   align-items: flex-start;

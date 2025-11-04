@@ -10,7 +10,7 @@
   width: 100%; /* Makes it responsive */
   max-width: 290px; /* Limits it for larger screens */
   margin: -1px auto;
-  margin-left: 10px;
+  margin-left: -1px;
   position: relative;
 }
 
