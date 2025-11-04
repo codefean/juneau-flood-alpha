@@ -1,6 +1,6 @@
 .flood-records-container {
   position: absolute;
-  top: 120px;
+  top: 116px;
   right: 10px;
   display: flex;
   flex-direction: column-reverse;
@@ -16,13 +16,18 @@
   z-index: 20;
 }
 
-/* Center the button when container expands */
+@media (max-width: 1059px) {
+
+  .flood-records-container {
+    top: 110px !important;
+  }
+}
+
 .flood-records-container.expanded {
   width: 163px;
   
 }
 
-/* Title default: white text */
 .flood-records-title {
   display: inline-block;
   background: none;
@@ -40,12 +45,10 @@
   transition: background 0.3s ease, color 0.3s ease, transform 0.2s ease;
 }
 
-/* Tooltip for Flood Events title */
 .flood-records-title {
   position: relative;
 }
 
-/* Hidden by default */
 .flood-events-tooltip {
   position: absolute;
   top: 159%;
@@ -76,7 +79,6 @@
   border-color: transparent transparent rgba(20, 20, 20, 0.657);
 }
 
-/* Show tooltip on hover */
 .flood-records-title:hover .flood-events-tooltip {
   opacity: 1;
   visibility: visible;
@@ -84,12 +86,10 @@
 }
 
 
-/* When hovering on container: show as blue pill */
 .flood-records-container:hover .flood-records-title {
   background: rgba(35, 123, 207, 0.8);
 }
 
-/* When hovering directly over title */
 .flood-records-container:hover .flood-records-title:hover {
   background: rgba(50, 150, 255, 0.9);
 }
@@ -177,7 +177,6 @@
   font-size: 14px;
 }
 
-/* Record marker positioned within each pill */
 .record-marker {
   position: absolute;
   left: 100%;
@@ -243,7 +242,6 @@
   }
 }
 
-/* Tooltip that appears when hovering on a record year */
 .flood-tooltip {
   position: absolute;
   top: 100%;
@@ -275,7 +273,7 @@
   opacity: 1;
 }
 
-@media (max-width: 850px) { /* Only show for desktop users */
+@media (max-width: 850px) { 
   .flood-records-container {
     display: none;
   }

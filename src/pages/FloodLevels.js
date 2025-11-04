@@ -1,4 +1,4 @@
-// FloodLevels.js
+
 import React, { useEffect, useRef, useState, useCallback } from 'react';
 import mapboxgl from 'mapbox-gl';
 import './FloodLevels.css';
@@ -17,7 +17,6 @@ export const parcelTileset = {
   sourceId: "juneau_parcels",
 };
 
-// Custom color palette for each flood level (64–76)
 const customColors = [
   "#87c210", "#c3b91e", "#e68a1e", "#31a354", "#3182bd", "#124187",
   "#d63b3b", "#9b3dbd", "#d13c8f", "#c2185b", "#756bb1", "#f59380", "#ba4976",
@@ -193,8 +192,6 @@ popupRef.current
     url: `mapbox://mapfean.${tilesetId}`,
   });
 
-  // --- FILL LAYER (main visible flood area) ---
-// --- FILL LAYER ONLY (no outlines ever) ---
 map.addLayer({
   id: fillId,
   type: 'fill',
@@ -294,7 +291,6 @@ map.addLayer({
           filter: ['==', 'tax_id', ''],
         });
 
-        // Add USGS gage markers
 const markerCoordinates = [
   {
     id: '15052500',

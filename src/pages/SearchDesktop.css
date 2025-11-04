@@ -51,7 +51,7 @@ a:focus {
 }
 
 
-@media (max-width: 1058px) {
+@media (max-width: 1057px) {
 
   .search-bar-container {
     top: 110px !important;
@@ -102,12 +102,11 @@ a:focus {
 }
 
 
-/* Disable hover effects on mobile */
 @media (max-width: 800px) {
 
-  /* Also disable hover popup triggers if any exist */
+
   .mapboxgl-popup {
-    pointer-events: auto; /* popups remain clickable */
+    pointer-events: auto; 
   }
 }
 
@@ -129,7 +128,6 @@ a:focus {
   }
 }
 
-/* Mobile positioning adjustment */
 @media (max-width: 768px) {
   .search-bar-container {
     top: 100px !important;

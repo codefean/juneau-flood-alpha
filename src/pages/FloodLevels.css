@@ -42,7 +42,7 @@ code {
   
 }
 
-/* Popup container */
+
 .mapboxgl-popup {
   max-width: 250px;
   font-family: sans-serif;
@@ -50,7 +50,6 @@ code {
   height: auto !important;
 }
 
-/* Frosted content box */
 .mapboxgl-popup-content {
   overflow: hidden;
   border-radius: 8px;
@@ -62,14 +61,14 @@ code {
   height: auto !important;
 }
 
-/* Title styling */
+
 .mapboxgl-popup-content h4 {
   margin: 0 0 6px;
   font-size: 1.1rem;
   font-weight: 600;
 }
 
-/* Text styling */
+
 .mapboxgl-popup-content p {
   margin: 0;
   font-size: 0.9rem;
@@ -77,12 +76,12 @@ code {
   white-space: normal;
 }
 
-/* Arrow (tip) */
+
 .mapboxgl-popup-tip {
   border-top-color: rgba(0, 0, 0, 0.6) !important;
 }
 
-/* Close button styling */
+
 .mapboxgl-popup-close-button {
   color: white;
   font-size: 1.5rem;
@@ -108,7 +107,6 @@ header h1 {
 }
 
 
-/* Cards */
 .level-card {
 position: relative;
   margin: -10px 0 5px -1px !important;
@@ -138,13 +136,13 @@ position: relative;
 
 
 
-/* Show on smaller screens */
+
 @media (max-width: 851px) {
     .level-card {
     display: none !important;
   }
 }
-/* Show it again when the screen width is 500px or larger */
+
 @media (min-width: 851px) {
   .level-card {
     display: block !important;
@@ -155,13 +153,10 @@ position: relative;
 
 
 .mapboxgl-popup-tip {
-  display: none; /* Hide the default popup tip if you want a cleaner look */
+  display: none; 
 }
 
 
-
-
-/* Markers */
 .usgs-marker {
   width: 10px;
   height: 10px;
@@ -176,7 +171,7 @@ position: relative;
   background-color: rgb(28, 80, 159) !important;
 }
 
-/* Toggle Buttons */
+
 .menu-toggle-button,
 .style-toggle-button {
   padding: 8px 12px;
@@ -210,7 +205,6 @@ position: relative;
   transform: scale(1.05);
 }
 
-/* Help Marker */
 .help-marker-container {
   position: absolute;
   top: 10px;
@@ -270,7 +264,7 @@ position: relative;
 
 }
 
-/* HESCO Off = dim gray */
+
 .hesco-off {
   background-color: rgba(66, 65, 65, 0.6);
   backdrop-filter: blur(2px);
@@ -278,7 +272,6 @@ position: relative;
   border: 0.9px solid rgba(255, 255, 255, 0.868);
 }
 
-/* HESCO On = bright green */
 .hesco-on {
   background-color: #28a746db !important;
   
@@ -304,8 +297,6 @@ position: relative;
     display: block;
   }
 }
-
-
 
 
 
@@ -386,7 +377,7 @@ position: relative;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  pointer-events: none; /* Allow touch events to pass through if needed */
+  pointer-events: none; 
   padding: 20px;
   box-sizing: border-box;
 }

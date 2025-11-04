@@ -1,4 +1,4 @@
-/* Header container */
+
 .header {
   background-color: #002c4d;
   color: white;
@@ -8,10 +8,9 @@
   justify-content: center;
   font-family: 'Open Sans', Arial, sans-serif;
   position: relative;
-  flex-wrap: wrap; /* Allow wrapping for mobile */
+  flex-wrap: wrap; 
 }
 
-/* Title stays centered and adapts to screen size */
 .header-title {
   flex-grow: 1;
   display: flex;
@@ -33,43 +32,40 @@
 }
 
   .dashboard-link {
-    text-decoration: none; /* remove underline */
-    color: inherit;        /* inherit header text color */
+    text-decoration: none; 
+    color: inherit;       
     transition: color 0.3s ease, text-decoration 0.3s ease;
   }
 
 
-/* Logo styles */
+
 .header-image {
   position: absolute;
   left: 15px;
-  display: none; /* Hide by default on small screens */
+  display: none; 
   align-items: center;
-  padding-top: 6px;     /* Add padding to top */
+  padding-top: 6px;     
 
 }
 
-/* Default image scaling for mobile */
 .header-image img {
   width: auto;
   height: auto;
-  max-height: 70px; /* Adjust for mobile */
+  max-height: 70px; 
   max-width: 100%;
 }
 
-/* Show and scale logo on larger screens */
+
 @media (min-width: 1238px) {
   .header-image {
     display: flex;
   }
 }
 
-/* Add spacing between logos */
 .header-image a {
   margin-right: 10px;
 }
 
-/* Ensure logos are aligned and scaled well */
 .header-image img {
   height: auto;
   max-height: 70px;
@@ -84,10 +80,9 @@
 .header-subtitle {
   font-size: 0.65rem !important;
   color: #e0e0e0;
-  display: none; /* hidden by default */
+  display: none; 
 }
 
-/* Show on smaller screens */
 @media (max-width: 850px) {
   .header-subtitle {
     display: block;
