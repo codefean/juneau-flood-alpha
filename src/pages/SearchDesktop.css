@@ -186,7 +186,7 @@ a:focus {
 @media (max-width: 443px) {
 
   .search-bar-container {
-    top: 115px !important;
+    top: 95px !important;
     width: 90%;
   }
 
@@ -200,7 +200,7 @@ a:focus {
 }
 
 
-@media (max-width: 374px) {
+@media (max-width: 359px) {
 
   .search-bar-container {
 display: none;

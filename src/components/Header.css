@@ -78,9 +78,10 @@
 }
 
 .header-subtitle {
-  font-size: 0.65rem !important;
+  font-size: 0.6rem !important;
   color: #e0e0e0;
   display: none; 
+  margin-top: -3px !important;
 }
 
 @media (max-width: 850px) {

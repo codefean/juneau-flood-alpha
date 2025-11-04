@@ -57,14 +57,14 @@
 @media (max-width: 443px) {
 .level-card-mobile {
   position: absolute;
-  top: calc(95px + 7.5%);
+  top: calc(71px + 7.5%);
 }
 }
 
 @media (max-width: 376px) {
 .level-card-mobile {
   position: absolute;
-  top: calc(95px + 7.5%); /* 👈 10px below your search bar's top */
+  top: calc(85px + 7.5%); /* 👈 10px below your search bar's top */
   left: 50%;
   transform: translateX(-50%);
   width: 90%;
