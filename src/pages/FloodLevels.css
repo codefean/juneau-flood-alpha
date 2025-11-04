@@ -335,7 +335,7 @@ position: relative;
   .level-card {
     position: relative;
     width: 100%;
-    margin-top: -12px !important;
+    margin-top: -20px !important;
   }
   
   .level-card p {
@@ -449,7 +449,7 @@ display: none !important;
 
 .hesco-toggle-button-mobile {
   position: absolute;
-  bottom: 75px; /* adjust as needed */
+  bottom: 75px; 
   left: 52%;
   transform: translateX(-50%);
   background: rgba(61, 61, 61, 0.6);
@@ -468,7 +468,6 @@ display: none !important;
   z-index: 5;
 }
 
-/* ✅ Hide on desktop */
 @media (min-width: 850px) {
   .hesco-toggle-button-mobile {
     display: none !important;

@@ -1,7 +1,6 @@
 // FloodLevels.js
 import React, { useEffect, useRef, useState, useCallback } from 'react';
 import mapboxgl from 'mapbox-gl';
-
 import './FloodLevels.css';
 import FloodStageMenu from './FloodStageMenu';
 import FloodStepper from './FloodStepper';
@@ -10,7 +9,6 @@ import { getFloodStage } from './utils/floodStages';
 import Search from './Search.js';
 import FloodRecordsBar from './FloodKey.js';
 import FloodCardMobile from './FloodCardMobile';
-
 
 
 export const parcelTileset = {
