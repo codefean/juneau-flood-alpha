@@ -74,6 +74,7 @@
   .stepper-container {
     max-width: 180px;
     gap: 5px; 
+    margin-bottom: -7px;
   }
   
   .stepper-button {
