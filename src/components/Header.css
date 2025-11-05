@@ -2,13 +2,14 @@
 .header {
   background-color: #002c4d;
   color: white;
-  padding: 10px 15px;
+  padding: 10px;
   display: flex;
   align-items: center;
   justify-content: center;
   font-family: 'Open Sans', Arial, sans-serif;
   position: relative;
   flex-wrap: wrap; 
+
 }
 
 .header-title {
