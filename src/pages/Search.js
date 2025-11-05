@@ -134,7 +134,7 @@ const Search = ({ mapRef }) => {
         </ul>
       )}
       <button className="search-button">Search</button>
-      <button className="locate-button">📍</button>
+      <button className="locate-button" onClick={handleLocate}>📍</button>
     </div>
   );
 };
