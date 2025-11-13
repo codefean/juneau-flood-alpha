@@ -440,7 +440,7 @@ display: none !important;
 
 .hesco-toggle-button-mobile {
   position: absolute;
-  bottom: 68px; 
+  bottom: 73px; 
   left: 50%;
   transform: translateX(-50%);
   background: rgba(61, 61, 61, 0.6);
