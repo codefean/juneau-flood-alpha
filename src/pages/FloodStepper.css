@@ -116,7 +116,7 @@
 }
 
 
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 851px) {
   .stepper-container {
     position: fixed;
     bottom: 1px !important; 
@@ -130,6 +130,9 @@
     border-radius: 12px;
   }
 }
+
+
+
 
 @media screen and (max-width: 768px) {
   .stepper-container {

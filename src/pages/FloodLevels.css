@@ -16,6 +16,10 @@ body {
   overflow: hidden;
 }
 
+.floodlevels-page footer {
+  display: none !important;
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }

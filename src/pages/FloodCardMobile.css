@@ -1,6 +1,6 @@
 .level-card-mobile {
   position: absolute;
-  top: calc(101px + 5.7%); /* 👈 10px below your search bar's top */
+  top: calc(101px + 5.3%); /* 👈 10px below your search bar's top */
   left: 50%;
   transform: translateX(-50%);
   width: 90%;
@@ -46,6 +46,14 @@
     display: none;
   }
 }
+
+@media (max-width: 850px) {
+.level-card-mobile {
+  position: absolute;
+  top: calc(80px + 6.8%) !important;
+}
+}
+
 
 @media (max-width: 768px) {
 .level-card-mobile {
@@ -132,3 +140,4 @@ top: calc(81px + 7.5%) !important;
   line-height: 1;
 }
 }
+

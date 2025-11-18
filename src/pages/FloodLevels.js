@@ -421,7 +421,7 @@ setGageMarkers(markers);
 
       
       <FloodInfoPopup />
-      <div id="map" ref={mapContainerRef} style={{ height: '90vh', width: '100vw' }} />
+      <div id="map" ref={mapContainerRef} style={{ height: '110vh', width: '110vw' }} />
 
       <div className="flood-stepper-container">
         <FloodStepper
