@@ -1,18 +1,18 @@
 import React, { useState, useEffect } from "react";
 import "./FloodForecast.css";
 
-import Tooltip from "./Tooltip";                   // Tooltip component for visual annotations
-import FloodStageBar from "./FloodStageBar";       // Color-coded flood stage indicator based on live data
+import Tooltip from "./Tooltip";        
+import FloodStageBar from "./FloodStageBar";
 
 // Main component
 const FloodPrediction = () => {
   // State for live images and water level
-  const [imageUrl, setImageUrl] = useState("");                     // Suicide Basin image
-  const [hydroGraphUrl, setHydroGraphUrl] = useState("");           // Hydrograph image
-  const [loading, setLoading] = useState(true);                     // Loading state for images
-  const [waterLevel, setWaterLevel] = useState(null);               // Real-time Mendenhall Lake level
-  const [error, setError] = useState(null);                         // Error message for water level
-  const [activeInfo, setActiveInfo] = useState(null);               // Info box active state (for tooltips)
+  const [imageUrl, setImageUrl] = useState("");            
+  const [hydroGraphUrl, setHydroGraphUrl] = useState("");
+  const [loading, setLoading] = useState(true);                
+  const [waterLevel, setWaterLevel] = useState(null);          
+  const [error, setError] = useState(null);                     
+  const [activeInfo, setActiveInfo] = useState(null);             
 
 
   // Load fresh images on mount and every hour

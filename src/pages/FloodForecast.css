@@ -112,7 +112,7 @@ body {
   margin: 0 auto;
 }
 
-/* Detail Card */
+
 .detail-card {
   background-color: #f9fbfc;
   border: 1px solid #dce7ef;
@@ -127,7 +127,7 @@ body {
   font-size: 16.9px;
 }
 
-/* Flooding Info */
+
 .flooding-info {
   flex: 1;
   max-width: 700px;
@@ -137,7 +137,7 @@ body {
   flex-direction: column;
 }
 
-/* Image Containers */
+
 .image-pair-container {
   display: flex;
   justify-content: center;
@@ -155,7 +155,6 @@ body {
   align-items: center;
 }
 
-/* Suicide Basin */
 .suicide-basin-wrapper,
 .additional-image-wrapper {
   width: 100%;
@@ -168,7 +167,7 @@ body {
   max-width: 900px;
 }
 
-/* Lake Level */
+
 .lake-level-wrapper {
   display: flex;
   justify-content: space-between;
@@ -179,7 +178,7 @@ body {
   margin-right: 15px;
 }
 
-/* Hydrograph & FloodStageBar */
+
 .lake-level-container {
   display: flex;
   align-items: center;
@@ -207,7 +206,7 @@ body {
   align-items: center;
 }
 
-/* Buttons */
+
 .more-data-button {
   display: block;
   background-color: #00509e;
@@ -228,7 +227,6 @@ body {
   transform: scale(1.05);
 }
 
-/* Flood Stage Info */
 .flood-stage-container {
   display: flex;
   flex-direction: column;
@@ -259,17 +257,15 @@ body {
 
 .blue-square-tooltip {
   position: absolute;
-  top: 30%;  /* adjust based on where you want it on the image */
-  left: 50%; /* adjust as needed */
-  width: clamp(8px, 1.2%, 14px);
-  height: clamp(8px, 1.2%, 14px);
+  top: 35%; 
+  left: 50%; 
+  height: clamp(16.2px, 1.6%, 14px) !important;
   background-color: blue;
   border-radius: 2px;
   cursor: pointer;
   transform: translate(-50%, -50%);
 }
 
-/* ========== RESPONSIVE STYLES ========== */
 @media (max-width: 1268px) {
   .flood-forecasting-title,
   .flood-forecasting-subheading,

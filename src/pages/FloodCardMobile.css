@@ -1,6 +1,6 @@
 .level-card-mobile {
   position: absolute;
-  top: calc(101px + 5.3%); /* 👈 10px below your search bar's top */
+  top: calc(101px + 5.3%);
   left: 50%;
   transform: translateX(-50%);
   width: 90%;
@@ -14,7 +14,6 @@
   text-align: center;
 }
 
-/* Typography for the text inside */
 .level-card-mobile-text {
   font-size: 0.9rem;
   font-weight: 500;
@@ -50,7 +49,7 @@
 @media (max-width: 850px) {
 .level-card-mobile {
   position: absolute;
-  top: calc(80px + 6.8%) !important;
+  top: calc(80px + 8.1%) !important;
 }
 }
 

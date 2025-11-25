@@ -61,7 +61,6 @@ const FloodEvents = () => {
     return () => observer.disconnect();
   }, []);
 
-  // Animate only for numeric targets
   useEffect(() => {
     if (isVisible && isNumeric) {
       let current = 0;
@@ -110,7 +109,6 @@ const FloodEvents = () => {
 };
 
 
-  // === Fetch and parse CSV data ===
   useEffect(() => {
     fetch(S3_CSV_URL, { cache: "no-cache" })
       .then((response) => response.text())

@@ -9,6 +9,7 @@ import { getFloodStage } from './utils/floodStages';
 import Search from './Search.js';
 import FloodRecordsBar from './FloodKey.js';
 import FloodCardMobile from './FloodCardMobile';
+import AboutMap from './AboutMap';
 
 
 export const parcelTileset = {
@@ -38,7 +39,7 @@ const FloodLevels = () => {
   const [gageMarkers, setGageMarkers] = useState([]);
   const toggleMenu = () => setMenuOpen((prev) => !prev);
 
-  // Unified flood + parcel hover popup
+
 const setupHoverPopup = useCallback((activeLayerId) => {
   const map = mapRef.current;
   if (!map || !activeLayerId) return;
@@ -250,7 +251,7 @@ map.addLayer({
 
         
 
-        // Add parcel tileset
+
         mapRef.current.addSource(parcelTileset.sourceId, {
           type: 'vector',
           url: parcelTileset.url,
@@ -481,11 +482,12 @@ setGageMarkers(markers);
               );
             })}
           </div>
+          <AboutMap />
         </div>
       )}
 
 
-      
+  
 <FloodRecordsBar />
 <Search mapRef={mapRef} waterLevels={waterLevels} />
 <FloodCardMobile waterLevels={waterLevels} />
