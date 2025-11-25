@@ -18,9 +18,7 @@ const AboutMap = () => {
           <h2>About Flood Maps</h2>
           <Model />
           <div className="tooltip-text3">
-Flood inundation maps show potential impacts. Maps with HESCO barriers assume fully functional barriers.
-<p></p>
-GLOFs can vary in magnitude from year to year. A 20-foot event would require an atmospheric river to occur in parallel with a significant flood event.
+Flood inundation maps show potential impacts between 8ft - 20ft. Impacts at 8ft are limited to low-lying areas near the river and shoreline, while impacts at 20ft show widespread flooding throughout Juneau. <p></p>These maps are based on a combination of historical flood data, topographical analysis, and hydrological modeling to provide a comprehensive view of potential flood scenarios.
           </div>
 
         </div>
