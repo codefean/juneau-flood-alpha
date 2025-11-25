@@ -16,7 +16,7 @@ export default function Topographic3DTerrainMap() {
 
   const lakes = useMemo(
     () => [
-      { name: "Mendenhall Valley", orbitCenter: [-134.58315, 58.3879] }
+      { name: "Mendenhall Valley", orbitCenter: [-134.58650, 58.3879] }
     ],
     []
   );

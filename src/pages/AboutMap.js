@@ -18,9 +18,9 @@ const AboutMap = () => {
           <h2>About Flood Maps</h2>
           <Model />
           <div className="tooltip-text3">
-Flood inundation maps show potential impacts. Maps with HESCO barriers assume optimal performance.
+Flood inundation maps show potential impacts. Maps with HESCO barriers assume fully functional barriers.
 <p></p>
-GLOFs can vary in magnitude from year to year. A 20-foot event would require an atmospheric river occurring in parallel with a significant flood event.
+GLOFs can vary in magnitude from year to year. A 20-foot event would require an atmospheric river to occur in parallel with a significant flood event.
           </div>
 
         </div>

@@ -13,9 +13,9 @@
 }
 .flood-records-container2.expanded {
   width: 290px;
-  max-height: 400px;
+  max-height: 350px;
   border: 0.9px solid white;
-
+background-color: #697e6d9e !important;
   
 }
 
@@ -39,10 +39,10 @@
 
 
   .tooltip-title2 h2 {
-  font-size: 18px;
+  font-size: 16px;
   text-align: center !important;
   color: #ffffff;
-  line-height: .7 !important;
+  line-height: .69 !important;
   font-weight: bolder;
   margin-bottom: 8px;
   margin-top: 8px;
@@ -55,7 +55,7 @@
   font-weight: bolder;
   margin-bottom: 8px;
   margin-top: -18px;
-  max-height: 110px !important;  
+  max-height: 180px !important;  
   overflow-y: auto;
   padding-right: 8px; 
 }

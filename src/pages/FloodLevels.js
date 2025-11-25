@@ -449,7 +449,7 @@ setGageMarkers(markers);
             onFloodLayerChange={handleFloodLayerChange}
           />
           <button
-            title="HESCO maps are only available for 14ft - 18ft & assume fully functional barriers"
+            data-tooltip="HESCO maps are only available for 14ft - 18ft & assume fully functional barriers"
             onClick={() => { if (selectedFloodLevel >= 14) toggleHescoMode(); }}
             className={`hesco-toggle-button ${hescoMode ? 'hesco-on' : 'hesco-off'}`}
             disabled={loadingLayers || selectedFloodLevel < 14 || selectedFloodLevel > 18}
@@ -466,17 +466,17 @@ setGageMarkers(markers);
               return (
                 <div key={level.id} className="level-card">
                   <p>
-                    <a href="https://waterdata.usgs.gov/monitoring-location/15052500/" target="_blank" rel="noopener noreferrer" style={{ color: 'white' }}>
-                      Current Lake Level:
+                    <a style={{ color: 'white' }}>
+                      Lake Level:
                     </a>
                     <strong>{` ${level.value} ft`}</strong>
                   </p>
                   <p>
                     <span style={{ color: 'white' }}>
-                      <span style={{ fontSize: '1.2rem', fontWeight: 'bold' }}>{currentStage?.label || 'OFFLINE'}</span>
+                      <span style={{ fontSize: '1.2rem', fontWeight: 'bold', lineHeight: "1px" }}>{currentStage?.label || 'OFFLINE'}</span>
                     </span>
                   </p>
-                  <p style={{ fontSize: '0.85rem' }}>{level.dateTime || 'N/A'}</p>
+                  <p style={{ fontSize: '0.66rem', lineHeight:"2px" }}>{level.dateTime || 'N/A'}</p>
                 </div>
                 
               );
