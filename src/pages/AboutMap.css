@@ -55,7 +55,7 @@ background-color: #697e6d9e !important;
   font-weight: bolder;
   margin-bottom: 8px;
   margin-top: -18px;
-  max-height: 180px !important;  
+  max-height: 100px !important;  
   overflow-y: auto;
   padding-right: 8px; 
 }
